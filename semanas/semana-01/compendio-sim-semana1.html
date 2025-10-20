@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Semana 1 - Simulación y Modelado de Sistemas</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
+
+    <!-- UIDE Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/uide-theme.css">
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <style>
+        .concept-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .r-hstack {
+                flex-direction: column;
+            }
+
+            .concept-box {
+                padding: 1rem;
+                font-size: 0.9em;
+            }
+
+            .concept-box h4 {
+                font-size: 1.1em;
+            }
+        }
+
+        .timeline-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .timeline-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        .definition-box {
+            background: rgba(35, 53, 110, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--uide-primary);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: rgba(35, 53, 110, 0.1);
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Title Slide -->
+            <section data-background-color="#f8f8f8" data-transition="convex">
+                <div class="title-slide">
+                    <h1>Simulación y Modelado de Sistemas</h1>
+                    <h2>Semana 1</h2>
+
+                    <div class="course-info">
+                        <strong>Simulación</strong> • Universidad Internacional del Ecuador<br>
+                        <em>Prof. Charlie Cárdenas Toledo, M.Sc.</em><br>
+                        2025
+                    </div>
+
+                    <div
+                        style="background: rgba(233, 171, 33, 0.1); border-radius: 8px; padding: 1em; margin: 1em 0; font-size: 0.9em;">
+                        <strong>Unidad 1: Fundamentos de Simulación</strong><br>
+                        <em>Semana 1 - Conceptos básicos, tipos de sistemas y modelos</em>
+                    </div>
+
+                    <div style="margin-top: 2em; font-size: 0.9em; font-style: italic; color: var(--uide-secondary);">
+                        Compendio exhaustivo sobre simulación y modelado de sistemas
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quote Slide -->
+            <section data-background-color="#f8f8f8">
+                <blockquote style="font-size: 1.2em; text-align: center;">
+                    <p><strong>"La simulación es el proceso de diseñar un modelo de un sistema real y llevar a término experiencias con él, con la finalidad de comprender el comportamiento del sistema o evaluar nuevas estrategias."</strong></p>
+                    <footer style="margin-top: 1em; color: var(--uide-secondary);">
+                        — Shannon
+                    </footer>
+                </blockquote>
+            </section>
+
+            <!-- Definición de Simulación -->
+            <section data-transition="convex">
+                <h2>1. Definición e Importancia de la Simulación</h2>
+
+                <section data-auto-animate>
+                    <h3>1.1 Definición</h3>
+                    <div class="concept-box">
+                        <p>La simulación es una <mark>técnica poderosa</mark> utilizada para el análisis y estudio de sistemas complejos.</p>
+                        
+                        <div class="definition-box">
+                            <h4><i class="fas fa-history"></i> Origen Histórico</h4>
+                            <p>Su origen se remonta a la aplicación de la probabilidad y estadística a mediados de la <strong>Segunda Guerra Mundial</strong>, conocida como el <strong>método Monte Carlo</strong>, para resolver problemas demasiado costosos o complicados para ser tratados analíticamente o experimentalmente.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Definiciones Formales</h3>
+                    <div class="concept-box">
+                        <div class="r-vstack">
+                            <div class="fragment definition-box">
+                                <h5><i class="fas fa-quote-left"></i> Shannon</h5>
+                                <p>"La simulación es el proceso de diseñar un modelo de un sistema real y llevar a término experiencias con él, con la finalidad de comprender el comportamiento del sistema o evaluar nuevas estrategias, dentro de los límites impuestos por un cierto criterio o un conjunto de ellos, para el funcionamiento del sistema"</p>
+                            </div>
+
+                            <div class="fragment definition-box">
+                                <h5><i class="fas fa-quote-left"></i> Gordon (1991)</h5>
+                                <p>"La simulación se define como la técnica de resolver problemas siguiendo los cambios en el tiempo de un modelo dinámico de un sistema"</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>1.2 Importancia y Propósito</h3>
+                    <div class="concept-box">
+                        <h4>La simulación es fundamental en diversas disciplinas:</h4>
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-industry"></i> Ingeniería Industrial</h5>
+                                </div>
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
+                                    <h5><i class="fas fa-search"></i> Investigación de Operaciones</h5>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-chart-line"></i> Economía</h5>
+                                </div>
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
+                                    <h5><i class="fas fa-user-md"></i> Medicina</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Capacidades de la Simulación</h3>
+                    <div class="concept-box">
+                        <div class="r-vstack">
+                            <div class="fragment" style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-shield-alt"></i> Evaluar alternativas sin riesgo</h5>
+                                <p>Permite "probar los cambios de diseño de ingeniería sin interrumpir el sistema que se está modelando"</p>
+                            </div>
+
+                            <div class="fragment" style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-question-circle"></i> Responder preguntas estratégicas</h5>
+                                <p>Se utiliza para responder preguntas del tipo "¿qué sucede si?" (what-if)</p>
+                            </div>
+
+                            <div class="fragment" style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-cogs"></i> Análisis de sistemas complejos</h5>
+                                <p>Esencial para sistemas demasiado complejos para un análisis analítico satisfactorio</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Modelo, Sistema y Evento -->
+            <section data-transition="convex">
+                <h2>2. Modelo, Sistema y Evento</h2>
+
+                <section data-auto-animate>
+                    <h3>2.1 Sistema</h3>
+                    <div class="concept-box">
+                        <div class="definition-box">
+                            <p>Un <strong>sistema</strong> se refiere a un conjunto de elementos interrelacionados que interactúan entre sí para lograr un objetivo común.</p>
+                        </div>
+
+                        <h4>Características de un Sistema:</h4>
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-puzzle-piece"></i> Elementos</h5>
+                                    <p>(llamados entidades en simulación)</p>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-project-diagram"></i> Relaciones</h5>
+                                    <p>Entre esos elementos</p>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-exchange-alt"></i> Entradas y Salidas</h5>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-tags"></i> Propiedades</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>2.2 Modelo</h3>
+                    <div class="concept-box">
+                        <div class="definition-box">
+                            <p>El <strong>modelo</strong> es una representación simplificada y abstracta de un sistema real que se utiliza para comprender y predecir su comportamiento.</p>
+                        </div>
+
+                        <div class="fragment">
+                            <h4>Características de un Buen Modelo:</h4>
+                            <ul style="text-align: left;">
+                                <li>Describir todas las propiedades importantes del sistema</li>
+                                <li>Ser fácil de entender y modificar</li>
+                                <li>Perseguir objetivos claros</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>2.3 Evento</h3>
+                    <div class="concept-box">
+                        <div class="definition-box">
+                            <p>Un <strong>evento</strong> es un acontecimiento que sucede en un instante de tiempo determinado en la simulación, lo que provoca un cambio en el estado actual del sistema.</p>
+                        </div>
+
+                        <div class="fragment">
+                            <h4>Eventos Básicos en Simulación de Eventos Discretos:</h4>
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                        <h5><i class="fas fa-arrow-right"></i> Llegadas</h5>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div style="background: rgba(220, 53, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                        <h5><i class="fas fa-arrow-left"></i> Salidas</h5>
+                                        <p>(Terminación del servicio)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Tipos de Sistemas y Modelos -->
+            <section data-transition="convex">
+                <h2>3. Tipos de Sistemas y Modelos</h2>
+
+                <section data-auto-animate>
+                    <h3>3.1 Clasificación por Representación</h3>
+                    <div class="concept-box">
+                        <div class="r-vstack">
+                            <div class="fragment" style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-cube"></i> 1. Modelos Icónicos (Físicos)</h5>
+                                <p>Representaciones a escala del sistema: maquetas, prototipos, plantas piloto</p>
+                            </div>
+
+                            <div class="fragment" style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-map"></i> 2. Modelos Analógicos</h5>
+                                <p>Utilizan analogías: mapas, diagramas de distribución eléctrica</p>
+                            </div>
+
+                            <div class="fragment" style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-calculator"></i> 3. Modelos Simbólicos (Matemáticos)</h5>
+                                <p>Codifican características mediante lenguaje matemático - fundamentales para simulación computacional</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>3.2 Clasificación por Naturaleza</h3>
+                    <div class="concept-box">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Característica</th>
+                                    <th>Modelo Discreto</th>
+                                    <th>Modelo Continuo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="fragment">
+                                    <td><strong>Cambio del sistema</strong></td>
+                                    <td>Solo cambia en instantes específicos (eventos)</td>
+                                    <td>Cambia continuamente a lo largo del tiempo</td>
+                                </tr>
+                                <tr class="fragment">
+                                    <td><strong>Tiempo</strong></td>
+                                    <td>El reloj salta de un punto discreto a otro</td>
+                                    <td>Modelado por ecuaciones diferenciales</td>
+                                </tr>
+                                <tr class="fragment">
+                                    <td><strong>Unidad de modelado</strong></td>
+                                    <td>Modela elementos individuales (entidades)</td>
+                                    <td>Modela flujos</td>
+                                </tr>
+                                <tr class="fragment">
+                                    <td><strong>Ejemplos</strong></td>
+                                    <td>Peaje, cajero automático, líneas de espera</td>
+                                    <td>Flujo de líquido, transferencia de calor</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>3.3 Clasificación por Aleatoriedad</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-equals"></i> Deterministas</h5>
+                                    <p>No interviene el azar. Bajo las mismas condiciones iniciales se obtienen siempre los mismos resultados.</p>
+                                    <small style="color: var(--uide-secondary);">Prácticamente no existen en la naturaleza</small>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-dice"></i> Estocásticos</h5>
+                                    <p>Interviene el azar o elementos que no se controlan. Utilizan variables aleatorias mediante distribuciones de probabilidad.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fragment definition-box" style="margin-top: 1rem;">
+                            <h5><i class="fas fa-chart-bar"></i> Simulación de Monte Carlo</h5>
+                            <p>Modelo estático que no interviene el tiempo. Se basa en la aleatoriedad usando números aleatorios para obtener un resumen estadístico de las observaciones simuladas.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>3.4 Estrategias de Simulación Discreta</h3>
+                    <div class="concept-box">
+                        <div class="r-vstack">
+                            <div class="fragment" style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-calendar-alt"></i> 1. Programación de Eventos</h5>
+                                <p>Tratamiento secuencial de acontecimientos ordenados por tiempo en una lista de eventos</p>
+                            </div>
+
+                            <div class="fragment" style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-route"></i> 2. Interacción de Procesos</h5>
+                                <p>Se enfoca en la experiencia de la entidad a través del sistema. Usan interfaz gráfica (Arena, ProModel)</p>
+                            </div>
+
+                            <div class="fragment" style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-tasks"></i> 3. Examinación de Actividades</h5>
+                                <p>Define condiciones para empezar y finalizar cada actividad. El tiempo avanza en incrementos iguales</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Ventajas y Limitaciones -->
+            <section data-transition="convex">
+                <h2>4. Ventajas y Limitaciones</h2>
+
+                <section>
+                    <h3>4.1 Ventajas de la Simulación</h3>
+                    <div class="concept-box">
+                        <p>La simulación es una herramienta flexible, poderosa e intuitiva que ofrece múltiples beneficios organizados en categorías clave:</p>
+                        <div class="r-hstack" style="margin-top: 2rem;">
+                            <div class="column fragment">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-brain"></i> Análisis y Comprensión</h5>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-flask"></i> Experimentación y Riesgo</h5>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-dollar-sign"></i> Costo y Tiempo</h5>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-comments"></i> Comunicación</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Análisis y Comprensión</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 8px; border-left: 4px solid rgba(40, 167, 69, 0.8);">
+                            <h4><i class="fas fa-brain"></i> Análisis y Comprensión</h4>
+                            <ul style="text-align: left; font-size: 1.1em;">
+                                <li><strong>Mejora el proceso de decisión</strong> al permitir el análisis de efectos de cambios internos o externos</li>
+                                <li><strong>Facilita la comprensión</strong> de la operación de sistemas complejos</li>
+                                <li><strong>Detecta variables más importantes</strong> y entiende su relación</li>
+                                <li><strong>Identifica cuellos de botella</strong> y puntos críticos del sistema</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Experimentación y Riesgo</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(35, 53, 110, 0.1); padding: 2rem; border-radius: 8px; border-left: 4px solid rgba(35, 53, 110, 0.8);">
+                            <h4><i class="fas fa-flask"></i> Experimentación y Riesgo</h4>
+                            <ul style="text-align: left; font-size: 1.1em;">
+                                <li><strong>Permite experimentar</strong> con nuevas situaciones (sistemas nuevos o existentes con poca información)</li>
+                                <li><strong>Anticipa resultados no previstos</strong> antes de la implementación real</li>
+                                <li><strong>Prueba diferentes alternativas y diseños</strong> sin incurrir en los costos del sistema real</li>
+                                <li><strong>Reduce riesgos</strong> de inversión y toma de decisiones</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Costo y Tiempo</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 2rem; border-radius: 8px; border-left: 4px solid rgba(233, 171, 33, 0.8);">
+                            <h4><i class="fas fa-dollar-sign"></i> Costo y Tiempo</h4>
+                            <ul style="text-align: left; font-size: 1.1em;">
+                                <li><strong>Experimentar con un modelo</strong> suele ser más económico que con un sistema real</li>
+                                <li><strong>Simula años de operación</strong> en cuestión de segundos o minutos</li>
+                                <li><strong>Genera observaciones estadísticas</strong> de manera rápida y eficiente</li>
+                                <li><strong>Reduce costos de implementación</strong> al validar conceptos previamente</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Flexibilidad y Precisión</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(145, 0, 72, 0.1); padding: 2rem; border-radius: 8px; border-left: 4px solid rgba(145, 0, 72, 0.8);">
+                            <h4><i class="fas fa-cogs"></i> Flexibilidad y Precisión</h4>
+                            <ul style="text-align: left; font-size: 1.1em;">
+                                <li><strong>El modelo puede ser muy detallado y preciso</strong> - los modelos de simulación tienen pocas restricciones comparados con los analíticos</li>
+                                <li><strong>Control y manipulación</strong> de variables de entrada con mayor precisión que en un sistema real</li>
+                                <li><strong>Adaptabilidad</strong> a diferentes escenarios y condiciones operativas</li>
+                                <li><strong>Escalabilidad</strong> para modelar desde componentes hasta sistemas completos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Comunicación</h3>
+                    <div class="concept-box">
+                        <div style="background: rgba(75, 192, 192, 0.1); padding: 2rem; border-radius: 8px; border-left: 4px solid rgba(75, 192, 192, 0.8);">
+                            <h4><i class="fas fa-comments"></i> Comunicación</h4>
+                            <ul style="text-align: left; font-size: 1.1em;">
+                                <li><strong>Uso de animaciones (2D, 3D)</strong> permite "comunicar la esencia de un modelo de simulación... a los administradores y otras personas clave"</li>
+                                <li><strong>Visualización intuitiva</strong> de procesos complejos</li>
+                                <li><strong>Facilita el consenso</strong> entre stakeholders y equipos multidisciplinarios</li>
+                                <li><strong>Herramienta de presentación</strong> efectiva para justificar inversiones y cambios</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>4.2 Limitaciones de la Simulación</h3>
+                    <div class="concept-box">
+                        <div class="r-vstack">
+                            <div class="fragment" style="background: rgba(220, 53, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-exclamation-triangle"></i> No es técnica de optimización</h5>
+                                <p>Solo analiza alternativas y proporciona estimaciones estadísticas, no resultados exactos u óptimos</p>
+                            </div>
+
+                            <div class="fragment" style="background: rgba(220, 53, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-clock"></i> Costo y tiempo de desarrollo</h5>
+                                <p>Costosa en horas de desarrollo. Los estudios pueden requerir meses para sistemas complejos</p>
+                            </div>
+
+                            <div class="fragment" style="background: rgba(220, 53, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-chart-bar"></i> Resultados estadísticos</h5>
+                                <p>Proporciona solo estimaciones estadísticas, no resultados exactos</p>
+                            </div>
+
+                            <div class="fragment" style="background: rgba(220, 53, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5><i class="fas fa-user-cog"></i> Dependencia del software y personal</h5>
+                                <p>Limitada por la habilidad del programador y disponibilidad de software especializado</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Referencias -->
+            <section data-background-color="#f8f8f8">
+                <h2>Referencias (Formato APA)</h2>
+                <div style="font-size: 0.7em; text-align: left; max-height: 500px; overflow-y: auto;">
+                    <p>Banks, J., Carson, J.S., Nelson, B.L., & Nicol, D.M. (2005). <em>Discrete-Event System Simulation</em> (4ta ed.). Prentice Hall NJ.</p>
+                    <p>García, D., García, R.H., & Cárdenas, B.R. (2013). <em>Simulación y análisis de sistemas con ProModel</em> (2a ed.). Pearson Educación de México.</p>
+                    <p>Gordon, G. (1989). <em>Simulación de sistemas</em>. Diana.</p>
+                    <p>Law, A. M. (2014). <em>Simulation Modelling and Analysis</em>. McGraw Hill Education.</p>
+                    <p>Prawda, J. W. (2004). <em>Métodos y Modelos de Investigación de Operaciones, Vol. 2. Modelos Estocásticos</em>. LIMUSA.</p>
+                    <p>Shannon, R. E. (1988). <em>Simulación de Sistemas: Diseño, Desarrollo e Implantación</em> (1ra. edición). Trillas.</p>
+                </div>
+            </section>
+
+            <!-- Final Slide -->
+            <section data-background-color="#f8f8f8">
+                <h2>Conclusión</h2>
+                <div class="concept-box">
+                    <p>La simulación es una herramienta fundamental para el análisis de sistemas complejos que permite:</p>
+                    <ul style="text-align: left;">
+                        <li>Comprender el comportamiento de sistemas reales</li>
+                        <li>Evaluar alternativas sin riesgo</li>
+                        <li>Optimizar procesos y reducir costos</li>
+                        <li>Tomar decisiones informadas basadas en evidencia</li>
+                    </ul>
+                    
+                    <div style="margin-top: 2em; text-align: center; color: var(--uide-primary);">
+                        <strong>¡Gracias por su atención!</strong>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+
+    <script>
+        // Reveal.js configuration
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            touch: true,
+            loop: false,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+
+</body>
+
+</html>
