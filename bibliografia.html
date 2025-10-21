@@ -41,11 +41,6 @@
             color: var(--uide-primary);
         }
 
-        .concept-box.info {
-            border-left: 4px solid var(--uide-secondary);
-            background: rgba(35, 53, 110, 0.05);
-        }
-
         .concept-box.asu {
             border-left: 4px solid var(--uide-accent);
             background: rgba(233, 171, 33, 0.05);
@@ -76,32 +71,15 @@
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .r-hstack .column {
-                margin-bottom: 1rem;
-            }
-
-            .r-hstack {
-                flex-direction: column;
-            }
-
             .concept-box {
                 padding: 1rem;
                 font-size: 0.9em;
             }
 
-            .concept-box h4 {
-                font-size: 1.1em;
+            .reference-item {
+                padding: 0.8rem;
+                font-size: 0.85em;
             }
-        }
-
-        /* Enhanced list styling */
-        .concept-box ul {
-            margin: 0.5rem 0;
-            padding-left: 1.5rem;
-        }
-
-        .concept-box li {
-            margin-bottom: 0.3rem;
         }
 
         /* Highlight styling */
@@ -118,184 +96,112 @@
     <div class="reveal">
         <div class="slides">
 
-            <!-- Title Slide -->
+            <!-- Bibliografía Básica -->
             <section data-background-color="#f8f8f8" data-transition="convex">
-                <div class="title-slide">
-                    <h1>Referencias Bibliográficas</h1>
-                    <h2>FT-06-SIM Simulación</h2>
+                <h2><i class="fas fa-book"></i> Bibliografía Básica</h2>
+                <p style="font-size: 0.9em; color: var(--uide-secondary); margin-bottom: 2rem;">
+                    Fuentes principales requeridas para el desarrollo del curso
+                </p>
 
-                    <div class="course-info">
-                        <strong>FT-06-SIM</strong> • Cuarto Nivel<br>
-                        <strong>Simulación</strong><br>
-                        <em>Prof. Charlie Cárdenas Toledo, M.Sc.</em><br>
-                        Universidad Internacional del Ecuador • Octubre 2025
-                    </div>
+                <div class="reference-item">
+                    <p>
+                        <strong>Main Yaque, P., Navarro Veguillas, H., & Morales Fernández, A.</strong> (2019). 
+                        <em>Simulación con ejercicios en R</em>. UNED - Universidad Nacional de Educación a Distancia.
+                    </p>
+                    <p style="margin-top: 0.5rem;">
+                        <a href="https://www.mdconsult.internacional.edu.ec:2057/es/lc/uide/titulos/111720" 
+                           class="reference-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Acceder al recurso digital UIDE
+                        </a>
+                    </p>
+                </div>
 
-                    <div
-                        style="background: rgba(233, 171, 33, 0.1); border-radius: 8px; padding: 1em; margin: 1em 0; font-size: 0.9em;">
-                        <strong>Recursos Académicos del Curso</strong><br>
-                        <em>Bibliografía básica, complementaria y fuente ASU</em>
-                    </div>
+                <div class="reference-item">
+                    <p>
+                        <strong>Jiménez Avello, A., Castro Gil, M., & Costa García, J. M.</strong> (2015). 
+                        <em>Simulación de procesos y aplicaciones</em>. Dextra Editorial.
+                    </p>
+                    <p style="margin-top: 0.5rem;">
+                        <a href="https://www.mdconsult.internacional.edu.ec:2057/es/lc/uide/titulos/133345" 
+                           class="reference-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Acceder al recurso digital UIDE
+                        </a>
+                    </p>
+                </div>
 
-                    <div style="margin-top: 2em; font-size: 0.9em; font-style: italic; color: var(--uide-secondary);">
-                        Referencias formateadas según normas APA 7ª edición
-                    </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="index.html" style="display: inline-block; background: var(--uide-primary); color: white; padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 6px; font-size: 0.9em;">
+                        <i class="fas fa-arrow-left"></i> Volver al Índice
+                    </a>
                 </div>
             </section>
 
-            <!-- Bibliografía Básica -->
-            <section data-transition="convex">
-                <h2><i class="fas fa-book"></i> Bibliografía Básica</h2>
-
-                <section data-auto-animate>
-                    <h3>Fuentes Principales</h3>
-                    <div class="concept-box">
-                        <p>Fuentes principales <mark>requeridas</mark> para el desarrollo del curso. Estas referencias proporcionan los fundamentos teóricos y prácticos esenciales de la simulación.</p>
-                    </div>
-                </section>
-
-                <section data-auto-animate>
-                    <h3>Referencia 1</h3>
-                    <div class="reference-item">
-                        <p>
-                            <strong>Main Yaque, P., Navarro Veguillas, H., & Morales Fernández, A.</strong> (2019). 
-                            <em>Simulación con ejercicios en R</em>. UNED - Universidad Nacional de Educación a Distancia.
-                        </p>
-                        <p style="margin-top: 0.5rem;">
-                            <a href="https://www.mdconsult.internacional.edu.ec:2057/es/lc/uide/titulos/111720" 
-                               class="reference-link" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Acceder al recurso digital UIDE
-                            </a>
-                        </p>
-                    </div>
-                </section>
-
-                <section data-auto-animate>
-                    <h3>Referencia 2</h3>
-                    <div class="reference-item">
-                        <p>
-                            <strong>Jiménez Avello, A., Castro Gil, M., & Costa García, J. M.</strong> (2015). 
-                            <em>Simulación de procesos y aplicaciones</em>. Dextra Editorial.
-                        </p>
-                        <p style="margin-top: 0.5rem;">
-                            <a href="https://www.mdconsult.internacional.edu.ec:2057/es/lc/uide/titulos/133345" 
-                               class="reference-link" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Acceder al recurso digital UIDE
-                            </a>
-                        </p>
-                    </div>
-                </section>
-            </section>
-
             <!-- Bibliografía Complementaria -->
-            <section data-transition="convex">
+            <section data-background-color="#f8f8f8" data-transition="convex">
                 <h2><i class="fas fa-file-alt"></i> Bibliografía Complementaria</h2>
+                <p style="font-size: 0.9em; color: var(--uide-secondary); margin-bottom: 2rem;">
+                    Fuentes adicionales para ampliar y profundizar los conceptos del curso
+                </p>
 
-                <section data-auto-animate>
-                    <h3>Fuentes Adicionales</h3>
-                    <div class="concept-box info">
-                        <p>Fuentes adicionales que <mark>amplían y profundizan</mark> los conceptos del curso. Recomendadas para estudiantes que deseen explorar aplicaciones específicas y herramientas avanzadas.</p>
-                    </div>
-                </section>
+                <div class="reference-item">
+                    <p>
+                        <strong>Agud, L., & Pla Ferrando, M.</strong> (2015). 
+                        <em>Matlab para matemáticas en ingenierías</em>. 
+                        Universitat Politècnica de València, España.
+                    </p>
+                </div>
 
-                <section data-auto-animate>
-                    <h3>Referencia 1</h3>
-                    <div class="reference-item">
-                        <p>
-                            <strong>Agud, L., & Pla Ferrando, M.</strong> (2015). 
-                            <em>Matlab para matemáticas en ingenierías</em>. 
-                            Universitat Politècnica de València, España.
-                        </p>
-                    </div>
-                </section>
+                <div class="reference-item">
+                    <p>
+                        <strong>Makinia, J., & Zaborowska, E.</strong> (2020). 
+                        <em>Mathematical modelling and computer simulation of activated sludge systems</em>. 
+                        IWA Publishing.
+                    </p>
+                </div>
 
-                <section data-auto-animate>
-                    <h3>Referencia 2</h3>
-                    <div class="reference-item">
-                        <p>
-                            <strong>Makinia, J., & Zaborowska, E.</strong> (2020). 
-                            <em>Mathematical modelling and computer simulation of activated sludge systems</em>. 
-                            IWA Publishing.
-                        </p>
-                    </div>
-                </section>
+                <div class="reference-item">
+                    <p>
+                        <strong>Lie, K. A.</strong> (2019). 
+                        <em>An introduction to reservoir simulation using MATLAB/GNU Octave: User guide for the MATLAB Reservoir Simulation Toolbox (MRST)</em>. 
+                        Cambridge University Press, Reino Unido.
+                    </p>
+                </div>
 
-                <section data-auto-animate>
-                    <h3>Referencia 3</h3>
-                    <div class="reference-item">
-                        <p>
-                            <strong>Lie, K. A.</strong> (2019). 
-                            <em>An introduction to reservoir simulation using MATLAB/GNU Octave: User guide for the MATLAB Reservoir Simulation Toolbox (MRST)</em>. 
-                            Cambridge University Press, Reino Unido.
-                        </p>
-                    </div>
-                </section>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="index.html" style="display: inline-block; background: var(--uide-primary); color: white; padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 6px; font-size: 0.9em;">
+                        <i class="fas fa-arrow-left"></i> Volver al Índice
+                    </a>
+                </div>
             </section>
 
             <!-- Fuente ASU -->
-            <section data-transition="convex">
+            <section data-background-color="#f8f8f8" data-transition="convex">
                 <h2><i class="fas fa-graduation-cap"></i> Fuente ASU</h2>
+                <p style="font-size: 0.9em; color: var(--uide-secondary); margin-bottom: 2rem;">
+                    Material académico de Arizona State University integrado al currículo
+                </p>
 
-                <section data-auto-animate>
-                    <h3>Arizona State University</h3>
-                    <div class="concept-box asu">
-                        <h4><i class="fas fa-star"></i> Contenido de Clase Mundial</h4>
-                        <p>Material académico de <mark>clase mundial</mark> proporcionado por Arizona State University, que enriquece el contenido del curso con perspectivas internacionales y casos de estudio avanzados.</p>
-                    </div>
-                </section>
+                <div class="concept-box asu">
+                    <h4><i class="fas fa-star"></i> Contenido de Clase Mundial</h4>
+                    <p>Material académico de <mark>clase mundial</mark> proporcionado por Arizona State University, que enriquece el contenido del curso con perspectivas internacionales y casos de estudio avanzados.</p>
+                </div>
 
-                <section data-auto-animate>
-                    <h3>Master Class ASU</h3>
-                    <div class="reference-item">
-                        <p>
-                            <strong>Arizona State University.</strong> (2024). 
-                            <em>Master Class: The Contradictions of Nuclear Power</em>. 
-                            Febrero 2024.
-                        </p>
-                        <p style="margin-top: 0.5rem; color: var(--uide-accent); font-weight: 500;">
-                            <i class="fas fa-star"></i> Contenido exclusivo ASU integrado al currículo UIDE
-                        </p>
-                    </div>
-                </section>
-            </section>
+                <div class="reference-item">
+                    <p>
+                        <strong>Arizona State University.</strong> (2024). 
+                        <em>Master Class: The Contradictions of Nuclear Power</em>. 
+                        Febrero 2024.
+                    </p>
+                    <p style="margin-top: 0.5rem; color: var(--uide-accent); font-weight: 500;">
+                        <i class="fas fa-star"></i> Contenido exclusivo ASU integrado al currículo UIDE
+                    </p>
+                </div>
 
-            <!-- Información de Acceso -->
-            <section data-background-color="#f8f8f8">
-                <h2><i class="fas fa-info-circle"></i> Información de Acceso</h2>
-
-                <section>
-                    <h3>Recursos Digitales</h3>
-                    <div class="concept-box info">
-                        <h4><i class="fas fa-lock"></i> Acceso Institucional</h4>
-                        <p>Los estudiantes de la UIDE tienen <mark>acceso completo</mark> a las bases de datos digitales a través del portal institucional.</p>
-                        <p style="margin-top: 1rem;"><strong>Para acceder:</strong> Utilice sus credenciales universitarias en los enlaces marcados con <i class="fas fa-external-link-alt"></i></p>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Recomendaciones de Uso</h3>
-                    <div class="concept-box">
-                        <div class="r-hstack">
-                            <div class="column">
-                                <h5><i class="fas fa-book"></i> Bibliografía Básica</h5>
-                                <p>Consultar de manera <strong>secuencial</strong> durante el desarrollo del curso</p>
-                            </div>
-                            <div class="column">
-                                <h5><i class="fas fa-file-alt"></i> Bibliografía Complementaria</h5>
-                                <p>Utilizar para <strong>profundizar</strong> en temas específicos según interés</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h3>Navegación</h3>
-                    <div style="text-align: center; margin: 2rem 0;">
-                        <a href="index.html" style="display: inline-block; background: var(--uide-primary); color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 8px; font-weight: 500;">
-                            <i class="fas fa-arrow-left"></i> Volver al Índice Principal
-                        </a>
-                    </div>
-                </section>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="index.html" style="display: inline-block; background: var(--uide-primary); color: white; padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 6px; font-size: 0.9em;">
+                        <i class="fas fa-arrow-left"></i> Volver al Índice
+                    </a>
+                </div>
             </section>
 
         </div>
