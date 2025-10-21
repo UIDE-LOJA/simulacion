@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Semana 2 - Paradigmas de Simulación</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
+
+    <!-- UIDE Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/uide-theme.css">
+
+    <!-- Custom Styles -->
+    <style>
+        /* Enhanced concept-box styling */
+        .concept-box {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .concept-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--uide-primary);
+        }
+
+        .concept-box.warning {
+            border-left: 4px solid #ffc107;
+            background: rgba(255, 193, 7, 0.05);
+        }
+
+        .concept-box.info {
+            border-left: 4px solid var(--uide-secondary);
+            background: rgba(35, 53, 110, 0.05);
+        }
+
+        /* Timeline and image styles */
+        .timeline-image {
+            text-align: center;
+        }
+
+        .timeline-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .timeline-image img {
+                margin-bottom: 1rem;
+            }
+
+            .r-hstack .column {
+                margin-bottom: 1rem;
+            }
+
+            .r-hstack {
+                flex-direction: column;
+            }
+
+            .concept-box {
+                padding: 1rem;
+                font-size: 0.9em;
+            }
+
+            .concept-box h4 {
+                font-size: 1.1em;
+            }
+        }
+
+        /* Enhanced list styling */
+        .concept-box ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .concept-box li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Highlight styling */
+        mark {
+            background: rgba(233, 171, 33, 0.3);
+            padding: 0.1em 0.3em;
+            border-radius: 3px;
+        }
+
+        /* Comparison table styling */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9em;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .comparison-table th {
+            background-color: rgba(35, 53, 110, 0.1);
+            font-weight: bold;
+            color: var(--uide-primary);
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: rgba(248, 248, 248, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Title Slide -->
+            <section data-background-color="#f8f8f8" data-transition="convex">
+                <div class="title-slide">
+                    <h1>Paradigmas de Simulación</h1>
+                    <h2>Semana 2</h2>
+
+                    <div class="course-info">
+                        <strong>FT-06-SIM</strong> • Cuarto Nivel<br>
+                        <strong>Simulación</strong><br>
+                        <em>Prof. Charlie Cárdenas Toledo, M.Sc.</em><br>
+                        Universidad Internacional del Ecuador • Octubre 2025
+                    </div>
+
+                    <div
+                        style="background: rgba(233, 171, 33, 0.1); border-radius: 8px; padding: 1em; margin: 1em 0; font-size: 0.9em;">
+                        <strong>Unidad 1: Fundamentos y Paradigmas de Simulación</strong><br>
+                        <em>Semana 2 de 16 • Clasificación y paradigmas</em>
+                    </div>
+
+                    <div style="margin-top: 2em; font-size: 0.9em; font-style: italic; color: var(--uide-secondary);">
+                        Discretos vs continuos, determinísticos vs estocásticos, introducción a agentes, paradigmas de simulación discreta
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quote Slide -->
+            <section data-background-color="#f8f8f8">
+                <blockquote style="font-size: 1.2em; text-align: center;">
+                    <p><strong>"En la naturaleza, es difícil encontrar sistemas 'puros' continuos o discretos; a menudo se encuentran de forma mixta."</strong></p>
+                    <footer style="margin-top: 1em; color: var(--uide-secondary);">
+                        — Modelos Híbridos en Simulación
+                    </footer>
+                </blockquote>
+            </section>
+
+            <!-- Curriculum Context -->
+            <section data-background-color="#f8f8f8">
+                <h2>Contexto en la Unidad 1</h2>
+
+                <section>
+                    <h3>Progresión Temática</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Semana 1 (Anterior)</h4>
+                            <div style="background: rgba(35, 53, 110, 0.1); padding: 1em; border-radius: 8px;">
+                                <strong>Fundamentos de Simulación</strong><br>
+                                <small>Definición, modelo/sistema/evento, tipos básicos</small>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <h4>Semana 2 (Actual)</h4>
+                            <div
+                                style="background: rgba(233, 171, 33, 0.2); padding: 1em; border-radius: 8px; border: 2px solid var(--uide-accent);">
+                                <strong>Paradigmas de Simulación</strong><br>
+                                <small>Clasificaciones avanzadas y paradigmas discretos</small>
+                            </div>
+                        </div>
+                        <div class="column fragment">
+                            <h4>Próximamente</h4>
+                            <div style="background: rgba(145, 0, 72, 0.1); padding: 1em; border-radius: 8px;">
+                                <strong>Semana 3</strong><br>
+                                <small>Generadores y uniformidad</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Temas de la Semana 2</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Contenidos Principales</h4>
+                            <ul>
+                                <li><mark>Modelos discretos vs continuos</mark></li>
+                                <li><mark>Determinísticos vs estocásticos</mark></li>
+                                <li><mark>Introducción a agentes</mark></li>
+                                <li><mark>Paradigmas de simulación discreta</mark></li>
+                            </ul>
+                        </div>
+                        <div class="column fragment">
+                            <h4>Objetivos de Aprendizaje</h4>
+                            <ul>
+                                <li><strong>Explicar:</strong> Paradigmas de simulación con ejemplos prácticos</li>
+                                <li><strong>Clasificar:</strong> Sistemas según su naturaleza temporal</li>
+                                <li><strong>Identificar:</strong> Estrategias de modelado discreto</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Modelos Discretos vs Continuos -->
+            <section data-transition="convex">
+                <h2>I. Modelos Discretos vs. Continuos</h2>
+
+                <section data-auto-animate>
+                    <h3>Clasificación Temporal</h3>
+                    <div class="concept-box">
+                        <p>La clasificación de modelos según su <mark>evolución temporal</mark> es fundamental para distinguir cómo cambian las variables de estado del sistema a lo largo del tiempo.</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>1. Simulación de Eventos Discretos</h3>
+                    <div class="concept-box">
+                        <h4>🎯 Características Principales</h4>
+                        <p>Los modelos discretos tienen que ver con sistemas cuyo comportamiento <strong>solo cambia en instantes de tiempo determinados y puntuales</strong>.</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Comportamiento</h5>
+                                <p>Los cambios ocurren de forma instantánea en puntos aleatorios del tiempo como resultado del tratamiento de los eventos discretos.</p>
+                            </div>
+                            <div class="column">
+                                <h5>Tiempo de Simulación</h5>
+                                <p>El tiempo simulado "salta" de un evento al siguiente. Se avanza el reloj de simulación de un punto discreto a otro.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Ejemplos de Modelos Discretos</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5>🏪 Líneas de Espera (Colas)</h5>
+                                    <p>Las medidas de desempeño cambian solo cuando un cliente entra o sale del sistema</p>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5>🏭 Producción</h5>
+                                    <p>La cantidad de pantalones bordados cada hora es un ejemplo de un modelo de calidad discreto</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="fragment" style="margin-top: 1rem;">
+                            <h5>Unidad de Modelado</h5>
+                            <p>Modela <strong>elementos individuales (entidades)</strong> del proceso, como piezas o clientes.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>2. Simulación Continua</h3>
+                    <div class="concept-box">
+                        <h4>🌊 Características Principales</h4>
+                        <p>Los modelos continuos se ocupan de sistemas cuyo comportamiento <strong>cambia continuamente con el tiempo</strong>. Las variables de estado varían continuamente a lo largo del tiempo.</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Descripción Matemática</h5>
+                                <p>Representados mediante <strong>ecuaciones diferenciales o algebraicas</strong> que dependen del paso del tiempo de forma continua.</p>
+                            </div>
+                            <div class="column">
+                                <h5>Unidad de Modelado</h5>
+                                <p>Modela <strong>flujos</strong>, donde el monitoreo de estadísticas es posible en todo punto de la escala del tiempo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Ejemplos de Modelos Continuos</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5>💧 Flujo de Líquidos</h5>
+                                    <p>El flujo de un líquido en una tubería</p>
+                                </div>
+                                <div style="background: rgba(220, 53, 69, 0.1); padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
+                                    <h5>🔥 Transferencia de Calor</h5>
+                                    <p>La transferencia de calor en un molde</p>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5>👥 Crecimiento Poblacional</h5>
+                                    <p>El crecimiento de la población mundial</p>
+                                </div>
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin-top: 0.5rem;">
+                                    <h5>✈️ Dinámica de Vuelo</h5>
+                                    <p>La dinámica de un avión en vuelo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>3. Modelos Híbridos</h3>
+                    <div class="concept-box warning">
+                        <h4>🔄 Combinación de Paradigmas</h4>
+                        <p>En la naturaleza, es difícil encontrar sistemas "puros" continuos o discretos; a menudo se encuentran de forma mixta.</p>
+                        
+                        <div class="fragment">
+                            <h5>Definición</h5>
+                            <p>Los modelos híbridos o de <strong>cambio continuo-discreto</strong> son aquellos que combinan ambos tipos de eventos.</p>
+                            
+                            <div style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                <h6>📍 Ejemplo: Aeropuerto</h6>
+                                <p>La simulación del inventario de combustible en un aeropuerto, donde:</p>
+                                <ul>
+                                    <li><strong>Eventos discretos:</strong> Los clientes (aviones) llegan</li>
+                                    <li><strong>Flujo continuo:</strong> El combustible que ingresa en el avión</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Determinísticos vs Estocásticos -->
+            <section data-transition="convex">
+                <h2>II. Determinísticos vs. Estocásticos</h2>
+
+                <section data-auto-animate>
+                    <h3>Clasificación por Aleatoriedad</h3>
+                    <div class="concept-box">
+                        <p>Esta clasificación se basa en la <mark>naturaleza de los datos</mark> y la intervención del azar o la incertidumbre en el sistema.</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>1. Modelos Determinísticos</h3>
+                    <div class="concept-box">
+                        <h4>🎯 Sin Intervención del Azar</h4>
+                        <p>En los modelos determinísticos, <strong>no interviene el azar en ninguna variable del sistema</strong>.</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Comportamiento</h5>
+                                <p>"Relación constante entre los diferentes cambios que presentan las variables del modelo, por lo tanto, <strong>mismas entradas = mismas salidas</strong>"</p>
+                            </div>
+                            <div class="column">
+                                <h5>Variables</h5>
+                                <p>Utilizan variables cuyos valores <strong>no se ven afectados por variaciones aleatorias</strong> y se conocen con exactitud.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Ejemplos Determinísticos</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5>🔬 Modelo Físico</h5>
+                                    <p><strong>Posición de una partícula:</strong> El valor de x(t) siempre está determinado por el valor específico del tiempo t</p>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5>📦 Modelo de Inventario</h5>
+                                    <p><strong>Cantidad Económica de Pedido (CEP):</strong> Asume que la demanda es conocida y se produce a una tasa constante</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="fragment" style="margin-top: 1rem;">
+                            <h5>En Modelización Económica Sanitaria (MAD)</h5>
+                            <p>Utilizan fórmulas algebraicas y se asume <strong>certidumbre en los datos</strong> (se utiliza la media de la población).</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>2. Modelos Estocásticos (Probabilísticos)</h3>
+                    <div class="concept-box">
+                        <h4>🎲 Con Intervención del Azar</h4>
+                        <p>En los modelos estocásticos <strong>interviene el azar o elementos que no se controlan</strong>.</p>
+                        
+                        <div class="r-vstack fragment">
+                            <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5>Variables Aleatorias</h5>
+                                <p>Utilizan variables aleatorias cuyos valores sufren <strong>modificaciones aleatorias</strong> con respecto a un valor promedio. La incertidumbre se representa como <strong>distribuciones de probabilidad</strong>.</p>
+                            </div>
+                            
+                            <div style="background: rgba(220, 53, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5>Propósito</h5>
+                                <p>Son esenciales para modelar sistemas que operan de forma probabilística a través del tiempo, ya que <strong>imitan el desempeño del sistema real</strong> mediante distribuciones de probabilidad.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Características de Modelos Estocásticos</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(255, 193, 7, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5>📊 Resultados</h5>
+                                    <p>La salida de datos es un <strong>proceso estocástico</strong>. Los resultados de una corrida son siempre diferentes, requiriendo métodos estadísticos para su análisis.</p>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5>🔄 Simulación Estocástica</h5>
+                                    <p>Las conclusiones se obtienen <strong>generando repetidamente simulaciones</strong> del modelo aleatorio. Esto se denomina <strong>método Monte Carlo</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Introducción a Agentes -->
+            <section data-transition="convex">
+                <h2>III. Introducción a Agentes</h2>
+
+                <section data-auto-animate>
+                    <h3>Modelado Basado en Agentes</h3>
+                    <div class="concept-box">
+                        <p>La simulación basada en agentes (Agent-based Models) es un <mark>enfoque sofisticado de modelado</mark> que se centra en las interacciones y la autonomía de las entidades individuales.</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>1. Concepto de Agente</h3>
+                    <div class="concept-box">
+                        <h4>🤖 Definición</h4>
+                        <p>Un agente es una <strong>entidad que percibe su contexto</strong> (o medio ambiente) a través de diversos sensores y genera una respuesta (acción) haciendo uso de actuadores.</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Función del Agente</h5>
+                                <p>La funcionalidad se basa en una <strong>tabla que registra la secuencia de percepciones</strong> junto con la acción desarrollada, permitiéndole tomar decisiones basadas en las percepciones recibidas.</p>
+                            </div>
+                            <div class="column">
+                                <h5>Contexto y Aprendizaje</h5>
+                                <p>El contexto permite que el agente registre percepciones y respuestas, que sirven para que el agente vaya <strong>aprendiendo los diferentes comportamientos</strong> que el contexto le demanda.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Ejemplo: Agente Aspiradora</h3>
+                    <div class="concept-box info">
+                        <h4>🧹 Modelo Simple de Agente</h4>
+                        <p>El agente aspiradora es un modelo simple que opera en un espacio de cuadrículas:</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Percepciones</h5>
+                                <ul>
+                                    <li>Detecta si una cuadrícula está sucia</li>
+                                    <li>Identifica su posición actual</li>
+                                    <li>Reconoce obstáculos</li>
+                                </ul>
+                            </div>
+                            <div class="column">
+                                <h5>Acciones</h5>
+                                <ul>
+                                    <li>Moverse (derecha/izquierda)</li>
+                                    <li>Aspirar la suciedad</li>
+                                    <li>Permanecer en posición</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="fragment" style="margin-top: 1rem; background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px;">
+                            <p><strong>Ventaja:</strong> Estos agentes permiten probar estrategias bajo condiciones aleatorias.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>2. Modelos Basados en Agentes (ABMS)</h3>
+                    <div class="concept-box">
+                        <h4>👥 Simulaciones Multi-Agente</h4>
+                        <p>Estos modelos consisten en simulaciones donde <strong>cada individuo de la población se modela como un agente independiente</strong> con sus propias características y comportamientos.</p>
+                        
+                        <div class="r-vstack fragment">
+                            <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5>🎯 Autonomía</h5>
+                                <p>Aunque los agentes están obligados a seguir reglas, disponen de un <strong>grado de autonomía</strong> que impide predefinir la dinámica del modelo.</p>
+                            </div>
+                            
+                            <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                <h5>⚡ Dinámica del Modelo</h5>
+                                <p>La información sobre la dinámica se obtiene de la <strong>interacción de los agentes</strong> en el modelo, ya que estos pueden tener inteligencia, memoria y capacidad de aprendizaje.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Aplicaciones de ABMS</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5>✈️ Sistemas Aeroportuarios</h5>
+                                    <p>Los pasajeros se definen como <strong>agentes inteligentes</strong> para determinar espacios, flujos y operaciones</p>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(220, 53, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5>🦠 Epidemiología</h5>
+                                    <p>Modelos dinámicos de representación de <strong>enfermedades infecciosas en poblaciones</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="fragment" style="margin-top: 1rem;">
+                            <p><strong>Ventaja clave:</strong> Permite estudiar fenómenos emergentes que surgen de las interacciones locales entre agentes individuales.</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Paradigmas de Simulación Discreta -->
+            <section data-transition="convex">
+                <h2>IV. Paradigmas de Simulación Discreta</h2>
+
+                <section data-auto-animate>
+                    <h3>Estrategias de Modelado</h3>
+                    <div class="concept-box">
+                        <p>Dentro de la simulación de eventos discretos (SED), existen principalmente <mark>tres estrategias</mark> (o visiones del mundo) para el modelado de un sistema.</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Comparación de Paradigmas</h3>
+                    <div class="concept-box">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Paradigma</th>
+                                    <th>Enfoque Principal</th>
+                                    <th>Mecánica del Tiempo</th>
+                                    <th>Software Común</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Programación de Eventos</strong><br>(Event Scheduling)</td>
+                                    <td>Se centra en el <strong>Evento</strong>. Identifica las características del evento y usa rutinas para describir los cambios que ocurren en el tiempo.</td>
+                                    <td>Tratamiento secuencial de acontecimientos ordenados por tiempo en una lista de eventos. El reloj avanza de evento en evento.</td>
+                                    <td>SIMSCRIPT II.5<br>SLAM II</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Interacción de Procesos</strong><br>(Process Interaction)</td>
+                                    <td>Se centra en la <strong>Entidad</strong>. Describe la secuencia de tiempos interrelacionados (procesos) que sufre una entidad.</td>
+                                    <td>Se basa en hacer avanzar al máximo posible a cada entidad que llega al sistema. Internamente puede usar Programación de Eventos.</td>
+                                    <td>GPSS<br>SIMAN<br>ProModel<br>Arena</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Examinación de Actividades</strong><br>(Activity Scanning)</td>
+                                    <td>Se centra en la <strong>Actividad</strong>. El modelador define las condiciones necesarias para el inicio y final de cada actividad.</td>
+                                    <td>El tiempo avanza en iguales incrementos, y en cada incremento se evalúan las condiciones para determinar qué actividades pueden empezar o terminar.</td>
+                                    <td>ESCL<br>(desarrollado en FORTRAN)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>1. Programación de Eventos</h3>
+                    <div class="concept-box">
+                        <h4>📅 Event Scheduling</h4>
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <h5>Características</h5>
+                                <ul>
+                                    <li><strong>Enfoque:</strong> Se centra en el Evento</li>
+                                    <li><strong>Método:</strong> Identifica características del evento</li>
+                                    <li><strong>Implementación:</strong> Usa rutinas para describir cambios temporales</li>
+                                </ul>
+                            </div>
+                            <div class="column fragment">
+                                <h5>Ventajas</h5>
+                                <ul>
+                                    <li>Es el más extendido computacionalmente</li>
+                                    <li>Eficiente en términos de procesamiento</li>
+                                    <li>Control preciso sobre eventos</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="fragment" style="margin-top: 1rem; background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                            <p><strong>Software:</strong> SIMSCRIPT II.5, SLAM II</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>2. Interacción de Procesos</h3>
+                    <div class="concept-box">
+                        <h4>🔄 Process Interaction</h4>
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <h5>Características</h5>
+                                <ul>
+                                    <li><strong>Enfoque:</strong> Se centra en la Entidad</li>
+                                    <li><strong>Método:</strong> Describe secuencia de procesos</li>
+                                    <li><strong>Filosofía:</strong> Sigue la entidad a través del sistema</li>
+                                </ul>
+                            </div>
+                            <div class="column fragment">
+                                <h5>Ventajas</h5>
+                                <ul>
+                                    <li>Más intuitivo para el modelador</li>
+                                    <li>Facilita la comprensión del flujo</li>
+                                    <li>Interfaces gráficas amigables</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="fragment" style="margin-top: 1rem; background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                            <p><strong>Software:</strong> GPSS, SIMAN, ProModel, Arena</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>3. Examinación de Actividades</h3>
+                    <div class="concept-box">
+                        <h4>🔍 Activity Scanning</h4>
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <h5>Características</h5>
+                                <ul>
+                                    <li><strong>Enfoque:</strong> Se centra en la Actividad</li>
+                                    <li><strong>Método:</strong> Define condiciones de inicio/fin</li>
+                                    <li><strong>Tiempo:</strong> Avanza en incrementos iguales</li>
+                                </ul>
+                            </div>
+                            <div class="column fragment">
+                                <h5>Mecánica</h5>
+                                <ul>
+                                    <li>Evalúa condiciones en cada incremento</li>
+                                    <li>Determina qué actividades pueden empezar</li>
+                                    <li>Controla qué actividades pueden terminar</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="fragment" style="margin-top: 1rem; background: rgba(220, 53, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                            <p><strong>Software:</strong> ESCL (desarrollado en FORTRAN)</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Selección del Paradigma</h3>
+                    <div class="concept-box warning">
+                        <h4>🎯 Criterios de Decisión</h4>
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <h5>Programación de Eventos</h5>
+                                <p><strong>Usar cuando:</strong></p>
+                                <ul>
+                                    <li>Se requiere máximo control</li>
+                                    <li>Eficiencia computacional es crítica</li>
+                                    <li>Eventos son bien definidos</li>
+                                </ul>
+                            </div>
+                            <div class="column fragment">
+                                <h5>Interacción de Procesos</h5>
+                                <p><strong>Usar cuando:</strong></p>
+                                <ul>
+                                    <li>Se necesita facilidad de modelado</li>
+                                    <li>El flujo de entidades es complejo</li>
+                                    <li>Se requiere prototipado rápido</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="fragment" style="margin-top: 1rem;">
+                            <p><strong>Nota:</strong> La elección del paradigma depende del problema específico, la experiencia del modelador y las herramientas disponibles.</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Resumen y Conclusiones -->
+            <section data-background-color="#f8f8f8">
+                <h2>Resumen de la Semana 2</h2>
+                
+                <section>
+                    <h3>Conceptos Clave Aprendidos</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>🔄 Clasificaciones Temporales</h4>
+                                <ul>
+                                    <li><strong>Discretos:</strong> Cambios instantáneos en puntos específicos</li>
+                                    <li><strong>Continuos:</strong> Cambios constantes en el tiempo</li>
+                                    <li><strong>Híbridos:</strong> Combinación de ambos enfoques</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>🎲 Naturaleza de los Datos</h4>
+                                <ul>
+                                    <li><strong>Determinísticos:</strong> Sin intervención del azar</li>
+                                    <li><strong>Estocásticos:</strong> Con variables aleatorias</li>
+                                    <li><strong>Monte Carlo:</strong> Método de simulación estocástica</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Paradigmas y Aplicaciones</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>🤖 Agentes</h4>
+                                <ul>
+                                    <li>Entidades autónomas con percepciones</li>
+                                    <li>Capacidad de aprendizaje y memoria</li>
+                                    <li>Aplicaciones en aeropuertos y epidemiología</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>📊 Paradigmas SED</h4>
+                                <ul>
+                                    <li><strong>Eventos:</strong> Control preciso y eficiencia</li>
+                                    <li><strong>Procesos:</strong> Intuitividad y facilidad</li>
+                                    <li><strong>Actividades:</strong> Condiciones y evaluación</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Próximos Pasos</h3>
+                    <div class="concept-box info">
+                        <h4>🚀 Semana 3: Generadores y Uniformidad</h4>
+                        <p>En la próxima semana exploraremos:</p>
+                        <ul>
+                            <li>Generadores congruenciales lineales (LCG)</li>
+                            <li>Números uniformes y sus propiedades</li>
+                            <li>Pruebas básicas de uniformidad</li>
+                            <li>Implementación práctica en Excel y R</li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            
+            // Navigation
+            controls: true,
+            progress: true,
+            center: true,
+            touch: true,
+            loop: false,
+            
+            // Presentation size
+            width: 1024,
+            height: 768,
+            margin: 0.1,
+            minScale: 0.2,
+            maxScale: 2.0
+        });
+
+        // Simple Flashcard System
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+    </script>
+
+</body>
+
+</html>

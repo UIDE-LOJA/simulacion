@@ -17,19 +17,60 @@
     <!-- UIDE Theme CSS -->
     <link rel="stylesheet" href="../../assets/css/uide-theme.css">
 
-    <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <!-- Custom Styles -->
     <style>
+        /* Enhanced concept-box styling */
+        .concept-box {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
         .concept-box h4 {
             display: flex;
             align-items: center;
             gap: 0.5rem;
             margin-bottom: 1rem;
+            color: var(--uide-primary);
         }
 
+        .concept-box.warning {
+            border-left: 4px solid #ffc107;
+            background: rgba(255, 193, 7, 0.05);
+        }
+
+        .concept-box.info {
+            border-left: 4px solid var(--uide-secondary);
+            background: rgba(35, 53, 110, 0.05);
+        }
+
+        /* Timeline and image styles */
+        .timeline-image {
+            text-align: center;
+        }
+
+        .timeline-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive adjustments */
         @media (max-width: 768px) {
+            .timeline-image img {
+                margin-bottom: 1rem;
+            }
+
+            .r-hstack .column {
+                margin-bottom: 1rem;
+            }
+
             .r-hstack {
                 flex-direction: column;
             }
@@ -44,43 +85,21 @@
             }
         }
 
-        .timeline-content {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
+        /* Enhanced list styling */
+        .concept-box ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
         }
 
-        @media (max-width: 1024px) {
-            .timeline-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
+        .concept-box li {
+            margin-bottom: 0.3rem;
         }
 
-        .definition-box {
-            background: rgba(35, 53, 110, 0.1);
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            border-left: 4px solid var(--uide-primary);
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-
-        .comparison-table th,
-        .comparison-table td {
-            border: 1px solid #ddd;
-            padding: 0.5rem;
-            text-align: left;
-        }
-
-        .comparison-table th {
-            background-color: rgba(35, 53, 110, 0.1);
-            font-weight: bold;
+        /* Highlight styling */
+        mark {
+            background: rgba(233, 171, 33, 0.3);
+            padding: 0.1em 0.3em;
+            border-radius: 3px;
         }
     </style>
 </head>
@@ -97,19 +116,20 @@
                     <h2>Semana 1</h2>
 
                     <div class="course-info">
-                        <strong>Simulación</strong> • Universidad Internacional del Ecuador<br>
+                        <strong>FT-06-SIM</strong> • Cuarto Nivel<br>
+                        <strong>Simulación</strong><br>
                         <em>Prof. Charlie Cárdenas Toledo, M.Sc.</em><br>
-                        2025
+                        Universidad Internacional del Ecuador • Octubre 2025
                     </div>
 
                     <div
                         style="background: rgba(233, 171, 33, 0.1); border-radius: 8px; padding: 1em; margin: 1em 0; font-size: 0.9em;">
                         <strong>Unidad 1: Fundamentos de Simulación</strong><br>
-                        <em>Semana 1 - Conceptos básicos, tipos de sistemas y modelos</em>
+                        <em>Semana 1 de 16 • Conceptos básicos y modelado</em>
                     </div>
 
                     <div style="margin-top: 2em; font-size: 0.9em; font-style: italic; color: var(--uide-secondary);">
-                        Compendio exhaustivo sobre simulación y modelado de sistemas
+                        Definición e importancia, modelo/sistema/evento, tipos de sistemas y modelos, ventajas y limitaciones
                     </div>
                 </div>
             </section>
@@ -122,6 +142,62 @@
                         — Shannon
                     </footer>
                 </blockquote>
+            </section>
+
+            <!-- Curriculum Context -->
+            <section data-background-color="#f8f8f8">
+                <h2>Contexto en la Unidad 1</h2>
+
+                <section>
+                    <h3>Progresión Temática</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Semana 1 (Actual)</h4>
+                            <div
+                                style="background: rgba(233, 171, 33, 0.2); padding: 1em; border-radius: 8px; border: 2px solid var(--uide-accent);">
+                                <strong>Fundamentos de Simulación</strong><br>
+                                <small>Definición, modelo/sistema/evento, tipos y paradigmas</small>
+                            </div>
+                        </div>
+                        <div class="column fragment">
+                            <h4>Próximamente</h4>
+                            <div style="background: rgba(145, 0, 72, 0.1); padding: 1em; border-radius: 8px;">
+                                <strong>Semana 2</strong><br>
+                                <small>Paradigmas de simulación y consolidado</small>
+                            </div>
+                        </div>
+                        <div class="column fragment">
+                            <h4>Futuro</h4>
+                            <div style="background: rgba(35, 53, 110, 0.1); padding: 1em; border-radius: 8px;">
+                                <strong>Unidad 2</strong><br>
+                                <small>Generación de Variables Aleatorias</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Temas de la Semana 1</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Contenidos Principales</h4>
+                            <ul>
+                                <li><mark>Definición e importancia de simulación</mark></li>
+                                <li><mark>Modelo, sistema y evento</mark></li>
+                                <li><mark>Tipos de sistemas y modelos</mark></li>
+                                <li><mark>Ventajas y limitaciones</mark></li>
+                            </ul>
+                        </div>
+                        <div class="column fragment">
+                            <h4>Objetivos de Aprendizaje</h4>
+                            <ul>
+                                <li><strong>Conceptual:</strong> Explicar conceptos básicos de simulación</li>
+                                <li><strong>Práctico:</strong> Identificar sistemas simulables</li>
+                                <li><strong>Investigativo:</strong> Aplicaciones en distintos campos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
             </section>
 
             <!-- Definición de Simulación -->
@@ -614,6 +690,114 @@
                 </section>
             </section>
 
+            <!-- Conceptos Clave - Flashcards Interactivas -->
+            <section>
+                <h2>Conceptos Clave - Flashcards Interactivas</h2>
+                <section>
+                    <div class="flashcards-grid">
+                        <!-- Card 1 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>Definición de Simulación</h4>
+                                    <p>¿Cómo define Shannon la simulación?</p>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Proceso de Diseño y Experimentación</h4>
+                                    <p>Proceso de diseñar un <strong>modelo de un sistema real</strong> y llevar a término <strong>experiencias con él</strong>, para comprender el comportamiento del sistema o evaluar nuevas estrategias.</p>
+                                    <small>Base fundamental de la simulación</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>Modelo vs Sistema</h4>
+                                    <p>¿Cuál es la diferencia entre modelo y sistema?</p>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Representación vs Realidad</h4>
+                                    <p><strong>Sistema:</strong> conjunto de elementos interrelacionados con objetivo común. <strong>Modelo:</strong> representación simplificada y abstracta del sistema real.</p>
+                                    <small>El modelo imita el sistema</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="flashcards-grid">
+                        <!-- Card 3 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>Tipos de Modelos</h4>
+                                    <p>¿Cuáles son los tres tipos de modelos por representación?</p>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Icónicos, Analógicos, Simbólicos</h4>
+                                    <p><strong>Icónicos:</strong> maquetas a escala, <strong>Analógicos:</strong> mapas y diagramas, <strong>Simbólicos:</strong> matemáticos para simulación computacional.</p>
+                                    <small>Del físico al matemático</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>Discreto vs Continuo</h4>
+                                    <p>¿Cuál es la diferencia entre sistemas discretos y continuos?</p>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Cambios por Eventos vs Flujo</h4>
+                                    <p><strong>Discreto:</strong> cambia solo en instantes específicos (eventos). <strong>Continuo:</strong> cambia continuamente con ecuaciones diferenciales.</p>
+                                    <small>Ejemplos: peaje vs flujo de líquido</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="flashcards-grid">
+                        <!-- Card 5 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>Ventajas de Simulación</h4>
+                                    <p>¿Cuáles son las principales ventajas de la simulación?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>Experimentación sin Riesgo</h4>
+                                    <p>Permite <strong>evaluar alternativas sin riesgo</strong>, <strong>experimentar</strong> con nuevas situaciones, <strong>análisis económico</strong> y <strong>comunicación efectiva</strong>.</p>
+                                    <small>Reduce costos y mejora decisiones</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="flashcard" onclick="flipCard(this)">
+                            <div class="flashcard-inner">
+                                <div class="flashcard-front">
+                                    <h4>Limitaciones</h4>
+                                    <p>¿Cuáles son las principales limitaciones de la simulación?</p>
+                                    <small>Clic para ver respuesta</small>
+                                </div>
+                                <div class="flashcard-back">
+                                    <h4>No Optimiza, Solo Estima</h4>
+                                    <p><strong>No es técnica de optimización</strong>, <strong>costosa en desarrollo</strong>, <strong>resultados estadísticos</strong> y <strong>dependiente del personal</strong>.</p>
+                                    <small>Imitación parcial de la realidad</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
             <!-- Referencias -->
             <section data-background-color="#f8f8f8">
                 <h2>Referencias (Formato APA)</h2>
@@ -625,6 +809,100 @@
                     <p>Prawda, J. W. (2004). <em>Métodos y Modelos de Investigación de Operaciones, Vol. 2. Modelos Estocásticos</em>. LIMUSA.</p>
                     <p>Shannon, R. E. (1988). <em>Simulación de Sistemas: Diseño, Desarrollo e Implantación</em> (1ra. edición). Trillas.</p>
                 </div>
+            </section>
+
+            <!-- Graded Activities -->
+            <section data-background-color="#f8f8f8" data-transition="convex">
+                <h2>Actividades Calificadas - Semana 1</h2>
+                <section>
+                    <h3>Fundamentos de Simulación</h3>
+                    <p style="text-align: center; font-style: italic; color: var(--uide-secondary);">
+                        Aplicación práctica de los conceptos aprendidos
+                    </p>
+                </section>
+
+                <section>
+                    <h3>PE-1.1: Taller de Clasificación</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary);">Práctico Experimental 1.1</h4>
+                        <p><strong>Actividad:</strong> Clasificar 6 casos reales en tipos de sistemas/modelos</p>
+                        <p><strong>Enfoque:</strong> Identificación de sistemas simulables y sus características</p>
+                        <ul style="text-align: left;">
+                            <li>Análisis de casos reales</li>
+                            <li>Clasificación por naturaleza (discreto/continuo)</li>
+                            <li>Identificación de comportamiento (determinista/estocástico)</li>
+                        </ul>
+                        <div
+                            style="background: rgba(233, 171, 33, 0.1); padding: 1em; border-radius: 8px; margin: 1em 0;">
+                            <strong>Puntaje:</strong> 2.25 puntos<br>
+                            <strong>Modalidad:</strong> Taller en clase con discusión grupal
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>TA-1.1: Ficha de Lectura</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-secondary);">Trabajo Autónomo 1.1</h4>
+                        <p><strong>Actividad:</strong> Ficha de lectura con mapa de conceptos</p>
+                        <p><strong>Enfoque:</strong> Investigar aplicaciones de simulación en distintos campos</p>
+                        <ul style="text-align: left;">
+                            <li>Lectura crítica de material bibliográfico</li>
+                            <li>Elaboración de mapa conceptual</li>
+                            <li>Síntesis de ideas principales</li>
+                            <li>Conexiones entre conceptos fundamentales</li>
+                        </ul>
+                        <div
+                            style="background: rgba(145, 0, 72, 0.1); padding: 1em; border-radius: 8px; margin: 1em 0;">
+                            <strong>Puntaje:</strong> 2.25 puntos<br>
+                            <strong>Formato:</strong> 1 página con mapa de conceptos<br>
+                            <strong>Herramienta:</strong> NotebookLM, recursos bibliográficos
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Metodología de Trabajo</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>Herramientas de Aprendizaje</h4>
+                                <ul style="text-align: left; font-size: 0.9em;">
+                                    <li>NotebookLM para análisis</li>
+                                    <li>Recursos bibliográficos</li>
+                                    <li>Podcasts educativos</li>
+                                    <li>Casos de estudio reales</li>
+                                    <li>Tarjetas didácticas</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="concept-box">
+                                <h4>Criterios de Evaluación</h4>
+                                <ul style="text-align: left; font-size: 0.9em;">
+                                    <li>Comprensión conceptual</li>
+                                    <li>Aplicación práctica</li>
+                                    <li>Calidad del análisis</li>
+                                    <li>Fundamentación teórica</li>
+                                    <li>Presentación y claridad</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background-color="#f8f8f8">
+                    <div class="title-slide">
+                        <h1 style="color: var(--uide-primary);">¡A Simular!</h1>
+                        <h3>Apliquemos la simulación en el mundo real</h3>
+
+                        <div style="margin-top: 2em; font-size: 0.9em;">
+                            <strong>Universidad Internacional del Ecuador</strong><br>
+                            <em>Semana 1 - Fundamentos de Simulación</em><br>
+                            <strong>Total de puntos:</strong> 4.5/30 - Evaluación Diagnóstica
+                        </div>
+                    </div>
+                </section>
             </section>
 
             <!-- Final Slide -->
@@ -655,19 +933,33 @@
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
 
     <script>
-        // Reveal.js configuration
         Reveal.initialize({
             hash: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            
+            // Navigation
             controls: true,
             progress: true,
             center: true,
             touch: true,
             loop: false,
-            transition: 'slide',
-            transitionSpeed: 'default',
-            backgroundTransition: 'fade',
-            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+            
+            // Presentation size
+            width: 1024,
+            height: 768,
+            margin: 0.1,
+            minScale: 0.2,
+            maxScale: 2.0
         });
+
+        // Simple Flashcard System
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
     </script>
 
 </body>
