@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bibliografía - FT-06-SIM Simulación</title>
+    <!-- UIDE Theme CSS -->
+    <link rel="stylesheet" href="assets/css/uide-theme.css">
+    
+    <style>
+        .bibliography-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .bibliography-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .bibliography-section h2 {
+            color: var(--uide-primary);
+            border-bottom: 3px solid var(--uide-accent);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .bibliography-section h3 {
+            color: var(--uide-secondary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.3em;
+        }
+
+        .reference-item {
+            background: rgba(248, 248, 248, 0.8);
+            border-left: 4px solid var(--uide-accent);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .reference-item:hover {
+            background: rgba(233, 171, 33, 0.1);
+            transform: translateX(5px);
+        }
+
+        .reference-item p {
+            margin: 0;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        .reference-link {
+            color: var(--uide-secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .reference-link:hover {
+            color: var(--uide-primary);
+            text-decoration: underline;
+        }
+
+        .asu-section {
+            background: rgba(233, 171, 33, 0.1);
+            border-left: 4px solid var(--uide-accent);
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--uide-primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--uide-secondary);
+            transform: translateY(-2px);
+        }
+
+        .citation-note {
+            background: rgba(35, 53, 110, 0.1);
+            border: 1px solid var(--uide-secondary);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--uide-secondary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: rgba(35, 53, 110, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--uide-primary);
+        }
+
+        .stat-label {
+            color: var(--uide-secondary);
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bibliography-container">
+        <div class="header">
+            <img src="assets/images/Logo UIDE.png" alt="Logo UIDE" style="max-width: 150px; margin-bottom: 20px;">
+            <h1>Referencias Bibliográficas</h1>
+            <p style="font-size: 1.1em; color: var(--uide-secondary);">FT-06-SIM · Simulación</p>
+            
+            <a href="index.html" class="back-button">← Volver al Índice Principal</a>
+        </div>
+
+        <!-- Estadísticas de la bibliografía -->
+        <div class="bibliography-section">
+            <h2>📊 Resumen Bibliográfico</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Fuentes Básicas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Fuentes Complementarias</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Fuente ASU</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Total de Referencias</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nota sobre formato de citación -->
+        <div class="citation-note">
+            <strong>Nota:</strong> Todas las referencias están formateadas según las normas APA 7ª edición. 
+            Las fuentes digitales incluyen enlaces directos a las bases de datos institucionales de la UIDE.
+        </div>
+
+        <!-- Bibliografía Básica -->
+        <div class="bibliography-section">
+            <h2>📚 Bibliografía Básica</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--uide-secondary);">
+                Fuentes principales requeridas para el desarrollo del curso. Estas referencias proporcionan 
+                los fundamentos teóricos y prácticos esenciales de la simulación.
+            </p>
+
+            <div class="reference-item">
+                <p>
+                    <strong>Main Yaque, P., Navarro Veguillas, H., & Morales Fernández, A.</strong> (2019). 
+                    <em>Simulación con ejercicios en R</em>. UNED - Universidad Nacional de Educación a Distancia.
+                    <br>
+                    <a href="https://www.mdconsult.internacional.edu.ec:2057/es/lc/uide/titulos/111720" 
+                       class="reference-link" target="_blank">
+                        📖 Acceder al recurso digital
+                    </a>
+                </p>
+            </div>
+
+            <div class="reference-item">
+                <p>
+                    <strong>Jiménez Avello, A., Castro Gil, M., & Costa García, J. M.</strong> (2015). 
+                    <em>Simulación de procesos y aplicaciones</em>. Dextra Editorial.
+                    <br>
+                    <a href="https://www.mdconsult.internacional.edu.ec:2057/es/lc/uide/titulos/133345" 
+                       class="reference-link" target="_blank">
+                        📖 Acceder al recurso digital
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Bibliografía Complementaria -->
+        <div class="bibliography-section">
+            <h2>📑 Bibliografía Complementaria</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--uide-secondary);">
+                Fuentes adicionales que amplían y profundizan los conceptos del curso. 
+                Recomendadas para estudiantes que deseen explorar aplicaciones específicas y herramientas avanzadas.
+            </p>
+
+            <div class="reference-item">
+                <p>
+                    <strong>Agud, L., & Pla Ferrando, M.</strong> (2015). 
+                    <em>Matlab para matemáticas en ingenierías</em>. 
+                    Universitat Politècnica de València, España.
+                </p>
+            </div>
+
+            <div class="reference-item">
+                <p>
+                    <strong>Makinia, J., & Zaborowska, E.</strong> (2020). 
+                    <em>Mathematical modelling and computer simulation of activated sludge systems</em>. 
+                    IWA Publishing.
+                </p>
+            </div>
+
+            <div class="reference-item">
+                <p>
+                    <strong>Lie, K. A.</strong> (2019). 
+                    <em>An introduction to reservoir simulation using MATLAB/GNU Octave: User guide for the MATLAB Reservoir Simulation Toolbox (MRST)</em>. 
+                    Cambridge University Press, Reino Unido.
+                </p>
+            </div>
+        </div>
+
+        <!-- Fuente ASU -->
+        <div class="bibliography-section asu-section">
+            <h2>🎓 Fuente ASU (Arizona State University)</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--uide-secondary);">
+                Material académico de clase mundial proporcionado por Arizona State University, 
+                que enriquece el contenido del curso con perspectivas internacionales y casos de estudio avanzados.
+            </p>
+
+            <div class="reference-item">
+                <p>
+                    <strong>Arizona State University.</strong> (2024). 
+                    <em>Master Class: The Contradictions of Nuclear Power</em>. 
+                    Febrero 2024.
+                    <br>
+                    <span style="color: var(--uide-accent); font-weight: 500;">
+                        🌟 Contenido exclusivo ASU integrado al currículo UIDE
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Información adicional -->
+        <div class="bibliography-section">
+            <h2>ℹ️ Información Adicional</h2>
+            
+            <h3>Acceso a Recursos Digitales</h3>
+            <p>Los estudiantes de la UIDE tienen acceso completo a las bases de datos digitales a través del portal institucional. 
+               Para acceder a los recursos marcados con enlaces, utilice sus credenciales universitarias.</p>
+
+            <h3>Uso de la Bibliografía</h3>
+            <p>Se recomienda consultar la bibliografía básica de manera secuencial durante el desarrollo del curso. 
+               La bibliografía complementaria puede utilizarse para profundizar en temas específicos según el interés del estudiante.</p>
+
+            <h3>Actualización de Referencias</h3>
+            <p>Esta bibliografía se actualiza periódicamente para incluir las fuentes más recientes y relevantes en el campo de la simulación. 
+               Consulte regularmente esta página para obtener las referencias más actualizadas.</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer" style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--uide-accent); text-align: center;">
+            <p>&copy; 2025 - Curso Simulación (FT-06-SIM) - Universidad Internacional del Ecuador</p>
+            <p style="margin-top: 0.5em; font-size: 0.9em; opacity: 0.8;">
+                <strong>Prof. Charlie Alexander Cárdenas Toledo, M.Sc.</strong> • chcardenasto@uide.edu.ec<br>
+                C. Agustín Carrión Palacios, Loja • Tel: +593 22985600 Ext. 6008
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.8em; color: var(--uide-secondary);">
+                Última actualización: Octubre 2025 • Formato APA 7ª edición
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
