@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Semana 3 - Generadores y Uniformidad</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
+
+    <!-- UIDE Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/uide-theme.css">
+
+    <!-- MathJax for mathematical expressions -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        /* Enhanced concept-box styling */
+        .concept-box {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .concept-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--uide-primary);
+        }
+
+        .concept-box.warning {
+            border-left: 4px solid #ffc107;
+            background: rgba(255, 193, 7, 0.05);
+        }
+
+        .concept-box.info {
+            border-left: 4px solid var(--uide-secondary);
+            background: rgba(35, 53, 110, 0.05);
+        }
+
+        .concept-box.success {
+            border-left: 4px solid #28a745;
+            background: rgba(40, 167, 69, 0.05);
+        }
+
+        /* Timeline and image styles */
+        .timeline-image {
+            text-align: center;
+        }
+
+        .timeline-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .timeline-image img {
+                margin-bottom: 1rem;
+            }
+
+            .r-hstack .column {
+                margin-bottom: 1rem;
+            }
+
+            .r-hstack {
+                flex-direction: column;
+            }
+
+            .concept-box {
+                padding: 1rem;
+                font-size: 0.9em;
+            }
+
+            .concept-box h4 {
+                font-size: 1.1em;
+            }
+        }
+
+        /* Enhanced list styling */
+        .concept-box ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .concept-box li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Highlight styling */
+        mark {
+            background: rgba(233, 171, 33, 0.3);
+            padding: 0.1em 0.3em;
+            border-radius: 3px;
+        }
+
+        /* Formula box styling */
+        .formula-box {
+            background: rgba(35, 53, 110, 0.1);
+            border: 1px solid var(--uide-secondary);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        /* Code styling */
+        .code-box {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        /* Parameter table styling */
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9em;
+        }
+
+        .param-table th,
+        .param-table td {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .param-table th {
+            background-color: rgba(35, 53, 110, 0.1);
+            font-weight: bold;
+            color: var(--uide-primary);
+        }
+
+        .param-table tr:nth-child(even) {
+            background-color: rgba(248, 248, 248, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Title Slide -->
+            <section data-background-color="#f8f8f8" data-transition="convex">
+                <div class="title-slide">
+                    <h1>Generadores y Uniformidad</h1>
+                    <h2>Semana 3</h2>
+
+                    <div class="course-info">
+                        <strong>FT-06-SIM</strong> • Cuarto Nivel<br>
+                        <strong>Simulación</strong><br>
+                        <em>Prof. Charlie Cárdenas Toledo, M.Sc.</em><br>
+                        Universidad Internacional del Ecuador • Octubre 2025
+                    </div>
+
+                    <div
+                        style="background: rgba(233, 171, 33, 0.1); border-radius: 8px; padding: 1em; margin: 1em 0; font-size: 0.9em;">
+                        <strong>Unidad 2: Generación de Variables Aleatorias</strong><br>
+                        <em>Semana 3 de 16 • Generadores congruenciales y uniformidad</em>
+                    </div>
+
+                    <div style="margin-top: 2em; font-size: 0.9em; font-style: italic; color: var(--uide-secondary);">
+                        Generadores congruenciales lineales (LCG), números uniformes, pruebas básicas de uniformidad, implementación en Excel y R
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quote Slide -->
+            <section data-background-color="#f8f8f8">
+                <blockquote style="font-size: 1.2em; text-align: center;">
+                    <p><strong>"Los números pseudoaleatorios son esenciales en la simulación estocástica, ya que permiten reproducir el comportamiento de variables aleatorias con cualquier función de probabilidad."</strong></p>
+                    <footer style="margin-top: 1em; color: var(--uide-secondary);">
+                        — Fundamentos de Generación Pseudoaleatoria
+                    </footer>
+                </blockquote>
+            </section>
+
+            <!-- Curriculum Context -->
+            <section data-background-color="#f8f8f8">
+                <h2>Contexto en la Unidad 2</h2>
+
+                <section>
+                    <h3>Progresión Temática</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Semana 2 (Anterior)</h4>
+                            <div style="background: rgba(35, 53, 110, 0.1); padding: 1em; border-radius: 8px;">
+                                <strong>Paradigmas de Simulación</strong><br>
+                                <small>Clasificaciones y paradigmas discretos</small>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <h4>Semana 3 (Actual)</h4>
+                            <div
+                                style="background: rgba(233, 171, 33, 0.2); padding: 1em; border-radius: 8px; border: 2px solid var(--uide-accent);">
+                                <strong>Generadores y Uniformidad</strong><br>
+                                <small>LCG, números uniformes, pruebas básicas</small>
+                            </div>
+                        </div>
+                        <div class="column fragment">
+                            <h4>Próximamente</h4>
+                            <div style="background: rgba(145, 0, 72, 0.1); padding: 1em; border-radius: 8px;">
+                                <strong>Semana 4</strong><br>
+                                <small>Método de Monte Carlo</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Temas de la Semana 3</h3>
+                    <div class="r-hstack">
+                        <div class="column">
+                            <h4>Contenidos Principales</h4>
+                            <ul>
+                                <li><mark>Números pseudoaleatorios uniformes</mark></li>
+                                <li><mark>Generador Congruencial Lineal Mixto</mark></li>
+                                <li><mark>Pruebas básicas de uniformidad</mark></li>
+                                <li><mark>Implementación en Excel y R</mark></li>
+                            </ul>
+                        </div>
+                        <div class="column fragment">
+                            <h4>Objetivos de Aprendizaje</h4>
+                            <ul>
+                                <li><strong>Explicar:</strong> Generadores congruenciales y pruebas de uniformidad</li>
+                                <li><strong>Implementar:</strong> LCG simple y generar números uniformes</li>
+                                <li><strong>Validar:</strong> Uniformidad mediante pruebas estadísticas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Números Pseudoaleatorios Uniformes -->
+            <section data-transition="convex">
+                <h2>1. Números Pseudoaleatorios Uniformes</h2>
+
+                <section data-auto-animate>
+                    <h3>1.1 Definición y Naturaleza</h3>
+                    <div class="concept-box">
+                        <p>Los números pseudoaleatorios son esenciales en la simulación estocástica, ya que permiten reproducir el comportamiento de variables aleatorias con cualquier función de probabilidad.</p>
+                        
+                        <div class="fragment">
+                            <h4>🎯 ¿Por qué "Pseudoaleatorios"?</h4>
+                            <p>Se denominan <mark>"pseudoaleatorios" (falso aleatorios)</mark> porque, aunque tienen la apariencia de ser aleatorios, en realidad son generados a partir de un <strong>algoritmo matemático determinista</strong>.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Definición Matemática</h3>
+                    <div class="concept-box">
+                        <p>Un número pseudoaleatorio (\(R_i\) o \(U_i\)) es el valor que toma una variable aleatoria \(x\) que posee una distribución de probabilidad uniforme en el intervalo \([0, 1]\).</p>
+                        
+                        <div class="formula-box fragment">
+                            <p><strong>Rango estándar:</strong> \(U_i \sim \mathcal{U}(0, 1)\)</p>
+                        </div>
+                        
+                        <div class="fragment">
+                            <p><strong>¿Por qué [0, 1]?</strong> Este rango es el más común porque <mark>simplifica las transformaciones</mark> a otras distribuciones.</p>
+                            
+                            <p style="margin-top: 1rem;"><strong>Requisito clave:</strong> Para que una secuencia de números pseudoaleatorios sea útil en simulación, debe cumplir las mismas propiedades estadísticas relevantes que una secuencia verdaderamente aleatoria \(\mathcal{U}(0, 1)\).</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>1.2 Propiedades de Uniformidad e Independencia</h3>
+                    <div class="concept-box">
+                        <p>La secuencia de números pseudoaleatorios generada debe satisfacer <mark>dos propiedades principales</mark>, las cuales deben ser validadas mediante pruebas estadísticas:</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Propiedad 1: Uniformidad</h3>
+                    <div class="concept-box success">
+                        <h4>📊 Distribución U(0,1)</h4>
+                        <p>La secuencia debe ajustarse a una distribución \(\mathcal{U}(0, 1)\).</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <h5>Función de Densidad</h5>
+                                <div class="formula-box">
+                                    \(f(x) = \begin{cases} 
+                                    1 & \text{si } x \in (0, 1) \\
+                                    0 & \text{si } x \notin (0, 1)
+                                    \end{cases}\)
+                                </div>
+                            </div>
+                            <div class="column">
+                                <h5>Parámetros Teóricos</h5>
+                                <ul>
+                                    <li><strong>Media:</strong> \(\mu = 0.5\)</li>
+                                    <li><strong>Varianza:</strong> \(\sigma^2 = \frac{1}{12}\)</li>
+                                    <li><strong>Desv. Estándar:</strong> \(\sigma \approx 0.2887\)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Propiedad 2: Independencia</h3>
+                    <div class="concept-box info">
+                        <h4>🔗 Independencia Estadística</h4>
+                        <p>Los números deben ser <strong>estadísticamente independientes</strong>, sin ninguna correlación aparente entre ellos, actuando como valores uniformemente dispersos.</p>
+                        
+                        <div class="fragment">
+                            <h5>Características Clave</h5>
+                            <ul>
+                                <li><strong>Sin correlación:</strong> No debe existir patrón predecible entre números consecutivos</li>
+                                <li><strong>Independencia entre réplicas:</strong> Clave en la simulación</li>
+                                <li><strong>Dispersión uniforme:</strong> Los valores deben estar uniformemente distribuidos</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="fragment" style="margin-top: 1rem; background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px;">
+                            <p><strong>Requisitos adicionales:</strong> Un generador eficiente debe tener un <mark>periodo suficientemente grande</mark> y ser <mark>reproducible</mark> (arrancando con las mismas condiciones iniciales, debe generar siempre la misma secuencia).</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Generador Congruencial Lineal Mixto -->
+            <section data-transition="convex">
+                <h2>2. Generador Congruencial Lineal Mixto</h2>
+
+                <section data-auto-animate>
+                    <h3>Introducción al GCL</h3>
+                    <div class="concept-box">
+                        <p>El Generador Congruencial Lineal (GCL) es uno de los algoritmos <mark>más antiguos, conocidos y utilizados</mark> para generar números pseudoaleatorios.</p>
+                        
+                        <div class="fragment">
+                            <h4>🔄 Características</h4>
+                            <ul>
+                                <li><strong>Algoritmo recursivo:</strong> Produce una secuencia de números pseudoaleatorios</li>
+                                <li><strong>Determinista:</strong> Misma semilla = misma secuencia</li>
+                                <li><strong>Eficiente:</strong> Computacionalmente rápido</li>
+                                <li><strong>Ampliamente usado:</strong> Base de muchos generadores modernos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>2.1 Definición del Generador Mixto</h3>
+                    <div class="concept-box">
+                        <p>El GCL Mixto se define por la siguiente <strong>relación de recurrencia</strong>, la cual genera una secuencia de números enteros \(X_i\):</p>
+                        
+                        <div class="formula-box fragment">
+                            <p><strong>Fórmula recursiva:</strong></p>
+                            \[X_{i+1} = (a \cdot X_i + c) \bmod m \quad \text{para } i = 0, 1, 2, 3, \ldots\]
+                        </div>
+                        
+                        <div class="fragment">
+                            <p><strong>Clasificación:</strong></p>
+                            <ul>
+                                <li>El generador es <strong>Mixto</strong> si \(c \neq 0\)</li>
+                                <li>Si \(c = 0\), se denomina <strong>Congruencial Multiplicativo</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Parámetros del GCL</h3>
+                    <div class="concept-box">
+                        <p>Los parámetros enteros deben ser <strong>mayores que cero</strong>:</p>
+                        
+                        <table class="param-table fragment">
+                            <thead>
+                                <tr>
+                                    <th>Parámetro</th>
+                                    <th>Símbolo</th>
+                                    <th>Descripción</th>
+                                    <th>Restricción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Semilla</strong></td>
+                                    <td>\(X_0\)</td>
+                                    <td>Valor inicial necesario para empezar el algoritmo</td>
+                                    <td>\(X_0 > 0\)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Multiplicador</strong></td>
+                                    <td>\(a\)</td>
+                                    <td>Constante multiplicativa</td>
+                                    <td>\(a > 0\)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Incremento</strong></td>
+                                    <td>\(c\)</td>
+                                    <td>Constante aditiva (avance)</td>
+                                    <td>\(c \geq 0\)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Módulo</strong></td>
+                                    <td>\(m\)</td>
+                                    <td>Máximo número posible de valores distintos</td>
+                                    <td>\(m > 0\)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="fragment">
+                            <p><strong>Rango de salida:</strong> \(X_{i+1} \in \{0, 1, 2, \ldots, m-1\}\)</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>2.2 Obtención de Números Uniformes</h3>
+                    <div class="concept-box">
+                        <p>La ecuación recursiva genera enteros \(X_i \in \{0, 1, \ldots, m-1\}\). Para transformar la secuencia a números pseudoaleatorios \(U_i\) en el intervalo \((0, 1)\), se utiliza:</p>
+                        
+                        <div class="formula-box fragment">
+                            <p><strong>Transformación principal:</strong></p>
+                            \[U_i = \frac{X_i}{m}\]
+                        </div>
+                        
+                        <div class="fragment">
+                            <p><strong>Alternativa:</strong> En algunos casos se utiliza \(R_i = \frac{X_i}{m-1}\) para obtener valores entre 0 y 1.</p>
+                            
+                            <div style="background: rgba(255, 193, 7, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                <p><strong>Nota:</strong> La primera transformación es más común y estándar en la literatura.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>2.3 Periodo Máximo</h3>
+                    <div class="concept-box warning">
+                        <h4>🔄 Ciclo de Vida del Generador</h4>
+                        <p>El <strong>periodo</strong> es la longitud de la secuencia antes de que se repita cíclicamente.</p>
+                        
+                        <div class="fragment">
+                            <p>El periodo máximo que puede alcanzar un GCL es igual a su módulo: <strong>\(p = m\)</strong></p>
+                        </div>
+                        
+                        <div class="fragment">
+                            <h5>🎯 Teorema de Hull-Dobell</h5>
+                            <p>Para que un generador congruencial lineal tenga <mark>periodo completo</mark> (\(p = m\)) para cualquier semilla, debe cumplir las <strong>tres condiciones</strong>:</p>
+                            
+                            <ol style="margin-top: 1rem;">
+                                <li>\(c\) y \(m\) son primos relativos: \(\gcd(c, m) = 1\)</li>
+                                <li>\(a - 1\) es múltiplo de todos los factores primos de \(m\)</li>
+                                <li>Si \(m\) es múltiplo de 4, entonces \(a - 1\) también lo es</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Pruebas Básicas de Uniformidad -->
+            <section data-transition="convex">
+                <h2>3. Pruebas Básicas de Uniformidad</h2>
+
+                <section data-auto-animate>
+                    <h3>Propósito de las Pruebas</h3>
+                    <div class="concept-box">
+                        <p>La finalidad de los tests empíricos de uniformidad es <mark>garantizar que la secuencia de números generados</mark> se ajusta a una distribución \(\mathcal{U}(0, 1)\).</p>
+                        
+                        <div class="fragment">
+                            <h4>🎯 Importancia</h4>
+                            <ul>
+                                <li><strong>Validación estadística:</strong> Confirmar propiedades teóricas</li>
+                                <li><strong>Calidad del generador:</strong> Detectar deficiencias</li>
+                                <li><strong>Confiabilidad:</strong> Asegurar resultados de simulación válidos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>3.1 Prueba de Kolmogorov-Smirnov (K-S)</h3>
+                    <div class="concept-box">
+                        <h4>📊 Test No Paramétrico de Bondad de Ajuste</h4>
+                        
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <h5>Propósito</h5>
+                                <p>Compara la <strong>función de distribución empírica</strong> de los datos generados con la función de distribución acumulada de la distribución uniforme teórica.</p>
+                            </div>
+                            <div class="column fragment">
+                                <h5>Aplicación</h5>
+                                <p>Es útil para determinar si los números se distribuyen uniformemente. Se aplica a <strong>distribuciones teóricas continuas</strong>.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="fragment" style="margin-top: 1rem;">
+                            <h5>🔍 Procedimiento Básico</h5>
+                            <ol>
+                                <li>Ordenar los números pseudoaleatorios</li>
+                                <li>Calcular la desviación máxima \(D\) (máxima diferencia absoluta entre distribución teórica y observada)</li>
+                                <li>Comparar con valor crítico \(d_{\alpha, n}\)</li>
+                                <li>Si \(D > d_{\alpha, n}\), se rechaza \(H_0\) (uniformidad)</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>3.2 Prueba Chi-Cuadrado (\(\chi^2\))</h3>
+                    <div class="concept-box">
+                        <h4>📈 Prueba de Pearson o Prueba de Frecuencias</h4>
+                        
+                        <div class="fragment">
+                            <h5>Propósito</h5>
+                            <p>Mide la <strong>discrepancia entre la frecuencia observada</strong> (\(F_o\)) de los números en ciertos intervalos y la <strong>frecuencia esperada</strong> (\(F_e\)) si los números fueran perfectamente uniformes.</p>
+                        </div>
+                        
+                        <div class="fragment">
+                            <p><strong>Principio:</strong> En una distribución uniforme, se espera que el número de datos en cada intervalo sea aproximadamente igual.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Procedimiento Chi-Cuadrado</h3>
+                    <div class="concept-box success">
+                        <h4>🔢 Pasos del Procedimiento</h4>
+                        
+                        <ol>
+                            <li class="fragment"><strong>Agrupar:</strong> Los \(n\) números aleatorios generados en \(K\) clases disjuntas de igual amplitud \(A\)</li>
+                            <li class="fragment"><strong>Calcular frecuencias:</strong> 
+                                <ul>
+                                    <li>Frecuencia observada: \(F_o\)</li>
+                                    <li>Frecuencia esperada: \(F_e = n \cdot A_i\)</li>
+                                </ul>
+                            </li>
+                            <li class="fragment"><strong>Calcular estadístico:</strong> \(\chi^2\)</li>
+                            <li class="fragment"><strong>Comparar:</strong> Con valor crítico \(\chi^2_{\alpha, K-1}\)</li>
+                        </ol>
+                        
+                        <div class="fragment" style="margin-top: 1rem; background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px;">
+                            <p><strong>Decisión:</strong> Si \(\chi^2 > \chi^2_{\alpha, K-1}\), se rechaza \(H_0\) (uniformidad)</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>3.3 Pruebas de Medias y Varianzas</h3>
+                    <div class="concept-box">
+                        <h4>📊 Pruebas de Hipótesis Paramétricas</h4>
+                        <p>Estas pruebas validan si las <strong>propiedades muestrales</strong> coinciden con los parámetros teóricos de la distribución \(\mathcal{U}(0, 1)\).</p>
+                        
+                        <div class="r-hstack fragment">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5>🎯 Prueba de Medias</h5>
+                                    <p>Contrasta la hipótesis nula de que la media poblacional es \(\frac{1}{2}\):</p>
+                                    <div class="formula-box">
+                                        \(H_0: \mu = \frac{1}{2}\)
+                                    </div>
+                                    <p><small>Si hay gran cantidad de datos uniformes entre 0 y 1, se esperaría que el promedio fuera 0.5</small></p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5>📐 Prueba de Varianzas</h5>
+                                    <p>Contrasta la hipótesis nula de que la varianza poblacional es \(\frac{1}{12}\):</p>
+                                    <div class="formula-box">
+                                        \(H_0: \sigma^2 = \frac{1}{12}\)
+                                    </div>
+                                    <p><small>De acuerdo con la teoría estadística de la distribución uniforme</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Implementación en Excel y R -->
+            <section data-transition="convex">
+                <h2>4. Implementación Básica</h2>
+
+                <section data-auto-animate>
+                    <h3>4.1 Implementación en Excel</h3>
+                    <div class="concept-box">
+                        <p>Excel es una herramienta fundamental para la <mark>implementación manual</mark> y la simulación básica.</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Generación de Números Uniformes en Excel</h3>
+                    <div class="concept-box success">
+                        <h4>🎲 Función Incorporada</h4>
+                        
+                        <div class="code-box fragment">
+                            <strong>Función básica:</strong><br>
+                            <code>=ALEATORIO()</code> o <code>=RAND()</code>
+                        </div>
+                        
+                        <div class="fragment">
+                            <p><strong>Características:</strong></p>
+                            <ul>
+                                <li>Genera un número pseudoaleatorio entre 0 y 1</li>
+                                <li>Es una función "volátil" que se actualiza cada vez que se realiza un cálculo</li>
+                                <li>Se puede forzar actualización con F9</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="fragment">
+                            <h5>🔄 Variables Uniformes X(a,b)</h5>
+                            <p>Para generar una variable aleatoria \(X\) uniformemente distribuida en \([a, b]\):</p>
+                            <div class="formula-box">
+                                \(X = a + (b - a) \cdot R_i\)
+                            </div>
+                            <div class="code-box">
+                                <strong>Ejemplo Excel (a=245, b=255):</strong><br>
+                                <code>=245+10*ALEATORIO()</code>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Implementación del GCL en Excel</h3>
+                    <div class="concept-box">
+                        <h4>⚙️ Fórmula Recursiva</h4>
+                        <p>La relación \(X_{i+1} = (a \cdot X_i + c) \bmod m\) se puede implementar utilizando una fórmula de celda que calcula el residuo (módulo).</p>
+                        
+                        <div class="fragment">
+                            <h5>🧮 Cálculo del Residuo</h5>
+                            <p>Fórmula general para calcular \(X_{i+1}\) en Excel:</p>
+                            <div class="code-box">
+                                <strong>Fórmula completa:</strong><br>
+                                <code>=(D$3*C10+D$4)/D$5-ENTERO((D$3*C10+D$4)/D$5))*D$5</code>
+                            </div>
+                            <p><small>Donde: D$3=a, D$4=c, D$5=m, C10=\(X_i\) anterior</small></p>
+                        </div>
+                        
+                        <div class="fragment">
+                            <h5>📊 Número Pseudoaleatorio Final</h5>
+                            <p>El número pseudoaleatorio final \(U_i\) se obtiene:</p>
+                            <div class="formula-box">
+                                \(U_i = \frac{X_i}{m}\)
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>4.2 Implementación en R</h3>
+                    <div class="concept-box">
+                        <p>El lenguaje R es una implementación del lenguaje S y es <mark>adecuado para la simulación estadística</mark>.</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Generación de Números Uniformes en R</h3>
+                    <div class="concept-box info">
+                        <h4>📊 Funciones Básicas</h4>
+                        
+                        <div class="code-box fragment">
+                            <strong>Función principal:</strong><br>
+                            <code>runif(n)</code> # Genera n valores de U(0,1)
+                        </div>
+                        
+                        <div class="fragment">
+                            <h5>🌱 Control de Semilla</h5>
+                            <div class="code-box">
+                                <code>set.seed(123)  # Fijar semilla para reproducibilidad</code><br>
+                                <code>runif(10)      # Generar 10 números uniformes</code>
+                            </div>
+                        </div>
+                        
+                        <div class="fragment">
+                            <h5>🔄 Variables Uniformes X(a,b)</h5>
+                            <p>Para simular \(\mathcal{U}[a, b]\):</p>
+                            <div class="code-box">
+                                <code># Método 1: Transformación manual</code><br>
+                                <code>U <- runif(n)</code><br>
+                                <code>X <- a + U * (b - a)</code><br><br>
+                                <code># Método 2: Función directa</code><br>
+                                <code>runif(n, min = a, max = b)</code>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Implementación del GCL en R</h3>
+                    <div class="concept-box">
+                        <h4>🔧 Generadores en R</h4>
+                        
+                        <div class="fragment">
+                            <p><strong>Generador por defecto:</strong> R emplea por defecto el generador <mark>Mersenne-Twister</mark>.</p>
+                        </div>
+                        
+                        <div class="fragment">
+                            <h5>⚙️ Implementación Manual del GCL</h5>
+                            <div class="code-box">
+                                <code># Función GCL personalizada</code><br>
+                                <code>lcg <- function(n, a, c, m, seed) {</code><br>
+                                <code>  X <- numeric(n)</code><br>
+                                <code>  X[1] <- seed</code><br>
+                                <code>  for(i in 2:n) {</code><br>
+                                <code>    X[i] <- (a * X[i-1] + c) %% m</code><br>
+                                <code>  }</code><br>
+                                <code>  return(X / m)  # Convertir a U(0,1)</code><br>
+                                <code>}</code>
+                            </div>
+                        </div>
+                        
+                        <div class="fragment">
+                            <h5>📦 Paquetes Especializados</h5>
+                            <p>Los GCL también se pueden implementar utilizando paquetes como <code>simres</code>, que ofrece la función <code>rlcg()</code>.</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Ejemplo Práctico -->
+            <section data-background-color="#f8f8f8">
+                <h2>Ejemplo Práctico</h2>
+                
+                <section>
+                    <h3>Implementación Paso a Paso</h3>
+                    <div class="concept-box">
+                        <h4>🎯 Ejemplo: GCL con parámetros específicos</h4>
+                        <p>Implementemos un GCL con los siguientes parámetros:</p>
+                        
+                        <table class="param-table">
+                            <tr>
+                                <td><strong>Semilla (X₀)</strong></td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Multiplicador (a)</strong></td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Incremento (c)</strong></td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Módulo (m)</strong></td>
+                                <td>8</td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Cálculos Manuales</h3>
+                    <div class="concept-box">
+                        <h4>🧮 Secuencia Generada</h4>
+                        
+                        <div class="code-box">
+                            X₁ = (5 × 1 + 3) mod 8 = 8 mod 8 = 0 → U₁ = 0/8 = 0.000<br>
+                            X₂ = (5 × 0 + 3) mod 8 = 3 mod 8 = 3 → U₂ = 3/8 = 0.375<br>
+                            X₃ = (5 × 3 + 3) mod 8 = 18 mod 8 = 2 → U₃ = 2/8 = 0.250<br>
+                            X₄ = (5 × 2 + 3) mod 8 = 13 mod 8 = 5 → U₄ = 5/8 = 0.625<br>
+                            X₅ = (5 × 5 + 3) mod 8 = 28 mod 8 = 4 → U₅ = 4/8 = 0.500<br>
+                            X₆ = (5 × 4 + 3) mod 8 = 23 mod 8 = 7 → U₆ = 7/8 = 0.875<br>
+                            X₇ = (5 × 7 + 3) mod 8 = 38 mod 8 = 6 → U₇ = 6/8 = 0.750<br>
+                            X₈ = (5 × 6 + 3) mod 8 = 33 mod 8 = 1 → U₈ = 1/8 = 0.125<br>
+                            X₉ = (5 × 1 + 3) mod 8 = 8 mod 8 = 0 → ¡Se repite!
+                        </div>
+                        
+                        <div class="fragment">
+                            <p><strong>Observación:</strong> El periodo es 8, que coincide con el módulo m = 8. ¡Periodo completo!</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Próximos Pasos</h3>
+                    <div class="concept-box info">
+                        <h4>🚀 Semana 4: Método de Monte Carlo</h4>
+                        <p>En la próxima semana exploraremos:</p>
+                        <ul>
+                            <li>Fundamentos del método de Monte Carlo</li>
+                            <li>Estimación de áreas y volúmenes</li>
+                            <li>Integración numérica simple</li>
+                            <li>Estimación de π y análisis de error/convergencia</li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            
+            // Navigation
+            controls: true,
+            progress: true,
+            center: true,
+            touch: true,
+            loop: false,
+            
+            // Presentation size
+            width: 1024,
+            height: 768,
+            margin: 0.1,
+            minScale: 0.2,
+            maxScale: 2.0
+        });
+
+        // Simple Flashcard System
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+    </script>
+
+</body>
+
+</html>
