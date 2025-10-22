@@ -12,7 +12,7 @@ Los cursos indicados con el logotipo de ASU indican cursos que se complementan c
 
 ---
 
-## Facultad de Ciencias Técnicas
+## Escuela de Ciencias de la Computación
 
 ### Ingeniería en Tecnologías de la Información
 
@@ -34,7 +34,7 @@ Los cursos indicados con el logotipo de ASU indican cursos que se complementan c
 
 **Nivel al que pertenece la asignatura:** 6
 
-**Periodo académico ordinario:** mayo – agosto 2025
+**Periodo académico ordinario:** octubre 2025 – febrero 2026
 
 **Estructura curricular:**
 
@@ -46,7 +46,7 @@ Los cursos indicados con el logotipo de ASU indican cursos que se complementan c
 
 **Correquisito(s):** Ninguno
 
-**Número de sesiones:** 48 horas
+**Número de sesiones:** 48 horas/16 semanas
 
 **Horario de clases:** lunes, 15:00 – 18h00
 
@@ -86,7 +86,7 @@ Al finalizar la asignatura, el estudiante estará en capacidad de:
 
 **Nombre del Coordinador/a Académico:** Mgs. Darío Javier Valarezo León
 
-**Ubicación / Dirección del establecimiento educativo:** C. Agustín Carrión Palacios, Loja
+**Ubicación / Dirección del establecimiento educativo:** Calle Agustín Carrión Palacios entre Av. Salvador Bustamante Celi y Beethoven. Sector Jipiro
 
 **Teléfono del establecimiento educativo:** +593 22985600 Ext. 6008
 
@@ -101,7 +101,7 @@ Al finalizar la asignatura, el estudiante estará en capacidad de:
 | 3 | Unidad 2: Generación de Variables Aleatorias Generadores congruenciales (mixto); números uniformes; pruebas básicas de uniformidad; implementación básica en Excel y R. | 3 0 3 | Explicar generadores congruenciales y pruebas de uniformidad. | NotebookLM Recursos Bibliográficos Podcasts Casos de estudio Ejercicios prácticos Tarjetas didácticas | PE-1.3: Implementar LCG simple y generar 10k u’s; histograma y rachas (2.25) TA-1.3: Bitácora de pruebas de uniformidad (runs/frecuencias) (2.25) |
 | 4 | Unidad 2: Generación de Variables Aleatorias Fundamentos de MonteCarlo; estimación de áreas/volúmenes; integración numérica simple; ejemplos aplicados. | 3 0 3 | Explicar fundamentos y aplicaciones del método de Monte Carlo. | NotebookLM Recursos Bibliográficos Podcasts Casos de estudio Ejercicios prácticos Tarjetas didácticas | PE-1.4: Laboratorio: estimar π y área bajo curva por MC (2.25) TA-1.4: Mini–reporte (1 pág.) con error y convergencia (2.25) |
 | 5 | Evaluación Evaluación Diagnóstica | - | - | - | GA-1.3: Evaluación Teórica (2) GA-1.4: Evaluación Práctica (4) GA-1.5: Proyecto Fase I (5) |
-| 6 | Unidad 4: Técnicas Avanzadas de Simulación Conceptos de probabilidad necesarios; transformada inversa; generación: Bernoulli, Binomial, Poisson. | 3 0 3 | Explicar métodos para generar variables discretas. | NotebookLM Recursos Bibliográficos Podcasts Casos de estudio Ejercicios prácticos Tarjetas didácticas Master Class | PE-2.1: Generar Bernoulli, Binomial(n,p), Poisson(λ) y comparar medias/var (2.25) TA-2.1: Problemas cortos de selección de distribución (2.25) |
+| 6 | Unidad 4: Técnicas Avanzadas de Simulación Conceptos de probabilidad necesarios; transformada inversa; generación: Bernoulli, Binomial, Poisson. | 3 0 3 | Explicar métodos para generar variables discretas. | NotebookLM Recursos Bibliográficos Podcasts Casos de estudio Ejercicios prácticos Tarjetas didácticas Master Class | GA-2.1: Master class: The Contradictions of Nuclear Power (Feb. 21, 2024) (1) PE-2.1: Generar Bernoulli, Binomial(n,p), Poisson(λ) y comparar medias/var (2.25) TA-2.1: Problemas cortos de selección de distribución (2.25) |
 | 7 | Unidad 4: Técnicas Avanzadas de Simulación Generación: Uniforme, Exponencial, Normal; chequeos rápidos/visualización | 3 0 3 | Explicar métodos para generar variables continuas. | NotebookLM Recursos Bibliográficos Podcasts Casos de estudio Ejercicios prácticos Tarjetas didácticas | PE-2.2: Generar U, Exp(λ), N(μ,σ) y QQ-plots/histogramas (2.25) TA-2.2: Nota técnica (1 pág.) sobre cuándo usar cada una (2.25) |
 | 8 | Unidad 4: Técnicas Avanzadas de Simulación Conceptos básicos; depuración; trazas; verificación de componentes; consistencia dimensional. | 3 0 3 | Explicar técnicas de verificación y validación de modelos. | NotebookLM Recursos Bibliográficos Podcasts Casos de estudio Ejercicios prácticos Tarjetas didácticas | PE-2.3: Activar traza, verificar unidades y balance de flujo (2.25) TA-2.3: Checklist de verificación del propio código (2.25) |
 | 9 | Unidad 4: Técnicas Avanzadas de Simulación Pruebas de bondad de ajuste (Kolmogorov-Smirnov, Chi-cuadrado a nivel básico); validación conceptual y operacional; sensibilidad simple; casos prácticos | 3 0 3 | Aplicar pruebas de bondad de ajuste y validación estadística. | NotebookLM Recursos Bibliográficos Podcasts Casos de estudio Ejercicios prácticos Tarjetas didácticas | PE-2.4: Ajustar dist. a datos, aplicar KS/χ²; variar 1 parámetro (±10%) (2.25) TA-2.4: Reporte corto con recomendación de ajuste (2.25) |
@@ -171,11 +171,13 @@ TA-1.4: Mini–reporte error y convergencia – 2.25
 
 Gestión de Aprendizaje (GA):
 
-GA-2.1: Evaluación Teórica – 3
+GA-2.1: Master class: The Contradictions of Nuclear Power – 1
 
-GA-2.2: Evaluación Práctica – 4
+GA-2.2: Evaluación Teórica – 2
 
-GA-2.3: Proyecto Fase II – 5
+GA-2.3: Evaluación Práctica – 4
+
+GA-2.4: Proyecto Fase II – 5
 
 Gestión de Práctica-experimental (PE):
 
