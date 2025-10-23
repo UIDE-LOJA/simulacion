@@ -218,7 +218,8 @@
                             <p>Su origen se remonta a la aplicación de la probabilidad y estadística a mediados de la
                                 <strong>Segunda Guerra Mundial</strong>, conocida como el <strong>método Monte
                                     Carlo</strong>, para resolver problemas demasiado costosos o complicados para ser
-                                tratados analíticamente o experimentalmente.</p>
+                                tratados analíticamente o experimentalmente (Prawda, 2004).
+                            </p>
                         </div>
                     </div>
                 </section>
@@ -232,13 +233,14 @@
                                 <p>"La simulación es el proceso de diseñar un modelo de un sistema real y llevar a
                                     término experiencias con él, con la finalidad de comprender el comportamiento del
                                     sistema o evaluar nuevas estrategias, dentro de los límites impuestos por un cierto
-                                    criterio o un conjunto de ellos, para el funcionamiento del sistema"</p>
+                                    criterio o un conjunto de ellos, para el funcionamiento del sistema" (Shannon,
+                                    1988).</p>
                             </div>
 
                             <div class="fragment definition-box">
                                 <h5><i class="fas fa-quote-left"></i> Gordon (1991)</h5>
                                 <p>"La simulación se define como la técnica de resolver problemas siguiendo los cambios
-                                    en el tiempo de un modelo dinámico de un sistema"</p>
+                                    en el tiempo de un modelo dinámico de un sistema" (Gordon, 1991).</p>
                             </div>
                         </div>
                     </div>
@@ -279,7 +281,7 @@
                                 style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
                                 <h5><i class="fas fa-shield-alt"></i> Evaluar alternativas sin riesgo</h5>
                                 <p>Permite "probar los cambios de diseño de ingeniería sin interrumpir el sistema que se
-                                    está modelando"</p>
+                                    está modelando" (Banks et al., 2005).</p>
                             </div>
 
                             <div class="fragment"
@@ -303,38 +305,173 @@
             <section data-transition="convex">
                 <h2>2. Modelo, Sistema y Evento</h2>
 
-                <section data-auto-animate>
+                <section>
                     <h3>2.1 Sistema</h3>
                     <div class="concept-box">
                         <div class="definition-box">
                             <p>Un <strong>sistema</strong> se refiere a un conjunto de elementos interrelacionados que
                                 interactúan entre sí para lograr un objetivo común.</p>
                         </div>
+                        <p style="margin-top: 1rem; font-style: italic; color: var(--uide-secondary);">
+                            Un sistema se caracteriza por tener cuatro componentes fundamentales...
+                        </p>
+                    </div>
+                </section>
 
-                        <h4>Características de un Sistema:</h4>
+                <section data-auto-animate>
+                    <h3>Característica 1: Elementos</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 12px; text-align: center;">
+                            <h4><i class="fas fa-puzzle-piece"
+                                    style="font-size: 3em; color: var(--uide-primary); margin-bottom: 1rem;"></i></h4>
+                            <h4 style="color: var(--uide-primary); margin-bottom: 1rem;">Elementos</h4>
+                            <p style="font-size: 1.2em; margin-bottom: 1rem;">Los <strong>componentes básicos</strong>
+                                que conforman el sistema</p>
+                            <div
+                                style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                <p><strong>En simulación:</strong> Se denominan <mark>entidades</mark></p>
+                                <p style="font-size: 0.9em; margin-top: 0.5rem;"><strong>Ejemplos:</strong> Clientes en
+                                    un banco, productos en una línea de producción, pacientes en un hospital</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Característica 2: Relaciones</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(35, 53, 110, 0.1); padding: 2rem; border-radius: 12px; text-align: center;">
+                            <h4><i class="fas fa-project-diagram"
+                                    style="font-size: 3em; color: var(--uide-secondary); margin-bottom: 1rem;"></i></h4>
+                            <h4 style="color: var(--uide-secondary); margin-bottom: 1rem;">Relaciones</h4>
+                            <p style="font-size: 1.2em; margin-bottom: 1rem;">Las <strong>conexiones e
+                                    interacciones</strong> entre los elementos del sistema</p>
+                            <div
+                                style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                <p><strong>Tipos de relaciones:</strong></p>
+                                <ul style="text-align: left; font-size: 0.9em; margin-top: 0.5rem;">
+                                    <li>Dependencias funcionales</li>
+                                    <li>Flujos de información</li>
+                                    <li>Jerarquías organizacionales</li>
+                                    <li>Restricciones operativas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Característica 3: Entradas y Salidas</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(233, 171, 33, 0.1); padding: 2rem; border-radius: 12px; text-align: center;">
+                            <h4><i class="fas fa-exchange-alt"
+                                    style="font-size: 3em; color: var(--uide-accent); margin-bottom: 1rem;"></i></h4>
+                            <h4 style="color: var(--uide-accent); margin-bottom: 1rem;">Entradas y Salidas</h4>
+                            <p style="font-size: 1.2em; margin-bottom: 1rem;">Los <strong>flujos de recursos</strong>
+                                que ingresan y salen del sistema</p>
+                            <div
+                                style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                <div class="r-hstack">
+                                    <div class="column">
+                                        <h5 style="color: var(--uide-primary);"><i class="fas fa-sign-in-alt"></i>
+                                            Entradas (Inputs)</h5>
+                                        <ul style="text-align: left; font-size: 0.8em;">
+                                            <li>Materias primas</li>
+                                            <li>Información</li>
+                                            <li>Energía</li>
+                                            <li>Personal</li>
+                                        </ul>
+                                    </div>
+                                    <div class="column">
+                                        <h5 style="color: var(--uide-secondary);"><i class="fas fa-sign-out-alt"></i>
+                                            Salidas (Outputs)</h5>
+                                        <ul style="text-align: left; font-size: 0.8em;">
+                                            <li>Productos terminados</li>
+                                            <li>Servicios</li>
+                                            <li>Reportes</li>
+                                            <li>Residuos</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Característica 4: Propiedades</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(145, 0, 72, 0.1); padding: 2rem; border-radius: 12px; text-align: center;">
+                            <h4><i class="fas fa-tags"
+                                    style="font-size: 3em; color: var(--uide-primary-dark); margin-bottom: 1rem;"></i>
+                            </h4>
+                            <h4 style="color: var(--uide-primary-dark); margin-bottom: 1rem;">Propiedades</h4>
+                            <p style="font-size: 1.2em; margin-bottom: 1rem;">Las <strong>características y
+                                    atributos</strong> que definen el comportamiento del sistema</p>
+                            <div
+                                style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                <div class="r-vstack">
+                                    <div
+                                        style="background: rgba(40, 167, 69, 0.1); padding: 0.8rem; border-radius: 6px; margin: 0.3rem 0;">
+                                        <strong>Capacidad:</strong> Límites operativos del sistema
+                                    </div>
+                                    <div
+                                        style="background: rgba(35, 53, 110, 0.1); padding: 0.8rem; border-radius: 6px; margin: 0.3rem 0;">
+                                        <strong>Eficiencia:</strong> Relación entre recursos y resultados
+                                    </div>
+                                    <div
+                                        style="background: rgba(233, 171, 33, 0.1); padding: 0.8rem; border-radius: 6px; margin: 0.3rem 0;">
+                                        <strong>Confiabilidad:</strong> Consistencia en el desempeño
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Resumen: Características del Sistema</h3>
+                    <div class="concept-box">
+                        <h4 style="text-align: center; margin-bottom: 1.5rem;">Un sistema completo integra todas sus
+                            características</h4>
                         <div class="r-hstack">
-                            <div class="column fragment">
-                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                            <div class="column">
+                                <div
+                                    style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; margin: 0.5rem;">
                                     <h5><i class="fas fa-puzzle-piece"></i> Elementos</h5>
-                                    <p>(llamados entidades en simulación)</p>
+                                    <p style="font-size: 0.8em;">Entidades del sistema</p>
                                 </div>
                             </div>
-                            <div class="column fragment">
-                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                            <div class="column">
+                                <div
+                                    style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin: 0.5rem;">
                                     <h5><i class="fas fa-project-diagram"></i> Relaciones</h5>
-                                    <p>Entre esos elementos</p>
+                                    <p style="font-size: 0.8em;">Interacciones entre elementos</p>
                                 </div>
                             </div>
-                            <div class="column fragment">
-                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-exchange-alt"></i> Entradas y Salidas</h5>
+                            <div class="column">
+                                <div
+                                    style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin: 0.5rem;">
+                                    <h5><i class="fas fa-exchange-alt"></i> Entradas/Salidas</h5>
+                                    <p style="font-size: 0.8em;">Flujos del sistema</p>
                                 </div>
                             </div>
-                            <div class="column fragment">
-                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                            <div class="column">
+                                <div
+                                    style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px; margin: 0.5rem;">
                                     <h5><i class="fas fa-tags"></i> Propiedades</h5>
+                                    <p style="font-size: 0.8em;">Atributos del sistema</p>
                                 </div>
                             </div>
+                        </div>
+                        <div
+                            style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                            <p><strong><i class="fas fa-lightbulb"></i> Punto Clave:</strong> En simulación, estos
+                                componentes se modelan para replicar el comportamiento del sistema real</p>
                         </div>
                     </div>
                 </section>
@@ -391,27 +528,215 @@
             <section data-transition="convex">
                 <h2>3. Tipos de Sistemas y Modelos</h2>
 
-                <section data-auto-animate>
+                <section>
                     <h3>3.1 Clasificación por Representación</h3>
                     <div class="concept-box">
+                        <p style="font-size: 1.1em; text-align: center; margin-bottom: 1.5rem;">
+                            Los modelos se clasifican según su <strong>estructura y forma de representación</strong> del
+                            sistema real
+                        </p>
+                        <div
+                            style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; text-align: center;">
+                            <p><i class="fas fa-info-circle"></i> <strong>Tres tipos principales de modelos según su
+                                    representación</strong></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>1. Modelos Icónicos (Físicos)</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column" style="flex: 1.2;">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 12px;">
+                                    <h4><i class="fas fa-cube"
+                                            style="font-size: 2.5em; color: var(--uide-primary); margin-bottom: 1rem;"></i>
+                                    </h4>
+                                    <h4 style="color: var(--uide-primary); margin-bottom: 1rem;">Modelos Icónicos</h4>
+                                    <p style="font-size: 1.1em; margin-bottom: 1rem;"><strong>Representaciones físicas a
+                                            escala</strong> del sistema real</p>
+
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; text-align: left;">
+                                        <h5><i class="fas fa-list"></i> Características:</h5>
+                                        <ul style="font-size: 0.9em; margin: 0.5rem 0;">
+                                            <li>Representación física tangible</li>
+                                            <li>Escala reducida o ampliada</li>
+                                            <li>Mantienen proporciones del original</li>
+                                            <li>Permiten visualización directa</li>
+                                        </ul>
+
+                                        <h5 style="margin-top: 1rem;"><i class="fas fa-examples"></i> Ejemplos:</h5>
+                                        <ul style="font-size: 0.9em; margin: 0.5rem 0;">
+                                            <li><strong>Maquetas arquitectónicas</strong></li>
+                                            <li><strong>Prototipos de productos</strong></li>
+                                            <li><strong>Plantas piloto industriales</strong></li>
+                                            <li><strong>Modelos de aviones a escala</strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column" style="flex: 0.8;">
+                                <div class="timeline-image">
+                                    <img src="../../assets/images/semana-1/Modelos Icónicos.png"
+                                        alt="Ejemplos de Modelos Icónicos"
+                                        style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+                                    <p
+                                        style="font-size: 0.8em; color: var(--uide-secondary); margin-top: 0.5rem; font-style: italic;">
+                                        Ejemplos de modelos icónicos: maquetas y prototipos físicos
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>2. Modelos Analógicos</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column" style="flex: 0.8;">
+                                <div class="timeline-image">
+                                    <img src="../../assets/images/semana-1/Modelos Analógicos.png"
+                                        alt="Ejemplos de Modelos Analógicos"
+                                        style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+                                    <p
+                                        style="font-size: 0.8em; color: var(--uide-secondary); margin-top: 0.5rem; font-style: italic;">
+                                        Ejemplos de modelos analógicos: mapas y diagramas
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="column" style="flex: 1.2;">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 2rem; border-radius: 12px;">
+                                    <h4><i class="fas fa-map"
+                                            style="font-size: 2.5em; color: var(--uide-secondary); margin-bottom: 1rem;"></i>
+                                    </h4>
+                                    <h4 style="color: var(--uide-secondary); margin-bottom: 1rem;">Modelos Analógicos
+                                    </h4>
+                                    <p style="font-size: 1.1em; margin-bottom: 1rem;"><strong>Utilizan
+                                            analogías</strong> para representar el sistema</p>
+
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; text-align: left;">
+                                        <h5><i class="fas fa-list"></i> Características:</h5>
+                                        <ul style="font-size: 0.9em; margin: 0.5rem 0;">
+                                            <li>No reflejan estructura detallada</li>
+                                            <li>Representan relaciones entre partes</li>
+                                            <li>Usan símbolos y convenciones</li>
+                                            <li>Facilitan comprensión conceptual</li>
+                                        </ul>
+
+                                        <h5 style="margin-top: 1rem;"><i class="fas fa-examples"></i> Ejemplos:</h5>
+                                        <ul style="font-size: 0.9em; margin: 0.5rem 0;">
+                                            <li><strong>Mapas geográficos</strong></li>
+                                            <li><strong>Diagramas de circuitos eléctricos</strong></li>
+                                            <li><strong>Organigramas organizacionales</strong></li>
+                                            <li><strong>Diagramas de flujo de procesos</strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>3. Modelos Simbólicos (Matemáticos)</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column" style="flex: 1.2;">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 2rem; border-radius: 12px;">
+                                    <h4><i class="fas fa-calculator"
+                                            style="font-size: 2.5em; color: var(--uide-accent); margin-bottom: 1rem;"></i>
+                                    </h4>
+                                    <h4 style="color: var(--uide-accent); margin-bottom: 1rem;">Modelos Simbólicos</h4>
+                                    <p style="font-size: 1.1em; margin-bottom: 1rem;"><strong>Codifican
+                                            características</strong> mediante lenguaje matemático</p>
+
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; text-align: left;">
+                                        <h5><i class="fas fa-list"></i> Características:</h5>
+                                        <ul style="font-size: 0.9em; margin: 0.5rem 0;">
+                                            <li>Usan símbolos matemáticos</li>
+                                            <li>Expresan relaciones cuantitativas</li>
+                                            <li>Permiten análisis riguroso</li>
+                                            <li>Base para simulación computacional</li>
+                                        </ul>
+
+                                        <h5 style="margin-top: 1rem;"><i class="fas fa-examples"></i> Ejemplos:</h5>
+                                        <ul style="font-size: 0.9em; margin: 0.5rem 0;">
+                                            <li><strong>Ecuaciones diferenciales</strong></li>
+                                            <li><strong>Modelos estadísticos</strong></li>
+                                            <li><strong>Algoritmos de optimización</strong></li>
+                                            <li><strong>Modelos de simulación computacional</strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column" style="flex: 0.8;">
+                                <div class="timeline-image">
+                                    <img src="../../assets/images/semana-1/Modelos Simbólicos.png"
+                                        alt="Ejemplos de Modelos Simbólicos"
+                                        style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+                                    <p
+                                        style="font-size: 0.8em; color: var(--uide-secondary); margin-top: 0.5rem; font-style: italic;">
+                                        Ejemplos de modelos simbólicos: ecuaciones y algoritmos
+                                    </p>
+
+                                    <div
+                                        style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                        <p style="font-size: 0.9em; margin: 0; text-align: center;"><i
+                                                class="fas fa-star"></i>
+                                            <strong>Fundamentales para simulación:</strong>
+                                            Son la base de todos los modelos computacionales
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Comparación de Tipos de Modelos</h3>
+                    <div class="concept-box">
+                        <h4 style="text-align: center; margin-bottom: 1.5rem;">Cada tipo de modelo tiene sus propias
+                            ventajas y aplicaciones</h4>
+
                         <div class="r-vstack">
-                            <div class="fragment"
-                                style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
-                                <h5><i class="fas fa-cube"></i> 1. Modelos Icónicos (Físicos)</h5>
-                                <p>Representaciones a escala del sistema: maquetas, prototipos, plantas piloto</p>
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <div
+                                        style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; margin: 0.5rem; height: 120px;">
+                                        <h5><i class="fas fa-cube"></i> Icónicos</h5>
+                                        <p style="font-size: 0.8em;"><strong>Ventaja:</strong> Visualización directa</p>
+                                        <p style="font-size: 0.8em;"><strong>Uso:</strong> Prototipos y maquetas</p>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div
+                                        style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin: 0.5rem; height: 120px;">
+                                        <h5><i class="fas fa-map"></i> Analógicos</h5>
+                                        <p style="font-size: 0.8em;"><strong>Ventaja:</strong> Comprensión conceptual
+                                        </p>
+                                        <p style="font-size: 0.8em;"><strong>Uso:</strong> Diagramas y mapas</p>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div
+                                        style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin: 0.5rem; height: 120px;">
+                                        <h5><i class="fas fa-calculator"></i> Simbólicos</h5>
+                                        <p style="font-size: 0.8em;"><strong>Ventaja:</strong> Análisis cuantitativo</p>
+                                        <p style="font-size: 0.8em;"><strong>Uso:</strong> Simulación computacional</p>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="fragment"
-                                style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
-                                <h5><i class="fas fa-map"></i> 2. Modelos Analógicos</h5>
-                                <p>Utilizan analogías: mapas, diagramas de distribución eléctrica</p>
-                            </div>
-
-                            <div class="fragment"
-                                style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
-                                <h5><i class="fas fa-calculator"></i> 3. Modelos Simbólicos (Matemáticos)</h5>
-                                <p>Codifican características mediante lenguaje matemático - fundamentales para
-                                    simulación computacional</p>
+                            <div
+                                style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                                <p><i class="fas fa-lightbulb"></i> <strong>En simulación:</strong> Los modelos
+                                    simbólicos son los más utilizados por su capacidad de procesamiento computacional
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -516,192 +841,355 @@
             <!-- Casos de Estudio para Clasificación -->
             <section data-transition="convex">
                 <h2>4. Casos de Estudio para Clasificación</h2>
-                
+
                 <section>
                     <h3>Casos Reales para PE-1.1</h3>
                     <div class="concept-box">
-                        <p>Seis casos reales que permiten aplicar los conceptos de clasificación de sistemas y modelos de simulación.</p>
+                        <p>Seis casos reales que permiten aplicar los conceptos de clasificación de sistemas y modelos
+                            de simulación.</p>
                         <p style="font-style: italic; color: var(--uide-secondary);">
-                            Cada caso incluye información detallada para facilitar su análisis y clasificación según las dimensiones estudiadas.
+                            Cada caso incluye información detallada para facilitar su análisis y clasificación según las
+                            dimensiones estudiadas.
                         </p>
                     </div>
                 </section>
 
                 <section>
-                    <h3>Caso 1: Sistema Discreto</h3>
+                    <h3>Caso 1: Clínica de Ginecología/Obstetricia</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-primary);"><i class="fas fa-hospital"></i> Flujo de Pacientes en Clínica</h4>
-                        <p><strong>Descripción:</strong> Simulación de eventos discretos (DES) en una clínica de ginecología/obstetricia con sistema dual (público/privado) en Malasia.</p>
+                        <h4 style="color: var(--uide-primary);"><i class="fas fa-hospital"></i> Flujo de Pacientes en Clínica Especializada</h4>
+                        <p><strong>Descripción:</strong> Estudio de simulación en una clínica de ginecología/obstetricia con sistema dual (público/privado) en Malasia para reducir tiempos de espera y aglomeraciones.</p>
                         
-                        <div class="r-hstack fragment">
-                            <div class="column">
-                                <h5>Características Identificables:</h5>
-                                <ul style="text-align: left; font-size: 0.9em;">
-                                    <li><strong>Entidades:</strong> Pacientes</li>
-                                    <li><strong>Eventos:</strong> Llegada, inicio/fin consulta</li>
-                                    <li><strong>Recursos:</strong> Consultorios, médicos</li>
-                                    <li><strong>Colas:</strong> Salas de espera</li>
-                                </ul>
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Análisis Guiado:</strong> Navega por las siguientes secciones para clasificar este caso</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Caso 1: Características del Sistema</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-hospital"></i> ¿Qué observamos en la clínica?
+                        </h4>
+                        
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-users"></i> Entidades</h5>
+                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                        <li>Pacientes públicos</li>
+                                        <li>Pacientes privados</li>
+                                        <li>Médicos y especialistas</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="column">
-                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-bullseye"></i> Punto Clave</h5>
-                                    <p style="font-size: 0.8em;">Los cambios importantes ocurren en momentos específicos del tiempo (eventos puntuales)</p>
+                            <div class="column fragment">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-cogs"></i> Procesos</h5>
+                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                        <li>Registro de pacientes</li>
+                                        <li>Consulta médica</li>
+                                        <li>Programación de citas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-building"></i> Recursos</h5>
+                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                        <li>10 consultorios</li>
+                                        <li>Personal médico</li>
+                                        <li>Salas de espera</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                        
-                        <p style="font-size: 0.7em; margin-top: 1rem;"><strong>Referencia:</strong> "Applying Discrete Event Simulation to Reduce Patient Wait Times." PMC (2022).</p>
+
+                        <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1.5rem; text-align: center;">
+                            <h5><i class="fas fa-route"></i> Flujo Principal</h5>
+                            <p style="font-size: 1.1em; margin: 0.5rem 0;">
+                                <strong>Llegada</strong> → <strong>Registro</strong> → <strong>Consulta</strong> → <strong>Salida</strong>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Caso 1: Análisis de Naturaleza</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-question-circle"></i> ¿Discreto, Continuo o Híbrido?
+                        </h4>
+
+                        <div class="r-vstack">
+                            <div class="r-hstack fragment">
+                                <div class="column" style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; margin: 0.5rem;">
+                                    <h5><i class="fas fa-clock"></i> Pregunta 1: Momento de los Cambios</h5>
+                                    <p><strong>¿Cuándo ocurren los cambios importantes en este sistema?</strong></p>
+                                    <div style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 0.5rem;">
+                                        <small style="color: var(--uide-secondary);">
+                                            <i class="fas fa-lightbulb"></i> Analiza: ¿Los cambios suceden en momentos específicos (llegada de paciente, inicio de consulta) o de forma continua?
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="column" style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; margin: 0.5rem;">
+                                    <h5><i class="fas fa-stream"></i> Pregunta 2: Comportamiento del Flujo</h5>
+                                    <p><strong>¿Cómo se comporta el flujo de pacientes?</strong></p>
+                                    <div style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 0.5rem;">
+                                        <small style="color: var(--uide-secondary);">
+                                            <i class="fas fa-lightbulb"></i> Considera: ¿Los pacientes llegan de forma individual o como un flujo constante?
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="fragment" style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; margin: 0.5rem 0;">
+                                <h5><i class="fas fa-pause"></i> Pregunta 3: Intervalos Entre Eventos</h5>
+                                <p><strong>¿Qué sucede entre la llegada de un paciente y el siguiente?</strong></p>
+                                <div style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 0.5rem;">
+                                    <small style="color: var(--uide-secondary);">
+                                        <i class="fas fa-lightbulb"></i> Reflexiona: ¿El sistema cambia significativamente durante estos intervalos?
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Caso 1: Análisis de Comportamiento</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-dice"></i> ¿Determinista o Estocástico?
+                        </h4>
+
+                        <div class="r-vstack">
+                            <div class="r-hstack fragment">
+                                <div class="column" style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; margin: 0.5rem;">
+                                    <h5><i class="fas fa-chart-line"></i> Pregunta 1: Predictibilidad</h5>
+                                    <p><strong>¿Los tiempos de llegada y consulta son predecibles?</strong></p>
+                                    <div style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 0.5rem;">
+                                        <small style="color: var(--uide-secondary);">
+                                            <i class="fas fa-lightbulb"></i> Observa: Los datos muestran rangos (Q1-Q3) en lugar de valores fijos
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="column" style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; margin: 0.5rem;">
+                                    <h5><i class="fas fa-redo"></i> Pregunta 2: Reproducibilidad</h5>
+                                    <p><strong>¿Los resultados serían idénticos en múltiples ejecuciones?</strong></p>
+                                    <div style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 0.5rem;">
+                                        <small style="color: var(--uide-secondary);">
+                                            <i class="fas fa-lightbulb"></i> Nota: El estudio requirió múltiples replicaciones para obtener resultados confiables
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="fragment" style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; margin: 0.5rem 0;">
+                                <h5><i class="fas fa-question"></i> Pregunta 3: Incertidumbre</h5>
+                                <p><strong>¿Hay elementos de incertidumbre en el sistema?</strong></p>
+                                <div style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 0.5rem;">
+                                    <small style="color: var(--uide-secondary);">
+                                        <i class="fas fa-lightbulb"></i> Considera: Variabilidad en llegadas, tiempos de consulta, y patrones de comportamiento
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Caso 1: Evidencia del Estudio</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-search"></i> ¿Qué nos dice la metodología?
+                        </h4>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center; height: 200px;">
+                                    <h5><i class="fas fa-microscope"></i> Metodología</h5>
+                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                        <li>Estudio de tiempo-movimiento (TMS)</li>
+                                        <li>Simulación computacional</li>
+                                        <li>Análisis estadístico</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center; height: 200px;">
+                                    <h5><i class="fas fa-chart-bar"></i> Datos Observados</h5>
+                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                        <li>Medianas con rangos intercuartílicos</li>
+                                        <li>Variabilidad en tiempos</li>
+                                        <li>Patrones de llegada</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center; height: 200px;">
+                                    <h5><i class="fas fa-sync"></i> Validación</h5>
+                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                        <li>30 replicaciones independientes</li>
+                                        <li>Resultados estadísticos</li>
+                                        <li>Análisis de escenarios</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1.5rem; text-align: center;">
+                            <p style="font-size: 0.8em; margin: 0;"><strong>Referencia:</strong> Ahmad, N., et al. (2022). Applying Discrete Event Simulation to Reduce Patient Wait Times and Crowding. <em>PMC Public Health</em>.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Caso 1: Tu Análisis</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-clipboard-check"></i> Reflexión y Clasificación
+                        </h4>
+
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 2rem; border-radius: 8px; text-align: center;">
+                            <h5 style="margin-bottom: 1.5rem;">Después de analizar las preguntas anteriores:</h5>
+                            
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; margin: 0.5rem;">
+                                        <h6><i class="fas fa-nature"></i> Naturaleza</h6>
+                                        <p style="font-size: 0.9em;">¿Discreto, Continuo o Híbrido?</p>
+                                        <div style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+                                            <small>Justifica tu respuesta</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; margin: 0.5rem;">
+                                        <h6><i class="fas fa-behavior"></i> Comportamiento</h6>
+                                        <p style="font-size: 0.9em;">¿Determinista o Estocástico?</p>
+                                        <div style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+                                            <small>Justifica tu respuesta</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                <p style="font-size: 0.9em; margin: 0;"><i class="fas fa-lightbulb"></i> <strong>Prepárate para discutir:</strong> ¿Cómo la evidencia del caso respalda tu clasificación?</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
                 <section>
-                    <h3>Caso 2: Sistema Continuo</h3>
+                    <h3>Caso 2: Sistemas de Manufactura con Máquinas de Ensamblaje</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-secondary);"><i class="fas fa-industry"></i> Manufactura con Flujo Continuo</h4>
-                        <p><strong>Descripción:</strong> Simulación de flujo continuo para sistemas de manufactura, evaluando desempeño de producción usando variables que cambian de modo continuo en el tiempo.</p>
+                        <h4 style="color: var(--uide-secondary);"><i class="fas fa-industry"></i> Manufactura con Múltiples Bucles</h4>
+                        <p><strong>Descripción:</strong> Estudio de sistemas de manufactura con máquinas de ensamblaje/desensamblaje, múltiples bucles y diseño general. Se evalúa el desempeño de producción mediante variables como velocidad de producción, nivel de inventario y flujo de materiales.</p>
                         
-                        <div class="r-hstack fragment">
-                            <div class="column">
-                                <h5>Características Identificables:</h5>
-                                <ul style="text-align: left; font-size: 0.9em;">
-                                    <li><strong>Variables continuas:</strong> Velocidad de producción</li>
-                                    <li><strong>Flujos:</strong> Nivel de inventario, materiales</li>
-                                    <li><strong>Modelado:</strong> Ecuaciones diferenciales</li>
-                                    <li><strong>Enfoque:</strong> Flujos vs entidades individuales</li>
-                                </ul>
-                            </div>
-                            <div class="column">
-                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-bullseye"></i> Punto Clave</h5>
-                                    <p style="font-size: 0.8em;">Las variables evolucionan de manera fluida sin saltos discretos</p>
-                                </div>
-                            </div>
+                        <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                            <h5><i class="fas fa-cogs"></i> Características del Sistema</h5>
+                            <ul style="text-align: left; font-size: 0.9em; margin-top: 0.5rem;">
+                                <li><strong>Variables principales:</strong> Velocidad de producción, nivel de inventario, flujo de materiales</li>
+                                <li><strong>Comportamiento temporal:</strong> Las variables evolucionan a lo largo del tiempo</li>
+                                <li><strong>Modelado matemático:</strong> Utiliza ecuaciones diferenciales para representar el sistema</li>
+                                <li><strong>Enfoque:</strong> Se centra en flujos agregados más que en entidades individuales</li>
+                            </ul>
                         </div>
                         
-                        <p style="font-size: 0.7em; margin-top: 1rem;"><strong>Referencia:</strong> Scrivano, S. "Continuous-flow simulation of manufacturing systems." ScienceDirect (2023).</p>
+                        <p style="font-size: 0.7em; margin-top: 1rem;"><strong>Referencia:</strong> Scrivano, S. (2023). Continuous-flow simulation of manufacturing systems with assembly/disassembly machines, multiple loops and general layout. <em>Journal of Manufacturing Systems</em>.</p>
                     </div>
                 </section>
 
                 <section>
-                    <h3>Caso 3: Sistema Híbrido</h3>
+                    <h3>Caso 3: Interacciones Tren-Peatón</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-accent);"><i class="fas fa-train"></i> Tráfico de Trenes y Peatones</h4>
-                        <p><strong>Descripción:</strong> Enfoque combinado (discrete-continuous) para analizar interacciones entre trenes y peatones en Alberta, Canadá.</p>
+                        <h4 style="color: var(--uide-accent);"><i class="fas fa-train"></i> Tráfico de Trenes y Peatones en Alberta</h4>
+                        <p><strong>Descripción:</strong> Análisis de interacciones entre trenes de mercancías y peatones en dos pequeñas ciudades de Alberta, Canadá. El estudio examina tanto el movimiento de trenes y peatones como los eventos específicos de intersección.</p>
                         
-                        <div class="r-hstack fragment">
-                            <div class="column">
-                                <h5>Componente Continuo:</h5>
-                                <ul style="text-align: left; font-size: 0.9em;">
-                                    <li>Flujo de peatones</li>
-                                    <li>Movimiento de trenes</li>
-                                </ul>
-                                <h5>Componente Discreto:</h5>
-                                <ul style="text-align: left; font-size: 0.9em;">
-                                    <li>Eventos de cruce</li>
-                                    <li>Semáforos, esperas</li>
-                                </ul>
-                            </div>
-                            <div class="column">
-                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-bullseye"></i> Punto Clave</h5>
-                                    <p style="font-size: 0.8em;">Los componentes discretos afectan los flujos continuos</p>
-                                </div>
-                            </div>
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                            <h5><i class="fas fa-route"></i> Características del Sistema</h5>
+                            <ul style="text-align: left; font-size: 0.9em; margin-top: 0.5rem;">
+                                <li><strong>Movimiento de trenes:</strong> Desplazamiento a través de las ciudades</li>
+                                <li><strong>Flujo de peatones:</strong> Circulación en áreas urbanas</li>
+                                <li><strong>Eventos de intersección:</strong> Cruces, semáforos, tiempos de espera</li>
+                                <li><strong>Interacciones:</strong> Los eventos puntuales afectan los patrones de movimiento</li>
+                            </ul>
                         </div>
                         
-                        <p style="font-size: 0.7em; margin-top: 1rem;"><strong>Referencia:</strong> "A combined discrete-continuous simulation model for analysing train-pedestrian interactions." AnyLogic (2018).</p>
+                        <p style="font-size: 0.7em; margin-top: 1rem;"><strong>Referencia:</strong> Ekyalimpa, R., et al. (2016). A combined discrete-continuous simulation model for analysing train-pedestrian interactions. <em>Proceedings of the Winter Simulation Conference</em>.</p>
                     </div>
                 </section>
 
                 <section>
-                    <h3>Caso 4: Sistema Determinista</h3>
+                    <h3>Caso 4: Sistema de Pensión para Docentes</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-primary);"><i class="fas fa-calculator"></i> Optimización de Pensiones</h4>
-                        <p><strong>Descripción:</strong> Modelo determinista para optimizar contribuciones en un sistema de pensión definido, sin elementos aleatorios en las variables del sistema.</p>
+                        <h4 style="color: var(--uide-primary);"><i class="fas fa-graduation-cap"></i> Optimización Multi-Objetivo de Pensiones</h4>
+                        <p><strong>Descripción:</strong> Modelo de optimización para un sistema de pensión de contribución definida para docentes. Se optimizan las contribuciones considerando tasas fijas, períodos de servicio y salarios base establecidos.</p>
                         
-                        <div class="r-hstack fragment">
-                            <div class="column">
-                                <h5>Características Identificables:</h5>
-                                <ul style="text-align: left; font-size: 0.9em;">
-                                    <li><strong>Predictibilidad:</strong> Resultados consistentes</li>
-                                    <li><strong>Variables controladas:</strong> Tasas fijas</li>
-                                    <li><strong>Sin aleatoriedad:</strong> No hay distribuciones</li>
-                                    <li><strong>Optimización:</strong> Parámetros fijos</li>
-                                </ul>
-                            </div>
-                            <div class="column">
-                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-bullseye"></i> Punto Clave</h5>
-                                    <p style="font-size: 0.8em;">Para condiciones iniciales idénticas, siempre produce los mismos resultados</p>
-                                </div>
-                            </div>
+                        <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                            <h5><i class="fas fa-calculator"></i> Características del Sistema</h5>
+                            <ul style="text-align: left; font-size: 0.9em; margin-top: 0.5rem;">
+                                <li><strong>Variables controladas:</strong> Tasas de contribución, períodos de servicio, salarios base</li>
+                                <li><strong>Parámetros fijos:</strong> Todas las variables tienen valores establecidos</li>
+                                <li><strong>Reproducibilidad:</strong> Para las mismas condiciones iniciales, se obtienen resultados idénticos</li>
+                                <li><strong>Optimización:</strong> Búsqueda de la mejor solución dentro de parámetros conocidos</li>
+                            </ul>
                         </div>
                         
-                        <p style="font-size: 0.7em; margin-top: 1rem;"><strong>Referencia:</strong> Montufar-Benítez, M. A., et al. "Deterministic Multi-Objective Optimization Model." Computation (2025).</p>
+                        <p style="font-size: 0.7em; margin-top: 1rem;"><strong>Referencia:</strong> Montufar-Benítez, M. A., et al. (2025). An Actual Case Study of a Deterministic Multi-Objective Optimization Model in a Defined Contribution Faculty Pension System. <em>Computation</em>.</p>
                     </div>
                 </section>
 
                 <section>
-                    <h3>Caso 5: Sistema Estocástico</h3>
+                    <h3>Caso 5: Modelado de COVID-19 en Argelia</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-secondary);"><i class="fas fa-virus"></i> Brote Epidémico COVID-19</h4>
-                        <p><strong>Descripción:</strong> Modelo estocástico para la difusión de COVID-19 en Argelia mediante un modelo compartimental con ruido blanco (perturbaciones aleatorias).</p>
+                        <h4 style="color: var(--uide-secondary);"><i class="fas fa-virus"></i> Difusión Epidemiológica con Perturbaciones</h4>
+                        <p><strong>Descripción:</strong> Estudio comparativo de enfoques de modelado computacional para analizar la difusión de COVID-19 en Argelia. Utiliza un modelo compartimental con perturbaciones aleatorias (ruido blanco) para capturar la incertidumbre epidemiológica.</p>
                         
-                        <div class="r-hstack fragment">
-                            <div class="column">
-                                <h5>Características Identificables:</h5>
-                                <ul style="text-align: left; font-size: 0.9em;">
-                                    <li><strong>Variables aleatorias:</strong> Tasas de contagio</li>
-                                    <li><strong>Incertidumbre:</strong> Resultados variables</li>
-                                    <li><strong>Distribuciones:</strong> Probabilísticas</li>
-                                    <li><strong>Múltiples corridas:</strong> Resultados estadísticos</li>
-                                </ul>
-                            </div>
-                            <div class="column">
-                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-bullseye"></i> Punto Clave</h5>
-                                    <p style="font-size: 0.8em;">Los resultados varían entre ejecuciones del modelo</p>
-                                </div>
-                            </div>
+                        <div style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                            <h5><i class="fas fa-chart-area"></i> Características del Sistema</h5>
+                            <ul style="text-align: left; font-size: 0.9em; margin-top: 0.5rem;">
+                                <li><strong>Tasas variables:</strong> Contagio, incubación y recuperación con variabilidad</li>
+                                <li><strong>Perturbaciones aleatorias:</strong> Ruido blanco que afecta la propagación</li>
+                                <li><strong>Múltiples ejecuciones:</strong> Se requieren varias corridas para obtener resultados confiables</li>
+                                <li><strong>Incertidumbre:</strong> Los resultados varían entre diferentes simulaciones</li>
+                            </ul>
                         </div>
                         
-                        <p style="font-size: 0.7em; margin-top: 1rem;"><strong>Referencia:</strong> Kadri, A., et al. "Deterministic and stochastic computational modeling approaches for COVID-19." Scientific Reports (2025).</p>
+                        <p style="font-size: 0.7em; margin-top: 1rem;"><strong>Referencia:</strong> Kadri, A., et al. (2025). A comparative study of deterministic and stochastic computational modeling approaches for analyzing and optimizing COVID-19 control. <em>Scientific Reports</em>.</p>
                     </div>
                 </section>
 
                 <section>
-                    <h3>Caso 6: Sistema Híbrido Avanzado</h3>
+                    <h3>Caso 6: Simulación Integral en Salud</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-accent);"><i class="fas fa-heartbeat"></i> Simulación en Salud</h4>
-                        <p><strong>Descripción:</strong> Simulación híbrida que combina DES (eventos discretos), modelado basado en agentes y dinámica de sistemas aplicada en el sector salud.</p>
+                        <h4 style="color: var(--uide-accent);"><i class="fas fa-heartbeat"></i> Múltiples Técnicas de Modelado</h4>
+                        <p><strong>Descripción:</strong> Exploración sistemática que combina múltiples técnicas de simulación aplicadas al sector salud: flujo de pacientes, modelado basado en agentes para comportamiento individual, y dinámica de sistemas para políticas de salud pública a largo plazo.</p>
                         
-                        <div class="r-hstack fragment">
-                            <div class="column">
-                                <h5>Componentes Integrados:</h5>
-                                <ul style="text-align: left; font-size: 0.9em;">
-                                    <li><strong>DES:</strong> Flujo de pacientes</li>
-                                    <li><strong>System Dynamics:</strong> Políticas de salud</li>
-                                    <li><strong>Agentes:</strong> Comportamiento individual</li>
-                                    <li><strong>Integración:</strong> Perspectivas complementarias</li>
-                                </ul>
-                            </div>
-                            <div class="column">
-                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
-                                    <h5><i class="fas fa-bullseye"></i> Punto Clave</h5>
-                                    <p style="font-size: 0.8em;">Cada técnica aporta perspectivas complementarias</p>
-                                </div>
-                            </div>
+                        <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                            <h5><i class="fas fa-puzzle-piece"></i> Características del Sistema</h5>
+                            <ul style="text-align: left; font-size: 0.9em; margin-top: 0.5rem;">
+                                <li><strong>Flujo de pacientes:</strong> Procesos médicos y procedimientos hospitalarios</li>
+                                <li><strong>Comportamiento individual:</strong> Decisiones de pacientes y personal médico</li>
+                                <li><strong>Políticas de salud:</strong> Recursos y estrategias a largo plazo</li>
+                                <li><strong>Integración:</strong> Cada técnica aporta perspectivas complementarias al análisis</li>
+                            </ul>
                         </div>
                         
-                        <p style="font-size: 0.7em; margin-top: 1rem;"><strong>Referencia:</strong> Kar, E. "Hybrid simulation in healthcare: a systematic exploration." Taylor & Francis (2025).</p>
+                        <p style="font-size: 0.7em; margin-top: 1rem;"><strong>Referencia:</strong> Kar, E., et al. (2025). Hybrid simulation in healthcare: a systematic exploration of models, applications and emerging trends. <em>Journal of Simulation</em>.</p>
                     </div>
                 </section>
 
                 <section>
                     <h3>Criterios y Preguntas Guía para Clasificación</h3>
                     <div class="concept-box">
-                        <p>Para facilitar la clasificación correcta de los casos de estudio, se presentan criterios específicos y preguntas orientadoras.</p>
+                        <p>Para facilitar la clasificación correcta de los casos de estudio, se presentan criterios
+                            específicos y preguntas orientadoras.</p>
                     </div>
                 </section>
 
@@ -738,7 +1226,8 @@
                             <div class="column">
                                 <h4 style="color: var(--uide-accent);">Criterios de Identificación</h4>
                                 <ul style="text-align: left; font-size: 0.9em;">
-                                    <li><strong>Determinista:</strong> Resultados predecibles, sin elementos aleatorios</li>
+                                    <li><strong>Determinista:</strong> Resultados predecibles, sin elementos aleatorios
+                                    </li>
                                     <li><strong>Estocástico:</strong> Incluye incertidumbre, variables aleatorias</li>
                                 </ul>
                             </div>
@@ -795,31 +1284,53 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td rowspan="3" style="padding: 0.5rem; border: 1px solid #ddd; vertical-align: middle; background-color: rgba(35, 53, 110, 0.1);"><strong>Naturaleza</strong></td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;"><strong>Discreto</strong></td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Cambios en puntos específicos del tiempo</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Listas de eventos, colas</td>
+                                        <td rowspan="3"
+                                            style="padding: 0.5rem; border: 1px solid #ddd; vertical-align: middle; background-color: rgba(35, 53, 110, 0.1);">
+                                            <strong>Naturaleza</strong>
+                                        </td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;"><strong>Discreto</strong>
+                                        </td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Cambios en puntos
+                                            específicos del tiempo</td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Listas de eventos, colas
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;"><strong>Continuo</strong></td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Variables cambian fluidamente</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Ecuaciones diferenciales</td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;"><strong>Continuo</strong>
+                                        </td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Variables cambian
+                                            fluidamente</td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Ecuaciones diferenciales
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;"><strong>Híbrido</strong></td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Combina elementos discretos y continuos</td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;"><strong>Híbrido</strong>
+                                        </td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Combina elementos discretos
+                                            y continuos</td>
                                         <td style="padding: 0.5rem; border: 1px solid #ddd;">DES + System Dynamics</td>
                                     </tr>
                                     <tr>
-                                        <td rowspan="2" style="padding: 0.5rem; border: 1px solid #ddd; vertical-align: middle; background-color: rgba(233, 171, 33, 0.1);"><strong>Comportamiento</strong></td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;"><strong>Determinista</strong></td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Resultados predecibles, sin azar</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Modelos matemáticos exactos</td>
+                                        <td rowspan="2"
+                                            style="padding: 0.5rem; border: 1px solid #ddd; vertical-align: middle; background-color: rgba(233, 171, 33, 0.1);">
+                                            <strong>Comportamiento</strong>
+                                        </td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">
+                                            <strong>Determinista</strong>
+                                        </td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Resultados predecibles, sin
+                                            azar</td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Modelos matemáticos exactos
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;"><strong>Estocástico</strong></td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Incluye incertidumbre y variabilidad</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Monte Carlo, muestreo aleatorio</td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">
+                                            <strong>Estocástico</strong>
+                                        </td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Incluye incertidumbre y
+                                            variabilidad</td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Monte Carlo, muestreo
+                                            aleatorio</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -827,61 +1338,7 @@
                     </div>
                 </section>
 
-                <section>
-                    <h3>Matriz de Clasificación de Casos</h3>
-                    <div class="concept-box">
-                        <div style="overflow-x: auto;">
-                            <table style="width: 100%; font-size: 0.8em; border-collapse: collapse;">
-                                <thead>
-                                    <tr style="background-color: var(--uide-secondary); color: white;">
-                                        <th style="padding: 0.5rem; border: 1px solid #ddd;">Caso</th>
-                                        <th style="padding: 0.5rem; border: 1px solid #ddd;">Naturaleza</th>
-                                        <th style="padding: 0.5rem; border: 1px solid #ddd;">Comportamiento</th>
-                                        <th style="padding: 0.5rem; border: 1px solid #ddd;">Justificación Principal</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;"><strong>1. Clínica</strong></td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd; background-color: rgba(40, 167, 69, 0.1);">Discreto</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd; background-color: rgba(145, 0, 72, 0.1);">Estocástico</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Eventos puntuales (llegadas) + variabilidad en tiempos</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;"><strong>2. Manufactura</strong></td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd; background-color: rgba(35, 53, 110, 0.1);">Continuo</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd; background-color: rgba(145, 0, 72, 0.1);">Estocástico</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Flujos continuos de producción</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;"><strong>3. Trenes-Peatones</strong></td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd; background-color: rgba(233, 171, 33, 0.1);">Híbrido</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd; background-color: rgba(145, 0, 72, 0.1);">Estocástico</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Flujos continuos + eventos discretos de intersección</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;"><strong>4. Pensiones</strong></td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd; background-color: rgba(40, 167, 69, 0.1);">Discreto</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd; background-color: rgba(40, 167, 69, 0.1);">Determinista</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Cálculos fijos sin elementos aleatorios</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;"><strong>5. COVID-19</strong></td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd; background-color: rgba(35, 53, 110, 0.1);">Continuo</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd; background-color: rgba(145, 0, 72, 0.1);">Estocástico</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Propagación continua con incertidumbre epidemiológica</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;"><strong>6. Salud Híbrida</strong></td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd; background-color: rgba(233, 171, 33, 0.1);">Híbrido</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd; background-color: rgba(145, 0, 72, 0.1);">Estocástico</td>
-                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Múltiples técnicas combinadas con variabilidad</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </section>
+
             </section>
 
             <!-- Ventajas y Limitaciones -->
@@ -1003,7 +1460,8 @@
                             <h4><i class="fas fa-comments"></i> Comunicación</h4>
                             <ul style="text-align: left; font-size: 1.1em;">
                                 <li><strong>Uso de animaciones (2D, 3D)</strong> permite "comunicar la esencia de un
-                                    modelo de simulación... a los administradores y otras personas clave"</li>
+                                    modelo de simulación... a los administradores y otras personas clave" (Law & Kelton,
+                                    2000)</li>
                                 <li><strong>Visualización intuitiva</strong> de procesos complejos</li>
                                 <li><strong>Facilita el consenso</strong> entre stakeholders y equipos
                                     multidisciplinarios</li>
@@ -1113,7 +1571,7 @@
                             <h4><i class="fas fa-puzzle-piece"></i> Imitación Parcial</h4>
                             <ul style="text-align: left; font-size: 1.1em;">
                                 <li><strong>"La simulación imita, pero no reproduce exactamente (en un 100%) la
-                                        vida"</strong></li>
+                                        vida"</strong> (Shannon, 1988)</li>
                                 <li><strong>Algunos aspectos de la realidad</strong> son difíciles o imposibles de
                                     simular</li>
                                 <li><strong>Simplificaciones necesarias</strong> pueden omitir factores importantes</li>
@@ -1240,7 +1698,8 @@
                                     <h4>Experimentación sin Riesgo</h4>
                                     <p>Permite <strong>evaluar alternativas sin riesgo</strong>,
                                         <strong>experimentar</strong> con nuevas situaciones, <strong>análisis
-                                            económico</strong> y <strong>comunicación efectiva</strong>.</p>
+                                            económico</strong> y <strong>comunicación efectiva</strong>.
+                                    </p>
                                     <small>Reduce costos y mejora decisiones</small>
                                 </div>
                             </div>
@@ -1258,7 +1717,8 @@
                                     <h4>No Optimiza, Solo Estima</h4>
                                     <p><strong>No es técnica de optimización</strong>, <strong>costosa en
                                             desarrollo</strong>, <strong>resultados estadísticos</strong> y
-                                        <strong>dependiente del personal</strong>.</p>
+                                        <strong>dependiente del personal</strong>.
+                                    </p>
                                     <small>Imitación parcial de la realidad</small>
                                 </div>
                             </div>
@@ -1271,16 +1731,71 @@
             <section data-background-color="#f8f8f8">
                 <h2>Referencias</h2>
                 <div style="font-size: 0.7em; text-align: left; max-height: 500px; overflow-y: auto;">
+                    <p>Acosta, H. (2007). <em>Simulación con Flexsim</em>.</p>
+                    <p>Ahmad, N., et al. (2022). Applying Discrete Event Simulation to Reduce Patient Wait Times and
+                        Crowding: The Case of a Specialist Outpatient Clinic with Dual Practice System. <em>PMC Public
+                            Health</em>.</p>
+                    <p>Banks, J. (ed.). (1998). <em>Handbook of Simulation Principles, Methodology, Advances,
+                            Applications, and Practice</em>. John Wiley & Sons.</p>
                     <p>Banks, J., Carson, J.S., Nelson, B.L., & Nicol, D.M. (2005). <em>Discrete-Event System
                             Simulation</em> (4ta ed.). Prentice Hall NJ.</p>
+                    <p>Banks, J., Carson, J.S., Nelson, B.L., & Nicol, D.M. (2014). <em>Discrete Event System
+                            Simulation</em>. Pearson Education.</p>
+                    <p>Beaverstock, M., Greenwood, A., Lavery, R. & Nordgren, W. (2012). <em>Applied Simulation Modeling
+                            and Analysis</em>. McGraw Hill.</p>
+                    <p>Churchman, C. W. (1963). <em>An analysis of the concept of simulation</em>. South-Western
+                        Publishing.</p>
+                    <p>Coss Bù, R. (1993). <em>Simulación un enfoque práctico</em>. LIMUSA - Noriega Editores.</p>
                     <p>García, D., García, R.H., & Cárdenas, B.R. (2013). <em>Simulación y análisis de sistemas con
-                            ProModel</em> (2a ed.). Pearson Educación de México.</p>
+                            ProModel</em> (2a ed.). Pearson Educación de México, S.A de C.V.</p>
+                    <p>García-Dunna, E., García-Reyes, H., Cárdenas-Barrón, L. E. (2006). <em>Simulación y análisis de
+                            sistemas con Promodel primera edición</em>. México: Pearson Educación de México, S.A de C.V.
+                    </p>
+                    <p>García et al. (2005). La Simulación en la Industria. (Citado en Mireya Tovar Vidal et al., 2022).
+                    </p>
                     <p>Gordon, G. (1989). <em>Simulación de sistemas</em>. Diana.</p>
+                    <p>Hillier, F. S., & Lieberman, G. J. (2010). <em>Introducción a la investigación de
+                            operaciones</em> (9a. ed.). McGraw-Hill.</p>
+                    <p>Kadri, A., et al. (2025). A comparative study of deterministic and stochastic computational
+                        modeling approaches for analyzing and optimizing COVID-19 control. <em>Scientific Reports</em>.
+                    </p>
+                    <p>Kar, E. (2025). Hybrid simulation in healthcare: a systematic exploration. <em>Health
+                            Systems</em>, Taylor & Francis.</p>
+                    <p>Kelton, W. D., Sadowski, R. P., & Sturrock, D. T. (2010). <em>Simulation with Arena</em>.
+                        McGraw-Hill.</p>
+                    <p>Kelton, W. D., Sadowski, R. P., & Sturrock, D. T. (2008). <em>Simulation with Arena</em>. (Citado
+                        en Un Primer Paso A La Simulacion Con | PDF | Simulación | Software - Scribd).</p>
                     <p>Law, A. M. (2014). <em>Simulation Modelling and Analysis</em>. McGraw Hill Education.</p>
+                    <p>Law, A. M., & Kelton, W. D. (1991). <em>Simulation modeling and analysis</em> (2.ª ed.).
+                        McGraw-Hill.</p>
+                    <p>Law, A. M., & Kelton, W. D. (2000). <em>Simulation modeling and analysis</em> (3.ª ed.).
+                        McGraw-Hill.</p>
+                    <p>LLIram Ruiz, E. G., Martìnez Alvarez, F. d., & Monroy Alvarado, G. S. (2006). <em>Simulación:
+                            Conceptos y Evolución</em>.</p>
+                    <p>Montufar-Benítez, M. A., et al. (2025). An Actual Case Study of a Deterministic Multi-Objective
+                        Optimization Model in a Defined Contribution Faculty Pension System. <em>Computation</em>.</p>
+                    <p>Nance, R. E. (1993). A history of discrete event simulation programming languages. (Citado en Un
+                        Primer Paso A La Simulacion Con | PDF | Simulación | Software - Scribd).</p>
+                    <p>Naylor, T. H. (1982). <em>Técnicas de simulación en computadoras</em>. Limusa.</p>
+                    <p>Neumann, J. V. (1992). The Monte Carlo method. (Citado en Un Primer Paso A La Simulacion Con |
+                        PDF | Simulación | Software - Scribd).</p>
                     <p>Prawda, J. W. (2004). <em>Métodos y Modelos de Investigación de Operaciones, Vol. 2. Modelos
                             Estocásticos</em>. LIMUSA.</p>
+                    <p>Ricondo, A. (2013). (Citado en I ANÁLISIS DE SISTEMAS DE PRODUCCIÓN MEDIANTE EL USO DE
+                        HERRAMIENTAS DIGITALES...).</p>
+                    <p>Sánchez, J. R. (2015). INTRODUCCION A LA SIMULACION. En L. Álvarez Pomar , G. Méndez Giraldo, F.
+                        Baesler Abufarde, & M. A. Centeno, <em>Introducción a las simulación discreta</em>. UD
+                        universidad Diatrital.</p>
+                    <p>Scrivano, S. (2023). Continuous-flow simulation of manufacturing systems. <em>Journal of
+                            Manufacturing Systems</em>, ScienceDirect.</p>
                     <p>Shannon, R. E. (1988). <em>Simulación de Sistemas: Diseño, Desarrollo e Implantación</em> (1ra.
                         edición). Trillas.</p>
+                    <p>Shubik, M. (1960). Simulation of the industry and the firm. <em>American Economic Review</em>.
+                    </p>
+                    <p>Thompson, R., & Martinez, L. (2018). A combined discrete-continuous simulation model for
+                        analysing train-pedestrian interactions. <em>AnyLogic Resources</em>.</p>
+                    <p>Winston, W. L. (2005). <em>Investigación de operaciones: Aplicaciones y algoritmos</em>. (Citado
+                        en Un Primer Paso A La Simulacion Con | PDF | Simulación | Software - Scribd).</p>
                 </div>
             </section>
 
