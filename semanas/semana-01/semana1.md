@@ -69,7 +69,143 @@ Dentro de la simulación discreta, existen principalmente tres estrategias para 
 3. Exanimación de Actividades: El modelador define las condiciones necesarias para empezar y finalizar cada actividad. El tiempo avanza en iguales incrementos y en cada incremento se evalúan las condiciones para determinar qué actividades pueden comenzar o terminar.
 
 --------------------------------------------------------------------------------
-4. Ventajas y Limitaciones
+4. Casos de Estudio para Clasificación
+
+En esta sección se presentan seis casos reales que permiten aplicar los conceptos de clasificación de sistemas y modelos de simulación. Cada caso incluye información detallada para facilitar su análisis y clasificación según las dimensiones estudiadas.
+
+4.1. Caso 1: Sistema Discreto - Flujo de Pacientes en Clínica
+**Descripción:** Simulación de eventos discretos (DES) en una clínica de ginecología/obstetricia con sistema dual (público/privado) en Malasia. Se modelaron llegadas, consultas, colas, tiempos de espera para proponer mejoras de inicio de consulta y asignación de pacientes.
+
+**Características identificables:**
+• Entidades: Pacientes
+• Eventos: Llegada de paciente, inicio de consulta, fin de consulta
+• Recursos: Consultorios, médicos
+• Colas: Salas de espera
+• Cambios puntuales: Los cambios importantes ocurren en momentos específicos
+
+**Referencia:** "Applying Discrete Event Simulation to Reduce Patient Wait Times and Crowding: The Case of a Specialist Outpatient Clinic with Dual Practice System." PMC (2022).
+
+4.2. Caso 2: Sistema Continuo - Manufactura con Flujo Continuo
+**Descripción:** Simulación de flujo continuo para sistemas de manufactura, evaluando desempeño de producción usando variables que cambian de modo continuo en el tiempo.
+
+**Características identificables:**
+• Variables continuas: Velocidad de producción, nivel de inventario, flujo de materiales
+• Cambio temporal: Las variables evolucionan de manera fluida sin saltos discretos
+• Modelado: Ecuaciones diferenciales que dependen del tiempo
+• Enfoque: Flujos más que entidades individuales
+
+**Referencia:** Scrivano, S. "Continuous-flow simulation of manufacturing systems." ScienceDirect (2023).
+
+4.3. Caso 3: Sistema Híbrido - Tráfico de Trenes y Peatones
+**Descripción:** Enfoque combinado (discrete-continuous) para analizar interacciones entre trenes y peatones en Alberta, Canadá. El modelo integra flujo continuo de peatones/trenes y eventos discretos de intersección/espera.
+
+**Características identificables:**
+• Componente continuo: Flujo de peatones, movimiento de trenes
+• Componente discreto: Eventos de cruce, semáforos, esperas
+• Interacción: Los componentes discretos afectan los flujos continuos
+• Complejidad: Combina lo mejor de ambos enfoques
+
+**Referencia:** "A combined discrete-continuous simulation model for analysing train-pedestrian interactions." AnyLogic Resources (2018).
+
+4.4. Caso 4: Sistema Determinista - Optimización de Pensiones
+**Descripción:** Modelo determinista para optimizar contribuciones en un sistema de pensión definido, sin elementos aleatorios en las variables del sistema.
+
+**Características identificables:**
+• Predictibilidad: Para condiciones iniciales idénticas, siempre produce los mismos resultados
+• Variables controladas: Tasas de contribución, períodos de servicio, salarios base
+• Sin aleatoriedad: No hay distribuciones de probabilidad ni variables estocásticas
+• Optimización: Se busca la mejor solución dentro de parámetros fijos
+
+**Referencia:** Montufar-Benítez, M. A., et al. "An Actual Case Study of a Deterministic Multi-Objective Optimization Model in a Defined Contribution Faculty Pension System." Computation (2025).
+
+4.5. Caso 5: Sistema Estocástico - Brote Epidémico COVID-19
+**Descripción:** Modelo estocástico para la difusión de COVID-19 en Argelia mediante un modelo compartimental con ruido blanco (perturbaciones aleatorias), comparando enfoques deterministas vs estocásticos.
+
+**Características identificables:**
+• Variables aleatorias: Tasas de contagio, períodos de incubación, recuperación
+• Incertidumbre: Los resultados varían entre ejecuciones del modelo
+• Distribuciones: Se usan distribuciones de probabilidad para modelar variabilidad
+• Múltiples corridas: Se requieren varias simulaciones para obtener resultados estadísticos
+
+**Referencia:** Kadri, A., et al. "A comparative study of deterministic and stochastic computational modeling approaches for analyzing and optimizing COVID-19 control." Scientific Reports (2025).
+
+4.6. Caso 6: Sistema Híbrido Avanzado - Simulación en Salud
+**Descripción:** Simulación híbrida que combina DES (eventos discretos), modelado basado en agentes y dinámica de sistemas aplicada en el sector salud para análisis integral de políticas sanitarias.
+
+**Características identificables:**
+• DES: Flujo de pacientes, procedimientos médicos
+• System Dynamics: Políticas de salud pública, recursos a largo plazo
+• Agentes: Comportamiento individual de pacientes y personal médico
+• Integración: Cada técnica aporta perspectivas complementarias
+
+**Referencia:** Kar, E. "Hybrid simulation in healthcare: a systematic exploration." Taylor & Francis (2025).
+
+4.7. Criterios y Preguntas Guía para Clasificación
+
+Para facilitar la clasificación correcta de los casos de estudio, se presentan criterios específicos y preguntas orientadoras que los estudiantes deben considerar al analizar cada sistema.
+
+**4.7.1. Clasificación por Naturaleza (Discreto vs Continuo)**
+
+Criterios de identificación:
+• **Discreto:** Los cambios ocurren en puntos específicos del tiempo (eventos)
+• **Continuo:** Las variables cambian de forma fluida a lo largo del tiempo
+• **Híbrido:** Combina elementos de ambos tipos
+
+Preguntas guía:
+1. ¿Los cambios importantes del sistema ocurren en momentos puntuales o de forma continua?
+2. ¿Puedo identificar eventos específicos que cambian el estado del sistema?
+3. ¿Las variables principales fluyen de manera suave o tienen saltos discretos?
+4. ¿El tiempo avanza por eventos o de forma continua?
+5. ¿Se pueden identificar entidades individuales o solo flujos agregados?
+
+**4.7.2. Clasificación por Comportamiento (Determinista vs Estocástico)**
+
+Criterios de identificación:
+• **Determinista:** Resultados predecibles, sin elementos aleatorios
+• **Estocástico:** Incluye incertidumbre, variables aleatorias, resultados que varían
+
+Preguntas guía:
+1. ¿Los resultados son siempre los mismos para condiciones iniciales idénticas?
+2. ¿Hay elementos de azar o incertidumbre en el sistema?
+3. ¿Se utilizan distribuciones de probabilidad para modelar variables?
+4. ¿Los tiempos de llegada, servicio o procesamiento son fijos o variables?
+5. ¿Se requieren múltiples corridas para obtener resultados confiables?
+
+**4.7.3. Criterios para Sistemas Híbridos**
+
+Indicadores de hibridación:
+• Presencia simultánea de eventos discretos y flujos continuos
+• Interacción entre componentes de diferente naturaleza
+• Necesidad de combinar técnicas de modelado
+
+Preguntas guía:
+1. ¿El sistema tiene tanto eventos puntuales como procesos continuos?
+2. ¿Los componentes discretos afectan los flujos continuos o viceversa?
+3. ¿Se requieren diferentes técnicas de simulación para diferentes partes del sistema?
+
+4.8. Tabla Comparativa de Clasificación de Sistemas
+
+| Dimensión | Tipo | Características Clave | Ejemplos de Variables | Técnicas de Modelado |
+|-----------|------|----------------------|----------------------|---------------------|
+| **Naturaleza** | Discreto | Cambios en puntos específicos del tiempo | Número de clientes, eventos de llegada/salida | Listas de eventos, colas |
+| | Continuo | Variables cambian fluidamente | Nivel de fluidos, temperatura, velocidad | Ecuaciones diferenciales |
+| | Híbrido | Combina elementos discretos y continuos | Flujo + eventos puntuales | DES + System Dynamics |
+| **Comportamiento** | Determinista | Resultados predecibles, sin azar | Parámetros fijos, tiempos constantes | Modelos matemáticos exactos |
+| | Estocástico | Incluye incertidumbre y variabilidad | Distribuciones probabilísticas | Monte Carlo, muestreo aleatorio |
+
+**Matriz de Clasificación de los Casos de Estudio:**
+
+| Caso | Naturaleza | Comportamiento | Justificación Principal |
+|------|------------|----------------|------------------------|
+| 1. Clínica | Discreto | Estocástico | Eventos puntuales (llegadas) + variabilidad en tiempos |
+| 2. Manufactura | Continuo | Estocástico/Determinista | Flujos continuos de producción |
+| 3. Trenes-Peatones | Híbrido | Estocástico | Flujos continuos + eventos discretos de intersección |
+| 4. Pensiones | Discreto | Determinista | Cálculos fijos sin elementos aleatorios |
+| 5. COVID-19 | Continuo | Estocástico | Propagación continua con incertidumbre epidemiológica |
+| 6. Salud Híbrida | Híbrido | Estocástico | Múltiples técnicas combinadas con variabilidad |
+
+--------------------------------------------------------------------------------
+5. Ventajas y Limitaciones
 4.1. Ventajas de la Simulación
 La simulación es una herramienta flexible, poderosa e intuitiva que ofrece múltiples beneficios:
 Categoría
