@@ -28,3 +28,22 @@ tmp/
 *.zip
 *.rar
 *.7z
+
+# Archivos de video
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.webm
+*.mkv
+*.m4v
+
+# Archivos de audio
+*.mp3
+*.wav
+*.flac
+*.aac
+*.ogg
+*.wma
+*.m4a
