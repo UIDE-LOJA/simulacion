@@ -1,0 +1,30 @@
+# Archivos de plantilla
+template-week.html
+
+# Archivos PDF
+*.pdf
+
+# Archivos temporales del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de respaldo del editor
+*.bak
+*.tmp
+*~
+
+# Carpetas de archivos temporales
+temp/
+tmp/
+
+# Archivos de configuración local del IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Archivos comprimidos
+*.zip
+*.rar
+*.7z
