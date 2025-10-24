@@ -1,0 +1,1598 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Semana 1 - Simulación y Modelado de Sistemas</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
+
+    <!-- UIDE Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/uide-theme.css">
+
+    <!-- Custom Timeline Styles -->
+    <style>
+        /* Timeline Image Styles */
+        .timeline-image {
+            text-align: center;
+        }
+
+        .timeline-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Enhanced concept-box for timeline */
+        .concept-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Interactive elements for class */
+        .interactive-box {
+            background: rgba(40, 167, 69, 0.1);
+            border: 2px solid var(--uide-primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .discussion-point {
+            background: rgba(233, 171, 33, 0.1);
+            border-left: 4px solid var(--uide-accent);
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+        }
+
+        .timer-box {
+            background: rgba(220, 53, 69, 0.1);
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            padding: 1rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .activity-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .timeline-image img {
+                margin-bottom: 1rem;
+            }
+
+            .r-hstack .column {
+                margin-bottom: 1rem;
+            }
+
+            /* Stack columns vertically on mobile */
+            .r-hstack {
+                flex-direction: column;
+            }
+
+            /* Adjust text size for better readability */
+            .concept-box {
+                padding: 1rem;
+                font-size: 0.9em;
+            }
+
+            .concept-box h4 {
+                font-size: 1.1em;
+            }
+
+            /* Timeline images responsive */
+            .timeline-image {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* Improved timeline layout */
+        .timeline-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .timeline-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Title Slide -->
+            <section data-background-color="#f8f8f8" data-transition="convex">
+                <div class="title-slide">
+                    <h1>Simulación y Modelado de Sistemas</h1>
+                    <h2>¡Bienvenidos! - Semana 1</h2>
+
+                    <div class="course-info">
+                        <strong>FT-06-SIM</strong> • Cuarto Nivel<br>
+                        <strong>Simulación</strong><br>
+                        <em>Prof. Charlie Cárdenas Toledo, M.Sc.</em><br>
+                        Universidad Internacional del Ecuador • Octubre 2025
+                    </div>
+
+                    <div
+                        style="background: rgba(233, 171, 33, 0.1); border-radius: 8px; padding: 1em; margin: 1em 0; font-size: 0.9em;">
+                        <strong>Fundamentos de Simulación</strong><br>
+                        <em>Semana 1 • Primer día de clases</em>
+                    </div>
+
+                    <div style="margin-top: 2em; font-size: 0.9em; font-style: italic; color: var(--uide-secondary);">
+                        Introducción a la asignatura y metodología de trabajo
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- ¿Qué es Simulación? - Introducción Rápida -->
+            <section data-transition="convex">
+                <h2>¿Qué es Simulación?</h2>
+
+                <section>
+                    <h3>Pregunta Inicial</h3>
+                    <div class="interactive-box">
+                        <h3>¿Qué ejemplos de simulación conocen?</h3>
+                        <p style="font-size: 0.9em; margin-top: 1rem;">Piensen en videojuegos, entrenamientos,
+                            aplicaciones...</p>
+                    </div>
+
+                    <div class="discussion-point">
+                        <p><i class="fas fa-comments"></i> <strong>Participación:</strong> Compartan sus ideas</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Definición Básica</h3>
+                    <div class="concept-box">
+                        <blockquote>
+                            <p><strong>"La simulación es el proceso de diseñar un modelo de un sistema real y llevar a
+                                    término experiencias con él, con la finalidad de comprender el comportamiento del
+                                    sistema o evaluar nuevas estrategias."</strong></p>
+                            <footer style="margin-top: 1em; color: var(--uide-secondary);">
+                                — Shannon
+                            </footer>
+                        </blockquote>
+                    </div>
+
+                    <div class="concept-box fragment">
+                        <p><strong>En palabras simples:</strong> Crear una copia virtual de algo real para experimentar
+                            sin riesgos</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>¿Por qué es Importante?</h3>
+                    <div class="r-hstack">
+                        <div class="column fragment">
+                            <div class="concept-box">
+                                <h4><i class="fas fa-shield-alt"></i> Sin Riesgos</h4>
+                                <p>Experimentar sin consecuencias reales</p>
+                            </div>
+                            <div class="concept-box">
+                                <h4><i class="fas fa-dollar-sign"></i> Económico</h4>
+                                <p>Más barato que experimentar con sistemas reales</p>
+                            </div>
+                        </div>
+                        <div class="column fragment">
+                            <div class="concept-box">
+                                <h4><i class="fas fa-question-circle"></i> "¿Qué pasaría si...?"</h4>
+                                <p>Responder preguntas estratégicas</p>
+                            </div>
+                            <div class="concept-box">
+                                <h4><i class="fas fa-cogs"></i> Sistemas Complejos</h4>
+                                <p>Analizar lo que es muy difícil de estudiar</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Recordatorio Flipped Classroom -->
+            <section>
+                <h2><i class="fas fa-sync-alt"></i> Recordatorio: Flipped Classroom</h2>
+
+                <section>
+                    <h3>Metodología Conocida</h3>
+                    <div class="concept-box">
+                        <p style="text-align: center; font-size: 1.2em;">Ya conocen la metodología, pero recordemos cómo
+                            aplicará específicamente en <strong>Simulación</strong></p>
+                    </div>
+
+                    <div class="interactive-box">
+                        <p><i class="fas fa-info-circle"></i> <strong>Diferencia clave:</strong> En simulación
+                            trabajaremos intensivamente con casos reales y clasificación de sistemas</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Antes de Clase</h3>
+                    <div class="activity-card" style="padding: 2rem;">
+                        <h4 style="text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-home"></i> Su
+                            Preparación Previa</h4>
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div class="concept-box">
+                                    <h5><i class="fas fa-book-open"></i> Material de Estudio</h5>
+                                    <ul style="text-align: left; font-size: 0.9em;">
+                                        <li><strong>Compendio semanal</strong> - Material completo</li>
+                                        <li><strong>Casos reales</strong> - Para análisis previo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="concept-box">
+                                    <h5><i class="fas fa-check-circle"></i> Verificación</h5>
+                                    <ul style="text-align: left; font-size: 0.9em;">
+                                        <li><strong>Autoevaluaciones</strong> - Verificar comprensión</li>
+                                        <li><strong>Dudas específicas</strong> - Anotar para clase</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>En Clase</h3>
+                    <div class="activity-card" style="padding: 2rem;">
+                        <h4 style="text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-school"></i> Aplicación
+                            Práctica</h4>
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div class="concept-box">
+                                    <h5><i class="fas fa-clipboard-check"></i> Evaluación</h5>
+                                    <ul style="text-align: left; font-size: 0.9em;">
+                                        <li><strong>PE evaluadas</strong> - Aplicación inmediata</li>
+                                        <li><strong>Análisis de casos</strong> - Individual y grupal</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="concept-box">
+                                    <h5><i class="fas fa-comments"></i> Interacción</h5>
+                                    <ul style="text-align: left; font-size: 0.9em;">
+                                        <li><strong>Resolución de dudas</strong> - Conceptos complejos</li>
+                                        <li><strong>Discusión técnica</strong> - Justificación de decisiones</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Específico para Simulación</h3>
+                    <div class="concept-box"
+                        style="background: rgba(233, 171, 33, 0.1); border-left: 4px solid var(--uide-accent);">
+                        <h4 style="text-align: center; color: var(--uide-accent);"><i class="fas fa-star"></i> Lo que
+                            hace única esta materia</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div class="discussion-point">
+                                    <h5><i class="fas fa-search"></i> Análisis Intensivo</h5>
+                                    <p style="font-size: 0.9em;">Clasificación de sistemas reales por naturaleza y
+                                        comportamiento</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="discussion-point">
+                                    <h5><i class="fas fa-balance-scale"></i> Justificación Técnica</h5>
+                                    <p style="font-size: 0.9em;">Argumentar decisiones con criterios científicos</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Resultado:</strong> Desarrollarán pensamiento
+                                analítico para sistemas complejos</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+
+
+            <!-- Presentación del Caso de Estudio -->
+            <section data-transition="convex">
+                <h2>Nuestro Caso de Estudio</h2>
+
+                <section>
+                    <h3><i class="fas fa-hospital"></i> Clínica de Ginecología/Obstetricia</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">Situación Real en Malasia</h4>
+                        <p style="text-align: center; font-size: 1.1em; margin: 1rem 0;">
+                            Una clínica especializada presenta <strong>problemas de tiempos de espera</strong> y
+                            <strong>aglomeraciones de pacientes</strong>
+                        </p>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-building"></i> Recursos</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>10 consultorios</li>
+                                        <li>Personal médico especializado</li>
+                                        <li>Salas de espera</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-users"></i> Sistema Dual</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>Pacientes públicos</li>
+                                        <li>Pacientes privados</li>
+                                        <li>Diferentes prioridades</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Usaremos este caso para aprender todos los
+                                    conceptos de simulación</strong></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>¿Por qué este caso?</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-eye"></i> Fácil de Visualizar</h5>
+                                    <p style="font-size: 0.9em;">Todos podemos imaginar cómo funciona una clínica</p>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-flask"></i> Caso Real</h5>
+                                    <p style="font-size: 0.9em;">Estudio publicado con datos reales</p>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-puzzle-piece"></i> Completo</h5>
+                                    <p style="font-size: 0.9em;">Ilustra todos los conceptos que veremos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Conceptos Básicos con el Caso -->
+            <section data-transition="convex">
+                <h2>Conceptos Básicos: Sistema, Modelo y Evento</h2>
+
+                <section data-auto-animate>
+                    <h3>Los Tres Componentes Fundamentales</h3>
+                    <div class="concept-box">
+                        <p style="text-align: center; font-size: 1.1em;">Todo estudio de simulación involucra tres
+                            elementos básicos:</p>
+                        <div style="text-align: center; font-size: 1.2em; margin: 2rem 0;">
+                            <strong style="color: var(--uide-primary);">SISTEMA</strong>
+                            <span style="color: var(--uide-secondary);">→</span>
+                            <strong style="color: var(--uide-secondary);">MODELO</strong>
+                            <span style="color: var(--uide-accent);">→</span>
+                            <strong style="color: var(--uide-accent);">EVENTOS</strong>
+                        </div>
+                        <div class="interactive-box">
+                            <p><i class="fas fa-hospital"></i> <strong>Los aplicaremos a nuestra clínica paso a
+                                    paso</strong></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>1. Sistema - Definición Teórica</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--uide-primary);">
+                            <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-cogs"></i> ¿Qué
+                                es un Sistema?</h4>
+                            <p style="font-size: 1.1em; text-align: center; margin: 1rem 0;">
+                                <strong>Conjunto de elementos interrelacionados</strong> que interactúan entre sí para
+                                lograr un objetivo común
+                            </p>
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <h5><i class="fas fa-puzzle-piece"></i> Elementos</h5>
+                                    <p style="font-size: 0.9em;">Componentes básicos (entidades)</p>
+                                </div>
+                                <div class="column">
+                                    <h5><i class="fas fa-project-diagram"></i> Relaciones</h5>
+                                    <p style="font-size: 0.9em;">Conexiones e interacciones</p>
+                                </div>
+                                <div class="column">
+                                    <h5><i class="fas fa-exchange-alt"></i> Entradas/Salidas</h5>
+                                    <p style="font-size: 0.9em;">Flujos de recursos</p>
+                                </div>
+                                <div class="column">
+                                    <h5><i class="fas fa-tags"></i> Propiedades</h5>
+                                    <p style="font-size: 0.9em;">Características del sistema</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>1. Sistema - Aplicado a Nuestra Clínica</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-hospital"></i> La
+                            Clínica como Sistema</h4>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-puzzle-piece"></i> Elementos</h5>
+                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                        <li>Pacientes públicos</li>
+                                        <li>Pacientes privados</li>
+                                        <li>Médicos especialistas</li>
+                                        <li>Personal de apoyo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-project-diagram"></i> Relaciones</h5>
+                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                        <li>Prioridad por tipo de paciente</li>
+                                        <li>Asignación médico-paciente</li>
+                                        <li>Flujo de atención</li>
+                                        <li>Coordinación de recursos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="r-hstack" style="margin-top: 1rem;">
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-sign-in-alt"></i> Entradas</h5>
+                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                        <li>Llegada de pacientes</li>
+                                        <li>Personal médico</li>
+                                        <li>Recursos materiales</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-sign-out-alt"></i> Salidas</h5>
+                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                        <li>Pacientes atendidos</li>
+                                        <li>Diagnósticos</li>
+                                        <li>Tratamientos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-target"></i> <strong>Objetivo del Sistema:</strong> Brindar atención
+                                médica especializada de calidad</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>2. Modelo - Definición Teórica</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(35, 53, 110, 0.1); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--uide-secondary);">
+                            <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-cube"></i>
+                                ¿Qué es un Modelo?</h4>
+                            <p style="font-size: 1.1em; text-align: center; margin: 1rem 0;">
+                                <strong>Representación simplificada y abstracta</strong> de un sistema real que se
+                                utiliza para comprender y predecir su comportamiento
+                            </p>
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <h5><i class="fas fa-filter"></i> Simplificado</h5>
+                                    <p style="font-size: 0.9em;">Solo aspectos relevantes</p>
+                                </div>
+                                <div class="column">
+                                    <h5><i class="fas fa-eye"></i> Comprensible</h5>
+                                    <p style="font-size: 0.9em;">Fácil de entender</p>
+                                </div>
+                                <div class="column">
+                                    <h5><i class="fas fa-edit"></i> Modificable</h5>
+                                    <p style="font-size: 0.9em;">Se puede ajustar</p>
+                                </div>
+                                <div class="column">
+                                    <h5><i class="fas fa-bullseye"></i> Orientado</h5>
+                                    <p style="font-size: 0.9em;">Objetivos claros</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>2. Modelo - Aplicado a Nuestra Clínica</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-hospital"></i>
+                            Modelo de la Clínica</h4>
+
+                        <div
+                            style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                            <h5 style="text-align: center;"><i class="fas fa-route"></i> Flujo Simplificado del Modelo
+                            </h5>
+                            <div style="text-align: center; font-size: 1.1em; margin: 1rem 0;">
+                                <strong>Llegada</strong> → <strong>Registro</strong> → <strong>Espera</strong> →
+                                <strong>Consulta</strong> → <strong>Salida</strong>
+                            </div>
+                        </div>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-filter"></i> ¿Qué Incluimos?</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>Tiempos de llegada</li>
+                                        <li>Tiempos de consulta</li>
+                                        <li>Prioridades</li>
+                                        <li>Capacidad de consultorios</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-times"></i> ¿Qué Excluimos?</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>Detalles médicos específicos</li>
+                                        <li>Aspectos administrativos</li>
+                                        <li>Factores externos</li>
+                                        <li>Complejidades menores</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-lightbulb"></i> <strong>El modelo nos permite experimentar sin afectar
+                                    pacientes reales</strong></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>3. Evento - Definición Teórica</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(233, 171, 33, 0.1); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--uide-accent);">
+                            <h4 style="color: var(--uide-accent); text-align: center;"><i class="fas fa-bolt"></i> ¿Qué
+                                es un Evento?</h4>
+                            <p style="font-size: 1.1em; text-align: center; margin: 1rem 0;">
+                                <strong>Acontecimiento que sucede en un instante determinado</strong> y provoca un
+                                cambio en el estado del sistema
+                            </p>
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <h5><i class="fas fa-clock"></i> Instantáneo</h5>
+                                    <p style="font-size: 0.9em;">Ocurre en un momento específico</p>
+                                </div>
+                                <div class="column">
+                                    <h5><i class="fas fa-exchange-alt"></i> Cambia Estado</h5>
+                                    <p style="font-size: 0.9em;">Modifica el sistema</p>
+                                </div>
+                                <div class="column">
+                                    <h5><i class="fas fa-list"></i> Programable</h5>
+                                    <p style="font-size: 0.9em;">Se puede planificar</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>3. Evento - Aplicado a Nuestra Clínica</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-accent); text-align: center;"><i class="fas fa-hospital"></i>
+                            Eventos en la Clínica</h4>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-sign-in-alt"></i> Eventos de Llegada</h5>
+                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                        <li><strong>Llegada paciente público</strong></li>
+                                        <li><strong>Llegada paciente privado</strong></li>
+                                        <li>Llegada de personal médico</li>
+                                    </ul>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+                                        <small><i class="fas fa-info-circle"></i> Cambian: número de pacientes en
+                                            espera</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-cogs"></i> Eventos de Proceso</h5>
+                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                        <li><strong>Inicio de consulta</strong></li>
+                                        <li><strong>Fin de consulta</strong></li>
+                                        <li>Cambio de prioridad</li>
+                                    </ul>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+                                        <small><i class="fas fa-info-circle"></i> Cambian: estado de
+                                            consultorios</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-sign-out-alt"></i> Eventos de Salida</h5>
+                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                        <li><strong>Salida paciente atendido</strong></li>
+                                        <li>Salida por abandono</li>
+                                        <li>Fin de turno médico</li>
+                                    </ul>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+                                        <small><i class="fas fa-info-circle"></i> Cambian: recursos disponibles</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-question-circle"></i> <strong>Pregunta:</strong> ¿Qué evento creen que
+                                es más crítico para el tiempo de espera?</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Integrando los Tres Conceptos</h3>
+                    <div class="concept-box">
+                        <h4 style="text-align: center; color: var(--uide-primary);"><i class="fas fa-puzzle-piece"></i>
+                            Todo Conectado en Nuestra Clínica</h4>
+
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 12px; margin: 1rem 0;">
+                            <div style="text-align: center; font-size: 1.1em; margin-bottom: 1.5rem;">
+                                <strong style="color: var(--uide-primary);">SISTEMA</strong> (Clínica Real)
+                                <span style="color: var(--uide-secondary);"> → </span>
+                                <strong style="color: var(--uide-secondary);">MODELO</strong> (Representación
+                                Simplificada)
+                                <span style="color: var(--uide-accent);"> → </span>
+                                <strong style="color: var(--uide-accent);">EVENTOS</strong> (Cambios en el Tiempo)
+                            </div>
+
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; text-align: center;">
+                                        <h6><i class="fas fa-hospital"></i> Sistema Real</h6>
+                                        <p style="font-size: 0.8em;">Clínica con pacientes, médicos, consultorios</p>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; text-align: center;">
+                                        <h6><i class="fas fa-cube"></i> Modelo Virtual</h6>
+                                        <p style="font-size: 0.8em;">Flujo simplificado: llegada → espera → consulta →
+                                            salida</p>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; text-align: center;">
+                                        <h6><i class="fas fa-bolt"></i> Eventos Simulados</h6>
+                                        <p style="font-size: 0.8em;">Llegadas, inicios y fines de consulta</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timer-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-clock"></i> Actividad: Identifiquen un evento adicional: <span
+                                    id="event-timer">2:00</span></p>
+                            <button onclick="startTimer(2, 'event-timer')"
+                                style="margin-left: 1rem; padding: 0.5rem 1rem; border: none; background: var(--uide-primary); color: white; border-radius: 4px;">Iniciar</button>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Tipos de Sistemas con el Caso -->
+            <section data-transition="convex">
+                <h2>Tipos de Sistemas</h2>
+
+                <section>
+                    <h3>Clasificación de Sistemas</h3>
+                    <div class="concept-box">
+                        <h4 style="text-align: center; color: var(--uide-primary);"><i class="fas fa-sitemap"></i> Los
+                            sistemas se pueden clasificar de diferentes maneras</h4>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 12px; text-align: center;">
+                                    <h5><i class="fas fa-nature"></i> Por su Naturaleza</h5>
+                                    <p style="font-size: 0.9em; margin-top: 1rem;">¿Cuándo ocurren los cambios?</p>
+                                    <ul style="text-align: left; font-size: 0.8em; margin-top: 0.5rem;">
+                                        <li>Discreto</li>
+                                        <li>Continuo</li>
+                                        <li>Híbrido</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(145, 0, 72, 0.1); padding: 2rem; border-radius: 12px; text-align: center;">
+                                    <h5><i class="fas fa-dice"></i> Por su Comportamiento</h5>
+                                    <p style="font-size: 0.9em; margin-top: 1rem;">¿Qué tan predecible es?</p>
+                                    <ul style="text-align: left; font-size: 0.8em; margin-top: 0.5rem;">
+                                        <li>Determinista</li>
+                                        <li>Estocástico</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-hospital"></i> <strong>Aplicaremos ambas clasificaciones a nuestra
+                                    clínica</strong></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Por Naturaleza: Sistemas Discretos</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--uide-primary);">
+                            <h4 style="color: var(--uide-primary); text-align: center;"><i
+                                    class="fas fa-step-forward"></i> Sistema Discreto</h4>
+                            <p style="font-size: 1.1em; text-align: center; margin: 1rem 0;">
+                                Los <strong>cambios de estado ocurren en instantes específicos</strong> de tiempo
+                            </p>
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <h5><i class="fas fa-clock"></i> Características</h5>
+                                    <ul style="font-size: 0.9em;">
+                                        <li>Cambios instantáneos</li>
+                                        <li>Estados bien definidos</li>
+                                        <li>Eventos programables</li>
+                                    </ul>
+                                </div>
+                                <div class="column">
+                                    <h5><i class="fas fa-examples"></i> Ejemplos</h5>
+                                    <ul style="font-size: 0.9em;">
+                                        <li>Bancos (llegada de clientes)</li>
+                                        <li>Fábricas (productos terminados)</li>
+                                        <li>Hospitales (admisiones)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Nuestra Clínica: ¿Es Discreta?</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-hospital"></i>
+                            Analizando los Cambios en la Clínica</h4>
+
+                        <div class="interactive-box" style="margin: 1rem 0;">
+                            <p><strong>Pregunta clave:</strong> ¿Cuándo cambia el estado de nuestra clínica?</p>
+                        </div>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-sign-in-alt"></i> Momento 1: Llegada</h5>
+                                    <p style="font-size: 0.9em;">
+                                        <strong>Antes:</strong> 5 pacientes esperando<br>
+                                        <strong>Después:</strong> 6 pacientes esperando
+                                    </p>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+                                        <small><i class="fas fa-bolt"></i> Cambio instantáneo</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-play"></i> Momento 2: Inicio Consulta</h5>
+                                    <p style="font-size: 0.9em;">
+                                        <strong>Antes:</strong> Consultorio libre<br>
+                                        <strong>Después:</strong> Consultorio ocupado
+                                    </p>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+                                        <small><i class="fas fa-bolt"></i> Cambio instantáneo</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-stop"></i> Momento 3: Fin Consulta</h5>
+                                    <p style="font-size: 0.9em;">
+                                        <strong>Antes:</strong> Consultorio ocupado<br>
+                                        <strong>Después:</strong> Consultorio libre
+                                    </p>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+                                        <small><i class="fas fa-bolt"></i> Cambio instantáneo</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                            <p><i class="fas fa-check-circle"></i> <strong>Conclusión:</strong> Nuestra clínica ES un
+                                sistema discreto</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Por Naturaleza: Sistemas Continuos</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(35, 53, 110, 0.1); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--uide-secondary);">
+                            <h4 style="color: var(--uide-secondary); text-align: center;"><i
+                                    class="fas fa-wave-square"></i> Sistema Continuo</h4>
+                            <p style="font-size: 1.1em; text-align: center; margin: 1rem 0;">
+                                Los <strong>cambios de estado ocurren continuamente</strong> a lo largo del tiempo
+                            </p>
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <h5><i class="fas fa-stream"></i> Características</h5>
+                                    <ul style="font-size: 0.9em;">
+                                        <li>Cambios graduales</li>
+                                        <li>Variables continuas</li>
+                                        <li>Ecuaciones diferenciales</li>
+                                        <li>Estados infinitos posibles</li>
+                                    </ul>
+                                </div>
+                                <div class="column">
+                                    <h5><i class="fas fa-examples"></i> Ejemplos</h5>
+                                    <ul style="font-size: 0.9em;">
+                                        <li>Nivel de agua en tanque</li>
+                                        <li>Temperatura en horno</li>
+                                        <li>Crecimiento poblacional</li>
+                                        <li>Flujo de tráfico en autopista</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>¿Podría ser Continua Nuestra Clínica?</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-hospital"></i>
+                            Perspectiva Alternativa</h4>
+
+                        <div class="interactive-box" style="margin: 1rem 0;">
+                            <p><strong>Pregunta reflexiva:</strong> ¿Hay algo que cambie continuamente en la clínica?
+                            </p>
+                        </div>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-clock"></i> Tiempo de Espera</h5>
+                                    <p style="font-size: 0.9em;">
+                                        Cada segundo que pasa, el tiempo de espera de cada paciente <strong>aumenta
+                                            continuamente</strong>
+                                    </p>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+                                        <small><i class="fas fa-chart-line"></i> Variable continua</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-battery-half"></i> Fatiga del Personal</h5>
+                                    <p style="font-size: 0.9em;">
+                                        La fatiga del personal médico <strong>se acumula gradualmente</strong> durante
+                                        el turno
+                                    </p>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
+                                        <small><i class="fas fa-chart-line"></i> Cambio gradual</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Reflexión:</strong> Aunque hay aspectos
+                                continuos, los <strong>eventos principales son discretos</strong></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Ejemplo de Sistema Continuo Real</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-industry"></i>
+                            Sistema de Control de Temperatura</h4>
+
+                        <div
+                            style="background: rgba(35, 53, 110, 0.1); padding: 2rem; border-radius: 12px; margin: 1rem 0;">
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <h5><i class="fas fa-thermometer-half"></i> Variables Continuas</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>Temperatura actual</li>
+                                        <li>Flujo de calor</li>
+                                        <li>Presión del sistema</li>
+                                        <li>Velocidad del ventilador</li>
+                                    </ul>
+                                </div>
+                                <div class="column">
+                                    <h5><i class="fas fa-chart-line"></i> Comportamiento</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>Cambios graduales</li>
+                                        <li>Sin saltos abruptos</li>
+                                        <li>Ecuaciones diferenciales</li>
+                                        <li>Control retroalimentado</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-question-circle"></i> <strong>¿Pueden pensar en otros ejemplos de
+                                    sistemas continuos?</strong></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Por Naturaleza: Sistemas Híbridos</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(233, 171, 33, 0.1); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--uide-accent);">
+                            <h4 style="color: var(--uide-accent); text-align: center;"><i
+                                    class="fas fa-puzzle-piece"></i> Sistema Híbrido</h4>
+                            <p style="font-size: 1.1em; text-align: center; margin: 1rem 0;">
+                                Combinan <strong>elementos discretos y continuos</strong> en el mismo sistema
+                            </p>
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <h5><i class="fas fa-layer-group"></i> Características</h5>
+                                    <ul style="font-size: 0.9em;">
+                                        <li>Eventos discretos + variables continuas</li>
+                                        <li>Cambios súbitos y graduales</li>
+                                        <li>Complejidad mayor</li>
+                                        <li>Modelado más realista</li>
+                                    </ul>
+                                </div>
+                                <div class="column">
+                                    <h5><i class="fas fa-examples"></i> Ejemplos</h5>
+                                    <ul style="font-size: 0.9em;">
+                                        <li>Sistema de manufactura</li>
+                                        <li>Red de comunicaciones</li>
+                                        <li>Sistema de transporte</li>
+                                        <li>Planta química</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Ejemplo de Sistema Híbrido</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-accent); text-align: center;"><i class="fas fa-car"></i> Sistema de
+                            Tráfico Urbano</h4>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-step-forward"></i> Componentes Discretos</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li><strong>Semáforos:</strong> Verde → Amarillo → Rojo</li>
+                                        <li><strong>Llegada de vehículos:</strong> Eventos puntuales</li>
+                                        <li><strong>Cambios de carril:</strong> Decisiones instantáneas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-wave-square"></i> Componentes Continuos</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li><strong>Velocidad:</strong> Aceleración/desaceleración gradual</li>
+                                        <li><strong>Densidad de tráfico:</strong> Cambio continuo</li>
+                                        <li><strong>Flujo vehicular:</strong> Variable continua</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Resultado:</strong> El sistema requiere modelado
+                                híbrido para ser realista</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>¿Podría Nuestra Clínica ser Híbrida?</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-accent); text-align: center;"><i class="fas fa-hospital"></i>
+                            Análisis Híbrido de la Clínica</h4>
+
+                        <div class="interactive-box" style="margin: 1rem 0;">
+                            <p><strong>Pregunta avanzada:</strong> ¿Qué pasaría si consideráramos AMBOS aspectos?</p>
+                        </div>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-step-forward"></i> Aspectos Discretos</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>Llegadas de pacientes</li>
+                                        <li>Inicio/fin de consultas</li>
+                                        <li>Asignación de consultorios</li>
+                                        <li>Decisiones médicas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-wave-square"></i> Aspectos Continuos</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>Tiempo de espera acumulado</li>
+                                        <li>Nivel de estrés de pacientes</li>
+                                        <li>Fatiga del personal</li>
+                                        <li>Satisfacción del servicio</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                            <p><i class="fas fa-balance-scale"></i> <strong>Decisión de Modelado:</strong> Para este
+                                estudio, se priorizaron los eventos discretos por ser más críticos</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Resumen: Clasificación por Naturaleza</h3>
+                    <div class="concept-box">
+                        <h4 style="text-align: center; color: var(--uide-primary);"><i class="fas fa-sitemap"></i> Los
+                            Tres Tipos de Sistemas</h4>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-step-forward"></i> Discreto</h5>
+                                    <p style="font-size: 0.8em; margin: 0.5rem 0;">Cambios en momentos específicos</p>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px;">
+                                        <small><strong>Nuestra clínica</strong></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-wave-square"></i> Continuo</h5>
+                                    <p style="font-size: 0.8em; margin: 0.5rem 0;">Cambios graduales constantes</p>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px;">
+                                        <small>Control de temperatura</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                    <h5><i class="fas fa-puzzle-piece"></i> Híbrido</h5>
+                                    <p style="font-size: 0.8em; margin: 0.5rem 0;">Combinación de ambos</p>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px;">
+                                        <small>Sistema de tráfico</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timer-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-clock"></i> Actividad: Clasifiquen su universidad por naturaleza: <span
+                                    id="nature-timer">2:00</span></p>
+                            <button onclick="startTimer(2, 'nature-timer')"
+                                style="margin-left: 1rem; padding: 0.5rem 1rem; border: none; background: var(--uide-primary); color: white; border-radius: 4px;">Iniciar</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Por Comportamiento: ¿Determinista o Estocástica?</h3>
+                    <div class="concept-box">
+                        <h4 style="text-align: center; color: var(--uide-primary);"><i class="fas fa-balance-scale"></i>
+                            ¿Qué tan predecible es nuestra clínica?</h4>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 12px; text-align: center;">
+                                    <h5><i class="fas fa-calculator"></i> Determinista</h5>
+                                    <p style="font-size: 0.9em; margin: 1rem 0;">
+                                        <strong>Resultados predecibles</strong><br>
+                                        Mismas entradas → Mismas salidas
+                                    </p>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px;">
+                                        <small>Ejemplo: Calculadora</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div
+                                    style="background: rgba(145, 0, 72, 0.1); padding: 2rem; border-radius: 12px; text-align: center;">
+                                    <h5><i class="fas fa-dice"></i> Estocástico</h5>
+                                    <p style="font-size: 0.9em; margin: 1rem 0;">
+                                        <strong>Resultados variables</strong><br>
+                                        Mismas entradas → Diferentes salidas
+                                    </p>
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px;">
+                                        <small>Ejemplo: Lanzar dados</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Analizando Nuestra Clínica</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-hospital"></i>
+                            ¿Determinista o Estocástica?</h4>
+
+                        <div class="interactive-box" style="margin: 1rem 0;">
+                            <p><strong>Experimento mental:</strong> Si "reiniciáramos" el día en la clínica, ¿sería
+                                idéntico?</p>
+                        </div>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-question-circle"></i> Elementos Inciertos</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>¿A qué hora llega cada paciente?</li>
+                                        <li>¿Cuánto dura cada consulta?</li>
+                                        <li>¿Qué tipo de paciente llega?</li>
+                                        <li>¿Habrá emergencias?</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-chart-line"></i> Evidencia del Estudio</h5>
+                                    <ul style="font-size: 0.9em; text-align: left;">
+                                        <li>Tiempos con rangos (Q1-Q3)</li>
+                                        <li>Variabilidad en datos</li>
+                                        <li>30 replicaciones necesarias</li>
+                                        <li>Análisis estadístico</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                            <p><i class="fas fa-check-circle"></i> <strong>Conclusión:</strong> Nuestra clínica ES un
+                                sistema estocástico</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Clasificación Final de Nuestra Clínica</h3>
+                    <div class="concept-box">
+                        <h4 style="text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-clipboard-check"></i>
+                            Resultado del Análisis</h4>
+
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 12px; margin: 1rem 0;">
+                            <div style="text-align: center; font-size: 1.2em; margin-bottom: 1.5rem;">
+                                <strong style="color: var(--uide-primary);">SISTEMA DISCRETO</strong>
+                                <span style="color: var(--uide-secondary);"> + </span>
+                                <strong style="color: var(--uide-secondary);">ESTOCÁSTICO</strong>
+                            </div>
+
+                            <div class="r-hstack">
+                                <div class="column">
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; text-align: center;">
+                                        <h6><i class="fas fa-step-forward"></i> Discreto</h6>
+                                        <p style="font-size: 0.8em;">Los cambios importantes ocurren en momentos
+                                            específicos</p>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div
+                                        style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; text-align: center;">
+                                        <h6><i class="fas fa-dice"></i> Estocástico</h6>
+                                        <p style="font-size: 0.8em;">Los tiempos y eventos tienen variabilidad e
+                                            incertidumbre</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-info-circle"></i> <strong>Típico en:</strong> Servicios de salud,
+                                bancos, centros de servicio al cliente</p>
+                        </div>
+
+                        <div class="timer-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-clock"></i> Reflexión: ¿Qué otros sistemas conocen con esta
+                                clasificación?: <span id="classification-timer">3:00</span></p>
+                            <button onclick="startTimer(3, 'classification-timer')"
+                                style="margin-left: 1rem; padding: 0.5rem 1rem; border: none; background: var(--uide-primary); color: white; border-radius: 4px;">Iniciar</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>¿Por qué es Importante esta Clasificación?</h3>
+                    <div class="concept-box">
+                        <h4 style="text-align: center; color: var(--uide-primary);"><i class="fas fa-lightbulb"></i>
+                            Implicaciones Prácticas</h4>
+
+                        <div class="r-hstack">
+                            <div class="column fragment">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-tools"></i> Herramientas de Simulación</h5>
+                                    <p style="font-size: 0.9em;">
+                                        <strong>Sistema Discreto Estocástico</strong> requiere:
+                                    </p>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Simulación de eventos discretos</li>
+                                        <li>Generadores de números aleatorios</li>
+                                        <li>Análisis estadístico</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column fragment">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-chart-bar"></i> Metodología de Estudio</h5>
+                                    <p style="font-size: 0.9em;">
+                                        Para nuestro caso se necesitó:
+                                    </p>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Múltiples replicaciones (30)</li>
+                                        <li>Análisis de variabilidad</li>
+                                        <li>Intervalos de confianza</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                            <p><i class="fas fa-key"></i> <strong>Clave:</strong> La clasificación determina cómo
+                                abordar el estudio de simulación</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Bibliografía -->
+            <section data-background-color="#f8f8f8">
+                <h2><i class="fas fa-book"></i> Bibliografía</h2>
+
+                <section>
+                    <h3>Referencias Principales</h3>
+                    <div class="concept-box"
+                        style="text-align: left; font-size: 0.8em; max-height: 500px; overflow-y: auto;">
+                        <h4 style="color: var(--uide-primary); margin-bottom: 1rem;"><i class="fas fa-bookmark"></i>
+                            Fuentes Utilizadas en esta Presentación</h4>
+
+                        <div style="line-height: 1.6;">
+                            <p><strong>Ahmad, N., et al.</strong> (2022). Applying Discrete Event Simulation to Reduce
+                                Patient Wait Times and Crowding: The Case of a Specialist Outpatient Clinic with Dual
+                                Practice System. <em>PMC Public Health</em>.</p>
+
+                            <p><strong>Banks, J., Carson, J.S., Nelson, B.L., & Nicol, D.M.</strong> (2005).
+                                <em>Discrete-Event System Simulation</em> (4ta ed.). Prentice Hall NJ.
+                            </p>
+
+                            <p><strong>Gordon, G.</strong> (1991). <em>Simulación de sistemas</em>. Diana.</p>
+
+                            <p><strong>Prawda, J. W.</strong> (2004). <em>Métodos y Modelos de Investigación de
+                                    Operaciones, Vol. 2. Modelos Estocásticos</em>. LIMUSA.</p>
+
+                            <p><strong>Shannon, R. E.</strong> (1988). <em>Simulación de Sistemas: Diseño, Desarrollo e
+                                    Implantación</em> (1ra. edición). Trillas.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Caso de Estudio</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-hospital"></i>
+                            Clínica de Ginecología/Obstetricia</h4>
+
+                        <div
+                            style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                            <p style="font-size: 0.9em; text-align: left; line-height: 1.6;">
+                                <strong>Ahmad, N., Ghani, N. A., Kamil, A. A., Tahar, R. M., Taha, A. Z., & Asrah, N.
+                                    M.</strong> (2022).
+                                Applying Discrete Event Simulation to Reduce Patient Wait Times and Crowding: The Case
+                                of a Specialist
+                                Outpatient Clinic with Dual Practice System. <em>International Journal of Environmental
+                                    Research and Public Health</em>,
+                                19(3), 1485. PMC Public Health.
+                            </p>
+                        </div>
+
+                        <div
+                            style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; text-align: center;">
+                            <p style="font-size: 0.9em; margin: 0;">
+                                <i class="fas fa-info-circle"></i> <strong>Nota:</strong> Este caso real demuestra la
+                                aplicación práctica
+                                de simulación de eventos discretos en sistemas de salud
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Definiciones Fundamentales</h3>
+                    <div class="concept-box" style="text-align: left;">
+                        <h4 style="color: var(--uide-primary); margin-bottom: 1rem;"><i class="fas fa-quote-left"></i>
+                            Citas Textuales Utilizadas</h4>
+
+                        <div class="r-vstack">
+                            <div
+                                style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; margin: 0.5rem 0;">
+                                <h5><strong>Shannon (1988)</strong></h5>
+                                <p style="font-size: 0.9em; font-style: italic;">
+                                    "La simulación es el proceso de diseñar un modelo de un sistema real y llevar a
+                                    término
+                                    experiencias con él, con la finalidad de comprender el comportamiento del sistema o
+                                    evaluar
+                                    nuevas estrategias."
+                                </p>
+                            </div>
+
+                            <div
+                                style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin: 0.5rem 0;">
+                                <h5><strong>Gordon (1991)</strong></h5>
+                                <p style="font-size: 0.9em; font-style: italic;">
+                                    "La simulación se define como la técnica de resolver problemas siguiendo los cambios
+                                    en el tiempo de un modelo dinámico de un sistema."
+                                </p>
+                            </div>
+
+                            <div
+                                style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin: 0.5rem 0;">
+                                <h5><strong>Banks et al. (2005)</strong></h5>
+                                <p style="font-size: 0.9em; font-style: italic;">
+                                    Permite "probar los cambios de diseño de ingeniería sin interrumpir el sistema que
+                                    se está modelando."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Contexto Histórico</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-history"></i>
+                            Origen de la Simulación</h4>
+
+                        <div
+                            style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                            <h5><strong>Método Monte Carlo</strong></h5>
+                            <p style="font-size: 0.9em; text-align: left; line-height: 1.6;">
+                                Según <strong>Prawda (2004)</strong>, el origen de la simulación se remonta a la
+                                aplicación
+                                de la probabilidad y estadística a mediados de la <strong>Segunda Guerra
+                                    Mundial</strong>,
+                                conocida como el <strong>método Monte Carlo</strong>, para resolver problemas demasiado
+                                costosos
+                                o complicados para ser tratados analíticamente o experimentalmente.
+                            </p>
+                        </div>
+
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px; text-align: center;">
+                            <p style="font-size: 0.9em; margin: 0;">
+                                <i class="fas fa-lightbulb"></i> <strong>Evolución:</strong> De herramienta militar a
+                                aplicación
+                                multidisciplinaria en ingeniería, medicina, economía y más
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section data-background-color="#f0f8ff">
+                    <h3>Agradecimientos</h3>
+                    <div class="concept-box" style="text-align: center;">
+                        <h4 style="color: var(--uide-primary);"><i class="fas fa-graduation-cap"></i> Universidad
+                            Internacional del Ecuador</h4>
+
+                        <div style="margin: 2rem 0;">
+                            <p style="font-size: 1.1em; margin-bottom: 1rem;">
+                                <strong>FT-06-SIM • Simulación y Modelado de Sistemas</strong>
+                            </p>
+                            <p style="font-size: 0.9em; color: var(--uide-secondary);">
+                                Cuarto Nivel • Carrera de Ingeniería
+                            </p>
+                        </div>
+
+                        <div
+                            style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                            <p style="font-size: 0.9em; margin: 0;">
+                                <i class="fas fa-chalkboard-teacher"></i> <strong>Prof. Charlie Cárdenas Toledo,
+                                    M.Sc.</strong><br>
+                                <em>Octubre 2025 • Semana 1</em>
+                            </p>
+                        </div>
+
+                        <div style="margin-top: 2rem; font-size: 0.8em; color: var(--uide-secondary);">
+                            <p><i class="fas fa-info-circle"></i> Material desarrollado para metodología Flipped
+                                Classroom</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <!-- Reveal.js JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+
+            // Configuración para presentación en clase
+            controls: true,
+            progress: true,
+            center: true,
+            touch: true,
+            loop: false,
+            rtl: false,
+            navigationMode: 'default',
+            shuffle: false,
+            fragments: true,
+            fragmentInURL: false,
+            embedded: false,
+            help: true,
+            showNotes: false,
+            autoPlayMedia: null,
+            preloadIframes: null,
+            autoSlide: 0,
+            autoSlideStoppable: true,
+            mouseWheel: false,
+            hideInactiveCursor: true,
+            hideCursorTime: 5000,
+            previewLinks: false,
+            focusBodyOnPageVisibilityChange: true,
+
+            // Configuración de temas
+            theme: 'white',
+
+            // Configuración de plugins
+            markdown: {
+                smartypants: true
+            },
+
+            highlight: {
+                highlightOnLoad: true
+            }
+        });
+
+        // Timer functionality for activities
+        let timerInterval;
+
+        function startTimer(minutes, elementId) {
+            let timeLeft = minutes * 60;
+            const timerElement = document.getElementById(elementId);
+
+            timerInterval = setInterval(() => {
+                const mins = Math.floor(timeLeft / 60);
+                const secs = timeLeft % 60;
+
+                if (timerElement) {
+                    timerElement.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    if (timerElement) {
+                        timerElement.textContent = "¡Tiempo!";
+                        timerElement.style.backgroundColor = "#dc3545";
+                        timerElement.style.color = "white";
+                    }
+                }
+
+                timeLeft--;
+            }, 1000);
+        }
+
+        function stopTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+        }
+    </script>
+</body>
+
+</html>

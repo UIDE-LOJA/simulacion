@@ -7,14 +7,22 @@
 
 /* CSS Variables - UIDE Brand Colors */
 :root {
-    --uide-primary: #910048;      /* UIDE Burgundy */
-    --uide-secondary: #23356E;    /* UIDE Navy */
-    --uide-accent: #E9AB21;       /* UIDE Gold */
-    --uide-light: #f8f8f8;        /* Light background for contrast */
-    --university-primary: #910048;    /* Backward compatibility */
-    --university-secondary: #23356E;  /* Backward compatibility */
-    --university-accent: #E9AB21;     /* Backward compatibility */
-    --university-light: #f8f8f8;      /* Backward compatibility */
+    --uide-primary: #910048;
+    /* UIDE Burgundy */
+    --uide-secondary: #23356E;
+    /* UIDE Navy */
+    --uide-accent: #E9AB21;
+    /* UIDE Gold */
+    --uide-light: #f8f8f8;
+    /* Light background for contrast */
+    --university-primary: #910048;
+    /* Backward compatibility */
+    --university-secondary: #23356E;
+    /* Backward compatibility */
+    --university-accent: #E9AB21;
+    /* Backward compatibility */
+    --university-light: #f8f8f8;
+    /* Backward compatibility */
 }
 
 /* =============================================================================
@@ -28,7 +36,9 @@
     line-height: 1.6;
 }
 
-.reveal h1, .reveal h2, .reveal h3 {
+.reveal h1,
+.reveal h2,
+.reveal h3 {
     font-family: 'Georgia', serif;
     font-weight: normal;
     text-align: center;
@@ -48,14 +58,16 @@
     font-size: min(2.5vw, 2em);
 }
 
-.reveal p, .reveal li {
+.reveal p,
+.reveal li {
     text-align: justify;
     color: #333;
     margin-bottom: 1em;
     font-size: min(2.2vw, 1.1em);
 }
 
-.reveal ul, .reveal ol {
+.reveal ul,
+.reveal ol {
     text-align: left;
 }
 
@@ -97,7 +109,7 @@ mark {
     position: relative;
 }
 
-.r-stack > * {
+.r-stack>* {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -140,7 +152,7 @@ mark {
 
 /* Blockquotes */
 .reveal blockquote {
-    background: rgba(255,255,255,0.8);
+    background: rgba(255, 255, 255, 0.8);
     border-left: 4px solid var(--uide-primary);
     margin: 1em 0;
     padding: 1em 2em;
@@ -151,11 +163,11 @@ mark {
 
 /* Title slide styling */
 .title-slide {
-    background: rgba(255,255,255,0.95);
+    background: rgba(255, 255, 255, 0.95);
     padding: 2em;
     border-radius: 15px;
     border: 3px double var(--uide-primary);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .title-slide h1 {
@@ -170,7 +182,7 @@ mark {
 }
 
 .course-info {
-    background: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     padding: 1em;
     margin: 1em 0;
@@ -269,6 +281,7 @@ mark {
     0% {
         background-position: 200% 0;
     }
+
     100% {
         background-position: -200% 0;
     }
@@ -377,15 +390,19 @@ mark {
     0% {
         transform: translateX(-100%);
     }
+
     12% {
         transform: translateX(-60%);
     }
+
     35% {
         transform: translateX(-40%);
     }
+
     65% {
         transform: translateX(-15%);
     }
+
     100% {
         transform: translateX(0%);
     }
@@ -452,7 +469,7 @@ mark {
 }
 
 .timeline-item {
-    background: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.9);
     border-left: 4px solid var(--uide-accent);
     padding: 1em;
     margin: 0.5em 0;
@@ -461,7 +478,7 @@ mark {
 
 /* Metrics styling */
 .metric-card {
-    background: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.9);
     border: 1px solid var(--uide-accent);
     border-radius: 8px;
     padding: 1em;
@@ -507,7 +524,8 @@ mark {
     transform: rotateY(180deg);
 }
 
-.flashcard-front, .flashcard-back {
+.flashcard-front,
+.flashcard-back {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -517,7 +535,7 @@ mark {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border: 2px solid var(--uide-primary);
 }
 
@@ -533,14 +551,16 @@ mark {
     border-color: var(--uide-secondary);
 }
 
-.flashcard-front h4, .flashcard-back h4 {
+.flashcard-front h4,
+.flashcard-back h4 {
     margin-bottom: 1rem;
     font-size: 1.2em;
     font-weight: bold;
     color: inherit;
 }
 
-.flashcard-front p, .flashcard-back p {
+.flashcard-front p,
+.flashcard-back p {
     font-size: 0.95em;
     line-height: 1.4;
     margin-bottom: 0.5rem;
@@ -564,7 +584,7 @@ mark {
 /* Hover effects - subtle without scaling */
 .flashcard:hover .flashcard-front,
 .flashcard:hover .flashcard-back {
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .flashcard .flashcard-inner {
@@ -608,7 +628,7 @@ body {
     text-align: center;
     color: var(--university-primary);
     margin-bottom: 40px;
-    background: rgba(255,255,255,0.95);
+    background: rgba(255, 255, 255, 0.95);
     padding: 2em;
     border-radius: 15px;
     border: 3px double var(--university-primary);
@@ -619,7 +639,7 @@ body {
     font-size: 3em;
     font-weight: normal;
     margin-bottom: 10px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .header p {
@@ -647,7 +667,7 @@ body {
 
 .week-card:hover {
     border-color: var(--university-secondary);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .week-number {
@@ -709,7 +729,7 @@ body {
     text-align: center;
     color: var(--university-secondary);
     margin-top: 50px;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.9);
     padding: 1em;
     border-radius: 10px;
     border-top: 2px solid var(--university-primary);
@@ -773,28 +793,31 @@ body {
         column-count: 1 !important;
         font-size: min(3.5vw, 0.7em);
     }
-    
+
     /* Flashcards responsive */
     .flashcards-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         margin: 1.5rem 0;
     }
-    
+
     .flashcard {
         height: 200px;
         margin: 0;
     }
-    
-    .flashcard-front, .flashcard-back {
+
+    .flashcard-front,
+    .flashcard-back {
         padding: 1rem;
     }
-    
-    .flashcard-front h4, .flashcard-back h4 {
+
+    .flashcard-front h4,
+    .flashcard-back h4 {
         font-size: 1.1em;
     }
-    
-    .flashcard-front p, .flashcard-back p {
+
+    .flashcard-front p,
+    .flashcard-back p {
         font-size: 0.9em;
     }
 }
@@ -834,29 +857,34 @@ body {
 }
 
 /* Vertical slide indicators */
-.reveal .controls .navigate-up, .reveal .controls .navigate-down {
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-down {
     opacity: 0.8;
 }
 
-.reveal .controls .navigate-up:hover, .reveal .controls .navigate-down:hover {
+.reveal .controls .navigate-up:hover,
+.reveal .controls .navigate-down:hover {
     opacity: 1;
 }
 
 /* Print styles */
 @media print {
+
     .reveal .controls,
     .logo-container {
         display: none !important;
     }
-    
+
     .reveal {
         font-size: 12pt;
     }
-    
-    .reveal h1, .reveal h2, .reveal h3 {
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
         page-break-after: avoid;
     }
-    
+
     .reveal section {
         page-break-inside: avoid;
     }
