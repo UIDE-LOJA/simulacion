@@ -17,6 +17,9 @@
     <!-- UIDE Theme CSS -->
     <link rel="stylesheet" href="../../assets/css/uide-theme.css">
 
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- Custom Timeline Styles -->
     <style>
         /* Timeline Image Styles */
@@ -45,7 +48,7 @@
             background: rgba(40, 167, 69, 0.1);
             border: 2px solid var(--uide-primary);
             border-radius: 12px;
-            padding: 1.5rem;
+            padding: 0.3rem;
             margin: 1rem 0;
             text-align: center;
         }
@@ -62,9 +65,140 @@
             background: rgba(220, 53, 69, 0.1);
             border: 2px solid #dc3545;
             border-radius: 8px;
-            padding: 1rem;
+            padding: 0.5rem;
             font-weight: bold;
             text-align: center;
+        }
+
+        /* Animated Countdown Styles */
+        .countdown-wrapper {
+            perspective: 1000px;
+        }
+
+        .countdown-display {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--uide-primary);
+            margin: 0;
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid var(--uide-primary);
+            transition: all 0.3s ease;
+            min-width: 70px;
+            text-align: center;
+        }
+
+        .countdown-display.flip {
+            animation: flipVertical 0.6s ease-in-out;
+        }
+
+        .countdown-display.warning {
+            color: var(--uide-accent);
+            border-color: var(--uide-accent);
+            animation: shake 0.5s infinite;
+        }
+
+        .countdown-display.danger {
+            color: #dc3545;
+            border-color: #dc3545;
+            animation: flash 0.3s infinite;
+        }
+
+        .countdown-display.finished {
+            color: var(--uide-primary);
+            border-color: var(--uide-primary);
+            background-color: rgba(40, 167, 69, 0.1);
+            animation: bounce 1s infinite;
+        }
+
+        .timer-button {
+            padding: 0.4rem 0.8rem;
+            border: 2px solid var(--uide-primary);
+            background: var(--uide-primary);
+            color: white;
+            border-radius: 6px;
+            font-size: 0.8em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .timer-button:hover {
+            background: var(--uide-secondary);
+            border-color: var(--uide-secondary);
+        }
+
+        .timer-button:active {
+            transform: scale(0.98);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes flash {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes flipVertical {
+            0% {
+                transform: rotateX(0deg);
+            }
+
+            50% {
+                transform: rotateX(-90deg);
+            }
+
+            100% {
+                transform: rotateX(0deg);
+            }
         }
 
         .activity-card {
@@ -197,103 +331,150 @@
                 <section>
                     <h3>Sistema de Evaluación: TA, PE y GA</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-clipboard-list"></i> Componentes de Evaluación</h4>
-                        
                         <div class="interactive-box" style="margin: 1rem 0;">
-                            <p><i class="fas fa-info-circle"></i> <strong>Cada actividad del curso está clasificada en uno de estos tres tipos:</strong></p>
+                            <p><i class="fas fa-info-circle"></i> <strong>Cada actividad del curso está clasificada en
+                                    uno de estos tres tipos:</strong></p>
                         </div>
 
-                        <div class="r-hstack">
-                            <div class="column fragment">
-                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
-                                    <h5 style="color: var(--uide-accent);"><i class="fas fa-home"></i> TA - Trabajo Autónomo</h5>
-                                    <div style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
-                                        <p style="font-size: 0.9em; text-align: left; margin: 0;">
-                                            <strong>¿Qué es?</strong> Actividades de estudio independiente que realizas fuera del aula
-                                        </p>
-                                        <ul style="font-size: 0.8em; text-align: left; margin-top: 0.5rem;">
-                                            <li>Fichas de lectura</li>
-                                            <li>Resúmenes críticos</li>
-                                            <li>Bitácoras de análisis</li>
-                                            <li>Mini-reportes técnicos</li>
-                                            <li>Notas técnicas</li>
-                                        </ul>
-                                        <p style="font-size: 0.8em; text-align: center; margin-top: 0.5rem; font-weight: bold; color: var(--uide-accent);">
-                                            Refuerza tu aprendizaje individual
-                                        </p>
-                                    </div>
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <div style="display: inline-block; margin: 0 2rem;">
+                                <div
+                                    style="background: rgba(233, 171, 33, 0.2); padding: 1rem; border-radius: 8px; margin: 0.5rem;">
+                                    <h5 style="color: var(--uide-accent); margin: 0;"><i class="fas fa-home"></i> TA
+                                    </h5>
+                                    <small>Trabajo Autónomo</small>
                                 </div>
                             </div>
-                            
-                            <div class="column fragment">
-                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
-                                    <h5 style="color: var(--uide-primary);"><i class="fas fa-flask"></i> PE - Práctica Experimental</h5>
-                                    <div style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
-                                        <p style="font-size: 0.9em; text-align: left; margin: 0;">
-                                            <strong>¿Qué es?</strong> Actividades prácticas y laboratorios donde aplicas los conceptos
-                                        </p>
-                                        <ul style="font-size: 0.8em; text-align: left; margin-top: 0.5rem;">
-                                            <li>Talleres de clasificación</li>
-                                            <li>Laboratorios de implementación</li>
-                                            <li>Simulaciones prácticas</li>
-                                            <li>Experimentos de Monte Carlo</li>
-                                            <li>Construcción de modelos</li>
-                                        </ul>
-                                        <p style="font-size: 0.8em; text-align: center; margin-top: 0.5rem; font-weight: bold; color: var(--uide-primary);">
-                                            Desarrolla habilidades técnicas
-                                        </p>
-                                    </div>
+                            <div style="display: inline-block; margin: 0 2rem;">
+                                <div
+                                    style="background: rgba(40, 167, 69, 0.2); padding: 1rem; border-radius: 8px; margin: 0.5rem;">
+                                    <h5 style="color: var(--uide-primary); margin: 0;"><i class="fas fa-flask"></i> PE
+                                    </h5>
+                                    <small>Práctica Experimental</small>
                                 </div>
                             </div>
-                            
-                            <div class="column fragment">
-                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
-                                    <h5 style="color: var(--uide-secondary);"><i class="fas fa-chart-line"></i> GA - Gestión de Aprendizaje</h5>
-                                    <div style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
-                                        <p style="font-size: 0.9em; text-align: left; margin: 0;">
-                                            <strong>¿Qué es?</strong> Evaluaciones formales que miden tu progreso y comprensión
-                                        </p>
-                                        <ul style="font-size: 0.8em; text-align: left; margin-top: 0.5rem;">
-                                            <li>Evaluaciones teóricas</li>
-                                            <li>Evaluaciones prácticas</li>
-                                            <li>Proyectos por fases</li>
-                                            <li>Master classes</li>
-                                            <li>Presentaciones finales</li>
-                                        </ul>
-                                        <p style="font-size: 0.8em; text-align: center; margin-top: 0.5rem; font-weight: bold; color: var(--uide-secondary);">
-                                            Verifica tu dominio del tema
-                                        </p>
-                                    </div>
+                            <div style="display: inline-block; margin: 0 2rem;">
+                                <div
+                                    style="background: rgba(145, 0, 72, 0.2); padding: 1rem; border-radius: 8px; margin: 0.5rem;">
+                                    <h5 style="color: var(--uide-secondary); margin: 0;"><i
+                                            class="fas fa-chart-line"></i> GA</h5>
+                                    <small>Gestión de Aprendizaje</small>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </section>
 
-                        <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem; text-align: center;">
-                            <h5><i class="fas fa-balance-scale"></i> Distribución de Evaluación</h5>
+                <section>
+                    <h3><i class="fas fa-home"></i> TA - Trabajo Autónomo</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(233, 171, 33, 0.1); padding: 2rem; border-radius: 8px; text-align: center;">
+                            <div style="background: rgba(255, 255, 255, 0.8); padding: 1.5rem; border-radius: 6px;">
+                                <p style="font-size: 1.1em; text-align: left; margin-bottom: 1rem;">
+                                    <strong>¿Qué es?</strong> Actividades de estudio independiente que realizas fuera
+                                    del aula
+                                </p>
+                                <ul style="font-size: 0.9em; text-align: left; margin: 1rem 0;">
+                                    <li>Fichas de lectura</li>
+                                    <li>Resúmenes críticos</li>
+                                    <li>Bitácoras de análisis</li>
+                                    <li>Mini-reportes técnicos</li>
+                                    <li>Notas técnicas</li>
+                                </ul>
+                                <p
+                                    style="font-size: 1em; text-align: center; margin-top: 1rem; font-weight: bold; color: var(--uide-accent);">
+                                    Refuerza tu aprendizaje individual
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-flask"></i> PE - Práctica Experimental</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 8px; text-align: center;">
+                            <div style="background: rgba(255, 255, 255, 0.8); padding: 1.5rem; border-radius: 6px;">
+                                <p style="font-size: 1.1em; text-align: left; margin-bottom: 1rem;">
+                                    <strong>¿Qué es?</strong> Actividades prácticas y laboratorios donde aplicas los
+                                    conceptos
+                                </p>
+                                <ul style="font-size: 0.9em; text-align: left; margin: 1rem 0;">
+                                    <li>Talleres de clasificación</li>
+                                    <li>Laboratorios de implementación</li>
+                                    <li>Simulaciones prácticas</li>
+                                    <li>Experimentos de Monte Carlo</li>
+                                    <li>Construcción de modelos</li>
+                                </ul>
+                                <p
+                                    style="font-size: 1em; text-align: center; margin-top: 1rem; font-weight: bold; color: var(--uide-primary);">
+                                    Desarrolla habilidades técnicas
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-chart-line"></i> GA - Gestión de Aprendizaje</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(145, 0, 72, 0.1); padding: 2rem; border-radius: 8px; text-align: center;">
+                            <div style="background: rgba(255, 255, 255, 0.8); padding: 1.5rem; border-radius: 6px;">
+                                <p style="font-size: 1.1em; text-align: left; margin-bottom: 1rem;">
+                                    <strong>¿Qué es?</strong> Evaluaciones formales que miden tu progreso y comprensión
+                                </p>
+                                <ul style="font-size: 0.9em; text-align: left; margin: 1rem 0;">
+                                    <li>Evaluaciones teóricas</li>
+                                    <li>Evaluaciones prácticas</li>
+                                    <li>Proyectos por fases</li>
+                                    <li>Master classes</li>
+                                    <li>Presentaciones finales</li>
+                                </ul>
+                                <p
+                                    style="font-size: 1em; text-align: center; margin-top: 1rem; font-weight: bold; color: var(--uide-secondary);">
+                                    Verifica tu dominio del tema
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-balance-scale"></i> Distribución de Evaluación</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(35, 53, 110, 0.1); padding: 2rem; border-radius: 8px; text-align: center;">
                             <div class="r-hstack" style="margin-top: 1rem;">
                                 <div class="column">
-                                    <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 6px;">
-                                        <p style="font-size: 0.9em; margin: 0;"><strong>Semana 5:</strong> 30%</p>
+                                    <div
+                                        style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 6px;">
+                                        <p style="font-size: 1.1em; margin: 0;"><strong>Semana 5:</strong> 30%</p>
                                         <small>Evaluación Diagnóstica</small>
                                     </div>
                                 </div>
                                 <div class="column">
-                                    <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 6px;">
-                                        <p style="font-size: 0.9em; margin: 0;"><strong>Semana 10:</strong> 30%</p>
+                                    <div
+                                        style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 6px;">
+                                        <p style="font-size: 1.1em; margin: 0;"><strong>Semana 10:</strong> 30%</p>
                                         <small>Evaluación Formativa</small>
                                     </div>
                                 </div>
                                 <div class="column">
-                                    <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 6px;">
-                                        <p style="font-size: 0.9em; margin: 0;"><strong>Semana 16:</strong> 40%</p>
+                                    <div
+                                        style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 6px;">
+                                        <p style="font-size: 1.1em; margin: 0;"><strong>Semana 16:</strong> 40%</p>
                                         <small>Evaluación Sumativa</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="timer-box" style="margin-top: 1rem;">
-                            <p><i class="fas fa-question-circle"></i> <strong>¿Dudas sobre el sistema de evaluación?</strong> Este es el momento para aclarar</p>
+                        <div class="timer-box" style="margin-top: 2rem;">
+                            <p><i class="fas fa-question-circle"></i> <strong>¿Dudas sobre el sistema de
+                                    evaluación?</strong> Este es el momento para aclarar</p>
                         </div>
                     </div>
                 </section>
@@ -477,9 +658,11 @@
                 <section>
                     <h3>Semana 6: Variables Discretas</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-cog"></i> Unidad 4 - Técnicas Avanzadas</h4>
-                        
-                        <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                        <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-cog"></i> Unidad
+                            4 - Técnicas Avanzadas</h4>
+
+                        <div
+                            style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
                             <h5><i class="fas fa-book-open"></i> Temas de la Semana</h5>
                             <ul style="font-size: 0.9em; text-align: left;">
                                 <li>Conceptos de probabilidad necesarios</li>
@@ -494,7 +677,8 @@
                                     <h5><i class="fas fa-tasks"></i> Actividades Calificadas</h5>
                                     <ul style="font-size: 0.8em; text-align: left;">
                                         <li><strong>GA-2.1:</strong> Master class Nuclear Power (1)</li>
-                                        <li><strong>PE-2.1:</strong> Generar Bernoulli, Binomial(n,p), Poisson(λ) (2.25)</li>
+                                        <li><strong>PE-2.1:</strong> Generar Bernoulli, Binomial(n,p), Poisson(λ) (2.25)
+                                        </li>
                                         <li><strong>TA-2.1:</strong> Problemas selección distribución (2.25)</li>
                                     </ul>
                                 </div>
@@ -512,7 +696,8 @@
                 <section>
                     <h3>Semana 7: Variables Continuas</h3>
                     <div class="concept-box">
-                        <div style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                        <div
+                            style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
                             <h5><i class="fas fa-book-open"></i> Temas de la Semana</h5>
                             <ul style="font-size: 0.9em; text-align: left;">
                                 <li>Generación: Uniforme, Exponencial, Normal</li>
@@ -544,7 +729,8 @@
                 <section>
                     <h3>Semana 8: Verificación</h3>
                     <div class="concept-box">
-                        <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
                             <h5><i class="fas fa-book-open"></i> Temas de la Semana</h5>
                             <ul style="font-size: 0.9em; text-align: left;">
                                 <li>Conceptos básicos</li>
@@ -559,7 +745,8 @@
                                 <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
                                     <h5><i class="fas fa-tasks"></i> Actividades Calificadas</h5>
                                     <ul style="font-size: 0.8em; text-align: left;">
-                                        <li><strong>PE-2.3:</strong> Activar traza, verificar unidades y balance (2.25)</li>
+                                        <li><strong>PE-2.3:</strong> Activar traza, verificar unidades y balance (2.25)
+                                        </li>
                                         <li><strong>TA-2.3:</strong> Checklist verificación código (2.25)</li>
                                     </ul>
                                 </div>
@@ -567,7 +754,8 @@
                             <div class="column">
                                 <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
                                     <h5><i class="fas fa-target"></i> Resultado Aprendizaje</h5>
-                                    <p style="font-size: 0.8em;">Explicar técnicas de verificación y validación de modelos</p>
+                                    <p style="font-size: 0.8em;">Explicar técnicas de verificación y validación de
+                                        modelos</p>
                                 </div>
                             </div>
                         </div>
@@ -577,7 +765,8 @@
                 <section>
                     <h3>Semana 9: Validación</h3>
                     <div class="concept-box">
-                        <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                        <div
+                            style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
                             <h5><i class="fas fa-book-open"></i> Temas de la Semana</h5>
                             <ul style="font-size: 0.9em; text-align: left;">
                                 <li>Pruebas de bondad de ajuste (Kolmogorov-Smirnov, Chi-cuadrado)</li>
@@ -600,7 +789,8 @@
                             <div class="column">
                                 <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
                                     <h5><i class="fas fa-target"></i> Resultado Aprendizaje</h5>
-                                    <p style="font-size: 0.8em;">Aplicar pruebas de bondad de ajuste y validación estadística</p>
+                                    <p style="font-size: 0.8em;">Aplicar pruebas de bondad de ajuste y validación
+                                        estadística</p>
                                 </div>
                             </div>
                         </div>
@@ -633,9 +823,11 @@
                 <section>
                     <h3>Semana 11: Sistemas de Colas</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-users"></i> Unidad 6 - Aplicaciones Prácticas</h4>
-                        
-                        <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                        <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-users"></i>
+                            Unidad 6 - Aplicaciones Prácticas</h4>
+
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
                             <h5><i class="fas fa-book-open"></i> Temas de la Semana</h5>
                             <ul style="font-size: 0.9em; text-align: left;">
                                 <li>Componentes de sistemas de colas</li>
@@ -658,7 +850,8 @@
                             <div class="column">
                                 <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
                                     <h5><i class="fas fa-target"></i> Resultado Aprendizaje</h5>
-                                    <p style="font-size: 0.8em;">Explicar componentes y parámetros de sistemas de colas</p>
+                                    <p style="font-size: 0.8em;">Explicar componentes y parámetros de sistemas de colas
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -668,7 +861,8 @@
                 <section>
                     <h3>Semana 12: Inventarios</h3>
                     <div class="concept-box">
-                        <div style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                        <div
+                            style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
                             <h5><i class="fas fa-book-open"></i> Temas de la Semana</h5>
                             <ul style="font-size: 0.9em; text-align: left;">
                                 <li>Componentes de sistemas de inventario</li>
@@ -684,14 +878,16 @@
                                     <h5><i class="fas fa-tasks"></i> Actividades Calificadas</h5>
                                     <ul style="font-size: 0.8em; text-align: left;">
                                         <li><strong>PE-3.2:</strong> Simular dos políticas (s,Q) vs EOQ (2.4)</li>
-                                        <li><strong>TA-3.2:</strong> Informe costo total promedio y recomendación (2.4)</li>
+                                        <li><strong>TA-3.2:</strong> Informe costo total promedio y recomendación (2.4)
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
                                     <h5><i class="fas fa-target"></i> Resultado Aprendizaje</h5>
-                                    <p style="font-size: 0.8em;">Explicar políticas de inventario y modelos económicos</p>
+                                    <p style="font-size: 0.8em;">Explicar políticas de inventario y modelos económicos
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -701,7 +897,8 @@
                 <section>
                     <h3>Semana 13: Simuladores Comerciales</h3>
                     <div class="concept-box">
-                        <div style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                        <div
+                            style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
                             <h5><i class="fas fa-book-open"></i> Temas de la Semana</h5>
                             <ul style="font-size: 0.9em; text-align: left;">
                                 <li>Panorama de simuladores</li>
@@ -716,7 +913,8 @@
                                 <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
                                     <h5><i class="fas fa-tasks"></i> Actividades Calificadas</h5>
                                     <ul style="font-size: 0.8em; text-align: left;">
-                                        <li><strong>PE-3.3:</strong> Construir modelo simple (SimPy/AnyLogic/Excel) (2.4)</li>
+                                        <li><strong>PE-3.3:</strong> Construir modelo simple (SimPy/AnyLogic/Excel)
+                                            (2.4)</li>
                                         <li><strong>TA-3.3:</strong> Diario técnico: decisiones de modelado (2.4)</li>
                                     </ul>
                                 </div>
@@ -724,7 +922,8 @@
                             <div class="column">
                                 <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
                                     <h5><i class="fas fa-target"></i> Resultado Aprendizaje</h5>
-                                    <p style="font-size: 0.8em;">Explicar simuladores disponibles y construcción de modelos</p>
+                                    <p style="font-size: 0.8em;">Explicar simuladores disponibles y construcción de
+                                        modelos</p>
                                 </div>
                             </div>
                         </div>
@@ -734,7 +933,8 @@
                 <section>
                     <h3>Semana 14: Aplicaciones Industriales</h3>
                     <div class="concept-box">
-                        <div style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                        <div
+                            style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
                             <h5><i class="fas fa-book-open"></i> Temas de la Semana</h5>
                             <ul style="font-size: 0.9em; text-align: left;">
                                 <li>Manufactura, servicios, logística</li>
@@ -749,14 +949,16 @@
                                     <h5><i class="fas fa-tasks"></i> Actividades Calificadas</h5>
                                     <ul style="font-size: 0.8em; text-align: left;">
                                         <li><strong>PE-3.4:</strong> Correr experimento 2^k; analizar efectos (2.4)</li>
-                                        <li><strong>TA-3.4:</strong> Memo con conclusiones y próxima iteración (2.4)</li>
+                                        <li><strong>TA-3.4:</strong> Memo con conclusiones y próxima iteración (2.4)
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="column">
                                 <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
                                     <h5><i class="fas fa-target"></i> Resultado Aprendizaje</h5>
-                                    <p style="font-size: 0.8em;">Explicar aplicaciones en manufactura, servicios y logística</p>
+                                    <p style="font-size: 0.8em;">Explicar aplicaciones en manufactura, servicios y
+                                        logística</p>
                                 </div>
                             </div>
                         </div>
@@ -766,9 +968,11 @@
                 <section>
                     <h3>Semana 15: Metodología de Proyectos</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-project-diagram"></i> Unidad 7</h4>
-                        
-                        <div style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                        <h4 style="color: var(--uide-secondary); text-align: center;"><i
+                                class="fas fa-project-diagram"></i> Unidad 7</h4>
+
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
                             <h5><i class="fas fa-book-open"></i> Temas de la Semana</h5>
                             <ul style="font-size: 0.9em; text-align: left;">
                                 <li>Objetivos y alcance</li>
@@ -783,7 +987,8 @@
                                 <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
                                     <h5><i class="fas fa-tasks"></i> Actividades Calificadas</h5>
                                     <ul style="font-size: 0.8em; text-align: left;">
-                                        <li><strong>PE-3.5:</strong> Prueba de corrida y recolección datos piloto (2.4)</li>
+                                        <li><strong>PE-3.5:</strong> Prueba de corrida y recolección datos piloto (2.4)
+                                        </li>
                                         <li><strong>TA-3.5:</strong> Borrador de resultados y visualizaciones (2.4)</li>
                                     </ul>
                                 </div>
@@ -874,22 +1079,22 @@
                 <section>
                     <h3>¿Por qué es Importante?</h3>
                     <div class="r-hstack">
-                        <div class="column fragment">
-                            <div class="concept-box">
+                        <div class="column">
+                            <div class="concept-box fragment">
                                 <h4><i class="fas fa-shield-alt"></i> Sin Riesgos</h4>
                                 <p>Experimentar sin consecuencias reales</p>
                             </div>
-                            <div class="concept-box">
+                            <div class="concept-box fragment">
                                 <h4><i class="fas fa-dollar-sign"></i> Económico</h4>
                                 <p>Más barato que experimentar con sistemas reales</p>
                             </div>
                         </div>
-                        <div class="column fragment">
-                            <div class="concept-box">
+                        <div class="column">
+                            <div class="concept-box fragment">
                                 <h4><i class="fas fa-question-circle"></i> "¿Qué pasaría si...?"</h4>
                                 <p>Responder preguntas estratégicas</p>
                             </div>
-                            <div class="concept-box">
+                            <div class="concept-box fragment">
                                 <h4><i class="fas fa-cogs"></i> Sistemas Complejos</h4>
                                 <p>Analizar lo que es muy difícil de estudiar</p>
                             </div>
@@ -1134,17 +1339,14 @@
                 </section>
 
                 <section data-auto-animate>
-                    <h3>1. Sistema - Aplicado a Nuestra Clínica</h3>
+                    <h3>1. Sistema - La Clínica como Sistema</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-hospital"></i> La
-                            Clínica como Sistema</h4>
-
                         <div class="r-hstack">
                             <div class="column fragment">
                                 <div
                                     style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
-                                    <h5><i class="fas fa-puzzle-piece"></i> Elementos</h5>
-                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                    <h5 style="font-size: 0.9em;"><i class="fas fa-puzzle-piece"></i> Elementos</h5>
+                                    <ul style="text-align: left; font-size: 0.75em; margin-top: 1rem;">
                                         <li>Pacientes públicos</li>
                                         <li>Pacientes privados</li>
                                         <li>Médicos especialistas</li>
@@ -1155,8 +1357,8 @@
                             <div class="column fragment">
                                 <div
                                     style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
-                                    <h5><i class="fas fa-project-diagram"></i> Relaciones</h5>
-                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                    <h5 style="font-size: 0.9em;"><i class="fas fa-project-diagram"></i> Relaciones</h5>
+                                    <ul style="text-align: left; font-size: 0.75em; margin-top: 1rem;">
                                         <li>Prioridad por tipo de paciente</li>
                                         <li>Asignación médico-paciente</li>
                                         <li>Flujo de atención</li>
@@ -1170,8 +1372,8 @@
                             <div class="column fragment">
                                 <div
                                     style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
-                                    <h5><i class="fas fa-sign-in-alt"></i> Entradas</h5>
-                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                    <h5 style="font-size: 0.9em;"><i class="fas fa-sign-in-alt"></i> Entradas</h5>
+                                    <ul style="text-align: left; font-size: 0.75em; margin-top: 1rem;">
                                         <li>Llegada de pacientes</li>
                                         <li>Personal médico</li>
                                         <li>Recursos materiales</li>
@@ -1181,8 +1383,8 @@
                             <div class="column fragment">
                                 <div
                                     style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
-                                    <h5><i class="fas fa-sign-out-alt"></i> Salidas</h5>
-                                    <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
+                                    <h5 style="font-size: 0.9em;"><i class="fas fa-sign-out-alt"></i> Salidas</h5>
+                                    <ul style="text-align: left; font-size: 0.75em; margin-top: 1rem;">
                                         <li>Pacientes atendidos</li>
                                         <li>Diagnósticos</li>
                                         <li>Tratamientos</li>
@@ -1190,10 +1392,28 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </section>
 
-                        <div class="interactive-box" style="margin-top: 1rem;">
-                            <p><i class="fas fa-target"></i> <strong>Objetivo del Sistema:</strong> Brindar atención
-                                médica especializada de calidad</p>
+                <section>
+                    <h3>Objetivo del Sistema</h3>
+                    <div class="concept-box">
+                        <div
+                            style="background: rgba(40, 167, 69, 0.1); padding: 3rem; border-radius: 12px; text-align: center;">
+                            <div style="background: rgba(255, 255, 255, 0.9); padding: 2rem; border-radius: 8px;">
+                                <h4 style="color: var(--uide-primary); font-size: 1.2em; margin-bottom: 1rem;">
+                                    <i class="fas fa-target"></i> Propósito Principal
+                                </h4>
+                                <p style="font-size: 1.1em; font-weight: bold; color: var(--uide-primary);">
+                                    Brindar atención médica especializada de calidad
+                                </p>
+                                <div style="margin-top: 1.5rem; font-size: 0.9em; color: #666;">
+                                    <p><i class="fas fa-check-circle"></i> Atención eficiente y oportuna</p>
+                                    <p><i class="fas fa-check-circle"></i> Especialización en ginecología/obstetricia
+                                    </p>
+                                    <p><i class="fas fa-check-circle"></i> Satisfacción del paciente</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -1234,16 +1454,28 @@
                 <section data-auto-animate>
                     <h3>2. Modelo - Aplicado a Nuestra Clínica</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-hospital"></i>
+                        <h4 style="color: var(--uide-secondary); text-align: center;">
                             Modelo de la Clínica</h4>
 
                         <div
                             style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
-                            <h5 style="text-align: center;"><i class="fas fa-route"></i> Flujo Simplificado del Modelo
+                            <h5 style="text-align: center;"> Flujo Simplificado del Modelo
                             </h5>
-                            <div style="text-align: center; font-size: 1.1em; margin: 1rem 0;">
-                                <strong>Llegada</strong> → <strong>Registro</strong> → <strong>Espera</strong> →
-                                <strong>Consulta</strong> → <strong>Salida</strong>
+                            <div style="text-align: center; font-size: 1.1em; margin: 1rem 0; line-height: 1.2;">
+                                <span class="fragment"><i class="fas fa-walking"
+                                        style="color: var(--uide-primary);"></i> <strong>Llegada</strong></span>
+                                <span class="fragment"> → </span>
+                                <span class="fragment"><i class="fas fa-clipboard-list"
+                                        style="color: var(--uide-secondary);"></i> <strong>Registro</strong></span>
+                                <span class="fragment"> → </span>
+                                <span class="fragment"><i class="fas fa-clock" style="color: var(--uide-accent);"></i>
+                                    <strong>Espera</strong></span>
+                                <span class="fragment"> → </span>
+                                <span class="fragment"><i class="fas fa-user-md"
+                                        style="color: var(--uide-primary);"></i> <strong>Consulta</strong></span>
+                                <span class="fragment"> → </span>
+                                <span class="fragment"><i class="fas fa-sign-out-alt"
+                                        style="color: var(--uide-secondary);"></i> <strong>Salida</strong></span>
                             </div>
                         </div>
 
@@ -1273,7 +1505,7 @@
                         </div>
 
                         <div class="interactive-box" style="margin-top: 1rem;">
-                            <p><i class="fas fa-lightbulb"></i> <strong>El modelo nos permite experimentar sin afectar
+                            <p><strong>El modelo nos permite experimentar sin afectar
                                     pacientes reales</strong></p>
                         </div>
                     </div>
@@ -1311,14 +1543,14 @@
                 <section data-auto-animate>
                     <h3>3. Evento - Aplicado a Nuestra Clínica</h3>
                     <div class="concept-box">
-                        <h4 style="color: var(--uide-accent); text-align: center;"><i class="fas fa-hospital"></i>
+                        <h4 style="color: var(--uide-accent); text-align: center;">
                             Eventos en la Clínica</h4>
 
                         <div class="r-hstack">
                             <div class="column fragment">
                                 <div
                                     style="background: rgba(40, 167, 69, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
-                                    <h5><i class="fas fa-sign-in-alt"></i> Eventos de Llegada</h5>
+                                    <h5>Eventos de Llegada</h5>
                                     <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
                                         <li><strong>Llegada paciente público</strong></li>
                                         <li><strong>Llegada paciente privado</strong></li>
@@ -1326,7 +1558,7 @@
                                     </ul>
                                     <div
                                         style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
-                                        <small><i class="fas fa-info-circle"></i> Cambian: número de pacientes en
+                                        <small>Cambian: número de pacientes en
                                             espera</small>
                                     </div>
                                 </div>
@@ -1334,7 +1566,7 @@
                             <div class="column fragment">
                                 <div
                                     style="background: rgba(35, 53, 110, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
-                                    <h5><i class="fas fa-cogs"></i> Eventos de Proceso</h5>
+                                    <h5>Eventos de Proceso</h5>
                                     <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
                                         <li><strong>Inicio de consulta</strong></li>
                                         <li><strong>Fin de consulta</strong></li>
@@ -1342,7 +1574,7 @@
                                     </ul>
                                     <div
                                         style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
-                                        <small><i class="fas fa-info-circle"></i> Cambian: estado de
+                                        <small>Cambian: estado de
                                             consultorios</small>
                                     </div>
                                 </div>
@@ -1350,7 +1582,7 @@
                             <div class="column fragment">
                                 <div
                                     style="background: rgba(145, 0, 72, 0.1); padding: 1.5rem; border-radius: 8px; text-align: center;">
-                                    <h5><i class="fas fa-sign-out-alt"></i> Eventos de Salida</h5>
+                                    <h5>Eventos de Salida</h5>
                                     <ul style="text-align: left; font-size: 0.9em; margin-top: 1rem;">
                                         <li><strong>Salida paciente atendido</strong></li>
                                         <li>Salida por abandono</li>
@@ -1358,14 +1590,14 @@
                                     </ul>
                                     <div
                                         style="background: rgba(255, 255, 255, 0.8); padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">
-                                        <small><i class="fas fa-info-circle"></i> Cambian: recursos disponibles</small>
+                                        <small>Cambian: recursos disponibles</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="interactive-box" style="margin-top: 1rem;">
-                            <p><i class="fas fa-question-circle"></i> <strong>Pregunta:</strong> ¿Qué evento creen que
+                            <p><strong>Pregunta:</strong> ¿Qué evento creen que
                                 es más crítico para el tiempo de espera?</p>
                         </div>
                     </div>
@@ -1380,23 +1612,25 @@
                         <div
                             style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 12px; margin: 1rem 0;">
                             <div style="text-align: center; font-size: 1.1em; margin-bottom: 1.5rem;">
-                                <strong style="color: var(--uide-primary);">SISTEMA</strong> (Clínica Real)
-                                <span style="color: var(--uide-secondary);"> → </span>
-                                <strong style="color: var(--uide-secondary);">MODELO</strong> (Representación
-                                Simplificada)
-                                <span style="color: var(--uide-accent);"> → </span>
-                                <strong style="color: var(--uide-accent);">EVENTOS</strong> (Cambios en el Tiempo)
+                                <span class="fragment"><strong style="color: var(--uide-primary);">SISTEMA</strong>
+                                    (Clínica Real)</span>
+                                <span class="fragment"><span style="color: var(--uide-secondary);"> → </span></span>
+                                <span class="fragment"><strong style="color: var(--uide-secondary);">MODELO</strong>
+                                    (Representación Simplificada)</span>
+                                <span class="fragment"><span style="color: var(--uide-accent);"> → </span></span>
+                                <span class="fragment"><strong style="color: var(--uide-accent);">EVENTOS</strong>
+                                    (Cambios en el Tiempo)</span>
                             </div>
 
                             <div class="r-hstack">
-                                <div class="column">
+                                <div class="column fragment">
                                     <div
                                         style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; text-align: center;">
                                         <h6><i class="fas fa-hospital"></i> Sistema Real</h6>
                                         <p style="font-size: 0.8em;">Clínica con pacientes, médicos, consultorios</p>
                                     </div>
                                 </div>
-                                <div class="column">
+                                <div class="column fragment">
                                     <div
                                         style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; text-align: center;">
                                         <h6><i class="fas fa-cube"></i> Modelo Virtual</h6>
@@ -1404,7 +1638,7 @@
                                             salida</p>
                                     </div>
                                 </div>
-                                <div class="column">
+                                <div class="column fragment">
                                     <div
                                         style="background: rgba(255, 255, 255, 0.8); padding: 1rem; border-radius: 8px; text-align: center;">
                                         <h6><i class="fas fa-bolt"></i> Eventos Simulados</h6>
@@ -1414,11 +1648,17 @@
                             </div>
                         </div>
 
-                        <div class="timer-box" style="margin-top: 1rem;">
-                            <p><i class="fas fa-clock"></i> Actividad: Identifiquen un evento adicional: <span
-                                    id="event-timer">2:00</span></p>
-                            <button onclick="startTimer(2, 'event-timer')"
-                                style="margin-left: 1rem; padding: 0.5rem 1rem; border: none; background: var(--uide-primary); color: white; border-radius: 4px;">Iniciar</button>
+                        <div class="timer-box fragment" style="margin-top: 1rem;">
+                            <p>Actividad: Identifiquen un evento adicional</p>
+                            <div class="countdown-container"
+                                style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1rem 0;">
+                                <div class="countdown-wrapper">
+                                    <div id="event-timer" class="countdown-display">1:00</div>
+                                </div>
+                                <button onclick="startTimer(1, 'event-timer')" class="timer-button">
+                                    <i class="fas fa-play"></i> Iniciar Timer
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -1785,7 +2025,7 @@
                         </div>
 
                         <div
-                            style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
+                            style="background: rgba(233, 171, 33, 0.1); padding: 0.5rem; border-radius: 8px; margin-top: 1rem; text-align: center;">
                             <p><i class="fas fa-balance-scale"></i> <strong>Decisión de Modelado:</strong> Para este
                                 estudio, se priorizaron los eventos discretos por ser más críticos</p>
                         </div>
@@ -1835,10 +2075,16 @@
                         </div>
 
                         <div class="timer-box" style="margin-top: 1rem;">
-                            <p><i class="fas fa-clock"></i> Actividad: Clasifiquen su universidad por naturaleza: <span
-                                    id="nature-timer">2:00</span></p>
-                            <button onclick="startTimer(2, 'nature-timer')"
-                                style="margin-left: 1rem; padding: 0.5rem 1rem; border: none; background: var(--uide-primary); color: white; border-radius: 4px;">Iniciar</button>
+                            <p>Actividad: Clasifiquen nuestra universidad por naturaleza</p>
+                            <div class="countdown-container"
+                                style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1rem 0;">
+                                <div class="countdown-wrapper">
+                                    <div id="nature-timer" class="countdown-display">1:00</div>
+                                </div>
+                                <button onclick="startTimer(1, 'nature-timer')" class="timer-button">
+                                    <i class="fas fa-play"></i> Iniciar Timer
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -1966,10 +2212,16 @@
                         </div>
 
                         <div class="timer-box" style="margin-top: 1rem;">
-                            <p><i class="fas fa-clock"></i> Reflexión: ¿Qué otros sistemas conocen con esta
-                                clasificación?: <span id="classification-timer">3:00</span></p>
-                            <button onclick="startTimer(3, 'classification-timer')"
-                                style="margin-left: 1rem; padding: 0.5rem 1rem; border: none; background: var(--uide-primary); color: white; border-radius: 4px;">Iniciar</button>
+                            <p>Reflexión: ¿Qué otros sistemas conocen con esta clasificación?</p>
+                            <div class="countdown-container"
+                                style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1rem 0;">
+                                <div class="countdown-wrapper">
+                                    <div id="classification-timer" class="countdown-display">2:00</div>
+                                </div>
+                                <button onclick="startTimer(2, 'classification-timer')" class="timer-button">
+                                    <i class="fas fa-play"></i> Iniciar Timer
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -2150,36 +2402,7 @@
                     </div>
                 </section>
 
-                <section data-background-color="#f0f8ff">
-                    <h3>Agradecimientos</h3>
-                    <div class="concept-box" style="text-align: center;">
-                        <h4 style="color: var(--uide-primary);"><i class="fas fa-graduation-cap"></i> Universidad
-                            Internacional del Ecuador</h4>
 
-                        <div style="margin: 2rem 0;">
-                            <p style="font-size: 1.1em; margin-bottom: 1rem;">
-                                <strong>FT-06-SIM • Simulación y Modelado de Sistemas</strong>
-                            </p>
-                            <p style="font-size: 0.9em; color: var(--uide-secondary);">
-                                Cuarto Nivel • Carrera de Ingeniería
-                            </p>
-                        </div>
-
-                        <div
-                            style="background: rgba(233, 171, 33, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
-                            <p style="font-size: 0.9em; margin: 0;">
-                                <i class="fas fa-chalkboard-teacher"></i> <strong>Prof. Charlie Cárdenas Toledo,
-                                    M.Sc.</strong><br>
-                                <em>Octubre 2025 • Semana 1</em>
-                            </p>
-                        </div>
-
-                        <div style="margin-top: 2rem; font-size: 0.8em; color: var(--uide-secondary);">
-                            <p><i class="fas fa-info-circle"></i> Material desarrollado para metodología Flipped
-                                Classroom</p>
-                        </div>
-                    </div>
-                </section>
             </section>
         </div>
     </div>
@@ -2246,25 +2469,95 @@
             let timeLeft = minutes * 60;
             const timerElement = document.getElementById(elementId);
 
+            // Reset classes
+            timerElement.className = 'countdown-display';
+
             timerInterval = setInterval(() => {
                 const mins = Math.floor(timeLeft / 60);
                 const secs = timeLeft % 60;
 
                 if (timerElement) {
                     timerElement.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+
+                    // Add visual effects based on time remaining
+                    if (timeLeft <= 10) {
+                        timerElement.className = 'countdown-display danger';
+                    } else if (timeLeft <= 30) {
+                        timerElement.className = 'countdown-display warning';
+                    }
                 }
 
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
                     if (timerElement) {
-                        timerElement.textContent = "¡Tiempo!";
-                        timerElement.style.backgroundColor = "#dc3545";
-                        timerElement.style.color = "white";
+                        timerElement.textContent = "🎉 ¡TIEMPO!";
+                        timerElement.className = 'countdown-display finished';
+
+                        // Play sound effect
+                        playFinishSound();
+
+                        // Show celebration effect
+                        showCelebration();
                     }
                 }
 
                 timeLeft--;
             }, 1000);
+        }
+
+        function playFinishSound() {
+            // Create audio context for sound generation
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+            // Play a celebratory sound sequence
+            const frequencies = [523.25, 659.25, 783.99, 1046.50]; // C, E, G, C (major chord)
+
+            frequencies.forEach((freq, index) => {
+                setTimeout(() => {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+
+                    oscillator.frequency.setValueAtTime(freq, audioContext.currentTime);
+                    oscillator.type = 'sine';
+
+                    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + 0.5);
+                }, index * 150);
+            });
+        }
+
+        function showCelebration() {
+            // Create confetti effect
+            const timerElement = document.getElementById('event-timer');
+            const container = timerElement.parentElement;
+
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.innerHTML = ['🎉', '🎊', '✨', '🌟'][Math.floor(Math.random() * 4)];
+                    confetti.style.position = 'absolute';
+                    confetti.style.fontSize = '1.5em';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '0';
+                    confetti.style.animation = 'fall 2s linear forwards';
+                    confetti.style.zIndex = '1000';
+
+                    container.style.position = 'relative';
+                    container.appendChild(confetti);
+
+                    setTimeout(() => {
+                        if (confetti.parentNode) {
+                            confetti.parentNode.removeChild(confetti);
+                        }
+                    }, 2000);
+                }, i * 100);
+            }
         }
 
         function stopTimer() {
