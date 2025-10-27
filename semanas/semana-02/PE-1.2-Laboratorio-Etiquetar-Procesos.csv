@@ -1,0 +1,3 @@
+Rubric Name,Criteria Name,Criteria Description,Criteria Enable Range,Rating Name,Rating Description,Rating Points,Rating Name,Rating Description,Rating Points,Rating Name,Rating Description,Rating Points
+PE-1.2 Laboratorio Etiquetar Procesos,Etiquetado Correcto,Etiqueta correctamente procesos como D/C y Det/Est,false,Excelente,Etiqueta correctamente todos los procesos,1.25,Bueno,Etiqueta correctamente la mayoría de procesos,0.8,Insuficiente,Etiqueta incorrectamente la mayoría de procesos,0
+PE-1.2 Laboratorio Etiquetar Procesos,Justificación Técnica,Justifica técnicamente cada etiquetado realizado,false,Excelente,Justificación técnica completa y correcta,1,Bueno,Justificación técnica parcialmente correcta,0.6,Insuficiente,Justificación técnica incorrecta o ausente,0

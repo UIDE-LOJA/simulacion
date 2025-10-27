@@ -1,0 +1,3 @@
+Rubric Name,Criteria Name,Criteria Description,Criteria Enable Range,Rating Name,Rating Description,Rating Points,Rating Name,Rating Description,Rating Points,Rating Name,Rating Description,Rating Points
+GA-1.4 Evaluación Práctica,Implementación Técnica,Implementa correctamente soluciones de simulación,false,Excelente,Implementación técnica correcta y eficiente,2.4,Bueno,Implementación técnica parcialmente correcta,1.6,Insuficiente,Implementación técnica incorrecta,0
+GA-1.4 Evaluación Práctica,Análisis de Resultados,Analiza e interpreta correctamente los resultados obtenidos,false,Excelente,Análisis completo y correcto,1.6,Bueno,Análisis parcialmente correcto,1,Insuficiente,Análisis incorrecto o ausente,0

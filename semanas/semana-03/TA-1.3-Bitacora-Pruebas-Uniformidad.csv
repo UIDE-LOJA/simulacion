@@ -1,0 +1,3 @@
+Rubric Name,Criteria Name,Criteria Description,Criteria Enable Range,Rating Name,Rating Description,Rating Points,Rating Name,Rating Description,Rating Points,Rating Name,Rating Description,Rating Points
+TA-1.3 Bitácora Pruebas de Uniformidad,Ejecución de Pruebas,Ejecuta correctamente pruebas de runs y frecuencias,false,Excelente,Ejecuta todas las pruebas correctamente,1.25,Bueno,Ejecuta la mayoría de pruebas correctamente,0.8,Insuficiente,Ejecuta pocas pruebas o incorrectamente,0
+TA-1.3 Bitácora Pruebas de Uniformidad,Documentación de Resultados,Documenta claramente los resultados en bitácora,false,Excelente,Documentación completa y clara,1,Bueno,Documentación parcialmente completa,0.6,Insuficiente,Documentación incompleta o confusa,0

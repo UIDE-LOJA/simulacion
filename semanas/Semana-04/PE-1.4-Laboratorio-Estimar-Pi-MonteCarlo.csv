@@ -1,0 +1,3 @@
+Rubric Name,Criteria Name,Criteria Description,Criteria Enable Range,Rating Name,Rating Description,Rating Points,Rating Name,Rating Description,Rating Points,Rating Name,Rating Description,Rating Points
+PE-1.4 Laboratorio Estimar π con Monte Carlo,Implementación Monte Carlo,Implementa correctamente método Monte Carlo para estimar π,false,Excelente,Implementación correcta y eficiente,1.25,Bueno,Implementación con errores menores,0.8,Insuficiente,Implementación incorrecta,0
+PE-1.4 Laboratorio Estimar π con Monte Carlo,Cálculo de Área,Calcula correctamente área bajo curva usando Monte Carlo,false,Excelente,Cálculo correcto y preciso,1,Bueno,Cálculo parcialmente correcto,0.6,Insuficiente,Cálculo incorrecto,0
