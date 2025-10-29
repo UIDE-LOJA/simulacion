@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Semana 2 - Paradigmas de Simulación</title>
+
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/monokai.css">
+
+    <!-- UIDE Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/uide-theme.css">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="presentacion-clase-semana2.css">
+</head>
+
+<body>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Title Slide -->
+            <section data-background-color="#f8f8f8" data-transition="convex">
+                <div class="title-slide">
+                    <h1>Simulación y Modelado de Sistemas</h1>
+                    <h2>Paradigmas de Simulación - Semana 2</h2>
+
+                    <div class="course-info">
+                        <strong>FT-06-SIM</strong> • Cuarto Nivel<br>
+                        <strong>Simulación</strong><br>
+                        <em>Prof. Charlie Cárdenas Toledo, M.Sc.</em><br>
+                        Universidad Internacional del Ecuador • Octubre 2025
+                    </div>
+
+                    <div
+                        style="background: rgba(233, 171, 33, 0.1); border-radius: 8px; padding: 1em; margin: 1em 0; font-size: 0.9em;">
+                        <strong>Paradigmas de Simulación</strong><br>
+                        <em>Semana 2 • Discretos vs Continuos • Determinísticos vs Estocásticos</em>
+                    </div>
+
+                    <div style="margin-top: 2em; font-size: 0.9em; font-style: italic; color: var(--uide-secondary);">
+                        Clasificación y características de modelos de simulación
+                    </div>
+                </div>
+            </section>
+   
+         <!-- Agenda de la Semana 2 -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-calendar-alt"></i> Agenda Semana 2</h2>
+
+                <section>
+                    <h3>Objetivos de Aprendizaje</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-target"></i>
+                            Al finalizar esta semana podrás:</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-search"></i> Identificar</h5>
+                                    <p style="font-size: 0.9em;">Paradigmas de simulación según naturaleza temporal y aleatoriedad</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-balance-scale"></i> Clasificar</h5>
+                                    <p style="font-size: 0.9em;">Sistemas reales en discretos/continuos y determinísticos/estocásticos</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="r-hstack" style="margin-top: 1rem;">
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-robot"></i> Explicar</h5>
+                                    <p style="font-size: 0.9em;">Conceptos básicos de modelado basado en agentes</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-lightbulb"></i> Aplicar</h5>
+                                    <p style="font-size: 0.9em;">Criterios de selección de paradigmas según el problema</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Contenido de Hoy</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-clock"></i> Parte 1: Temporal</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Modelos Discretos</li>
+                                        <li>Modelos Continuos</li>
+                                        <li>Modelos Híbridos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-dice"></i> Parte 2: Aleatoriedad</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Modelos Determinísticos</li>
+                                        <li>Modelos Estocásticos</li>
+                                        <li>Método Monte Carlo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                            <h5><i class="fas fa-robot"></i> Parte 3: Introducción a Agentes</h5>
+                            <p style="font-size: 0.8em;">Conceptos básicos del modelado basado en agentes</p>
+                        </div>
+                    </div>
+                </section>
+            </section> 
+           <!-- Modelos Discretos vs Continuos -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-clock"></i> Clasificación Temporal</h2>
+
+                <section>
+                    <h3>Pregunta Inicial</h3>
+                    <div class="interactive-box">
+                        <h3>¿Cómo cambian los sistemas en el tiempo?</h3>
+                        <p style="font-size: 0.9em; margin-top: 1rem;">Piensen en ejemplos: ¿El cambio es instantáneo o gradual?</p>
+                    </div>
+
+                    <div class="discussion-point">
+                        <p><i class="fas fa-comments"></i> <strong>Ejemplos:</strong> Cajero automático vs llenado de tanque</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-step-forward"></i> Modelos Discretos</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">Simulación de Eventos Discretos (SED)</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-bolt"></i> Comportamiento</h5>
+                                    <p style="font-size: 0.9em;">Los cambios ocurren de forma <strong>instantánea</strong> en puntos específicos del tiempo</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-clock"></i> Tiempo</h5>
+                                    <p style="font-size: 0.9em;">El tiempo <strong>"salta"</strong> de un evento al siguiente</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                            <h5><i class="fas fa-users"></i> Unidad de Modelado</h5>
+                            <p style="font-size: 0.9em;">Modela <strong>elementos individuales</strong> (entidades): clientes, piezas, vehículos</p>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-example"></i> <strong>Ejemplo:</strong> Líneas de espera - las medidas cambian solo cuando un cliente entra o sale</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-wave-square"></i> Modelos Continuos</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-secondary); text-align: center;">Simulación Continua</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-chart-line"></i> Comportamiento</h5>
+                                    <p style="font-size: 0.9em;">Las variables cambian <strong>continuamente</strong> con el tiempo</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-calculator"></i> Matemática</h5>
+                                    <p style="font-size: 0.9em;">Representados por <strong>ecuaciones diferenciales</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                            <h5><i class="fas fa-tint"></i> Unidad de Modelado</h5>
+                            <p style="font-size: 0.9em;">Modela <strong>flujos</strong> - monitoreo posible en cualquier punto del tiempo</p>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-example"></i> <strong>Ejemplos:</strong> Flujo de líquido, transferencia de calor, crecimiento poblacional</p>
+                        </div>
+                    </div>
+                </section>
+            </section>         
+       <section>
+                    <h3><i class="fas fa-puzzle-piece"></i> Modelos Híbridos</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-accent); text-align: center;">Combinación de Ambos Enfoques</h4>
+
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 2rem; border-radius: 8px;">
+                            <div style="background: rgba(255, 255, 255, 0.8); padding: 1.5rem; border-radius: 6px;">
+                                <p style="font-size: 1.1em; text-align: center; margin-bottom: 1rem;">
+                                    <strong>Realidad:</strong> Los sistemas "puros" son raros en la naturaleza
+                                </p>
+                                <p style="font-size: 0.9em; text-align: left;">
+                                    Los modelos híbridos combinan eventos discretos con cambios continuos
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <h5><i class="fas fa-plane"></i> Ejemplo: Inventario de Combustible en Aeropuerto</h5>
+                            <div class="r-hstack" style="margin-top: 1rem;">
+                                <div class="column">
+                                    <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                        <p style="font-size: 0.8em;"><strong>Discreto:</strong> Llegada de aviones</p>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                        <p style="font-size: 0.8em;"><strong>Continuo:</strong> Flujo de combustible</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-search"></i> Actividad: Identificación</h3>
+                    <div class="activity-card">
+                        <h4 style="text-align: center;"><i class="fas fa-clipboard-check"></i> Clasifica estos sistemas</h4>
+                        
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div class="discussion-point">
+                                    <h5>Sistemas para Clasificar:</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Cajero automático</li>
+                                        <li>Llenado de piscina</li>
+                                        <li>Producción de autos</li>
+                                        <li>Crecimiento de bacteria</li>
+                                        <li>Sistema de semáforos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="timer-box">
+                                    <p><i class="fas fa-clock"></i> <strong>5 minutos</strong></p>
+                                    <p style="font-size: 0.8em;">Discutan en grupos pequeños</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>   
+         <!-- Modelos Determinísticos vs Estocásticos -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-dice"></i> Clasificación por Aleatoriedad</h2>
+
+                <section>
+                    <h3>Pregunta Inicial</h3>
+                    <div class="interactive-box">
+                        <h3>¿Interviene el azar en el sistema?</h3>
+                        <p style="font-size: 0.9em; margin-top: 1rem;">¿Los resultados son siempre los mismos con las mismas condiciones?</p>
+                    </div>
+
+                    <div class="discussion-point">
+                        <p><i class="fas fa-comments"></i> <strong>Reflexión:</strong> Fórmula matemática vs lanzamiento de dados</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-equals"></i> Modelos Determinísticos</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">Sin Intervención del Azar</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-arrow-right"></i> Comportamiento</h5>
+                                    <p style="font-size: 0.9em;"><strong>Mismas entradas</strong> → <strong>Mismas salidas</strong></p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-chart-bar"></i> Variables</h5>
+                                    <p style="font-size: 0.9em;">Valores <strong>exactos y conocidos</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                            <h5><i class="fas fa-calculator"></i> Características</h5>
+                            <p style="font-size: 0.9em;">Utilizan fórmulas algebraicas y asumen certidumbre en los datos</p>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-example"></i> <strong>Ejemplos:</strong> Posición de partícula x(t), Cantidad Económica de Pedido (CEP)</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-random"></i> Modelos Estocásticos</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-secondary); text-align: center;">Con Intervención del Azar</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-dice-six"></i> Variables</h5>
+                                    <p style="font-size: 0.9em;"><strong>Variables aleatorias</strong> con modificaciones respecto al promedio</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-chart-area"></i> Incertidumbre</h5>
+                                    <p style="font-size: 0.9em;">Representada como <strong>distribuciones de probabilidad</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                            <h5><i class="fas fa-sync-alt"></i> Resultados</h5>
+                            <p style="font-size: 0.9em;">Cada corrida produce <strong>resultados diferentes</strong> - requiere análisis estadístico</p>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-info-circle"></i> <strong>Método Monte Carlo:</strong> Repetir simulaciones para obtener resumen estadístico</p>
+                        </div>
+                    </div>
+                </section>
+            </section>       
+         <section>
+                    <h3><i class="fas fa-table"></i> Comparación Directa</h3>
+                    <div class="concept-box">
+                        <table style="width: 100%; font-size: 0.8em; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: var(--uide-primary); color: white;">
+                                    <th style="padding: 0.5rem; border: 1px solid #ddd;">Aspecto</th>
+                                    <th style="padding: 0.5rem; border: 1px solid #ddd;">Determinístico</th>
+                                    <th style="padding: 0.5rem; border: 1px solid #ddd;">Estocástico</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">Azar</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #ddd;">No interviene</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Sí interviene</td>
+                                </tr>
+                                <tr style="background: #f8f9fa;">
+                                    <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">Resultados</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Siempre iguales</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Siempre diferentes</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">Variables</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Valores exactos</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Distribuciones</td>
+                                </tr>
+                                <tr style="background: #f8f9fa;">
+                                    <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">Análisis</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Fórmulas directas</td>
+                                    <td style="padding: 0.5rem; border: 1px solid #ddd;">Métodos estadísticos</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-search"></i> Actividad: Clasificación por Aleatoriedad</h3>
+                    <div class="activity-card">
+                        <h4 style="text-align: center;"><i class="fas fa-clipboard-check"></i> ¿Determinístico o Estocástico?</h4>
+                        
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div class="discussion-point">
+                                    <h5>Sistemas para Analizar:</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Cálculo de interés compuesto</li>
+                                        <li>Tiempo de llegada de clientes</li>
+                                        <li>Trayectoria de proyectil (sin viento)</li>
+                                        <li>Duración de llamadas telefónicas</li>
+                                        <li>Cálculo de área de círculo</li>
+                                        <li>Fallas de equipos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="timer-box">
+                                    <p><i class="fas fa-clock"></i> <strong>5 minutos</strong></p>
+                                    <p style="font-size: 0.8em;">Justifiquen su clasificación</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>     
+       <!-- Introducción a Agentes -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-robot"></i> Introducción a Agentes</h2>
+
+                <section>
+                    <h3>¿Qué es un Agente?</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">Definición Básica</h4>
+
+                        <div style="background: rgba(40, 167, 69, 0.1); padding: 2rem; border-radius: 8px;">
+                            <div style="background: rgba(255, 255, 255, 0.8); padding: 1.5rem; border-radius: 6px;">
+                                <p style="font-size: 1.1em; text-align: center; margin-bottom: 1rem;">
+                                    <strong>Un agente es una entidad que:</strong>
+                                </p>
+                                <div class="r-hstack">
+                                    <div class="column">
+                                        <div style="text-align: center;">
+                                            <i class="fas fa-eye" style="font-size: 2em; color: var(--uide-primary);"></i>
+                                            <p style="font-size: 0.9em; margin-top: 0.5rem;"><strong>Percibe</strong> su contexto a través de sensores</p>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div style="text-align: center;">
+                                            <i class="fas fa-cogs" style="font-size: 2em; color: var(--uide-secondary);"></i>
+                                            <p style="font-size: 0.9em; margin-top: 0.5rem;"><strong>Genera</strong> respuestas usando actuadores</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-brain"></i> Función del Agente</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-table"></i> Tabla de Decisiones</h5>
+                                    <p style="font-size: 0.9em;">Registra secuencia de percepciones y acciones desarrolladas</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-graduation-cap"></i> Aprendizaje</h5>
+                                    <p style="font-size: 0.9em;">El contexto permite que el agente aprenda comportamientos</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Clave:</strong> Los agentes toman decisiones basadas en percepciones previas</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-broom"></i> Ejemplo: Agente Aspiradora</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-accent); text-align: center;">Modelo Simple de Agente</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-eye"></i> Percepciones</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Detectar si cuadrícula está sucia</li>
+                                        <li>Ubicación actual</li>
+                                        <li>Estado del entorno</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-play"></i> Acciones</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Moverse (derecha/izquierda)</li>
+                                        <li>Aspirar suciedad</li>
+                                        <li>Permanecer quieto</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-info-circle"></i> <strong>Utilidad:</strong> Permite probar estrategias bajo condiciones aleatorias</p>
+                        </div>
+                    </div>
+                </section>
+            </section> 
+               <section>
+                    <h3><i class="fas fa-users"></i> Modelos Basados en Agentes (ABMS)</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-secondary); text-align: center;">Simulaciones con Múltiples Agentes</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-user-friends"></i> Características</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Cada individuo = agente independiente</li>
+                                        <li>Características propias</li>
+                                        <li>Comportamientos únicos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-brain"></i> Capacidades</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Inteligencia</li>
+                                        <li>Memoria</li>
+                                        <li>Capacidad de aprendizaje</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                            <h5><i class="fas fa-sync-alt"></i> Dinámica del Modelo</h5>
+                            <p style="font-size: 0.9em;">La información surge de la <strong>interacción</strong> entre agentes - no se puede predefinir</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-plane"></i> Aplicaciones Reales</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div class="discussion-point">
+                                    <h5><i class="fas fa-building"></i> Sistemas Aeroportuarios</h5>
+                                    <p style="font-size: 0.8em;">Pasajeros como agentes inteligentes para determinar espacios, flujos y operaciones</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="discussion-point">
+                                    <h5><i class="fas fa-virus"></i> Enfermedades Infecciosas</h5>
+                                    <p style="font-size: 0.8em;">Modelos dinámicos de propagación en poblaciones</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-lightbulb"></i> <strong>Ventaja:</strong> Captura comportamientos emergentes que surgen de interacciones simples</p>
+                        </div>
+                    </div>
+                </section>
+            </section>         
+   <!-- Paradigmas de Simulación Discreta -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-cogs"></i> Paradigmas de Simulación Discreta</h2>
+
+                <section>
+                    <h3>Tres Enfoques Principales</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;">Estrategias para Modelar Sistemas Discretos</h4>
+
+                        <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                            <table style="width: 100%; font-size: 0.7em; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background: var(--uide-primary); color: white;">
+                                        <th style="padding: 0.5rem; border: 1px solid #ddd;">Paradigma</th>
+                                        <th style="padding: 0.5rem; border: 1px solid #ddd;">Enfoque Principal</th>
+                                        <th style="padding: 0.5rem; border: 1px solid #ddd;">Mecánica del Tiempo</th>
+                                        <th style="padding: 0.5rem; border: 1px solid #ddd;">Software Común</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">Programación de Eventos</td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Se centra en el <strong>Evento</strong></td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Lista de eventos ordenados por tiempo</td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">SIMSCRIPT II.5, SLAM II</td>
+                                    </tr>
+                                    <tr style="background: #f8f9fa;">
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">Interacción de Procesos</td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Se centra en la <strong>Entidad</strong></td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Avanza cada entidad al máximo posible</td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">GPSS, SIMAN, Arena</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd; font-weight: bold;">Examinación de Actividades</td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Se centra en la <strong>Actividad</strong></td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">Incrementos iguales de tiempo</td>
+                                        <td style="padding: 0.5rem; border: 1px solid #ddd;">ESCL (FORTRAN)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-calendar-alt"></i> Programación de Eventos</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-bullseye"></i> Enfoque</h5>
+                                    <p style="font-size: 0.9em;">Identifica características del <strong>evento</strong> y usa rutinas para describir cambios</p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-list-ol"></i> Mecánica</h5>
+                                    <p style="font-size: 0.9em;">Tratamiento secuencial de acontecimientos en <strong>lista ordenada</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-star"></i> <strong>Ventaja:</strong> Es el más extendido computacionalmente</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fas fa-user"></i> Interacción de Procesos</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-bullseye"></i> Enfoque</h5>
+                                    <p style="font-size: 0.9em;">Describe secuencia de procesos que sufre una <strong>entidad</strong></p>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-forward"></i> Mecánica</h5>
+                                    <p style="font-size: 0.9em;">Avanza al máximo posible cada entidad que llega</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-brain"></i> <strong>Ventaja:</strong> Más intuitivo para el modelador</p>
+                        </div>
+                    </div>
+                </section>
+            </section>     
+       <!-- Actividades de la Semana -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-tasks"></i> Actividades Semana 2</h2>
+
+                <section>
+                    <h3>PE-1.2: Laboratorio Etiquetar Procesos</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-primary); text-align: center;"><i class="fas fa-flask"></i>
+                            Práctica Experimental (2.25 puntos)</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-clipboard-check"></i> Objetivo</h5>
+                                    <p style="font-size: 0.9em;">Clasificar procesos reales según paradigmas:</p>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Discreto/Continuo (D/C)</li>
+                                        <li>Determinístico/Estocástico (Det/Est)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-tools"></i> Metodología</h5>
+                                    <p style="font-size: 0.9em;">Análisis de casos con justificación técnica</p>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Identificar variables clave</li>
+                                        <li>Argumentar clasificación</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timer-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-clock"></i> <strong>Tiempo en clase:</strong> 45 minutos</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>TA-1.2: Resumen Crítico Caso Agentes</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-accent); text-align: center;"><i class="fas fa-home"></i>
+                            Trabajo Autónomo (2.25 puntos)</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-book-open"></i> Contenido</h5>
+                                    <p style="font-size: 0.9em;">Análisis crítico de caso de modelado basado en agentes</p>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Ventajas del enfoque</li>
+                                        <li>Limitaciones identificadas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-pen"></i> Formato</h5>
+                                    <p style="font-size: 0.9em;">Resumen crítico estructurado</p>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Máximo 2 páginas</li>
+                                        <li>Conclusiones propias</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-calendar"></i> <strong>Entrega:</strong> Antes de la próxima clase</p>
+                        </div>
+                    </div>
+                </section>
+            </section>      
+      <!-- Síntesis y Cierre -->
+            <section data-transition="convex">
+                <h2><i class="fas fa-lightbulb"></i> Síntesis de la Semana</h2>
+
+                <section>
+                    <h3>Conceptos Clave Aprendidos</h3>
+                    <div class="concept-box">
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-clock"></i> Clasificación Temporal</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li><strong>Discretos:</strong> Cambios instantáneos</li>
+                                        <li><strong>Continuos:</strong> Cambios graduales</li>
+                                        <li><strong>Híbridos:</strong> Combinación de ambos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-dice"></i> Clasificación por Azar</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li><strong>Determinísticos:</strong> Sin azar</li>
+                                        <li><strong>Estocásticos:</strong> Con azar</li>
+                                        <li><strong>Monte Carlo:</strong> Método estadístico</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                            <h5><i class="fas fa-robot"></i> Modelado Basado en Agentes</h5>
+                            <p style="font-size: 0.8em;">Entidades autónomas que perciben, deciden y actúan en su entorno</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Próxima Semana: Generación de Variables Aleatorias</h3>
+                    <div class="concept-box">
+                        <h4 style="color: var(--uide-secondary); text-align: center;"><i class="fas fa-forward"></i>
+                            Semana 3 - Unidad 2</h4>
+
+                        <div class="r-hstack">
+                            <div class="column">
+                                <div style="background: rgba(145, 0, 72, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-book-open"></i> Temas</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Generadores congruenciales</li>
+                                        <li>Números uniformes</li>
+                                        <li>Pruebas de uniformidad</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div style="background: rgba(40, 167, 69, 0.1); padding: 1rem; border-radius: 8px;">
+                                    <h5><i class="fas fa-tools"></i> Herramientas</h5>
+                                    <ul style="font-size: 0.8em; text-align: left;">
+                                        <li>Implementación en Excel</li>
+                                        <li>Programación en R</li>
+                                        <li>Análisis estadístico</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>¡Gracias por su Participación!</h3>
+                    <div class="concept-box">
+                        <div style="text-align: center; padding: 2rem;">
+                            <h4 style="color: var(--uide-primary);"><i class="fas fa-graduation-cap"></i> Simulación y Modelado de Sistemas</h4>
+                            <p style="font-size: 1.1em; margin: 1rem 0;">
+                                <strong>Semana 2 completada</strong>
+                            </p>
+                            <p style="font-size: 0.9em; color: var(--uide-secondary);">
+                                Prof. Charlie Cárdenas Toledo, M.Sc.<br>
+                                Universidad Internacional del Ecuador
+                            </p>
+                        </div>
+
+                        <div class="interactive-box" style="margin-top: 1rem;">
+                            <p><i class="fas fa-question-circle"></i> <strong>¿Preguntas?</strong> Este es el momento para aclarar dudas</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/highlight/highlight.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="presentacion-clase-semana2.js"></script>
+
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            transition: 'convex',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+    </script>
+
+</body>
+
+</html>
