@@ -1,0 +1,387 @@
+/*
+ * AIPTI Diagrams CSS - Adapted for Simulación
+ * Estilos para diagramas Mermaid y visualizaciones
+ * Universidad Internacional del Ecuador
+ */
+
+/* Contenedores de diagramas Mermaid */
+.mermaid-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.mermaid-container h4 {
+    color: var(--uide-primary);
+    margin-bottom: 1rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+}
+
+/* Estilos personalizados para Mermaid */
+.mermaid {
+    font-family: 'Times New Roman', serif !important;
+}
+
+/* Simulación específica - Diagramas de flujo */
+.simulation-flow-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.flow-diagram-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.flow-diagram-container:hover {
+    transform: translateY(-5px);
+}
+
+.flow-diagram-container.discrete {
+    border-left: 4px solid var(--uide-primary);
+}
+
+.flow-diagram-container.continuous {
+    border-left: 4px solid var(--uide-secondary);
+}
+
+/* Comparador interactivo para paradigmas */
+.interactive-comparator {
+    background: rgba(248, 249, 250, 0.95);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.comparator-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.toggle-button {
+    background: var(--uide-primary);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    margin: 0 0.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.toggle-button:hover {
+    background: var(--uide-secondary);
+    transform: translateY(-2px);
+}
+
+.toggle-button.active {
+    background: var(--uide-accent);
+    box-shadow: 0 4px 15px rgba(233, 171, 33, 0.3);
+}
+
+.comparison-content {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.5s ease;
+}
+
+.comparison-content.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Simulador de eventos discretos */
+.event-simulator {
+    background: rgba(35, 53, 110, 0.05);
+    border: 2px solid var(--uide-secondary);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.event-component {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--uide-accent);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.event-component:hover {
+    background: rgba(233, 171, 33, 0.1);
+    transform: scale(1.05);
+}
+
+.event-component.active {
+    background: var(--uide-accent);
+    color: white;
+}
+
+/* Indicadores de paradigmas */
+.paradigm-indicator {
+    display: inline-block;
+    background: rgba(40, 167, 69, 0.1);
+    border: 2px solid #28a745;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    margin: 0.3rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #28a745;
+    transition: all 0.3s ease;
+}
+
+.paradigm-indicator.stochastic {
+    background: rgba(220, 53, 69, 0.1);
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.paradigm-indicator.continuous {
+    background: rgba(255, 193, 7, 0.1);
+    border-color: #ffc107;
+    color: #ffc107;
+}
+
+.paradigm-indicator:hover {
+    transform: scale(1.1);
+}
+
+/* Timeline de simulación */
+.simulation-timeline {
+    position: relative;
+    padding: 2rem 0;
+    margin: 2rem 0;
+}
+
+.timeline-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .simulation-flow-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .mermaid-container {
+        padding: 1rem;
+    }
+    
+    .interactive-comparator {
+        padding: 1rem;
+    }
+    
+    .comparator-toggle {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .toggle-button {
+        margin: 0.3rem 0;
+        width: 200px;
+    }
+    
+    .event-simulator {
+        padding: 1rem;
+    }
+    
+    .event-component {
+        margin: 0.5rem;
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mermaid-container {
+        padding: 0.8rem;
+        margin: 1rem 0;
+    }
+    
+    .timeline-container {
+        padding: 1rem;
+    }
+    
+    .interactive-comparator {
+        padding: 1rem;
+    }
+    
+    .paradigm-indicator {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Animaciones específicas para diagramas de simulación */
+@keyframes simulation-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mermaid-container {
+    animation: simulation-fade-in 0.6s ease-out;
+}
+
+/* Estilos para tooltips de simulación */
+.simulation-tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    max-width: 250px;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.simulation-tooltip.show {
+    opacity: 1;
+}
+
+.simulation-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent;
+}
+
+/* Estilos específicos para agentes */
+.agent-visualization {
+    background: rgba(233, 171, 33, 0.1);
+    border: 2px solid var(--uide-accent);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.agent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.agent-cell {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--uide-primary);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.agent-cell:hover {
+    background: rgba(145, 0, 72, 0.1);
+    transform: scale(1.05);
+}
+
+.agent-cell.active {
+    background: var(--uide-primary);
+    color: white;
+}
+
+/* Estilos para clasificación de sistemas */
+.system-classifier {
+    background: rgba(40, 167, 69, 0.1);
+    border: 2px solid var(--uide-primary);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.classifier-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.classifier-item {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--uide-accent);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.classifier-item:hover {
+    border-color: var(--uide-primary);
+    transform: translateY(-2px);
+}
+
+.classifier-item.selected {
+    background: var(--uide-accent);
+    color: white;
+    border-color: var(--uide-secondary);
+}
+
+/* Métricas de simulación */
+.simulation-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.metric-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--uide-secondary);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.metric-value {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--uide-primary);
+    display: block;
+}
+
+.metric-label {
+    font-size: 0.9em;
+    color: var(--uide-secondary);
+    margin-top: 0.5rem;
+}
