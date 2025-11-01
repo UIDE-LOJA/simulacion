@@ -500,110 +500,127 @@
                             <!-- Galería de Ejemplos Híbridos en dos columnas -->
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
 
-                                <!-- Aeropuerto -->
+                                <!-- Sistema Aeroportuario (VIDEO: operaciones continuas y eventos discretos) -->
                                 <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
                                     onmouseover="this.style.transform='scale(1.02)'"
                                     onmouseout="this.style.transform='scale(1)'">
-                                    <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=200&h=100&fit=crop&crop=center"
-                                        alt="Aeropuerto con aviones">
+                                    <video style="width:100%; height: 100px; object-fit: cover;" autoplay muted loop
+                                        playsinline>
+                                        <source
+                                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Timelapse_Frankfurt_Airport.webm"
+                                            type="video/webm">
+                                    </video>
                                     <div style="padding: 0.4rem;">
                                         <h6
                                             style="margin: 0 0 0.3rem 0; color: var(--uide-primary); font-size: 0.75em;">
                                             <i class="fas fa-plane"></i> Sistema Aeroportuario
                                         </h6>
-                                        <div style="display: flex; gap: 0.2rem; margin-bottom: 0.2rem;">
+                                        <div style="display:flex; gap:0.2rem; margin-bottom:0.2rem;">
                                             <div
-                                                style="background: rgba(40, 167, 69, 0.1); padding: 0.2rem; border-radius: 3px; flex: 1; text-align: center;">
-                                                <p style="font-size: 0.55em; margin: 0; font-weight: bold;">Discreto</p>
-                                                <p style="font-size: 0.5em; margin: 0;">Llegada aviones</p>
+                                                style="background: rgba(40,167,69,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
+                                                <p style="font-size:.55em; margin:0; font-weight:bold;">Discreto</p>
+                                                <p style="font-size:.5em; margin:0;">Llegada aviones</p>
                                             </div>
                                             <div
-                                                style="background: rgba(145, 0, 72, 0.1); padding: 0.2rem; border-radius: 3px; flex: 1; text-align: center;">
-                                                <p style="font-size: 0.55em; margin: 0; font-weight: bold;">Continuo</p>
-                                                <p style="font-size: 0.5em; margin: 0;">Flujo combustible</p>
+                                                style="background: rgba(145,0,72,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
+                                                <p style="font-size:.55em; margin:0; font-weight:bold;">Continuo</p>
+                                                <p style="font-size:.5em; margin:0;">Flujo combustible</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Hospital -->
+                                <!-- Sistema Hospitalario (IMAGEN: entorno estático, carga ligera) -->
+                                <!-- Sistema Hospitalario (IMAGEN alternativa) -->
                                 <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
                                     onmouseover="this.style.transform='scale(1.02)'"
                                     onmouseout="this.style.transform='scale(1)'">
-                                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=200&h=100&fit=crop&crop=center"
-                                        alt="Hospital con pacientes">
+                                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/CHUM%20Emergency%20Level%20Radiography.jpg"
+                                        alt="Área de radiografía en emergencias (CHUM)"
+                                        style="width:100%; height:50px; object-fit:cover;" loading="lazy"
+                                        referrerpolicy="no-referrer">
                                     <div style="padding: 0.4rem;">
                                         <h6
                                             style="margin: 0 0 0.3rem 0; color: var(--uide-secondary); font-size: 0.75em;">
                                             <i class="fas fa-hospital"></i> Sistema Hospitalario
                                         </h6>
-                                        <div style="display: flex; gap: 0.2rem; margin-bottom: 0.2rem;">
+                                        <div style="display:flex; gap:0.2rem; margin-bottom:0.2rem;">
                                             <div
-                                                style="background: rgba(40, 167, 69, 0.1); padding: 0.2rem; border-radius: 3px; flex: 1; text-align: center;">
-                                                <p style="font-size: 0.55em; margin: 0; font-weight: bold;">Discreto</p>
-                                                <p style="font-size: 0.5em; margin: 0;">Llegada pacientes</p>
+                                                style="background: rgba(40,167,69,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
+                                                <p style="font-size:.55em; margin:0; font-weight:bold;">Discreto</p>
+                                                <p style="font-size:.5em; margin:0;">Llegada pacientes</p>
                                             </div>
                                             <div
-                                                style="background: rgba(145, 0, 72, 0.1); padding: 0.2rem; border-radius: 3px; flex: 1; text-align: center;">
-                                                <p style="font-size: 0.55em; margin: 0; font-weight: bold;">Continuo</p>
-                                                <p style="font-size: 0.5em; margin: 0;">Uso recursos</p>
+                                                style="background: rgba(145,0,72,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
+                                                <p style="font-size:.55em; margin:0; font-weight:bold;">Continuo</p>
+                                                <p style="font-size:.5em; margin:0;">Uso recursos</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Manufactura -->
+                                <!-- Planta Manufacturera (VIDEO: bandas/flujo de materiales) -->
                                 <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
                                     onmouseover="this.style.transform='scale(1.02)'"
                                     onmouseout="this.style.transform='scale(1)'">
-                                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=200&h=100&fit=crop&crop=center"
-                                        alt="Planta manufacturera">
+                                    <video style="width:100%; height: 100px; object-fit: cover;" autoplay muted loop
+                                        playsinline>
+                                        <source
+                                            src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Velenje%20Coal%20Mine%2C%20Running%20of%20drive%20motors%20for%20conveyor%20belt.webm"
+                                            type="video/webm">
+                                    </video>
                                     <div style="padding: 0.4rem;">
                                         <h6 style="margin: 0 0 0.3rem 0; color: var(--uide-accent); font-size: 0.75em;">
                                             <i class="fas fa-industry"></i> Planta Manufacturera
                                         </h6>
-                                        <div style="display: flex; gap: 0.2rem; margin-bottom: 0.2rem;">
+                                        <div style="display:flex; gap:0.2rem; margin-bottom:0.2rem;">
                                             <div
-                                                style="background: rgba(40, 167, 69, 0.1); padding: 0.2rem; border-radius: 3px; flex: 1; text-align: center;">
-                                                <p style="font-size: 0.55em; margin: 0; font-weight: bold;">Discreto</p>
-                                                <p style="font-size: 0.5em; margin: 0;">Órdenes producción</p>
+                                                style="background: rgba(40,167,69,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
+                                                <p style="font-size:.55em; margin:0; font-weight:bold;">Discreto</p>
+                                                <p style="font-size:.5em; margin:0;">Órdenes producción</p>
                                             </div>
                                             <div
-                                                style="background: rgba(145, 0, 72, 0.1); padding: 0.2rem; border-radius: 3px; flex: 1; text-align: center;">
-                                                <p style="font-size: 0.55em; margin: 0; font-weight: bold;">Continuo</p>
-                                                <p style="font-size: 0.5em; margin: 0;">Flujo materiales</p>
+                                                style="background: rgba(145,0,72,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
+                                                <p style="font-size:.55em; margin:0; font-weight:bold;">Continuo</p>
+                                                <p style="font-size:.5em; margin:0;">Flujo materiales</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Sistema de Riego -->
+                                <!-- Sistema de Riego (VIDEO: caudal continuo) -->
                                 <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
                                     onmouseover="this.style.transform='scale(1.02)'"
                                     onmouseout="this.style.transform='scale(1)'">
-                                    <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=200&h=100&fit=crop&crop=center"
-                                        alt="Sistema de riego">
+                                    <video style="width:100%; height: 100px; object-fit: cover;" autoplay muted loop
+                                        playsinline>
+                                        <source
+                                            src="https://commons.wikimedia.org/wiki/Special:FilePath/Irrigation_sprinkler_in_action.webm"
+                                            type="video/webm">
+                                    </video>
                                     <div style="padding: 0.4rem;">
                                         <h6
                                             style="margin: 0 0 0.3rem 0; color: var(--uide-primary); font-size: 0.75em;">
                                             <i class="fas fa-seedling"></i> Sistema de Riego
                                         </h6>
-                                        <div style="display: flex; gap: 0.2rem; margin-bottom: 0.2rem;">
+                                        <div style="display:flex; gap:0.2rem; margin-bottom:0.2rem;">
                                             <div
-                                                style="background: rgba(40, 167, 69, 0.1); padding: 0.2rem; border-radius: 3px; flex: 1; text-align: center;">
-                                                <p style="font-size: 0.55em; margin: 0; font-weight: bold;">Discreto</p>
-                                                <p style="font-size: 0.5em; margin: 0;">Activación válvulas</p>
+                                                style="background: rgba(40,167,69,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
+                                                <p style="font-size:.55em; margin:0; font-weight:bold;">Discreto</p>
+                                                <p style="font-size:.5em; margin:0;">Activación válvulas</p>
                                             </div>
                                             <div
-                                                style="background: rgba(145, 0, 72, 0.1); padding: 0.2rem; border-radius: 3px; flex: 1; text-align: center;">
-                                                <p style="font-size: 0.55em; margin: 0; font-weight: bold;">Continuo</p>
-                                                <p style="font-size: 0.5em; margin: 0;">Flujo agua</p>
+                                                style="background: rgba(145,0,72,.1); padding:.2rem; border-radius:3px; flex:1; text-align:center;">
+                                                <p style="font-size:.55em; margin:0; font-weight:bold;">Continuo</p>
+                                                <p style="font-size:.5em; margin:0;">Flujo agua</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
+
                     </div>
 
                     <div
@@ -695,7 +712,6 @@
                     </div>
                 </div>
             </section>
-            </section>
             <!-- Modelos Determinísticos vs Estocásticos -->
             <section data-transition="convex">
                 <h2><i class="fas fa-dice"></i> Clasificación por Aleatoriedad</h2>
@@ -757,78 +773,89 @@
 
                             <!-- Columna Derecha: Ejemplos -->
                             <div class="column" style="flex: 1;">
-                                <h5 style="color: var(--uide-primary); margin-bottom: 1rem; text-align: center;">
-                                    <i class="fas fa-images"></i> Ejemplos Visuales
-                                </h5>
-
                                 <!-- Galería de Ejemplos Determinísticos en dos columnas -->
                                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
 
-                                    <!-- Posición de Partícula -->
-                                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
+                                    <!-- Posición de Partícula (VIDEO) -->
+                                    <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform .3s ease;"
                                         onmouseover="this.style.transform='scale(1.02)'"
                                         onmouseout="this.style.transform='scale(1)'">
-                                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=200&h=100&fit=crop&crop=center"
-                                            alt="Trayectoria de partícula">
+                                        <video style="width:100%; height:50px; object-fit:cover;" autoplay muted loop
+                                            playsinline preload="metadata">
+                                            <source
+                                                src="https://commons.wikimedia.org/wiki/Special:FilePath/BouncingBallAnimation.webm"
+                                                type="video/webm">
+                                        </video>
                                         <div style="padding: 0.4rem;">
                                             <h6
-                                                style="margin: 0 0 0.2rem 0; color: var(--uide-primary); font-size: 0.75em;">
+                                                style="margin:0 0 0.2rem 0; color: var(--uide-primary); font-size: .75em;">
                                                 <i class="fas fa-atom"></i> Posición de Partícula
                                             </h6>
-                                            <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
+                                            <p style="font-size:.6em; margin:0; color:#666; line-height:1.2;">
                                                 Trayectoria <strong>predecible</strong> según ecuaciones físicas</p>
                                         </div>
                                     </div>
 
-                                    <!-- Cálculo Financiero -->
-                                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
+                                    <!-- Cálculo de Interés (IMAGEN) -->
+                                    <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform .3s ease;"
                                         onmouseover="this.style.transform='scale(1.02)'"
                                         onmouseout="this.style.transform='scale(1)'">
-                                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=200&h=100&fit=crop&crop=center"
-                                            alt="Cálculos financieros">
+                                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sharp%20Scientific%20Calculator.jpg"
+                                            alt="Calculadora científica"
+                                            style="width:100%; height:50px; object-fit:cover;" loading="lazy"
+                                            referrerpolicy="no-referrer">
                                         <div style="padding: 0.4rem;">
                                             <h6
-                                                style="margin: 0 0 0.2rem 0; color: var(--uide-secondary); font-size: 0.75em;">
+                                                style="margin:0 0 0.2rem 0; color: var(--uide-secondary); font-size: .75em;">
                                                 <i class="fas fa-calculator"></i> Cálculo de Interés
                                             </h6>
-                                            <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
-                                                Resultado <strong>exacto</strong> con fórmulas matemáticas</p>
+                                            <p style="font-size:.6em; margin:0; color:#666; line-height:1.2;">Resultado
+                                                <strong>exacto</strong> con fórmulas matemáticas
+                                            </p>
                                         </div>
                                     </div>
 
-                                    <!-- Inventario EOQ -->
-                                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
+                                    <!-- Cantidad Económica (CEP/EOQ) (VIDEO) -->
+                                    <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform .3s ease;"
                                         onmouseover="this.style.transform='scale(1.02)'"
                                         onmouseout="this.style.transform='scale(1)'">
-                                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=200&h=100&fit=crop&crop=center"
-                                            alt="Gestión de inventario">
+                                        <video style="width:100%; height:50px; object-fit:cover;" autoplay muted loop
+                                            playsinline preload="metadata">
+                                            <source
+                                                src="https://commons.wikimedia.org/wiki/Special:FilePath/Gigaset%20Cordless%20Telephone%20Production%20VII%20-%20Pneumatic%20Conveyor%20Belt.webm"
+                                                type="video/webm">
+                                        </video>
                                         <div style="padding: 0.4rem;">
                                             <h6
-                                                style="margin: 0 0 0.2rem 0; color: var(--uide-accent); font-size: 0.75em;">
+                                                style="margin:0 0 0.2rem 0; color: var(--uide-accent); font-size: .75em;">
                                                 <i class="fas fa-boxes"></i> Cantidad Económica (CEP)
                                             </h6>
-                                            <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
+                                            <p style="font-size:.6em; margin:0; color:#666; line-height:1.2;">
                                                 Optimización <strong>determinística</strong> de inventario</p>
                                         </div>
                                     </div>
 
-                                    <!-- Ecuaciones Físicas -->
-                                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
+                                    <!-- Ecuaciones Físicas (IMAGEN) -->
+                                    <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform .3s ease;"
                                         onmouseover="this.style.transform='scale(1.02)'"
                                         onmouseout="this.style.transform='scale(1)'">
-                                        <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=200&h=100&fit=crop&crop=center"
-                                            alt="Ecuaciones matemáticas">
+                                        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pure-mathematics-formul%C3%A6-blackboard.jpg"
+                                            alt="Fórmulas en pizarra" style="width:100%; height:50px; object-fit:cover;"
+                                            loading="lazy" referrerpolicy="no-referrer">
                                         <div style="padding: 0.4rem;">
                                             <h6
-                                                style="margin: 0 0 0.2rem 0; color: var(--uide-primary); font-size: 0.75em;">
+                                                style="margin:0 0 0.2rem 0; color: var(--uide-primary); font-size: .75em;">
                                                 <i class="fas fa-square-root-alt"></i> Ecuaciones Físicas
                                             </h6>
-                                            <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">Leyes
+                                            <p style="font-size:.6em; margin:0; color:#666; line-height:1.2;">Leyes
                                                 físicas con resultados <strong>predecibles</strong></p>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
+
+
                         </div>
 
                         <div
@@ -892,28 +919,42 @@
                                 <!-- Grid 2x2 de Ejemplos -->
                                 <div
                                     style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1rem;">
-                                    <!-- Llegada de Clientes -->
-                                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
+
+                                    <!-- Llegada de Clientes (VIDEO) -->
+                                    <!-- Llegada de Clientes (VIDEO ligero y estable) -->
+                                    <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
                                         onmouseover="this.style.transform='scale(1.02)'"
                                         onmouseout="this.style.transform='scale(1)'">
-                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=100&fit=crop&crop=center"
-                                            alt="Llegada aleatoria de clientes">
+                                        <video autoplay muted loop playsinline preload="metadata"
+                                            style="width:100%; height:100px; object-fit:cover;"
+                                            poster="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Pasejo_en_Hong_Kong_Island_%282014%29.webm/640px--Pasejo_en_Hong_Kong_Island_%282014%29.webm.jpg">
+                                            <!-- Versión 480p (liviana) -->
+                                            <source
+                                                src="https://upload.wikimedia.org/wikipedia/commons/transcoded/3/3b/Pasejo_en_Hong_Kong_Island_%282014%29.webm/Pasejo_en_Hong_Kong_Island_%282014%29.webm.480p.vp9.webm"
+                                                type="video/webm">
+                                            <!-- Fallback: imagen estática si el video no carga -->
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Pasejo_en_Hong_Kong_Island_%282014%29.webm/640px--Pasejo_en_Hong_Kong_Island_%282014%29.webm.jpg"
+                                                alt="Llegadas de clientes (flujo peatonal)">
+                                        </video>
                                         <div style="padding: 0.4rem;">
                                             <h6
                                                 style="margin: 0 0 0.2rem 0; color: var(--uide-primary); font-size: 0.75em;">
                                                 <i class="fas fa-user-clock"></i> Llegada de Clientes
                                             </h6>
                                             <p style="font-size: 0.6em; margin: 0; color: #666; line-height: 1.2;">
-                                                Tiempos <strong>aleatorios</strong> e impredecibles</p>
+                                                Tiempos <strong>aleatorios</strong> e impredecibles
+                                            </p>
                                         </div>
                                     </div>
 
-                                    <!-- Fallas de Equipos -->
-                                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
+
+                                    <!-- Fallas de Equipos (IMAGEN) -->
+                                    <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
                                         onmouseover="this.style.transform='scale(1.02)'"
                                         onmouseout="this.style.transform='scale(1)'">
-                                        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=200&h=100&fit=crop&crop=center"
-                                            alt="Fallas de equipos">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Mechanic_repairing_a_punctured_tyre_in_Goa%2C_India.jpg"
+                                            alt="Falla y reparación de equipo"
+                                            style="width:100%; height:100px; object-fit:cover;">
                                         <div style="padding: 0.4rem;">
                                             <h6
                                                 style="margin: 0 0 0.2rem 0; color: var(--uide-secondary); font-size: 0.75em;">
@@ -924,12 +965,13 @@
                                         </div>
                                     </div>
 
-                                    <!-- Mercado Financiero -->
-                                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
+                                    <!-- Fluctuaciones del Mercado (IMAGEN) -->
+                                    <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
                                         onmouseover="this.style.transform='scale(1.02)'"
                                         onmouseout="this.style.transform='scale(1)'">
-                                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=200&h=100&fit=crop&crop=center"
-                                            alt="Fluctuaciones del mercado">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/E-ticker.jpg"
+                                            alt="Ticker del mercado financiero"
+                                            style="width:100%; height:100px; object-fit:cover;">
                                         <div style="padding: 0.4rem;">
                                             <h6
                                                 style="margin: 0 0 0.2rem 0; color: var(--uide-accent); font-size: 0.75em;">
@@ -940,12 +982,16 @@
                                         </div>
                                     </div>
 
-                                    <!-- Simulación Monte Carlo -->
-                                    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
+                                    <!-- Método Monte Carlo (VIDEO) -->
+                                    <div style="background: rgba(255,255,255,0.95); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;"
                                         onmouseover="this.style.transform='scale(1.02)'"
                                         onmouseout="this.style.transform='scale(1)'">
-                                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=100&fit=crop&crop=center"
-                                            alt="Simulación Monte Carlo">
+                                        <video autoplay muted loop playsinline
+                                            style="width:100%; height:100px; object-fit:cover;">
+                                            <source
+                                                src="https://upload.wikimedia.org/wikipedia/commons/transcoded/9/96/Dice-rolling-slowmotion-2018-9.webm/Dice-rolling-slowmotion-2018-9.webm.480p.webm"
+                                                type="video/webm">
+                                        </video>
                                         <div style="padding: 0.4rem;">
                                             <h6
                                                 style="margin: 0 0 0.2rem 0; color: var(--uide-secondary); font-size: 0.75em;">
@@ -955,8 +1001,10 @@
                                                 Múltiples corridas para <strong>análisis estadístico</strong></p>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
+
                         </div>
 
                         <div
@@ -1017,30 +1065,134 @@
                 <div class="concept-box">
                     <h4 style="color: var(--uide-primary); text-align: center;">Combinando Ambas Dimensiones</h4>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
-                        <div
-                            style="background: rgba(40, 167, 69, 0.1); border: 2px solid #28a745; border-radius: 8px; padding: 1rem; text-align: center;">
-                            <h5><i class="fas fa-step-forward"></i> + <i class="fas fa-equals"></i></h5>
-                            <p style="font-weight: bold; color: #28a745;">Discreto + Determinístico</p>
-                            <p style="font-size: 0.8em;">Ej: Cálculo de inventario</p>
+                    <!-- Matriz Interactiva 2x2 -->
+                    <div class="classification-matrix"
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; position: relative;">
+
+                        <!-- Discreto + Determinístico -->
+                        <div class="matrix-card" data-category="discrete-deterministic"
+                            style="background: rgba(40, 167, 69, 0.1); border: 3px solid #28a745; border-radius: 12px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;"
+                            onmouseover="animateMatrixCard(this, 'discrete-deterministic')"
+                            onmouseout="resetMatrixCard(this)" onclick="showMatrixDetails('discrete-deterministic')">
+
+                            <!-- Imagen de fondo -->
+                            <div
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=300&h=200&fit=crop'); background-size: cover; background-position: center; border-radius: 8px;">
+                            </div>
+
+                            <!-- Contenido -->
+                            <div style="position: relative; z-index: 2;">
+                                <div class="matrix-icons"
+                                    style="font-size: 2em; margin-bottom: 0.5rem; color: #28a745;">
+                                    <i class="fas fa-step-forward matrix-icon-1"></i>
+                                    <span style="margin: 0 0.3rem; font-size: 0.7em;">+</span>
+                                    <i class="fas fa-equals matrix-icon-2"></i>
+                                </div>
+                                <h5 style="font-weight: bold; color: #28a745; margin: 0.5rem 0; font-size: 1.1em;">
+                                    Discreto + Determinístico</h5>
+                                <div class="matrix-example"
+                                    style="background: rgba(255,255,255,0.8); padding: 0.8rem; border-radius: 6px; margin-top: 1rem;">
+                                    <p style="font-size: 0.85em; margin: 0; font-weight: 600;"><i
+                                            class="fas fa-chart-bar"></i> Cálculo de Inventario
+                                    </p>
+                                    <p style="font-size: 0.7em; margin: 0.3rem 0 0 0; color: #666;">Eventos específicos,
+                                        resultados predecibles</p>
+                                </div>
+                            </div>
                         </div>
-                        <div
-                            style="background: rgba(35, 53, 110, 0.1); border: 2px solid #23356E; border-radius: 8px; padding: 1rem; text-align: center;">
-                            <h5><i class="fas fa-step-forward"></i> + <i class="fas fa-dice"></i></h5>
-                            <p style="font-weight: bold; color: #23356E;">Discreto + Estocástico</p>
-                            <p style="font-size: 0.8em;">Ej: Sistema de colas</p>
+
+                        <!-- Discreto + Estocástico -->
+                        <div class="matrix-card" data-category="discrete-stochastic"
+                            style="background: rgba(35, 53, 110, 0.1); border: 3px solid #23356E; border-radius: 12px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;"
+                            onmouseover="animateMatrixCard(this, 'discrete-stochastic')"
+                            onmouseout="resetMatrixCard(this)" onclick="showMatrixDetails('discrete-stochastic')">
+
+                            <!-- Imagen de fondo -->
+                            <div
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop'); background-size: cover; background-position: center; border-radius: 8px;">
+                            </div>
+
+                            <!-- Contenido -->
+                            <div style="position: relative; z-index: 2;">
+                                <div class="matrix-icons"
+                                    style="font-size: 2em; margin-bottom: 0.5rem; color: #23356E;">
+                                    <i class="fas fa-step-forward matrix-icon-1"></i>
+                                    <span style="margin: 0 0.3rem; font-size: 0.7em;">+</span>
+                                    <i class="fas fa-dice matrix-icon-2"></i>
+                                </div>
+                                <h5 style="font-weight: bold; color: #23356E; margin: 0.5rem 0; font-size: 1.1em;">
+                                    Discreto + Estocástico</h5>
+                                <div class="matrix-example"
+                                    style="background: rgba(255,255,255,0.8); padding: 0.8rem; border-radius: 6px; margin-top: 1rem;">
+                                    <p style="font-size: 0.85em; margin: 0; font-weight: 600;"><i
+                                            class="fas fa-users"></i> Sistema de Colas</p>
+                                    <p style="font-size: 0.7em; margin: 0.3rem 0 0 0; color: #666;">Eventos específicos,
+                                        resultados aleatorios</p>
+                                </div>
+                            </div>
                         </div>
-                        <div
-                            style="background: rgba(233, 171, 33, 0.1); border: 2px solid #E9AB21; border-radius: 8px; padding: 1rem; text-align: center;">
-                            <h5><i class="fas fa-wave-square"></i> + <i class="fas fa-equals"></i></h5>
-                            <p style="font-weight: bold; color: #E9AB21;">Continuo + Determinístico</p>
-                            <p style="font-size: 0.8em;">Ej: Flujo de líquido</p>
+
+                        <!-- Continuo + Determinístico -->
+                        <div class="matrix-card" data-category="continuous-deterministic"
+                            style="background: rgba(233, 171, 33, 0.1); border: 3px solid #E9AB21; border-radius: 12px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;"
+                            onmouseover="animateMatrixCard(this, 'continuous-deterministic')"
+                            onmouseout="resetMatrixCard(this)" onclick="showMatrixDetails('continuous-deterministic')">
+
+                            <!-- Imagen de fondo -->
+                            <div
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=300&h=200&fit=crop'); background-size: cover; background-position: center; border-radius: 8px;">
+                            </div>
+
+                            <!-- Contenido -->
+                            <div style="position: relative; z-index: 2;">
+                                <div class="matrix-icons"
+                                    style="font-size: 2em; margin-bottom: 0.5rem; color: #E9AB21;">
+                                    <i class="fas fa-wave-square matrix-icon-1"></i>
+                                    <span style="margin: 0 0.3rem; font-size: 0.7em;">+</span>
+                                    <i class="fas fa-equals matrix-icon-2"></i>
+                                </div>
+                                <h5 style="font-weight: bold; color: #E9AB21; margin: 0.5rem 0; font-size: 1.1em;">
+                                    Continuo + Determinístico</h5>
+                                <div class="matrix-example"
+                                    style="background: rgba(255,255,255,0.8); padding: 0.8rem; border-radius: 6px; margin-top: 1rem;">
+                                    <p style="font-size: 0.85em; margin: 0; font-weight: 600;"><i
+                                            class="fas fa-tint"></i> Flujo de Líquido</p>
+                                    <p style="font-size: 0.7em; margin: 0.3rem 0 0 0; color: #666;">Cambio continuo,
+                                        resultados predecibles</p>
+                                </div>
+                            </div>
                         </div>
-                        <div
-                            style="background: rgba(145, 0, 72, 0.1); border: 2px solid #910048; border-radius: 8px; padding: 1rem; text-align: center;">
-                            <h5><i class="fas fa-wave-square"></i> + <i class="fas fa-dice"></i></h5>
-                            <p style="font-weight: bold; color: #910048;">Continuo + Estocástico</p>
-                            <p style="font-size: 0.8em;">Ej: Crecimiento poblacional</p>
+
+                        <!-- Continuo + Estocástico -->
+                        <div class="matrix-card" data-category="continuous-stochastic"
+                            style="background: rgba(145, 0, 72, 0.1); border: 3px solid #910048; border-radius: 12px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;"
+                            onmouseover="animateMatrixCard(this, 'continuous-stochastic')"
+                            onmouseout="resetMatrixCard(this)" onclick="showMatrixDetails('continuous-stochastic')">
+
+                            <!-- Imagen de fondo -->
+                            <div
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; background-image: url('https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=300&h=200&fit=crop'); background-size: cover; background-position: center; border-radius: 8px;">
+                            </div>
+
+                            <!-- Contenido -->
+                            <div style="position: relative; z-index: 2;">
+                                <div class="matrix-icons"
+                                    style="font-size: 2em; margin-bottom: 0.5rem; color: #910048;">
+                                    <i class="fas fa-wave-square matrix-icon-1"></i>
+                                    <span style="margin: 0 0.3rem; font-size: 0.7em;">+</span>
+                                    <i class="fas fa-dice matrix-icon-2"></i>
+                                </div>
+                                <h5 style="font-weight: bold; color: #910048; margin: 0.5rem 0; font-size: 1.1em;">
+                                    Continuo + Estocástico</h5>
+                                <div class="matrix-example"
+                                    style="background: rgba(255,255,255,0.8); padding: 0.8rem; border-radius: 6px; margin-top: 1rem;">
+                                    <p style="font-size: 0.85em; margin: 0; font-weight: 600;"><i
+                                            class="fas fa-seedling"></i> Crecimiento
+                                        Poblacional</p>
+                                    <p style="font-size: 0.7em; margin: 0.3rem 0 0 0; color: #666;">Cambio continuo,
+                                        resultados aleatorios</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1136,10 +1288,94 @@
                     <div class="concept-box">
                         <div class="r-hstack">
                             <div class="column">
-                                <div style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px;">
+                                <div
+                                    style="background: rgba(35, 53, 110, 0.1); padding: 1rem; border-radius: 8px; position: relative;">
                                     <h5><i class="fas fa-table"></i> Tabla de Decisiones</h5>
-                                    <p style="font-size: 0.9em;">Registra secuencia de percepciones y acciones
-                                        desarrolladas</p>
+                                    <p style="font-size: 0.9em; margin-bottom: 1rem;">Registra secuencia de percepciones
+                                        y acciones desarrolladas</p>
+
+                                    <!-- Tabla Interactiva de Decisiones -->
+                                    <div id="decision-table-container"
+                                        style="background: white; border-radius: 6px; padding: 0.8rem; margin-top: 0.5rem;">
+                                        <div
+                                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+                                            <h6 style="margin: 0; color: var(--uide-primary); font-size: 0.8em;">
+                                                <i class="fas fa-robot"></i> Historial del Agente
+                                            </h6>
+                                            <div style="display: flex; gap: 0.4rem;">
+                                                <button onclick="addDecisionEntry()" style="background: var(--uide-primary); color: white; border: none; 
+                                                               padding: 0.3rem 0.6rem; border-radius: 12px; font-size: 0.7em; 
+                                                               cursor: pointer; transition: all 0.2s ease;"
+                                                        title="Simular nueva entrada">
+                                                    <i class="fas fa-plus"></i> Simular
+                                                </button>
+                                                <button onclick="resetDecisionTable()" style="background: var(--uide-secondary); color: white; border: none; 
+                                                               padding: 0.3rem 0.6rem; border-radius: 12px; font-size: 0.7em; 
+                                                               cursor: pointer; transition: all 0.2s ease;"
+                                                        title="Reiniciar tabla de decisiones">
+                                                    <i class="fas fa-redo"></i> Reiniciar
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div style="overflow-x: auto;">
+                                            <table id="decision-table"
+                                                style="width: 100%; font-size: 0.7em; border-collapse: collapse;">
+                                                <thead>
+                                                    <tr style="background: var(--uide-primary); color: white;">
+                                                        <th
+                                                            style="padding: 0.4rem; border: 1px solid #ddd; text-align: center;">
+                                                            #</th>
+                                                        <th style="padding: 0.4rem; border: 1px solid #ddd;">Percepción
+                                                        </th>
+                                                        <th style="padding: 0.4rem; border: 1px solid #ddd;">Acción</th>
+                                                        <th style="padding: 0.4rem; border: 1px solid #ddd;">Resultado
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="decision-table-body">
+                                                    <tr style="background: #f8f9fa;">
+                                                        <td
+                                                            style="padding: 0.4rem; border: 1px solid #ddd; text-align: center; font-weight: bold;">
+                                                            1</td>
+                                                        <td style="padding: 0.4rem; border: 1px solid #ddd;">
+                                                            <i class="fas fa-circle" style="color: #dc3545;"></i> Celda
+                                                            sucia
+                                                        </td>
+                                                        <td style="padding: 0.4rem; border: 1px solid #ddd;">
+                                                            <i class="fas fa-broom" style="color: #28a745;"></i> Aspirar
+                                                        </td>
+                                                        <td style="padding: 0.4rem; border: 1px solid #ddd;">
+                                                            <i class="fas fa-check" style="color: #28a745;"></i> Limpia
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td
+                                                            style="padding: 0.4rem; border: 1px solid #ddd; text-align: center; font-weight: bold;">
+                                                            2</td>
+                                                        <td style="padding: 0.4rem; border: 1px solid #ddd;">
+                                                            <i class="fas fa-check-circle" style="color: #28a745;"></i>
+                                                            Celda limpia
+                                                        </td>
+                                                        <td style="padding: 0.4rem; border: 1px solid #ddd;">
+                                                            <i class="fas fa-arrow-right" style="color: #007bff;"></i>
+                                                            Mover derecha
+                                                        </td>
+                                                        <td style="padding: 0.4rem; border: 1px solid #ddd;">
+                                                            <i class="fas fa-map-marker-alt"
+                                                                style="color: #007bff;"></i> Pos (1,0)
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div style="margin-top: 0.5rem; text-align: center;">
+                                            <span style="font-size: 0.65em; color: #666;">
+                                                <i class="fas fa-info-circle"></i> El agente aprende de cada interacción
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="column">
@@ -1147,13 +1383,11 @@
                                     <h5><i class="fas fa-graduation-cap"></i> Aprendizaje</h5>
                                     <p style="font-size: 0.9em;">El contexto permite que el agente aprenda
                                         comportamientos</p>
+                                    <div style="margin-top: 0.8rem; padding: 0.6rem; background: rgba(255,255,255,0.7); border-radius: 4px; border-left: 3px solid var(--uide-accent);">
+                                        <p style="font-size: 0.8em; margin: 0;"><i class="fas fa-lightbulb"></i> <strong>Clave:</strong> Los agentes toman decisiones basadas en percepciones previas</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="interactive-box" style="margin-top: 1rem;">
-                            <p><i class="fas fa-lightbulb"></i> <strong>Clave:</strong> Los agentes toman decisiones
-                                basadas en percepciones previas</p>
                         </div>
                     </div>
                 </section>

@@ -1278,4 +1278,261 @@ body.modal-open {
         width: 100% !important;
         height: 100px !important;
     }
+}/* ===
+== MATRIZ DE CLASIFICACIÓN INTERACTIVA ===== */
+
+/* Animaciones para las tarjetas de la matriz */
+.matrix-card {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.matrix-card:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+/* Animaciones de los íconos */
+@keyframes matrix-icon-bounce {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.2) rotate(-5deg); }
+    50% { transform: scale(1.3) rotate(5deg); }
+    75% { transform: scale(1.1) rotate(-2deg); }
+}
+
+@keyframes matrix-icon-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.8; }
+}
+
+/* Animación de aparición secuencial */
+@keyframes matrix-card-appear {
+    0% { 
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    100% { 
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Aplicar animación secuencial a las tarjetas */
+.matrix-card:nth-child(1) {
+    animation: matrix-card-appear 0.6s ease-out 0.1s both;
+}
+
+.matrix-card:nth-child(2) {
+    animation: matrix-card-appear 0.6s ease-out 0.2s both;
+}
+
+.matrix-card:nth-child(3) {
+    animation: matrix-card-appear 0.6s ease-out 0.3s both;
+}
+
+.matrix-card:nth-child(4) {
+    animation: matrix-card-appear 0.6s ease-out 0.4s both;
+}
+
+/* Efectos de brillo en hover */
+.matrix-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+    z-index: 1;
+}
+
+.matrix-card:hover::before {
+    left: 100%;
+}
+
+/* Animación de los ejemplos */
+.matrix-example {
+    transition: all 0.3s ease;
+}
+
+.matrix-card:hover .matrix-example {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Responsive para la matriz */
+@media (max-width: 768px) {
+    .classification-matrix {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .matrix-card {
+        padding: 1rem !important;
+    }
+    
+    .matrix-icons {
+        font-size: 1.5em !important;
+    }
+}
+
+/* Animación de pulsación para elementos activos */
+@keyframes matrix-pulse {
+    0%, 100% { 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    50% { 
+        box-shadow: 0 8px 25px rgba(35, 53, 110, 0.3);
+    }
+}/*
+ ===== TABLA DE DECISIONES INTERACTIVA ===== */
+
+/* Animación para nuevas filas */
+@keyframes slideInRow {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+/* Animación para filas que salen */
+@keyframes slideOutRow {
+    0% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(20px) scale(0.95);
+    }
+}
+
+/* Animación para tooltip de aprendizaje */
+@keyframes tooltipFade {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.8);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.8);
+    }
+}
+
+/* Estilos para la tabla de decisiones */
+#decision-table {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#decision-table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.65em;
+}
+
+#decision-table td {
+    transition: background-color 0.3s ease;
+}
+
+#decision-table tr:hover td {
+    background-color: rgba(35, 53, 110, 0.05) !important;
+}
+
+/* Botón de simular */
+#decision-table-container button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* Responsive para la tabla */
+@media (max-width: 768px) {
+    #decision-table {
+        font-size: 0.6em !important;
+    }
+    
+    #decision-table th,
+    #decision-table td {
+        padding: 0.3rem !important;
+    }
+    
+    #decision-table-container button {
+        font-size: 0.65em !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}/* 
+===== BOTONES DE LA TABLA DE DECISIONES ===== */
+
+/* Contenedor de botones */
+#decision-table-container .button-group {
+    display: flex;
+    gap: 0.4rem;
+}
+
+/* Estilos para botones de la tabla */
+#decision-table-container button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-weight: 500;
+}
+
+#decision-table-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+#decision-table-container button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Botón simular (primario) */
+#decision-table-container button[onclick*="addDecisionEntry"]:hover {
+    background: #1e7e34 !important;
+}
+
+/* Botón reiniciar (secundario) */
+#decision-table-container button[onclick*="resetDecisionTable"]:hover {
+    background: #7a0039 !important;
+}
+
+/* Responsive para botones */
+@media (max-width: 768px) {
+    #decision-table-container .button-group {
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+    
+    #decision-table-container button {
+        font-size: 0.65em !important;
+        padding: 0.25rem 0.5rem !important;
+        width: 100%;
+    }
+}
+
+/* Animación especial para el botón de reiniciar */
+@keyframes resetPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+#decision-table-container button[onclick*="resetDecisionTable"]:active {
+    animation: resetPulse 0.3s ease-out;
 }
