@@ -894,3 +894,388 @@ yles */
 .timer-box button.reset-btn:hover {
     background: #c82333;
 }
+
+/* Simple dice styling without animations */
+.fa-dice, .fa-dice-six {
+    display: inline-block;
+}
+
+/* Simple dice styling for specific elements */
+.animated-dice-header {
+    color: #E9AB21;
+}
+
+.animated-dice-agenda {
+    color: inherit;
+}
+
+.monte-carlo-dice {
+    color: inherit;
+}
+
+/* Simple inline dice text styling */
+.dice-text {
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    background: rgba(233, 171, 33, 0.1);
+    border-radius: 4px;
+}
+
+.dice-inline {
+    margin-left: 0.3em;
+    color: #E9AB21;
+}
+
+/* Clean table styling without icons */
+table td {
+    transition: background-color 0.3s ease;
+}
+
+table tr:hover {
+    background-color: rgba(233, 171, 33, 0.1) !important;
+}
+
+/* Floating help icon */
+.floating-help-emoji {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--uide-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    animation: floatPulse 3s ease-in-out infinite;
+}
+
+.floating-help-emoji i {
+    font-size: 24px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.floating-help-emoji:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.floating-help-emoji:hover i {
+    transform: rotate(15deg);
+    transition: transform 0.3s ease;
+}
+
+@keyframes floatPulse {
+    0%, 100% { 
+        transform: translateY(0px) scale(1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    50% { 
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    table tr:hover {
+        background-color: transparent !important;
+    }
+    
+    .floating-help-emoji {
+        animation: none;
+    }
+    
+    .floating-help-emoji:hover,
+    .floating-help-emoji:hover i {
+        transform: none;
+    }
+}
+/* ====
+= ANIMACIONES AGENTE ASPIRADORA ===== */
+
+/* Rotación continua del ícono de la aspiradora */
+@keyframes vacuum-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Animación de limpieza (aspirar) */
+@keyframes vacuum-clean {
+    0% { 
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    50% { 
+        transform: scale(1.2);
+        box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
+    }
+    100% { 
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+}
+
+/* Animación de celda siendo limpiada */
+@keyframes cell-cleaning {
+    0% { 
+        background: #fff3cd;
+        border-color: #dc3545;
+    }
+    50% { 
+        background: #d4edda;
+        border-color: #28a745;
+        transform: scale(1.05);
+    }
+    100% { 
+        background: #d4edda;
+        border-color: #28a745;
+        transform: scale(1);
+    }
+}
+
+/* Animación de celda sucia */
+@keyframes dirt-appear {
+    0% { 
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animación de celda limpia */
+@keyframes cell-clean {
+    0% { 
+        background: #fff3cd;
+    }
+    100% { 
+        background: #d4edda;
+    }
+}
+
+/* Hover effects para las celdas */
+.vacuum-cell:hover {
+    transform: scale(1.05);
+    border-color: var(--uide-primary) !important;
+    box-shadow: 0 4px 12px rgba(35, 53, 110, 0.3);
+}
+
+/* Estados de las celdas */
+.vacuum-cell.dirty {
+    background: #fff3cd !important;
+    border-color: #dc3545 !important;
+}
+
+.vacuum-cell.clean {
+    background: #d4edda !important;
+    border-color: #28a745 !important;
+}
+
+.vacuum-cell.current {
+    border-color: var(--uide-primary) !important;
+    border-width: 4px !important;
+    box-shadow: 0 0 15px rgba(35, 53, 110, 0.5);
+}
+
+/* Animación de botones */
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3) !important;
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Animación de estado del agente */
+@keyframes status-update {
+    0% { 
+        opacity: 0.7;
+        transform: translateX(-10px);
+    }
+    100% { 
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.status-updating {
+    animation: status-update 0.3s ease-out;
+}
+
+/* Animación de progreso */
+@keyframes progress-fill {
+    0% { width: 0%; }
+    100% { width: var(--progress-width); }
+}
+
+/* Responsive para dispositivos móviles */
+@media (max-width: 768px) {
+    .vacuum-cell {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    #vacuum-agent {
+        width: 32px !important;
+        height: 32px !important;
+    }
+    
+    #vacuum-agent i {
+        font-size: 1em !important;
+    }
+    
+    /* Ajustar grid en móviles */
+    #vacuum-simulation > div:first-of-type {
+        max-width: 260px !important;
+        gap: 4px !important;
+    }
+}/* =====
+ ANIMACIONES MODAL RESULTADOS ===== */
+
+/* Animación de entrada del overlay */
+@keyframes fadeIn {
+    0% { 
+        opacity: 0;
+    }
+    100% { 
+        opacity: 1;
+    }
+}
+
+/* Animación de salida del overlay */
+@keyframes fadeOut {
+    0% { 
+        opacity: 1;
+    }
+    100% { 
+        opacity: 0;
+    }
+}
+
+/* Animación de entrada del modal */
+@keyframes slideIn {
+    0% { 
+        opacity: 0;
+        transform: scale(0.8) translateY(-20px);
+    }
+    100% { 
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Estilo para el kbd (tecla) */
+kbd {
+    background: #f0f0f0 !important;
+    padding: 2px 6px !important;
+    border-radius: 3px !important;
+    font-family: monospace !important;
+    font-size: 0.9em !important;
+    border: 1px solid #ccc !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+}
+
+/* Mejoras para el overlay */
+#results-overlay {
+    backdrop-filter: blur(2px);
+}
+
+/* Prevenir scroll del body cuando el modal está abierto */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Responsive para el modal */
+@media (max-width: 480px) {
+    #results-overlay > div {
+        width: 95% !important;
+        padding: 1.5rem !important;
+        margin: 1rem !important;
+    }
+    
+    #results-overlay button {
+        padding: 0.6rem 1rem !important;
+        font-size: 0.9em !important;
+        margin: 0.2rem !important;
+        display: block !important;
+        width: 100% !important;
+    }
+}
+
+/* ===== IMÁGENES CON ALTO FIJO ===== */
+
+/* Imágenes en grids de ejemplos - alto fijo, ancho flexible */
+.concept-box img {
+    width: 100% !important;
+    height: 120px !important;
+    object-fit: cover !important;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect para las imágenes */
+.concept-box img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* Responsive para imágenes en móviles */
+@media (max-width: 768px) {
+    .concept-box img {
+        width: 100% !important;
+        height: 100px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .concept-box img {
+        width: 100% !important;
+        height: 80px !important;
+    }
+}/* 
+===== VIDEOS CON ALTURA OPTIMIZADA ===== */
+
+/* Videos en grids de ejemplos - altura fija, ancho flexible */
+.concept-box video {
+    width: 100% !important;
+    height: 140px !important;
+    object-fit: cover !important;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect para los videos */
+.concept-box video:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* Responsive para videos en móviles */
+@media (max-width: 768px) {
+    .concept-box video {
+        width: 100% !important;
+        height: 120px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .concept-box video {
+        width: 100% !important;
+        height: 100px !important;
+    }
+}

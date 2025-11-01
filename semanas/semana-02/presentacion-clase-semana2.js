@@ -1,5 +1,9 @@
 // Custom JavaScript for Semana 2 - Paradigmas de Simulación
 
+// ===== FUNCIONES GLOBALES PARA AGENTE ASPIRADORA =====
+// Declarar funciones globales temprano para evitar errores de referencia
+let startVacuumSimulation, resetVacuumSimulation, closeResultsModal;
+
 // Initialize presentation when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Presentación Semana 2 - Paradigmas de Simulación cargada');
@@ -56,10 +60,7 @@ function addKeyboardShortcuts() {
             toggleTimer();
         }
         
-        // Press 'c' to show classification cheat sheet
-        if (event.key === 'c' || event.key === 'C') {
-            showClassificationCheatSheet();
-        }
+        // Classification cheat sheet removed from keyboard shortcut
     });
 }
 
@@ -74,7 +75,7 @@ function showHelp() {
                 <ul style="text-align: left;">
                     <li><strong>H:</strong> Mostrar esta ayuda</li>
                     <li><strong>T:</strong> Activar/desactivar temporizador</li>
-                    <li><strong>C:</strong> Mostrar guía de clasificación</li>
+                    <li><strong><i class="fas fa-question-circle"></i> (icono flotante):</strong> Mostrar guía de clasificación</li>
                     <li><strong>ESC:</strong> Cerrar overlays</li>
                     <li><strong>Espacio:</strong> Siguiente slide</li>
                     <li><strong>Shift + Espacio:</strong> Slide anterior</li>
@@ -407,6 +408,12 @@ function handleImageError(img) {
     img.alt = 'Imagen no disponible';
 }
 
+// Simple dice functionality (no animations)
+function initializeDiceAnimations() {
+    // Dice icons are now static - no animations
+    console.log('Dice animations disabled for cleaner presentation');
+}
+
 // Initialize enhanced features when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     initializeClassificationSystem();
@@ -579,3 +586,529 @@ function showTimerNotification(timerId) {
         // Ignore audio errors
     }
 }
+
+// ===== SIMULACIÓN AGENTE ASPIRADORA =====
+
+// Variables globales para la simulación
+let vacuumSimulation = {
+    isRunning: false,
+    agentPosition: { x: 0, y: 0 },
+    gridSize: { width: 4, height: 2 },
+    dirtyCells: new Set(),
+    cleanedCells: new Set(),
+    currentStep: 0,
+    maxSteps: 20,
+    animationSpeed: 1500, // ms entre movimientos
+    intervalId: null
+};
+
+// Inicializar la simulación del agente aspiradora
+function initializeVacuumSimulation() {
+    // Generar suciedad aleatoria
+    generateRandomDirt();
+    
+    // Posicionar el agente en (0,0)
+    positionVacuumAgent(0, 0);
+    
+    // Actualizar estado inicial
+    updateAgentStatus('Listo para comenzar', 0, 0);
+    
+    console.log('Simulación del agente aspiradora inicializada');
+}
+
+// Generar suciedad aleatoria en las celdas
+function generateRandomDirt() {
+    const { dirtyCells } = vacuumSimulation;
+    dirtyCells.clear();
+    
+    // Generar entre 3-6 celdas sucias aleatoriamente
+    const numDirtyCells = Math.floor(Math.random() * 4) + 3;
+    
+    while (dirtyCells.size < numDirtyCells) {
+        const cellIndex = Math.floor(Math.random() * 8);
+        dirtyCells.add(cellIndex);
+    }
+    
+    // Actualizar visualización
+    updateCellsDisplay();
+}
+
+// Actualizar la visualización de las celdas
+function updateCellsDisplay() {
+    const { dirtyCells, cleanedCells } = vacuumSimulation;
+    
+    for (let i = 0; i < 8; i++) {
+        const cell = document.getElementById(`cell-${i}`);
+        const dirtMarker = cell.querySelector('.dirt-marker');
+        
+        // Limpiar clases previas
+        cell.classList.remove('dirty', 'clean', 'current');
+        
+        if (dirtyCells.has(i) && !cleanedCells.has(i)) {
+            // Celda sucia
+            cell.classList.add('dirty');
+            dirtMarker.style.display = 'block';
+            dirtMarker.style.animation = 'dirt-appear 0.5s ease-out';
+        } else if (cleanedCells.has(i)) {
+            // Celda limpia
+            cell.classList.add('clean');
+            dirtMarker.style.display = 'none';
+        } else {
+            // Celda normal
+            dirtMarker.style.display = 'none';
+        }
+    }
+}
+
+// Posicionar el agente aspiradora
+function positionVacuumAgent(x, y) {
+    const agent = document.getElementById('vacuum-agent');
+    const cellIndex = y * 4 + x;
+    const targetCell = document.getElementById(`cell-${cellIndex}`);
+    
+    if (agent && targetCell) {
+        const cellRect = targetCell.getBoundingClientRect();
+        const containerRect = targetCell.parentElement.getBoundingClientRect();
+        
+        // Calcular posición centrada (responsive)
+        const isMobile = window.innerWidth <= 768;
+        const cellSize = isMobile ? 50 : 65;
+        const gap = isMobile ? 4 : 6;
+        const agentSize = isMobile ? 32 : 40;
+        
+        // Centrar el agente en la celda
+        const cellCenterX = (x * (cellSize + gap)) + (cellSize / 2) - (agentSize / 2);
+        const cellCenterY = (y * (cellSize + gap)) + (cellSize / 2) - (agentSize / 2);
+        
+        const relativeX = cellCenterX;
+        const relativeY = cellCenterY;
+        
+        agent.style.transform = `translate(${relativeX}px, ${relativeY}px)`;
+        
+        // Actualizar posición en el estado
+        vacuumSimulation.agentPosition = { x, y };
+        
+        // Marcar celda actual
+        document.querySelectorAll('.vacuum-cell').forEach(cell => {
+            cell.classList.remove('current');
+        });
+        targetCell.classList.add('current');
+    }
+}
+
+// Iniciar la simulación (función interna)
+function startVacuumSimulationInternal() {
+    if (vacuumSimulation.isRunning) return;
+    
+    vacuumSimulation.isRunning = true;
+    vacuumSimulation.currentStep = 0;
+    
+    // Actualizar botones
+    const startBtn = document.getElementById('start-simulation');
+    const resetBtn = document.getElementById('reset-simulation');
+    
+    if (startBtn) {
+        startBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar';
+        startBtn.onclick = pauseVacuumSimulation;
+    }
+    
+    // Iniciar el bucle de simulación
+    runSimulationStep();
+    
+    updateAgentStatus('Simulación en progreso...', 
+                     vacuumSimulation.agentPosition.x, 
+                     vacuumSimulation.agentPosition.y);
+}
+
+// Pausar la simulación
+function pauseVacuumSimulation() {
+    vacuumSimulation.isRunning = false;
+    
+    if (vacuumSimulation.intervalId) {
+        clearTimeout(vacuumSimulation.intervalId);
+    }
+    
+    // Actualizar botones
+    const startBtn = document.getElementById('start-simulation');
+    if (startBtn) {
+        startBtn.innerHTML = '<i class="fas fa-play"></i> Continuar';
+        startBtn.onclick = startVacuumSimulationInternal;
+    }
+    
+    updateAgentStatus('Simulación pausada', 
+                     vacuumSimulation.agentPosition.x, 
+                     vacuumSimulation.agentPosition.y);
+}
+
+// Ejecutar un paso de la simulación
+function runSimulationStep() {
+    if (!vacuumSimulation.isRunning) return;
+    
+    const { agentPosition, dirtyCells, cleanedCells, gridSize } = vacuumSimulation;
+    const currentCellIndex = agentPosition.y * gridSize.width + agentPosition.x;
+    
+    // Verificar si la celda actual está sucia
+    if (dirtyCells.has(currentCellIndex) && !cleanedCells.has(currentCellIndex)) {
+        // Aspirar la suciedad
+        cleanCell(currentCellIndex);
+        
+        updateAgentStatus('Aspirando suciedad...', agentPosition.x, agentPosition.y);
+        
+        // Esperar un momento antes del siguiente movimiento
+        vacuumSimulation.intervalId = setTimeout(() => {
+            moveToNextCell();
+        }, vacuumSimulation.animationSpeed);
+        
+    } else {
+        // Moverse a la siguiente celda
+        moveToNextCell();
+    }
+    
+    // Incrementar contador de pasos
+    vacuumSimulation.currentStep++;
+    
+    // Verificar si se completó la limpieza o se alcanzó el máximo de pasos
+    if (isCleaningComplete() || vacuumSimulation.currentStep >= vacuumSimulation.maxSteps) {
+        completeSimulation();
+    }
+}
+
+// Limpiar una celda
+function cleanCell(cellIndex) {
+    const { cleanedCells } = vacuumSimulation;
+    const agent = document.getElementById('vacuum-agent');
+    const cell = document.getElementById(`cell-${cellIndex}`);
+    
+    // Añadir a celdas limpias
+    cleanedCells.add(cellIndex);
+    
+    // Animación de limpieza del agente
+    if (agent) {
+        agent.style.animation = 'vacuum-clean 1s ease-in-out';
+        setTimeout(() => {
+            agent.style.animation = '';
+        }, 1000);
+    }
+    
+    // Animación de la celda siendo limpiada
+    if (cell) {
+        cell.style.animation = 'cell-cleaning 1s ease-in-out';
+        setTimeout(() => {
+            cell.style.animation = '';
+            updateCellsDisplay();
+        }, 1000);
+    }
+}
+
+// Mover a la siguiente celda
+function moveToNextCell() {
+    const { agentPosition, gridSize, dirtyCells, cleanedCells } = vacuumSimulation;
+    
+    // Estrategia simple: movimiento sistemático por filas
+    let nextX = agentPosition.x;
+    let nextY = agentPosition.y;
+    
+    // Buscar la siguiente celda sucia más cercana
+    let targetFound = false;
+    
+    // Primero buscar celdas sucias
+    for (let y = 0; y < gridSize.height && !targetFound; y++) {
+        for (let x = 0; x < gridSize.width && !targetFound; x++) {
+            const cellIndex = y * gridSize.width + x;
+            if (dirtyCells.has(cellIndex) && !cleanedCells.has(cellIndex)) {
+                nextX = x;
+                nextY = y;
+                targetFound = true;
+            }
+        }
+    }
+    
+    // Si no hay celdas sucias, moverse sistemáticamente
+    if (!targetFound) {
+        nextX = agentPosition.x + 1;
+        if (nextX >= gridSize.width) {
+            nextX = 0;
+            nextY = agentPosition.y + 1;
+            if (nextY >= gridSize.height) {
+                nextY = 0;
+            }
+        }
+    }
+    
+    // Mover el agente
+    positionVacuumAgent(nextX, nextY);
+    
+    updateAgentStatus('Moviéndose...', nextX, nextY);
+    
+    // Programar el siguiente paso
+    if (vacuumSimulation.isRunning) {
+        vacuumSimulation.intervalId = setTimeout(() => {
+            runSimulationStep();
+        }, vacuumSimulation.animationSpeed);
+    }
+}
+
+// Verificar si se completó la limpieza
+function isCleaningComplete() {
+    const { dirtyCells, cleanedCells } = vacuumSimulation;
+    
+    for (let cellIndex of dirtyCells) {
+        if (!cleanedCells.has(cellIndex)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Completar la simulación
+function completeSimulation() {
+    vacuumSimulation.isRunning = false;
+    
+    if (vacuumSimulation.intervalId) {
+        clearTimeout(vacuumSimulation.intervalId);
+    }
+    
+    // Actualizar botones
+    const startBtn = document.getElementById('start-simulation');
+    if (startBtn) {
+        startBtn.innerHTML = '<i class="fas fa-check"></i> Completado';
+        startBtn.disabled = true;
+        startBtn.style.background = '#28a745';
+    }
+    
+    const message = isCleaningComplete() ? 
+        '¡Limpieza completada exitosamente!' : 
+        'Simulación terminada (máximo de pasos alcanzado)';
+    
+    updateAgentStatus(message, 
+                     vacuumSimulation.agentPosition.x, 
+                     vacuumSimulation.agentPosition.y);
+    
+    // Mostrar estadísticas finales
+    showSimulationResults();
+}
+
+// Mostrar resultados de la simulación
+function showSimulationResults() {
+    const { dirtyCells, cleanedCells, currentStep } = vacuumSimulation;
+    const efficiency = Math.round((cleanedCells.size / dirtyCells.size) * 100);
+    
+    // Crear overlay de fondo
+    const overlay = document.createElement('div');
+    overlay.id = 'results-overlay';
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease-out;
+    `;
+    
+    // Crear modal
+    const resultsDiv = document.createElement('div');
+    resultsDiv.style.cssText = `
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        text-align: center;
+        border: 3px solid var(--uide-primary);
+        max-width: 400px;
+        width: 90%;
+        position: relative;
+        animation: slideIn 0.3s ease-out;
+    `;
+    
+    resultsDiv.innerHTML = `
+        <!-- Botón X para cerrar -->
+        <button onclick="closeResultsModal()" 
+                style="position: absolute; top: 10px; right: 10px; 
+                       background: none; border: none; font-size: 1.5em; 
+                       color: #999; cursor: pointer; width: 30px; height: 30px;
+                       display: flex; align-items: center; justify-content: center;
+                       border-radius: 50%; transition: all 0.2s ease;"
+                onmouseover="this.style.background='#f0f0f0'; this.style.color='#333';"
+                onmouseout="this.style.background='none'; this.style.color='#999';">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <h4 style="color: var(--uide-primary); margin: 0 0 1rem 0;">
+            <i class="fas fa-chart-bar"></i> Resultados de la Simulación
+        </h4>
+        
+        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+            <p style="margin: 0.5rem 0;"><strong>Celdas Limpiadas:</strong> ${cleanedCells.size}/${dirtyCells.size}</p>
+            <p style="margin: 0.5rem 0;"><strong>Eficiencia:</strong> ${efficiency}%</p>
+            <p style="margin: 0.5rem 0;"><strong>Pasos Ejecutados:</strong> ${currentStep}</p>
+            ${efficiency === 100 ? 
+                '<p style="margin: 0.5rem 0; color: #28a745; font-weight: bold;"><i class="fas fa-check-circle"></i> ¡Limpieza Perfecta!</p>' : 
+                '<p style="margin: 0.5rem 0; color: #ffc107;"><i class="fas fa-info-circle"></i> Algunas celdas quedaron sin limpiar</p>'
+            }
+        </div>
+        
+        <div style="margin-top: 1rem;">
+            <button onclick="closeResultsModal()" 
+                    style="background: var(--uide-primary); color: white; border: none; 
+                           padding: 0.8rem 1.5rem; border-radius: 25px; cursor: pointer; 
+                           margin-right: 0.5rem; transition: all 0.2s ease;"
+                    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2)';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                <i class="fas fa-times"></i> Cerrar
+            </button>
+            <button onclick="closeResultsModal(); resetVacuumSimulation();" 
+                    style="background: var(--uide-secondary); color: white; border: none; 
+                           padding: 0.8rem 1.5rem; border-radius: 25px; cursor: pointer;
+                           transition: all 0.2s ease;"
+                    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2)';"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                <i class="fas fa-redo"></i> Nueva Simulación
+            </button>
+        </div>
+        
+        <p style="font-size: 0.8em; color: #666; margin-top: 1rem; margin-bottom: 0;">
+            <i class="fas fa-keyboard"></i> Presiona <kbd style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">Esc</kbd> para cerrar
+        </p>
+    `;
+    
+    // Añadir modal al overlay
+    overlay.appendChild(resultsDiv);
+    
+    // Cerrar al hacer clic en el overlay (fondo)
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            closeResultsModal();
+        }
+    });
+    
+    // Cerrar con tecla Escape
+    const escapeHandler = function(e) {
+        if (e.key === 'Escape') {
+            closeResultsModal();
+        }
+    };
+    document.addEventListener('keydown', escapeHandler);
+    
+    // Guardar referencia del handler para poder removerlo
+    overlay.escapeHandler = escapeHandler;
+    
+    // Añadir al DOM
+    document.body.appendChild(overlay);
+    
+    // Enfocar el modal para que funcione la tecla Escape
+    resultsDiv.focus();
+}
+
+// Función para cerrar el modal de resultados (función interna)
+function closeResultsModalInternal() {
+    const overlay = document.getElementById('results-overlay');
+    if (overlay) {
+        // Remover el event listener de Escape
+        if (overlay.escapeHandler) {
+            document.removeEventListener('keydown', overlay.escapeHandler);
+        }
+        
+        // Animación de salida
+        overlay.style.animation = 'fadeOut 0.2s ease-out';
+        setTimeout(() => {
+            if (overlay.parentElement) {
+                overlay.remove();
+            }
+        }, 200);
+    }
+}
+
+// Reiniciar la simulación (función interna)
+function resetVacuumSimulationInternal() {
+    // Detener simulación actual
+    vacuumSimulation.isRunning = false;
+    if (vacuumSimulation.intervalId) {
+        clearTimeout(vacuumSimulation.intervalId);
+    }
+    
+    // Reiniciar estado
+    vacuumSimulation.agentPosition = { x: 0, y: 0 };
+    vacuumSimulation.cleanedCells.clear();
+    vacuumSimulation.currentStep = 0;
+    
+    // Generar nueva configuración de suciedad
+    generateRandomDirt();
+    
+    // Reposicionar agente
+    positionVacuumAgent(0, 0);
+    
+    // Actualizar botones
+    const startBtn = document.getElementById('start-simulation');
+    if (startBtn) {
+        startBtn.innerHTML = '<i class="fas fa-play"></i> Iniciar';
+        startBtn.onclick = startVacuumSimulation;
+        startBtn.disabled = false;
+        startBtn.style.background = 'var(--uide-primary)';
+    }
+    
+    // Actualizar estado
+    updateAgentStatus('Listo para comenzar', 0, 0);
+    
+    console.log('Simulación reiniciada');
+}
+
+// Actualizar el estado del agente
+function updateAgentStatus(status, x, y) {
+    const statusText = document.getElementById('status-text');
+    const positionText = document.getElementById('position-text');
+    const cleanCount = document.getElementById('clean-count');
+    const statusContainer = document.getElementById('agent-status');
+    
+    if (statusText) {
+        statusText.textContent = status;
+    }
+    
+    if (positionText) {
+        positionText.textContent = `(${x}, ${y})`;
+    }
+    
+    if (cleanCount) {
+        cleanCount.textContent = vacuumSimulation.cleanedCells.size;
+    }
+    
+    // Animación de actualización
+    if (statusContainer) {
+        statusContainer.classList.add('status-updating');
+        setTimeout(() => {
+            statusContainer.classList.remove('status-updating');
+        }, 300);
+    }
+}
+
+// Inicializar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    // Esperar un poco para que los elementos se rendericen
+    setTimeout(() => {
+        if (document.getElementById('vacuum-simulation')) {
+            initializeVacuumSimulation();
+        }
+    }, 500);
+});
+
+// Asignar funciones a variables globales y window
+startVacuumSimulation = function() {
+    return startVacuumSimulationInternal();
+};
+
+resetVacuumSimulation = function() {
+    return resetVacuumSimulationInternal();
+};
+
+closeResultsModal = function() {
+    return closeResultsModalInternal();
+};
+
+// Exponer funciones en window para acceso desde HTML
+window.startVacuumSimulation = startVacuumSimulation;
+window.resetVacuumSimulation = resetVacuumSimulation;
+window.closeResultsModal = closeResultsModal;
