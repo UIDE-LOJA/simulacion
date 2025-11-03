@@ -1,3 +1,0 @@
-Rubric Name,Criteria Name,Criteria Description,Criteria Enable Range,Rating Name,Rating Description,Rating Points,Rating Name,Rating Description,Rating Points,Rating Name,Rating Description,Rating Points
-PE-1.3 Implementar LCG y Histograma,Implementación LCG,Implementa correctamente generador congruencial lineal,false,Excelente,Implementación correcta y funcional,1.25,Bueno,Implementación con errores menores,0.8,Insuficiente,Implementación incorrecta o no funcional,0
-PE-1.3 Implementar LCG y Histograma,Análisis Estadístico,Genera histograma y análisis de rachas correctamente,false,Excelente,Histograma y análisis de rachas correctos,1,Bueno,Histograma o análisis parcialmente correctos,0.6,Insuficiente,Histograma y análisis incorrectos,0
