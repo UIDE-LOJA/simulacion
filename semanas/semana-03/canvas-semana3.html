@@ -1,0 +1,89 @@
+<p>Esta semana damos el primer paso en el mundo de la simulación estocástica con la <strong>Unidad 2: Generación de Variables Aleatorias</strong>. Nos enfocaremos en cómo las computadoras, sistemas determinísticos por naturaleza, pueden generar números que aparentan ser aleatorios. Aprenderemos sobre los <strong>Generadores Congruenciales Lineales (LCG)</strong>, cómo producir números con distribución uniforme y las pruebas estadísticas básicas para validar su calidad.</p>
+
+<p><strong>¿Qué veremos?</strong></p>
+
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Tema</th>
+                    <th style="width: 45%;">Contenido clave</th>
+                    <th style="width: 30%;">Ejemplos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Generadores Congruenciales</td>
+                    <td>Método <strong>Congruencial Lineal (LCG)</strong>: la fórmula recursiva 𝑋ᵢ₊₁ = (𝑎𝑋ᵢ + 𝑐) mod 𝑚. Se analizará la importancia de la semilla (𝑋₀), el multiplicador (𝑎), la constante aditiva (𝑐) y el módulo (𝑚).</td>
+                    <td>Generador congruencial mixto (c > 0), generador congruencial multiplicativo (c = 0).</td>
+                </tr>
+                <tr>
+                    <td>Números Pseudoaleatorios</td>
+                    <td>Concepto de números pseudoaleatorios y su diferencia con los aleatorios puros. Propiedades deseadas: <strong>uniformidad</strong> (distribución U[0,1]) e <strong>independencia</strong>.</td>
+                    <td>Secuencia de números 𝑟ᵢ = 𝑋ᵢ / 𝑚 para obtener valores entre 0 y 1.</td>
+                </tr>
+                <tr>
+                    <td>Pruebas de Uniformidad</td>
+                    <td>Métodos estadísticos para verificar si una secuencia de números sigue una distribución uniforme. Se introducirán las pruebas de <strong>Chi-Cuadrado</strong> para frecuencias y la <strong>Prueba de Rachas</strong> para independencia.</td>
+                    <td>Aplicación de la prueba Chi-Cuadrado a un conjunto de datos generados. Conteo de rachas arriba y abajo de la media.</td>
+                </tr>
+                <tr>
+                    <td>Implementación Básica</td>
+                    <td>Implementación de un generador congruencial lineal simple para generar una secuencia de números pseudoaleatorios.</td>
+                    <td>Uso de fórmulas en <strong>Excel</strong> para generar la secuencia. Código básico en <strong>R</strong>.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Objetivos de aprendizaje</strong></p>
+
+<p>Al finalizar la semana podrás:</p>
+
+<ul>
+    <li>
+        <p>Explicar el funcionamiento de los <strong>generadores congruenciales lineales</strong> y el rol de sus parámetros.</p>
+    </li>
+    <li>
+        <p>Generar una secuencia de números pseudoaleatorios con distribución uniforme U(0,1) usando el método LCG.</p>
+    </li>
+    <li>
+        <p>Aplicar <strong>pruebas estadísticas básicas de uniformidad e independencia</strong> (Chi-Cuadrado y rachas) para evaluar la calidad de un generador.</p>
+    </li>
+    <li>
+        <p>Implementar un generador simple en herramientas como Excel o R.</p>
+    </li>
+</ul>
+
+<p><strong>Materiales</strong></p>
+
+<ul>
+    <li>
+        <p><strong>Presentación:</strong> <a href="./presentacion-clase-semana3.html">Semana 3 - Generación de Variables Aleatorias</a>.</p>
+    </li>
+    <li>
+        <p><strong>Compendio:</strong> Semana 3 — Generadores Congruenciales y Pruebas de Uniformidad.</p>
+    </li>
+    <li>
+        <p><strong>Bibliografía base (APA):</strong></p>
+        <ul>
+            <li>Main Yaque, P. Navarro Veguillas, H. & Morales Fernández, A. (2019). <em>Simulación con ejercicios en R</em>. UNED.</li>
+            <li>Jiménez Avello, A. Castro Gil, M. & Costa García, J. M. (2015). <em>Simulación de procesos y aplicaciones</em>. Dextra Editorial.</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Actividades</strong></p>
+
+<ul>
+    <li>
+        <p><strong>PE-1.3: Laboratorio: Implementar LCG simple y generar 10k u’s; histograma y rachas</strong> — Práctica guiada en clase — <strong>2.25 pts</strong>.</p>
+    </li>
+    <li>
+        <p><strong>TA-1.3: Bitácora de pruebas de uniformidad (runs/frecuencias)</strong> — Tarea autónoma con reporte de resultados — <strong>2.25 pts</strong>.</p>
+    </li>
+</ul>
+
+<p>Si tienes dudas, utiliza el <strong>horario de tutorías (lunes 10:00-12:00 | viernes 08:00-09:00)</strong> o envía consulta por <strong>correo institucional</strong>.</p>
