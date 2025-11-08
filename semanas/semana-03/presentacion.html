@@ -131,152 +131,994 @@
         <!-- Slide 4: ¿Qué son los Números Pseudoaleatorios? -->
         <div class="slide">
             <h2><i class="fas fa-dice"></i> ¿Qué son los Números Pseudoaleatorios?</h2>
-            <div class="quote">
-                "Los números pseudoaleatorios son esenciales en la simulación estocástica, ya que permiten reproducir el comportamiento de variables aleatorias con cualquier función de probabilidad"
-            </div>
-            <div class="content-grid">
-                <div>
-                    <h3>Definición Central</h3>
-                    <ul>
-                        <li><span class="emphasis">Pseudoaleatorios</span>: "Falso aleatorios" - generados por algoritmo determinista</li>
-                        <li><span class="emphasis">Apariencia aleatoria</span>: Parecen aleatorios pero siguen un patrón matemático</li>
-                        <li><span class="emphasis">Reproducibilidad</span>: Misma semilla → misma secuencia</li>
-                        <li><span class="emphasis">Distribución objetivo</span>: Principalmente U(0,1) uniforme</li>
-                    </ul>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: calc(100% - 80px);">
+                <!-- Columna Izquierda: Conceptos -->
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div class="quote" style="font-size: 0.9rem; padding: 12px; margin: 0;">
+                        "Esenciales en simulación estocástica para reproducir variables aleatorias"
+                    </div>
+                    
+                    <div>
+                        <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Características Clave</h3>
+                        <ul style="font-size: 0.95rem; line-height: 1.6;">
+                            <li><span class="emphasis">Deterministas</span>: Algoritmo matemático fijo</li>
+                            <li><span class="emphasis">Reproducibles</span>: Misma semilla → misma secuencia</li>
+                            <li><span class="emphasis">Distribución U(0,1)</span>: Rango estándar [0,1]</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid var(--uide-accent);">
+                        <p style="margin: 0; font-size: 0.9rem;"><strong>Notación:</strong> x ~ U(0,1)</p>
+                        <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: #cbd5e1;">Base para generar cualquier distribución</p>
+                    </div>
                 </div>
-                <div>
-                    <h3>Notación Matemática</h3>
-                    <p>Un número pseudoaleatorio (R<sub>i</sub> o U<sub>i</sub>) es el valor de una variable aleatoria x con distribución uniforme:</p>
-                    <div class="code-block">x ~ U(0,1)</div>
-                    <p><strong>Rango Estándar:</strong> Intervalo (0,1)</p>
-                    <p><strong>Ventaja:</strong> Simplifica transformaciones a otras distribuciones</p>
+
+                <!-- Columna Derecha: Simulación -->
+                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 15px; display: flex; flex-direction: column;">
+                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 12px 0; font-size: 1.1rem;">
+                        <i class="fas fa-play-circle"></i> Demostración: Reproducibilidad
+                    </h3>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1;">
+                        <!-- Generador A -->
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 1px solid rgba(233, 171, 33, 0.3); display: flex; flex-direction: column;">
+                            <h4 style="color: var(--uide-accent); margin: 0 0 8px 0; text-align: center; font-size: 1rem;">🎲 Generador A</h4>
+                            <div style="text-align: center; margin-bottom: 8px;">
+                                <label style="color: #e2e8f0; font-size: 0.85rem;">Semilla:</label>
+                                <input type="number" id="seed1" value="42" 
+                                       style="width: 60px; margin-left: 8px; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.85rem;">
+                            </div>
+                            <div id="sequence1" style="flex: 1; background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.75rem; color: #4ade80; overflow-y: auto;">
+                                <div style="color: #94a3b8; font-style: italic; font-size: 0.7rem;">Presiona "Generar"...</div>
+                            </div>
+                        </div>
+
+                        <!-- Generador B -->
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 1px solid rgba(145, 0, 72, 0.3); display: flex; flex-direction: column;">
+                            <h4 style="color: var(--uide-primary); margin: 0 0 8px 0; text-align: center; font-size: 1rem;">🎲 Generador B</h4>
+                            <div style="text-align: center; margin-bottom: 8px;">
+                                <label style="color: #e2e8f0; font-size: 0.85rem;">Semilla:</label>
+                                <input type="number" id="seed2" value="42" 
+                                       style="width: 60px; margin-left: 8px; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-primary); color: white; border-radius: 4px; font-size: 0.85rem;">
+                            </div>
+                            <div id="sequence2" style="flex: 1; background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.75rem; color: #f472b6; overflow-y: auto;">
+                                <div style="color: #94a3b8; font-style: italic; font-size: 0.7rem;">Presiona "Generar"...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 12px;">
+                        <button id="generateBtn" style="padding: 8px 20px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s;">
+                            <i class="fas fa-sync-alt"></i> Generar
+                        </button>
+                        <div id="comparisonResult" style="margin-top: 10px; font-size: 0.9rem; font-weight: 600; min-height: 25px;"></div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <script>
+        // Simulación de Generador Congruencial Lineal simple
+        function simpleRNG(seed, count = 10) {
+            const a = 1103515245;
+            const c = 12345;
+            const m = Math.pow(2, 31);
+            
+            let x = seed;
+            const sequence = [];
+            
+            for (let i = 0; i < count; i++) {
+                x = (a * x + c) % m;
+                const r = (x / m).toFixed(4);
+                sequence.push(r);
+            }
+            
+            return sequence;
+        }
+
+        // Función para animar la generación de números
+        function animateSequence(elementId, sequence, color) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = '';
+            
+            sequence.forEach((num, index) => {
+                setTimeout(() => {
+                    const numSpan = document.createElement('span');
+                    numSpan.textContent = num;
+                    numSpan.style.display = 'inline-block';
+                    numSpan.style.margin = '3px';
+                    numSpan.style.padding = '4px 8px';
+                    numSpan.style.background = 'rgba(255,255,255,0.1)';
+                    numSpan.style.borderRadius = '4px';
+                    numSpan.style.opacity = '0';
+                    numSpan.style.transform = 'translateY(-10px)';
+                    numSpan.style.transition = 'all 0.3s ease';
+                    
+                    element.appendChild(numSpan);
+                    
+                    setTimeout(() => {
+                        numSpan.style.opacity = '1';
+                        numSpan.style.transform = 'translateY(0)';
+                    }, 10);
+                }, index * 150);
+            });
+        }
+
+        // Event listener para el botón
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generateBtn');
+            
+            if (generateBtn) {
+                generateBtn.addEventListener('click', function() {
+                    const seed1 = parseInt(document.getElementById('seed1').value) || 42;
+                    const seed2 = parseInt(document.getElementById('seed2').value) || 42;
+                    
+                    const seq1 = simpleRNG(seed1, 10);
+                    const seq2 = simpleRNG(seed2, 10);
+                    
+                    animateSequence('sequence1', seq1, '#4ade80');
+                    animateSequence('sequence2', seq2, '#f472b6');
+                    
+                    // Comparar secuencias
+                    setTimeout(() => {
+                        const resultDiv = document.getElementById('comparisonResult');
+                        const areEqual = JSON.stringify(seq1) === JSON.stringify(seq2);
+                        
+                        if (areEqual) {
+                            resultDiv.innerHTML = '<span style="color: #4ade80;"><i class="fas fa-check-circle"></i> ¡Secuencias IDÉNTICAS! Misma semilla → Misma secuencia</span>';
+                        } else {
+                            resultDiv.innerHTML = '<span style="color: #f472b6;"><i class="fas fa-times-circle"></i> Secuencias DIFERENTES - Semillas distintas generan secuencias distintas</span>';
+                        }
+                    }, 1600);
+                });
+            }
+        });
+        </script>
 
 
         <!-- Slide 5: Propiedad 1 - Uniformidad -->
         <div class="slide">
-            <h2><i class="fas fa-chart-bar"></i> Propiedad 1: Uniformidad</h2>
-            <h3 style="text-align: center; margin-bottom: 1.5rem;">Distribución Uniforme U(0,1)</h3>
-            <div class="content-grid">
-                <div>
-                    <h3>Función de Densidad</h3>
-                    <div class="code-block">f(x) = 1  si x ∈ (0,1)
+            <h2 style="margin-bottom: 1rem;"><i class="fas fa-chart-bar"></i> Propiedad 1: Uniformidad - Distribución U(0,1)</h2>
+            
+            <div style="display: grid; grid-template-columns: 35% 65%; gap: 20px; height: calc(100vh - 240px); max-height: 600px;">
+                <!-- Columna Izquierda: Teoría -->
+                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Función de Densidad</h3>
+                        <div class="code-block" style="font-size: 0.8rem; padding: 8px;">f(x) = 1  si x ∈ (0,1)
 f(x) = 0  si x ∉ (0,1)</div>
-                    <h3 style="margin-top: 1.5rem;">Parámetros Teóricos</h3>
-                    <ul>
-                        <li><strong>Media</strong>: μ = 0.5 (un medio)</li>
-                        <li><strong>Varianza</strong>: σ² = 1/12</li>
-                        <li><strong>Desviación estándar</strong>: σ ≈ 0.2887</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Importancia en Simulación</h3>
-                    <ul>
-                        <li>La secuencia debe ajustarse a una distribución U(0,1)</li>
-                        <li>Todos los valores en (0,1) tienen igual probabilidad</li>
-                        <li>Base para generar otras distribuciones</li>
-                        <li>Validación mediante pruebas estadísticas</li>
-                    </ul>
-                    <div style="background: rgba(233, 171, 33, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid var(--uide-accent); margin-top: 1rem;">
-                        <p style="font-size: 0.95rem; margin: 0;">
-                            <i class="fas fa-info-circle"></i> <strong>Clave:</strong> La uniformidad garantiza que no hay sesgo en la generación de números.
+                    </div>
+                    
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Parámetros Teóricos</h3>
+                        <ul style="font-size: 0.85rem; line-height: 1.5; margin: 0; padding-left: 20px;">
+                            <li><strong>Media</strong>: μ = 0.5</li>
+                            <li><strong>Varianza</strong>: σ² = 1/12 ≈ 0.0833</li>
+                            <li><strong>Desv. estándar</strong>: σ ≈ 0.2887</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
+                        <p style="font-size: 0.8rem; margin: 0;">
+                            <i class="fas fa-info-circle"></i> <strong>Clave:</strong> Todos los valores tienen igual probabilidad
                         </p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
+                        <button id="generateUniformBtn" style="padding: 8px 16px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; width: 100%;">
+                            <i class="fas fa-play"></i> Generar Números
+                        </button>
+                        <div style="margin-top: 6px; font-size: 0.8rem;">
+                            <label style="color: #e2e8f0;">Cantidad: </label>
+                            <input type="number" id="uniformCount" value="100" min="50" max="1000" step="50"
+                                   style="width: 65px; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Visualización -->
+                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 12px; display: flex; flex-direction: column; height: 100%;">
+                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 10px 0; font-size: 1rem; flex-shrink: 0;">
+                        <i class="fas fa-chart-bar"></i> Histograma de Distribución
+                    </h3>
+                    
+                    <!-- Canvas para el histograma con altura fija -->
+                    <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; height: 350px; overflow: hidden;">
+                        <canvas id="uniformHistogram"></canvas>
+                    </div>
+
+                    <!-- Estadísticas en tiempo real -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; flex-shrink: 0;">
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Media (μ)</div>
+                            <div id="uniformMean" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                            <div style="font-size: 0.65rem; color: #64748b;">Teórico: 0.5000</div>
+                        </div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Varianza (σ²)</div>
+                            <div id="uniformVariance" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                            <div style="font-size: 0.65rem; color: #64748b;">Teórico: 0.0833</div>
+                        </div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Números</div>
+                            <div id="uniformCount2" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">0</div>
+                            <div style="font-size: 0.65rem; color: #64748b;">Generados</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <script>
+        // Simulación de Uniformidad con Histograma
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateUniformBtn = document.getElementById('generateUniformBtn');
+            
+            if (generateUniformBtn) {
+                generateUniformBtn.addEventListener('click', function() {
+                    const count = parseInt(document.getElementById('uniformCount').value) || 100;
+                    generateUniformDistribution(count);
+                });
+            }
+        });
+
+        function generateUniformDistribution(count) {
+            // Generar números uniformes usando GCL
+            const a = 1103515245;
+            const c = 12345;
+            const m = Math.pow(2, 31);
+            let x = Date.now() % m; // Semilla basada en tiempo
+            
+            const numbers = [];
+            for (let i = 0; i < count; i++) {
+                x = (a * x + c) % m;
+                numbers.push(x / m);
+            }
+
+            // Calcular estadísticas
+            const mean = numbers.reduce((a, b) => a + b, 0) / numbers.length;
+            const variance = numbers.reduce((sum, num) => sum + Math.pow(num - mean, 2), 0) / numbers.length;
+
+            // Actualizar estadísticas
+            document.getElementById('uniformMean').textContent = mean.toFixed(4);
+            document.getElementById('uniformVariance').textContent = variance.toFixed(4);
+            document.getElementById('uniformCount2').textContent = count;
+
+            // Crear histograma
+            drawHistogram(numbers);
+        }
+
+        function drawHistogram(numbers) {
+            const canvas = document.getElementById('uniformHistogram');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width - 20;
+            canvas.height = rect.height - 20;
+
+            const bins = 10;
+            const binCounts = new Array(bins).fill(0);
+            
+            // Contar frecuencias
+            numbers.forEach(num => {
+                const binIndex = Math.min(Math.floor(num * bins), bins - 1);
+                binCounts[binIndex]++;
+            });
+
+            const maxCount = Math.max(...binCounts);
+            const barWidth = canvas.width / bins;
+            const heightScale = (canvas.height - 40) / maxCount;
+
+            // Limpiar canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Dibujar barras con animación
+            binCounts.forEach((count, i) => {
+                const barHeight = count * heightScale;
+                const x = i * barWidth;
+                const y = canvas.height - barHeight - 20;
+
+                // Barra
+                ctx.fillStyle = 'rgba(233, 171, 33, 0.7)';
+                ctx.fillRect(x + 2, y, barWidth - 4, barHeight);
+
+                // Borde
+                ctx.strokeStyle = 'rgba(233, 171, 33, 1)';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(x + 2, y, barWidth - 4, barHeight);
+
+                // Etiqueta de frecuencia
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '10px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(count, x + barWidth / 2, y - 5);
+
+                // Etiqueta del bin
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '9px Arial';
+                const binLabel = ((i / bins).toFixed(1));
+                ctx.fillText(binLabel, x + barWidth / 2, canvas.height - 5);
+            });
+
+            // Línea de referencia (frecuencia esperada)
+            const expectedFreq = numbers.length / bins;
+            const expectedY = canvas.height - (expectedFreq * heightScale) - 20;
+            ctx.strokeStyle = '#f472b6';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(0, expectedY);
+            ctx.lineTo(canvas.width, expectedY);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Leyenda
+            ctx.fillStyle = '#f472b6';
+            ctx.font = '10px Arial';
+            ctx.textAlign = 'left';
+            ctx.fillText('Frecuencia esperada', 10, 15);
+        }
+        </script>
 
         <!-- Slide 6: Propiedad 2 - Independencia -->
         <div class="slide">
-            <h2><i class="fas fa-link"></i> Propiedad 2: Independencia</h2>
-            <div class="content-grid">
-                <div>
-                    <h3>Independencia Estadística</h3>
-                    <ul>
-                        <li><span class="emphasis">Sin correlación</span>: No debe existir relación aparente entre números consecutivos</li>
-                        <li><span class="emphasis">Dispersión uniforme</span>: Valores uniformemente distribuidos</li>
-                        <li><span class="emphasis">Clave en simulación</span>: Independencia entre ejecuciones/réplicas</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Requisitos del Generador</h3>
-                    <ul>
-                        <li><strong>Periodo suficientemente grande</strong>: Ciclo de vida extenso</li>
-                        <li><strong>Reproducibilidad</strong>: Mismas condiciones iniciales → misma secuencia</li>
-                        <li><strong>Validación</strong>: Pruebas de correlación y rachas</li>
-                    </ul>
-                    <div style="background: rgba(145, 0, 72, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid var(--uide-primary); margin-top: 1rem;">
-                        <p style="font-size: 0.95rem; margin: 0;">
-                            <i class="fas fa-exclamation-triangle"></i> <strong>Importante:</strong> La independencia es crucial para evitar patrones predecibles.
+            <h2 style="margin-bottom: 1rem;"><i class="fas fa-link"></i> Propiedad 2: Independencia</h2>
+            
+            <div style="display: grid; grid-template-columns: 35% 65%; gap: 20px; height: calc(100vh - 240px); max-height: 600px;">
+                <!-- Columna Izquierda: Teoría -->
+                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Independencia Estadística</h3>
+                        <ul style="font-size: 0.85rem; line-height: 1.5; margin: 0; padding-left: 20px;">
+                            <li><span class="emphasis">Sin correlación</span>: No debe existir relación entre números consecutivos</li>
+                            <li><span class="emphasis">Dispersión uniforme</span>: Valores distribuidos uniformemente</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Requisitos</h3>
+                        <ul style="font-size: 0.85rem; line-height: 1.5; margin: 0; padding-left: 20px;">
+                            <li><strong>Periodo grande</strong>: Ciclo extenso</li>
+                            <li><strong>Reproducibilidad</strong>: Mismas condiciones → misma secuencia</li>
+                            <li><strong>Validación</strong>: Pruebas de correlación</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(145, 0, 72, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid var(--uide-primary); flex-shrink: 0;">
+                        <p style="font-size: 0.8rem; margin: 0;">
+                            <i class="fas fa-exclamation-triangle"></i> <strong>Importante:</strong> Evita patrones predecibles
                         </p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
+                        <button id="generateIndependenceBtn" style="padding: 8px 16px; background: var(--uide-primary); color: white; border: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; width: 100%;">
+                            <i class="fas fa-play"></i> Generar Scatter Plot
+                        </button>
+                        <div style="margin-top: 6px; font-size: 0.8rem;">
+                            <label style="color: #e2e8f0;">Puntos: </label>
+                            <input type="number" id="independenceCount" value="200" min="50" max="500" step="50"
+                                   style="width: 65px; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-primary); color: white; border-radius: 4px; font-size: 0.8rem;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Visualización -->
+                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-primary); padding: 12px; display: flex; flex-direction: column; height: 100%;">
+                    <h3 style="text-align: center; color: var(--uide-primary); margin: 0 0 10px 0; font-size: 1rem; flex-shrink: 0;">
+                        <i class="fas fa-chart-scatter"></i> Gráfico de Dispersión: X<sub>i</sub> vs X<sub>i+1</sub>
+                    </h3>
+                    
+                    <!-- Canvas para el scatter plot -->
+                    <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; height: 350px; overflow: hidden;">
+                        <canvas id="independenceScatter"></canvas>
+                    </div>
+
+                    <!-- Información de correlación -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; flex-shrink: 0;">
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Coeficiente de Correlación</div>
+                            <div id="correlationCoef" style="font-size: 1.1rem; font-weight: 600; color: var(--uide-primary);">-</div>
+                            <div style="font-size: 0.65rem; color: #64748b;">Ideal: ≈ 0 (sin correlación)</div>
+                        </div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Interpretación</div>
+                            <div id="correlationStatus" style="font-size: 0.9rem; font-weight: 600; color: var(--uide-accent); margin-top: 5px;">-</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <script>
+        // Simulación de Independencia con Scatter Plot
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateIndependenceBtn = document.getElementById('generateIndependenceBtn');
+            
+            if (generateIndependenceBtn) {
+                generateIndependenceBtn.addEventListener('click', function() {
+                    const count = parseInt(document.getElementById('independenceCount').value) || 200;
+                    generateIndependencePlot(count);
+                });
+            }
+        });
+
+        function generateIndependencePlot(count) {
+            // Generar números uniformes usando GCL
+            const a = 1103515245;
+            const c = 12345;
+            const m = Math.pow(2, 31);
+            let x = Date.now() % m;
+            
+            const numbers = [];
+            for (let i = 0; i < count + 1; i++) {
+                x = (a * x + c) % m;
+                numbers.push(x / m);
+            }
+
+            // Crear pares (Xi, Xi+1)
+            const pairs = [];
+            for (let i = 0; i < numbers.length - 1; i++) {
+                pairs.push({ x: numbers[i], y: numbers[i + 1] });
+            }
+
+            // Calcular correlación
+            const correlation = calculateCorrelation(pairs);
+            
+            // Actualizar estadísticas
+            document.getElementById('correlationCoef').textContent = correlation.toFixed(4);
+            
+            const absCorr = Math.abs(correlation);
+            let status = '';
+            if (absCorr < 0.1) {
+                status = '✓ Excelente independencia';
+            } else if (absCorr < 0.3) {
+                status = '✓ Buena independencia';
+            } else if (absCorr < 0.5) {
+                status = '⚠ Correlación moderada';
+            } else {
+                status = '✗ Alta correlación';
+            }
+            document.getElementById('correlationStatus').textContent = status;
+
+            // Dibujar scatter plot
+            drawScatterPlot(pairs);
+        }
+
+        function calculateCorrelation(pairs) {
+            const n = pairs.length;
+            const meanX = pairs.reduce((sum, p) => sum + p.x, 0) / n;
+            const meanY = pairs.reduce((sum, p) => sum + p.y, 0) / n;
+            
+            let numerator = 0;
+            let denomX = 0;
+            let denomY = 0;
+            
+            pairs.forEach(p => {
+                const dx = p.x - meanX;
+                const dy = p.y - meanY;
+                numerator += dx * dy;
+                denomX += dx * dx;
+                denomY += dy * dy;
+            });
+            
+            return numerator / Math.sqrt(denomX * denomY);
+        }
+
+        function drawScatterPlot(pairs) {
+            const canvas = document.getElementById('independenceScatter');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width - 20;
+            canvas.height = rect.height - 20;
+
+            // Limpiar canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const padding = 40;
+            const plotWidth = canvas.width - 2 * padding;
+            const plotHeight = canvas.height - 2 * padding;
+
+            // Dibujar ejes
+            ctx.strokeStyle = '#64748b';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding, padding);
+            ctx.lineTo(padding, canvas.height - padding);
+            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.stroke();
+
+            // Etiquetas de ejes
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('X_i', canvas.width / 2, canvas.height - 10);
+            
+            ctx.save();
+            ctx.translate(15, canvas.height / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText('X_{i+1}', 0, 0);
+            ctx.restore();
+
+            // Dibujar puntos
+            pairs.forEach((pair, index) => {
+                const px = padding + pair.x * plotWidth;
+                const py = canvas.height - padding - pair.y * plotHeight;
+                
+                ctx.fillStyle = 'rgba(145, 0, 72, 0.6)';
+                ctx.beginPath();
+                ctx.arc(px, py, 2.5, 0, 2 * Math.PI);
+                ctx.fill();
+            });
+
+            // Dibujar líneas de referencia (grid)
+            ctx.strokeStyle = 'rgba(100, 116, 139, 0.2)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 4; i++) {
+                const pos = padding + (i / 4) * plotWidth;
+                ctx.beginPath();
+                ctx.moveTo(pos, padding);
+                ctx.lineTo(pos, canvas.height - padding);
+                ctx.stroke();
+                
+                ctx.beginPath();
+                ctx.moveTo(padding, padding + (i / 4) * plotHeight);
+                ctx.lineTo(canvas.width - padding, padding + (i / 4) * plotHeight);
+                ctx.stroke();
+            }
+        }
+        </script>
+
         <!-- Slide 7: GCL Mixto - Definición -->
         <div class="slide">
-            <h2><i class="fas fa-cogs"></i> Generador Congruencial Lineal (GCL) Mixto</h2>
-            <div class="quote">
-                "Uno de los algoritmos más antiguos, conocidos y utilizados para generar números pseudoaleatorios"
-            </div>
-            <div class="content-grid">
-                <div>
-                    <h3>Fórmula Recursiva</h3>
-                    <div class="code-block">X<sub>i+1</sub> = (a · X<sub>i</sub> + c) mod m
+            <h2 style="margin-bottom: 0.8rem;"><i class="fas fa-cogs"></i> Generador Congruencial Lineal (GCL) Mixto</h2>
+            
+            <div style="display: grid; grid-template-columns: 40% 60%; gap: 20px; height: calc(100vh - 220px); max-height: 620px;">
+                <!-- Columna Izquierda: Teoría -->
+                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
+                    <div class="quote" style="font-size: 0.85rem; padding: 10px; margin: 0;">
+                        "Algoritmo clásico para generar números pseudoaleatorios"
+                    </div>
+                    
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Fórmula Recursiva</h3>
+                        <div class="code-block" style="font-size: 0.9rem; padding: 10px;">X<sub>i+1</sub> = (a · X<sub>i</sub> + c) mod m</div>
+                    </div>
+                    
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Parámetros</h3>
+                        <ul style="font-size: 0.85rem; line-height: 1.5; margin: 0; padding-left: 20px;">
+                            <li><strong>X<sub>0</sub></strong>: Semilla (valor inicial)</li>
+                            <li><strong>a</strong>: Multiplicador</li>
+                            <li><strong>c</strong>: Incremento</li>
+                            <li><strong>m</strong>: Módulo</li>
+                        </ul>
+                    </div>
 
-para i = 0, 1, 2, 3, ...</div>
-                    <h3 style="margin-top: 1.5rem;">Parámetros del GCL</h3>
-                    <ul>
-                        <li><strong>X<sub>0</sub></strong>: Semilla (valor inicial)</li>
-                        <li><strong>a</strong>: Constante multiplicativa (multiplicador)</li>
-                        <li><strong>c</strong>: Incremento o constante aditiva</li>
-                        <li><strong>m</strong>: Módulo (determina rango de valores)</li>
-                    </ul>
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
+                        <p style="font-size: 0.8rem; margin: 0;">
+                            <strong>Transformación:</strong> U<sub>i</sub> = X<sub>i</sub> / m
+                        </p>
+                    </div>
+
+                    <div style="background: rgba(35, 53, 110, 0.2); padding: 10px; border-radius: 8px; flex-shrink: 0;">
+                        <h4 style="font-size: 0.9rem; margin: 0 0 6px 0; color: var(--uide-accent);">Tipos de GCL</h4>
+                        <ul style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 20px;">
+                            <li><strong>Mixto</strong>: c ≠ 0</li>
+                            <li><strong>Multiplicativo</strong>: c = 0</li>
+                        </ul>
+                    </div>
                 </div>
-                <div>
-                    <h3>Tipos de Generadores</h3>
-                    <ul>
-                        <li><strong>GCL Mixto</strong>: c ≠ 0 (con incremento)</li>
-                        <li><strong>GCL Multiplicativo</strong>: c = 0 (sin incremento)</li>
-                    </ul>
-                    <h3 style="margin-top: 1.5rem;">Rango de Valores</h3>
-                    <div class="code-block">X<sub>i+1</sub> ∈ {0, 1, 2, ..., m-1}</div>
-                    <h3 style="margin-top: 1rem;">Transformación a Uniforme</h3>
-                    <div class="code-block">U<sub>i</sub> = X<sub>i</sub> / m
 
-Alternativa: R<sub>i</sub> = X<sub>i</sub> / (m-1)</div>
+                <!-- Columna Derecha: Calculadora Interactiva -->
+                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 12px; display: flex; flex-direction: column; height: 100%;">
+                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 10px 0; font-size: 1rem; flex-shrink: 0;">
+                        <i class="fas fa-calculator"></i> Calculadora GCL - Paso a Paso
+                    </h3>
+                    
+                    <!-- Controles de parámetros -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; flex-shrink: 0;">
+                        <div>
+                            <label style="font-size: 0.75rem; color: #94a3b8;">Semilla (X₀):</label>
+                            <input type="number" id="gclSeed" value="7" min="0" max="100"
+                                   style="width: 100%; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
+                        </div>
+                        <div>
+                            <label style="font-size: 0.75rem; color: #94a3b8;">Multiplicador (a):</label>
+                            <input type="number" id="gclA" value="5" min="1" max="100"
+                                   style="width: 100%; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
+                        </div>
+                        <div>
+                            <label style="font-size: 0.75rem; color: #94a3b8;">Incremento (c):</label>
+                            <input type="number" id="gclC" value="3" min="0" max="100"
+                                   style="width: 100%; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
+                        </div>
+                        <div>
+                            <label style="font-size: 0.75rem; color: #94a3b8;">Módulo (m):</label>
+                            <input type="number" id="gclM" value="16" min="2" max="1000"
+                                   style="width: 100%; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
+                        </div>
+                    </div>
+
+                    <button id="generateGCLBtn" style="padding: 6px 16px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; margin-bottom: 10px; flex-shrink: 0;">
+                        <i class="fas fa-play"></i> Generar Secuencia
+                    </button>
+
+                    <!-- Área de visualización de pasos -->
+                    <div id="gclStepsContainer" style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px; overflow-y: auto; min-height: 0; max-height: 350px; scrollbar-width: thin; scrollbar-color: rgba(233, 171, 33, 0.5) rgba(0, 0, 0, 0.3);">
+                        <div id="gclSteps" style="font-family: 'Courier New', monospace; font-size: 0.75rem; color: #4ade80; line-height: 1.6;">
+                            <div style="color: #94a3b8; font-style: italic;">Configura los parámetros y presiona "Generar Secuencia"...</div>
+                        </div>
+                    </div>
+                    
+                    <style>
+                        /* Estilo personalizado para el scrollbar en navegadores Webkit (Chrome, Safari, Edge) */
+                        #gclStepsContainer::-webkit-scrollbar {
+                            width: 8px;
+                        }
+                        
+                        #gclStepsContainer::-webkit-scrollbar-track {
+                            background: rgba(0, 0, 0, 0.3);
+                            border-radius: 4px;
+                        }
+                        
+                        #gclStepsContainer::-webkit-scrollbar-thumb {
+                            background: rgba(233, 171, 33, 0.5);
+                            border-radius: 4px;
+                        }
+                        
+                        #gclStepsContainer::-webkit-scrollbar-thumb:hover {
+                            background: rgba(233, 171, 33, 0.8);
+                        }
+                    </style>
+
+                    <!-- Resumen de la secuencia -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 10px; flex-shrink: 0;">
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Números</div>
+                            <div id="gclCount" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">0</div>
+                        </div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Periodo</div>
+                            <div id="gclPeriod" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                        </div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Último U<sub>i</sub></div>
+                            <div id="gclLastU" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <script>
+        // Calculadora GCL Paso a Paso
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateGCLBtn = document.getElementById('generateGCLBtn');
+            
+            if (generateGCLBtn) {
+                generateGCLBtn.addEventListener('click', function() {
+                    const seed = parseInt(document.getElementById('gclSeed').value) || 7;
+                    const a = parseInt(document.getElementById('gclA').value) || 5;
+                    const c = parseInt(document.getElementById('gclC').value) || 3;
+                    const m = parseInt(document.getElementById('gclM').value) || 16;
+                    
+                    generateGCLSequence(seed, a, c, m);
+                });
+            }
+        });
+
+        function generateGCLSequence(seed, a, c, m) {
+            const stepsDiv = document.getElementById('gclSteps');
+            stepsDiv.innerHTML = '';
+            
+            let x = seed;
+            const sequence = [x];
+            const maxIterations = Math.min(m + 5, 20); // Limitar a 20 iteraciones para visualización
+            
+            // Encabezado con parámetros
+            let html = `<div style="color: #e2e8f0; margin-bottom: 8px; text-align: center;"><strong>Parámetros:</strong> a=${a}, c=${c}, m=${m}, X₀=${seed}</div>`;
+            
+            // Crear tabla
+            html += `<table style="width: 100%; border-collapse: collapse; font-size: 0.7rem; margin-top: 10px;">`;
+            html += `<thead>`;
+            html += `<tr style="background: rgba(233, 171, 33, 0.2); border-bottom: 2px solid rgba(233, 171, 33, 0.5);">`;
+            html += `<th style="padding: 6px; text-align: center; color: #fbbf24; border: 1px solid rgba(255,255,255,0.1);">i</th>`;
+            html += `<th style="padding: 6px; text-align: center; color: #4ade80; border: 1px solid rgba(255,255,255,0.1);">X<sub>i</sub></th>`;
+            html += `<th style="padding: 6px; text-align: center; color: #94a3b8; border: 1px solid rgba(255,255,255,0.1);">a·X<sub>i</sub></th>`;
+            html += `<th style="padding: 6px; text-align: center; color: #94a3b8; border: 1px solid rgba(255,255,255,0.1);">+c</th>`;
+            html += `<th style="padding: 6px; text-align: center; color: #fbbf24; border: 1px solid rgba(255,255,255,0.1);">X<sub>i+1</sub></th>`;
+            html += `<th style="padding: 6px; text-align: center; color: #60a5fa; border: 1px solid rgba(255,255,255,0.1);">U<sub>i+1</sub></th>`;
+            html += `</tr>`;
+            html += `</thead>`;
+            html += `<tbody>`;
+            
+            let periodDetected = false;
+            
+            for (let i = 0; i < maxIterations; i++) {
+                const product = a * x;
+                const sum = product + c;
+                const xNext = sum % m;
+                const u = (xNext / m).toFixed(4);
+                
+                // Alternar colores de fila
+                const bgColor = i % 2 === 0 ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.06)';
+                
+                html += `<tr style="background: ${bgColor}; border-bottom: 1px solid rgba(255,255,255,0.05);">`;
+                html += `<td style="padding: 5px; text-align: center; color: #f472b6; border: 1px solid rgba(255,255,255,0.05);">${i}</td>`;
+                html += `<td style="padding: 5px; text-align: center; color: #4ade80; font-weight: 600; border: 1px solid rgba(255,255,255,0.05);">${x}</td>`;
+                html += `<td style="padding: 5px; text-align: center; color: #94a3b8; border: 1px solid rgba(255,255,255,0.05);">${product}</td>`;
+                html += `<td style="padding: 5px; text-align: center; color: #94a3b8; border: 1px solid rgba(255,255,255,0.05);">${sum}</td>`;
+                html += `<td style="padding: 5px; text-align: center; color: #fbbf24; font-weight: 600; border: 1px solid rgba(255,255,255,0.05);">${xNext}</td>`;
+                html += `<td style="padding: 5px; text-align: center; color: #60a5fa; border: 1px solid rgba(255,255,255,0.05);">${u}</td>`;
+                html += `</tr>`;
+                
+                x = xNext;
+                
+                // Detectar si se repite (periodo)
+                if (sequence.includes(x)) {
+                    const periodStart = sequence.indexOf(x);
+                    const period = i + 1 - periodStart;
+                    
+                    html += `</tbody></table>`;
+                    html += `<div style="color: #f472b6; margin-top: 10px; padding: 8px; background: rgba(244, 114, 182, 0.1); border-radius: 4px; border-left: 3px solid #f472b6; text-align: center;">`;
+                    html += `<strong>⟳ Periodo detectado: ${period}</strong><br>`;
+                    html += `<span style="font-size: 0.65rem;">(se repite X<sub>${periodStart}</sub> = ${x})</span>`;
+                    html += `</div>`;
+                    
+                    document.getElementById('gclPeriod').textContent = period;
+                    periodDetected = true;
+                    break;
+                }
+                
+                sequence.push(x);
+            }
+            
+            if (!periodDetected) {
+                html += `</tbody></table>`;
+            }
+            
+            stepsDiv.innerHTML = html;
+            
+            // Actualizar estadísticas
+            document.getElementById('gclCount').textContent = sequence.length;
+            document.getElementById('gclLastU').textContent = (x / m).toFixed(4);
+            
+            if (sequence.length >= maxIterations) {
+                document.getElementById('gclPeriod').textContent = `>${maxIterations}`;
+            }
+            
+            // Auto-scroll al final del contenedor
+            const container = document.getElementById('gclStepsContainer');
+            if (container) {
+                setTimeout(() => {
+                    container.scrollTop = container.scrollHeight;
+                }, 100);
+            }
+        }
+        </script>
 
         <!-- Slide 8: Periodo Máximo -->
         <div class="slide">
-            <h2><i class="fas fa-sync-alt"></i> Periodo Máximo: Teorema de Hull-Dobell</h2>
-            <div class="content-grid">
-                <div>
-                    <h3>Definición de Periodo</h3>
-                    <ul>
-                        <li><strong>Periodo</strong>: Longitud de secuencia antes de repetirse</li>
-                        <li><strong>Máximo posible</strong>: p = m (periodo completo)</li>
-                        <li><strong>Importancia</strong>: Mayor periodo = mayor calidad</li>
-                    </ul>
+            <h2 style="margin-bottom: 1rem;"><i class="fas fa-sync-alt"></i> Periodo Máximo: Teorema de Hull-Dobell</h2>
+            
+            <div style="display: grid; grid-template-columns: 40% 60%; gap: 20px; height: calc(100vh - 220px); max-height: 620px;">
+                <!-- Columna Izquierda: Teoría -->
+                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Definición de Periodo</h3>
+                        <ul style="font-size: 0.85rem; line-height: 1.5; margin: 0; padding-left: 20px;">
+                            <li><strong>Periodo (p)</strong>: Longitud antes de repetirse</li>
+                            <li><strong>Máximo</strong>: p = m (periodo completo)</li>
+                            <li><strong>Importancia</strong>: Mayor periodo = mayor calidad</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Condiciones Hull-Dobell (p = m)</h3>
+                        <ol style="font-size: 0.8rem; line-height: 1.5; margin: 0; padding-left: 20px;">
+                            <li>gcd(c, m) = 1</li>
+                            <li>(a - 1) es múltiplo de factores primos de m</li>
+                            <li>Si 4|m entonces 4|(a - 1)</li>
+                        </ol>
+                    </div>
+
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
+                        <p style="font-size: 0.8rem; margin: 0;">
+                            <i class="fas fa-info-circle"></i> Garantiza máxima longitud sin repetición
+                        </p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
+                        <button id="generatePeriodBtn" style="padding: 8px 16px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; width: 100%;">
+                            <i class="fas fa-play"></i> Visualizar Periodo
+                        </button>
+                        <div style="margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 0.75rem;">
+                            <div>
+                                <label style="color: #e2e8f0;">m:</label>
+                                <input type="number" id="periodM" value="16" min="4" max="32" step="4"
+                                       style="width: 100%; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.75rem;">
+                            </div>
+                            <div>
+                                <label style="color: #e2e8f0;">a:</label>
+                                <input type="number" id="periodA" value="5" min="1" max="20"
+                                       style="width: 100%; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.75rem;">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h3>Condiciones para Periodo Completo (p = m)</h3>
-                    <ol style="font-size: 1.1rem; line-height: 1.8;">
-                        <li><strong>c y m son primos relativos</strong>: gcd(c, m) = 1</li>
-                        <li><strong>a - 1 es múltiplo</strong> de todos los factores primos de m</li>
-                        <li><strong>Si m es múltiplo de 4</strong>, entonces a - 1 también lo es</li>
-                    </ol>
+
+                <!-- Columna Derecha: Visualización Circular -->
+                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 12px; display: flex; flex-direction: column; height: 100%;">
+                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 10px 0; font-size: 1rem; flex-shrink: 0;">
+                        <i class="fas fa-circle-notch"></i> Visualización Circular del Periodo
+                    </h3>
+                    
+                    <!-- Canvas para visualización circular -->
+                    <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; height: 400px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <canvas id="periodCircle"></canvas>
+                        <div id="periodAnimation" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: var(--uide-accent); font-size: 0.9rem; pointer-events: none;"></div>
+                    </div>
+
+                    <!-- Estadísticas del periodo -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 10px; flex-shrink: 0;">
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Periodo (p)</div>
+                            <div id="periodValue" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                        </div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Módulo (m)</div>
+                            <div id="periodModulo" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                        </div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Eficiencia</div>
+                            <div id="periodEfficiency" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div style="margin-top: 1.5rem; text-align: center; font-size: 1.1rem; color: var(--uide-accent);">
-                <i class="fas fa-info-circle"></i> El Teorema de Hull-Dobell garantiza la máxima longitud de secuencia sin repetición
             </div>
         </div>
+
+        <script>
+        // Visualización del Periodo Circular
+        document.addEventListener('DOMContentLoaded', function() {
+            const generatePeriodBtn = document.getElementById('generatePeriodBtn');
+            
+            if (generatePeriodBtn) {
+                generatePeriodBtn.addEventListener('click', function() {
+                    const m = parseInt(document.getElementById('periodM').value) || 16;
+                    const a = parseInt(document.getElementById('periodA').value) || 5;
+                    visualizePeriod(m, a);
+                });
+            }
+        });
+
+        function visualizePeriod(m, a) {
+            const c = 1; // Incremento fijo para simplicidad
+            const seed = 1;
+            
+            // Generar secuencia hasta encontrar repetición
+            let x = seed;
+            const sequence = [x];
+            let period = 0;
+            
+            for (let i = 0; i < m * 2; i++) {
+                x = (a * x + c) % m;
+                if (sequence.includes(x)) {
+                    period = sequence.length;
+                    break;
+                }
+                sequence.push(x);
+            }
+            
+            // Actualizar estadísticas
+            document.getElementById('periodValue').textContent = period;
+            document.getElementById('periodModulo').textContent = m;
+            const efficiency = ((period / m) * 100).toFixed(1) + '%';
+            document.getElementById('periodEfficiency').textContent = efficiency;
+            
+            // Dibujar visualización circular
+            drawPeriodCircle(sequence, m, period);
+        }
+
+        function drawPeriodCircle(sequence, m, period) {
+            const canvas = document.getElementById('periodCircle');
+            if (!canvas) return;
+            
+            const container = canvas.parentElement;
+            const size = Math.min(container.clientWidth, container.clientHeight) - 40;
+            canvas.width = size;
+            canvas.height = size;
+            
+            const ctx = canvas.getContext('2d');
+            const centerX = size / 2;
+            const centerY = size / 2;
+            const radius = size * 0.35;
+            
+            // Limpiar canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Dibujar círculo base
+            ctx.strokeStyle = 'rgba(100, 116, 139, 0.3)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+            ctx.stroke();
+            
+            // Dibujar puntos y conexiones animadas
+            let currentIndex = 0;
+            const animationInterval = setInterval(() => {
+                if (currentIndex >= sequence.length) {
+                    clearInterval(animationInterval);
+                    
+                    // Dibujar línea de cierre si hay repetición
+                    if (period < m) {
+                        const lastAngle = (2 * Math.PI * sequence[sequence.length - 1]) / m - Math.PI / 2;
+                        const firstAngle = (2 * Math.PI * sequence[0]) / m - Math.PI / 2;
+                        
+                        ctx.strokeStyle = '#f472b6';
+                        ctx.lineWidth = 3;
+                        ctx.setLineDash([5, 5]);
+                        ctx.beginPath();
+                        ctx.moveTo(centerX + radius * Math.cos(lastAngle), centerY + radius * Math.sin(lastAngle));
+                        ctx.lineTo(centerX + radius * Math.cos(firstAngle), centerY + radius * Math.sin(firstAngle));
+                        ctx.stroke();
+                        ctx.setLineDash([]);
+                        
+                        document.getElementById('periodAnimation').innerHTML = 
+                            `<div style="background: rgba(244, 114, 182, 0.2); padding: 10px; border-radius: 8px; border: 2px solid #f472b6;">
+                                <strong>⟳ Ciclo detectado</strong><br>
+                                <span style="font-size: 0.8rem;">Periodo: ${period} / ${m}</span>
+                            </div>`;
+                    } else {
+                        document.getElementById('periodAnimation').innerHTML = 
+                            `<div style="background: rgba(74, 222, 128, 0.2); padding: 10px; border-radius: 8px; border: 2px solid #4ade80;">
+                                <strong>✓ Periodo completo</strong><br>
+                                <span style="font-size: 0.8rem;">p = m = ${m}</span>
+                            </div>`;
+                    }
+                    return;
+                }
+                
+                const value = sequence[currentIndex];
+                const angle = (2 * Math.PI * value) / m - Math.PI / 2;
+                const x = centerX + radius * Math.cos(angle);
+                const y = centerY + radius * Math.sin(angle);
+                
+                // Dibujar línea de conexión
+                if (currentIndex > 0) {
+                    const prevValue = sequence[currentIndex - 1];
+                    const prevAngle = (2 * Math.PI * prevValue) / m - Math.PI / 2;
+                    const prevX = centerX + radius * Math.cos(prevAngle);
+                    const prevY = centerY + radius * Math.sin(prevAngle);
+                    
+                    ctx.strokeStyle = 'rgba(233, 171, 33, 0.5)';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(prevX, prevY);
+                    ctx.lineTo(x, y);
+                    ctx.stroke();
+                }
+                
+                // Dibujar punto
+                ctx.fillStyle = currentIndex === 0 ? '#4ade80' : '#E9AB21';
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, 2 * Math.PI);
+                ctx.fill();
+                
+                // Etiqueta del valor
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '10px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(value, x, y - 10);
+                
+                currentIndex++;
+            }, 300); // 300ms entre cada punto
+        }
+        </script>
 
         <!-- Slide 9: Pruebas de Validación -->
         <div class="slide">
@@ -308,137 +1150,918 @@ Alternativa: R<sub>i</sub> = X<sub>i</sub> / (m-1)</div>
 
         <!-- Slide 10: Prueba K-S -->
         <div class="slide">
-            <h2><i class="fas fa-chart-line"></i> Prueba de Kolmogorov-Smirnov (K-S)</h2>
-            <div class="content-grid">
-                <div>
-                    <h3>Características</h3>
-                    <ul>
-                        <li><strong>Tipo</strong>: Test no paramétrico de bondad de ajuste</li>
-                        <li><strong>Aplicación</strong>: Distribuciones teóricas continuas</li>
-                        <li><strong>Comparación</strong>: Función de distribución empírica vs teórica</li>
-                    </ul>
-                    <h3 style="margin-top: 1.5rem;">Ventajas</h3>
-                    <ul>
-                        <li>No requiere agrupación de datos</li>
-                        <li>Sensible a diferencias en toda la distribución</li>
-                        <li>Fácil de interpretar</li>
-                    </ul>
+            <h2 style="margin-bottom: 1rem;"><i class="fas fa-chart-line"></i> Prueba de Kolmogorov-Smirnov (K-S)</h2>
+            
+            <div style="display: grid; grid-template-columns: 20% 55% 25%; gap: 15px; height: calc(100vh - 220px); max-height: 620px;">
+                <!-- Columna 1: Características -->
+                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 0.95rem; margin-bottom: 6px;">Características</h3>
+                        <ul style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 18px;">
+                            <li><strong>Tipo</strong>: Test no paramétrico</li>
+                            <li><strong>Aplicación</strong>: Distribuciones continuas</li>
+                            <li><strong>Comparación</strong>: F empírica vs teórica</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 8px; border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
+                        <p style="font-size: 0.75rem; margin: 0;">
+                            <i class="fas fa-info-circle"></i> <strong>H<sub>0</sub>:</strong> Datos ~ U(0,1)
+                        </p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
+                        <button id="generateKSBtn" style="padding: 8px 12px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; width: 100%;">
+                            <i class="fas fa-play"></i> Ejecutar
+                        </button>
+                        <div style="margin-top: 6px; font-size: 0.75rem;">
+                            <label style="color: #e2e8f0;">n = </label>
+                            <input type="number" id="ksCount" value="50" min="20" max="200" step="10"
+                                   style="width: 60px; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.75rem;">
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h3>Procedimiento</h3>
-                    <ol style="font-size: 1.05rem; line-height: 1.7;">
-                        <li><strong>Ordenar</strong> números pseudoaleatorios</li>
-                        <li><strong>Calcular</strong> desviación máxima D</li>
-                        <li><strong>Comparar</strong> con valor crítico d<sub>α,n</sub></li>
-                        <li><strong>Decisión</strong>: Si D > d<sub>α,n</sub> → rechazar H<sub>0</sub> (uniformidad)</li>
-                    </ol>
-                    <div style="background: rgba(233, 171, 33, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid var(--uide-accent); margin-top: 1rem;">
-                        <p style="font-size: 0.9rem; margin: 0;">
-                            <i class="fas fa-info-circle"></i> <strong>H<sub>0</sub>:</strong> Los datos siguen una distribución U(0,1)
+
+                <!-- Columna 2: Visualización (Centro) -->
+                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 12px; display: flex; flex-direction: column; height: 100%; min-height: 0;">
+                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 10px 0; font-size: 0.95rem; flex-shrink: 0;">
+                        <i class="fas fa-chart-area"></i> Función Empírica vs Teórica
+                    </h3>
+                    
+                    <!-- Canvas para el gráfico K-S -->
+                    <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; flex: 1; min-height: 0; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <canvas id="ksCanvas"></canvas>
+                    </div>
+
+                    <!-- Resultados de la prueba -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 10px; flex-shrink: 0;">
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.65rem; color: #94a3b8;">Estadístico D</div>
+                            <div id="ksD" style="font-size: 0.95rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                        </div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.65rem; color: #94a3b8;">Valor Crítico</div>
+                            <div id="ksCritical" style="font-size: 0.95rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                        </div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.65rem; color: #94a3b8;">Resultado</div>
+                            <div id="ksResult" style="font-size: 0.8rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 3: Procedimiento -->
+                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 0.95rem; margin-bottom: 6px;">Procedimiento</h3>
+                        <ol style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 18px;">
+                            <li>Ordenar números</li>
+                            <li>Calcular desviación máxima D</li>
+                            <li>Comparar con d<sub>α,n</sub></li>
+                            <li>Decisión: D > d<sub>α,n</sub> → rechazar H<sub>0</sub></li>
+                        </ol>
+                    </div>
+                    
+                    <div style="background: rgba(145, 0, 72, 0.1); padding: 8px; border-radius: 8px; border-left: 4px solid var(--uide-primary); flex-shrink: 0;">
+                        <p style="font-size: 0.75rem; margin: 0; line-height: 1.3;">
+                            <i class="fas fa-exclamation-triangle"></i> <strong>Ventajas:</strong> No requiere agrupación, sensible a toda la distribución
                         </p>
                     </div>
                 </div>
             </div>
+            </div>
         </div>
+
+        <script>
+        // Prueba de Kolmogorov-Smirnov
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateKSBtn = document.getElementById('generateKSBtn');
+            
+            if (generateKSBtn) {
+                generateKSBtn.addEventListener('click', function() {
+                    const n = parseInt(document.getElementById('ksCount').value) || 50;
+                    performKSTest(n);
+                });
+            }
+        });
+
+        function performKSTest(n) {
+            // Generar números uniformes
+            const a = 1103515245;
+            const c = 12345;
+            const m = Math.pow(2, 31);
+            let x = Date.now() % m;
+            
+            const numbers = [];
+            for (let i = 0; i < n; i++) {
+                x = (a * x + c) % m;
+                numbers.push(x / m);
+            }
+            
+            // Ordenar números
+            const sorted = [...numbers].sort((a, b) => a - b);
+            
+            // Calcular función empírica y desviaciones
+            const empirical = sorted.map((val, i) => ({ x: val, y: (i + 1) / n }));
+            
+            // Calcular estadístico D (máxima desviación)
+            let maxD = 0;
+            let maxPoint = null;
+            
+            empirical.forEach((point, i) => {
+                const theoretical = point.x; // Para U(0,1), F(x) = x
+                const d1 = Math.abs(point.y - theoretical);
+                const d2 = Math.abs((i / n) - theoretical);
+                
+                if (d1 > maxD) {
+                    maxD = d1;
+                    maxPoint = { x: point.x, y: point.y, theoretical: theoretical };
+                }
+                if (d2 > maxD) {
+                    maxD = d2;
+                    maxPoint = { x: point.x, y: i / n, theoretical: theoretical };
+                }
+            });
+            
+            // Valor crítico aproximado para α = 0.05
+            const critical = 1.36 / Math.sqrt(n);
+            
+            // Actualizar resultados
+            document.getElementById('ksD').textContent = maxD.toFixed(4);
+            document.getElementById('ksCritical').textContent = critical.toFixed(4);
+            
+            const passed = maxD <= critical;
+            document.getElementById('ksResult').innerHTML = passed 
+                ? '<span style="color: #4ade80;">✓ Pasa</span>' 
+                : '<span style="color: #f87171;">✗ Falla</span>';
+            
+            // Dibujar gráfico
+            drawKSPlot(empirical, maxPoint, maxD, critical, passed);
+        }
+
+        function drawKSPlot(empirical, maxPoint, maxD, critical, passed) {
+            const canvas = document.getElementById('ksCanvas');
+            if (!canvas) return;
+            
+            const container = canvas.parentElement;
+            const rect = container.getBoundingClientRect();
+            // Ajustar al tamaño del contenedor
+            canvas.width = Math.max(rect.width - 20, 300);
+            canvas.height = Math.max(rect.height - 20, 300);
+            
+            const ctx = canvas.getContext('2d');
+            const padding = 40;
+            const plotWidth = canvas.width - 2 * padding;
+            const plotHeight = canvas.height - 2 * padding;
+            
+            // Limpiar canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Dibujar ejes
+            ctx.strokeStyle = '#64748b';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding, padding);
+            ctx.lineTo(padding, canvas.height - padding);
+            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.stroke();
+            
+            // Etiquetas de ejes
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('x', canvas.width / 2, canvas.height - 10);
+            
+            ctx.save();
+            ctx.translate(15, canvas.height / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText('F(x)', 0, 0);
+            ctx.restore();
+            
+            // Dibujar línea teórica (diagonal)
+            ctx.strokeStyle = '#60a5fa';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding, canvas.height - padding);
+            ctx.lineTo(canvas.width - padding, padding);
+            ctx.stroke();
+            
+            // Etiqueta línea teórica
+            ctx.fillStyle = '#60a5fa';
+            ctx.font = '10px Arial';
+            ctx.fillText('Teórica F(x)=x', canvas.width - padding - 60, padding + 20);
+            
+            // Dibujar función empírica (escalonada)
+            ctx.strokeStyle = '#4ade80';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            
+            let prevX = padding;
+            let prevY = canvas.height - padding;
+            
+            empirical.forEach((point, i) => {
+                const x = padding + point.x * plotWidth;
+                const y = canvas.height - padding - point.y * plotHeight;
+                
+                // Línea horizontal
+                ctx.lineTo(x, prevY);
+                // Línea vertical
+                ctx.lineTo(x, y);
+                
+                prevX = x;
+                prevY = y;
+            });
+            
+            ctx.stroke();
+            
+            // Etiqueta línea empírica
+            ctx.fillStyle = '#4ade80';
+            ctx.fillText('Empírica', padding + 60, padding + 20);
+            
+            // Dibujar línea de máxima desviación
+            if (maxPoint) {
+                const x = padding + maxPoint.x * plotWidth;
+                const yEmp = canvas.height - padding - maxPoint.y * plotHeight;
+                const yTheo = canvas.height - padding - maxPoint.theoretical * plotHeight;
+                
+                ctx.strokeStyle = passed ? '#fbbf24' : '#f87171';
+                ctx.lineWidth = 3;
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(x, yEmp);
+                ctx.lineTo(x, yTheo);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                
+                // Etiqueta D
+                ctx.fillStyle = passed ? '#fbbf24' : '#f87171';
+                ctx.font = 'bold 11px Arial';
+                ctx.fillText(`D=${maxD.toFixed(3)}`, x + 10, (yEmp + yTheo) / 2);
+            }
+        }
+        </script>
 
         <!-- Slide 11: Prueba Chi-Cuadrado -->
         <div class="slide">
-            <h2><i class="fas fa-chart-pie"></i> Prueba Chi-Cuadrado (χ²)</h2>
-            <div class="content-grid">
-                <div>
-                    <h3>También Conocida Como</h3>
-                    <ul>
-                        <li>Prueba de Pearson</li>
-                        <li>Prueba de frecuencias</li>
-                    </ul>
-                    <h3 style="margin-top: 1.5rem;">Metodología</h3>
-                    <ul>
-                        <li><strong>Mide</strong>: Discrepancia entre frecuencia observada (F<sub>o</sub>) y esperada (F<sub>e</sub>)</li>
-                        <li><strong>Principio</strong>: En distribución uniforme, frecuencias deben ser aproximadamente iguales</li>
-                    </ul>
+            <h2 style="margin-bottom: 1rem;"><i class="fas fa-chart-pie"></i> Prueba Chi-Cuadrado (χ²)</h2>
+            
+            <div style="display: grid; grid-template-columns: 20% 55% 25%; gap: 15px; height: calc(100vh - 220px); max-height: 620px;">
+                <!-- Columna 1: Información -->
+                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 0.95rem; margin-bottom: 6px;">También Conocida</h3>
+                        <ul style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 18px;">
+                            <li>Prueba de Pearson</li>
+                            <li>Prueba de frecuencias</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 0.95rem; margin-bottom: 6px;">Metodología</h3>
+                        <ul style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 18px;">
+                            <li><strong>Mide</strong>: Discrepancia F<sub>o</sub> vs F<sub>e</sub></li>
+                            <li><strong>Principio</strong>: Frecuencias ≈ iguales</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(145, 0, 72, 0.1); padding: 8px; border-radius: 8px; border-left: 4px solid var(--uide-primary); flex-shrink: 0;">
+                        <p style="font-size: 0.75rem; margin: 0; line-height: 1.3;">
+                            <i class="fas fa-exclamation-triangle"></i> <strong>Nota:</strong> Min. 5 obs. por clase
+                        </p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
+                        <button id="generateChiBtn" style="padding: 8px 12px; background: var(--uide-primary); color: white; border: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; width: 100%;">
+                            <i class="fas fa-play"></i> Ejecutar
+                        </button>
+                        <div style="margin-top: 6px; font-size: 0.75rem;">
+                            <label style="color: #e2e8f0;">n = </label>
+                            <input type="number" id="chiCount" value="100" min="50" max="500" step="50"
+                                   style="width: 60px; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-primary); color: white; border-radius: 4px; font-size: 0.75rem;">
+                        </div>
+                        <div style="margin-top: 4px; font-size: 0.75rem;">
+                            <label style="color: #e2e8f0;">K = </label>
+                            <input type="number" id="chiClasses" value="10" min="5" max="20"
+                                   style="width: 60px; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-primary); color: white; border-radius: 4px; font-size: 0.75rem;">
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h3>Pasos del Procedimiento</h3>
-                    <ol style="font-size: 1.05rem; line-height: 1.7;">
-                        <li><strong>Agrupar</strong> n números en K clases de igual amplitud</li>
-                        <li><strong>Calcular</strong> F<sub>o</sub> y F<sub>e</sub> = n · A<sub>i</sub></li>
-                        <li><strong>Computar</strong> estadístico χ²</li>
-                        <li><strong>Comparar</strong> con χ²<sub>α,K-1</sub></li>
-                    </ol>
-                    <div style="background: rgba(145, 0, 72, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid var(--uide-primary); margin-top: 1rem;">
-                        <p style="font-size: 0.9rem; margin: 0;">
-                            <i class="fas fa-exclamation-triangle"></i> <strong>Nota:</strong> Requiere al menos 5 observaciones por clase
+
+                <!-- Columna 2: Visualización (Centro) -->
+                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-primary); padding: 12px; display: flex; flex-direction: column; height: 100%; min-height: 0;">
+                    <h3 style="text-align: center; color: var(--uide-primary); margin: 0 0 10px 0; font-size: 0.95rem; flex-shrink: 0;">
+                        <i class="fas fa-chart-bar"></i> Frecuencias Observadas vs Esperadas
+                    </h3>
+                    
+                    <!-- Canvas para el histograma Chi-Cuadrado -->
+                    <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; flex: 1; min-height: 0; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <canvas id="chiCanvas"></canvas>
+                    </div>
+
+                    <!-- Resultados de la prueba -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 10px; flex-shrink: 0;">
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.65rem; color: #94a3b8;">χ² Calculado</div>
+                            <div id="chiSquare" style="font-size: 0.95rem; font-weight: 600; color: var(--uide-primary);">-</div>
+                        </div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.65rem; color: #94a3b8;">χ² Crítico</div>
+                            <div id="chiCritical" style="font-size: 0.95rem; font-weight: 600; color: var(--uide-primary);">-</div>
+                        </div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.65rem; color: #94a3b8;">Resultado</div>
+                            <div id="chiResult" style="font-size: 0.8rem; font-weight: 600; color: var(--uide-primary);">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 3: Procedimiento -->
+                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 0.95rem; margin-bottom: 6px;">Procedimiento</h3>
+                        <ol style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 18px;">
+                            <li>Agrupar en K clases</li>
+                            <li>Calcular F<sub>o</sub> y F<sub>e</sub></li>
+                            <li>Computar χ² = Σ(F<sub>o</sub>-F<sub>e</sub>)²/F<sub>e</sub></li>
+                            <li>Comparar con χ²<sub>α,K-1</sub></li>
+                        </ol>
+                    </div>
+                    
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 8px; border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
+                        <p style="font-size: 0.75rem; margin: 0; line-height: 1.3;">
+                            <i class="fas fa-info-circle"></i> <strong>Fórmula:</strong><br>
+                            χ² = Σ(F<sub>o</sub>-F<sub>e</sub>)²/F<sub>e</sub>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
 
+        <script>
+        // Prueba de Chi-Cuadrado
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateChiBtn = document.getElementById('generateChiBtn');
+            
+            if (generateChiBtn) {
+                generateChiBtn.addEventListener('click', function() {
+                    const n = parseInt(document.getElementById('chiCount').value) || 100;
+                    const k = parseInt(document.getElementById('chiClasses').value) || 10;
+                    performChiSquareTest(n, k);
+                });
+            }
+        });
+
+        function performChiSquareTest(n, k) {
+            // Generar números uniformes
+            const a = 1103515245;
+            const c = 12345;
+            const m = Math.pow(2, 31);
+            let x = Date.now() % m;
+            
+            const numbers = [];
+            for (let i = 0; i < n; i++) {
+                x = (a * x + c) % m;
+                numbers.push(x / m);
+            }
+            
+            // Agrupar en K clases
+            const observed = new Array(k).fill(0);
+            numbers.forEach(num => {
+                const classIndex = Math.min(Math.floor(num * k), k - 1);
+                observed[classIndex]++;
+            });
+            
+            // Frecuencia esperada (uniforme)
+            const expected = n / k;
+            
+            // Calcular estadístico Chi-Cuadrado
+            let chiSquare = 0;
+            observed.forEach(fo => {
+                chiSquare += Math.pow(fo - expected, 2) / expected;
+            });
+            
+            // Valor crítico aproximado para α = 0.05 y gl = k-1
+            // Usando aproximación simple
+            const df = k - 1;
+            const critical = getChiSquareCritical(df, 0.05);
+            
+            // Actualizar resultados
+            document.getElementById('chiSquare').textContent = chiSquare.toFixed(3);
+            document.getElementById('chiCritical').textContent = critical.toFixed(3);
+            
+            const passed = chiSquare <= critical;
+            document.getElementById('chiResult').innerHTML = passed 
+                ? '<span style="color: #4ade80;">✓ Pasa</span>' 
+                : '<span style="color: #f87171;">✗ Falla</span>';
+            
+            // Dibujar gráfico
+            drawChiSquarePlot(observed, expected, k, passed);
+        }
+
+        function getChiSquareCritical(df, alpha) {
+            // Valores críticos aproximados para α = 0.05
+            const criticalValues = {
+                4: 9.488, 5: 11.070, 6: 12.592, 7: 14.067, 8: 15.507,
+                9: 16.919, 10: 18.307, 11: 19.675, 12: 21.026, 13: 22.362,
+                14: 23.685, 15: 24.996, 16: 26.296, 17: 27.587, 18: 28.869, 19: 30.144
+            };
+            return criticalValues[df] || 18.307;
+        }
+
+        function drawChiSquarePlot(observed, expected, k, passed) {
+            const canvas = document.getElementById('chiCanvas');
+            if (!canvas) return;
+            
+            const container = canvas.parentElement;
+            const rect = container.getBoundingClientRect();
+            canvas.width = Math.max(rect.width - 20, 300);
+            canvas.height = Math.max(rect.height - 20, 300);
+            
+            const ctx = canvas.getContext('2d');
+            const padding = 40;
+            const plotWidth = canvas.width - 2 * padding;
+            const plotHeight = canvas.height - 2 * padding;
+            
+            // Limpiar canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Dibujar ejes
+            ctx.strokeStyle = '#64748b';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding, padding);
+            ctx.lineTo(padding, canvas.height - padding);
+            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.stroke();
+            
+            // Etiquetas de ejes
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('Clases', canvas.width / 2, canvas.height - 10);
+            
+            ctx.save();
+            ctx.translate(15, canvas.height / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText('Frecuencia', 0, 0);
+            ctx.restore();
+            
+            // Encontrar máximo para escala
+            const maxFreq = Math.max(...observed, expected);
+            const barWidth = plotWidth / k;
+            const heightScale = plotHeight / (maxFreq * 1.1);
+            
+            // Dibujar barras
+            observed.forEach((fo, i) => {
+                const x = padding + i * barWidth;
+                const barW = barWidth * 0.8;
+                
+                // Barra de frecuencia esperada (fondo, transparente)
+                const expectedHeight = expected * heightScale;
+                const expectedY = canvas.height - padding - expectedHeight;
+                ctx.fillStyle = 'rgba(96, 165, 250, 0.3)';
+                ctx.fillRect(x + barW * 0.1, expectedY, barW * 0.8, expectedHeight);
+                ctx.strokeStyle = '#60a5fa';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(x + barW * 0.1, expectedY, barW * 0.8, expectedHeight);
+                
+                // Barra de frecuencia observada (frente)
+                const observedHeight = fo * heightScale;
+                const observedY = canvas.height - padding - observedHeight;
+                ctx.fillStyle = passed ? 'rgba(74, 222, 128, 0.7)' : 'rgba(248, 113, 113, 0.7)';
+                ctx.fillRect(x + barW * 0.2, observedY, barW * 0.6, observedHeight);
+                ctx.strokeStyle = passed ? '#4ade80' : '#f87171';
+                ctx.lineWidth = 2;
+                ctx.strokeRect(x + barW * 0.2, observedY, barW * 0.6, observedHeight);
+                
+                // Etiqueta de frecuencia observada
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '10px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(fo, x + barW / 2, observedY - 5);
+                
+                // Etiqueta de clase
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '9px Arial';
+                ctx.fillText(i + 1, x + barW / 2, canvas.height - padding + 15);
+            });
+            
+            // Leyenda
+            ctx.fillStyle = '#60a5fa';
+            ctx.font = '10px Arial';
+            ctx.textAlign = 'left';
+            ctx.fillText('Fe (esperada)', padding + 10, padding + 15);
+            
+            ctx.fillStyle = passed ? '#4ade80' : '#f87171';
+            ctx.fillText('Fo (observada)', padding + 10, padding + 30);
+        }
+        </script>
+
         <!-- Slide 12: Pruebas de Medias y Varianzas -->
         <div class="slide">
-            <h2><i class="fas fa-calculator"></i> Pruebas de Medias y Varianzas</h2>
-            <div class="content-grid">
-                <div class="feature-card">
-                    <h3>Prueba de Medias</h3>
-                    <ul>
-                        <li><strong>Hipótesis nula</strong>: H<sub>0</sub>: μ = 1/2</li>
-                        <li><strong>Fundamento</strong>: Gran cantidad de datos uniformes → promedio = 0.5</li>
-                        <li><strong>Validación</strong>: Compara media muestral con teórica</li>
-                        <li><strong>Importancia</strong>: Detecta sesgo en la generación</li>
-                    </ul>
+            <h2 style="margin-bottom: 1rem;"><i class="fas fa-calculator"></i> Pruebas de Medias y Varianzas</h2>
+            
+            <div style="display: grid; grid-template-columns: 25% 50% 25%; gap: 15px; height: calc(100vh - 220px); max-height: 620px;">
+                <!-- Columna 1: Prueba de Medias -->
+                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
+                    <div class="feature-card" style="flex: 1; display: flex; flex-direction: column;">
+                        <h3 style="font-size: 1rem; margin-bottom: 8px;">Prueba de Medias</h3>
+                        <ul style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 18px; flex: 1;">
+                            <li><strong>H<sub>0</sub></strong>: μ = 0.5</li>
+                            <li><strong>Fundamento</strong>: Datos uniformes → promedio = 0.5</li>
+                            <li><strong>Detecta</strong>: Sesgo en generación</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <h3>Prueba de Varianzas</h3>
-                    <ul>
-                        <li><strong>Hipótesis nula</strong>: H<sub>0</sub>: σ² = 1/12</li>
-                        <li><strong>Fundamento</strong>: Teoría estadística de distribución uniforme</li>
-                        <li><strong>Validación</strong>: Compara varianza muestral con teórica</li>
-                        <li><strong>Importancia</strong>: Detecta dispersión anormal</li>
-                    </ul>
+
+                <!-- Columna 2: Visualización (Centro) -->
+                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 12px; display: flex; flex-direction: column; height: 100%; min-height: 0;">
+                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 10px 0; font-size: 0.95rem; flex-shrink: 0;">
+                        <i class="fas fa-tachometer-alt"></i> Medidores de Convergencia
+                    </h3>
+                    
+                    <!-- Gauges -->
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 15px; justify-content: center; min-height: 0;">
+                        <!-- Gauge de Media -->
+                        <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 12px;">
+                            <h4 style="text-align: center; color: #4ade80; margin: 0 0 8px 0; font-size: 0.9rem;">Media (μ)</h4>
+                            <div style="position: relative; height: 150px; display: flex; align-items: center; justify-content: center;">
+                                <canvas id="meanGauge" width="280" height="150"></canvas>
+                            </div>
+                            <div style="text-align: center; margin-top: 8px;">
+                                <div style="font-size: 0.75rem; color: #94a3b8;">Valor calculado</div>
+                                <div id="meanValue" style="font-size: 1.2rem; font-weight: 600; color: #4ade80;">-</div>
+                                <div style="font-size: 0.7rem; color: #64748b;">Teórico: 0.5000</div>
+                            </div>
+                        </div>
+
+                        <!-- Gauge de Varianza -->
+                        <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 12px;">
+                            <h4 style="text-align: center; color: #60a5fa; margin: 0 0 8px 0; font-size: 0.9rem;">Varianza (σ²)</h4>
+                            <div style="position: relative; height: 150px; display: flex; align-items: center; justify-content: center;">
+                                <canvas id="varianceGauge" width="280" height="150"></canvas>
+                            </div>
+                            <div style="text-align: center; margin-top: 8px;">
+                                <div style="font-size: 0.75rem; color: #94a3b8;">Valor calculado</div>
+                                <div id="varianceValue" style="font-size: 1.2rem; font-weight: 600; color: #60a5fa;">-</div>
+                                <div style="font-size: 0.7rem; color: #64748b;">Teórico: 0.0833</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Control -->
+                    <div style="text-align: center; margin-top: 10px; flex-shrink: 0;">
+                        <button id="generateMeanVarBtn" style="padding: 8px 16px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s;">
+                            <i class="fas fa-play"></i> Generar y Medir
+                        </button>
+                        <div style="margin-top: 6px; font-size: 0.75rem;">
+                            <label style="color: #e2e8f0;">n = </label>
+                            <input type="number" id="meanVarCount" value="100" min="50" max="1000" step="50"
+                                   style="width: 65px; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.75rem;">
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div style="margin-top: 1.5rem; text-align: center; font-size: 1.1rem; color: var(--uide-accent);">
-                <i class="fas fa-info-circle"></i> Validan si propiedades muestrales coinciden con parámetros teóricos U(0,1)
+
+                <!-- Columna 3: Prueba de Varianzas -->
+                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
+                    <div class="feature-card" style="flex: 1; display: flex; flex-direction: column;">
+                        <h3 style="font-size: 1rem; margin-bottom: 8px;">Prueba de Varianzas</h3>
+                        <ul style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 18px; flex: 1;">
+                            <li><strong>H<sub>0</sub></strong>: σ² = 1/12</li>
+                            <li><strong>Fundamento</strong>: Teoría de U(0,1)</li>
+                            <li><strong>Detecta</strong>: Dispersión anormal</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <script>
+        // Pruebas de Medias y Varianzas con Gauges
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateMeanVarBtn = document.getElementById('generateMeanVarBtn');
+            
+            if (generateMeanVarBtn) {
+                generateMeanVarBtn.addEventListener('click', function() {
+                    const n = parseInt(document.getElementById('meanVarCount').value) || 100;
+                    performMeanVarianceTest(n);
+                });
+            }
+        });
+
+        function performMeanVarianceTest(n) {
+            // Generar números uniformes
+            const a = 1103515245;
+            const c = 12345;
+            const m = Math.pow(2, 31);
+            let x = Date.now() % m;
+            
+            const numbers = [];
+            for (let i = 0; i < n; i++) {
+                x = (a * x + c) % m;
+                numbers.push(x / m);
+            }
+            
+            // Calcular media
+            const mean = numbers.reduce((sum, num) => sum + num, 0) / n;
+            
+            // Calcular varianza
+            const variance = numbers.reduce((sum, num) => sum + Math.pow(num - mean, 2), 0) / n;
+            
+            // Actualizar valores
+            document.getElementById('meanValue').textContent = mean.toFixed(4);
+            document.getElementById('varianceValue').textContent = variance.toFixed(4);
+            
+            // Dibujar gauges
+            drawGauge('meanGauge', mean, 0.5, 0.3, 0.7, '#4ade80');
+            drawGauge('varianceGauge', variance, 0.0833, 0.05, 0.12, '#60a5fa');
+        }
+
+        function drawGauge(canvasId, value, target, min, max, color) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height - 20;
+            const radius = 100;
+            
+            // Limpiar canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Dibujar arco de fondo
+            const startAngle = Math.PI;
+            const endAngle = 2 * Math.PI;
+            
+            // Zona roja (fuera de rango)
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+            ctx.lineWidth = 20;
+            ctx.strokeStyle = 'rgba(248, 113, 113, 0.3)';
+            ctx.stroke();
+            
+            // Zona verde (rango aceptable: ±10% del target)
+            const greenMin = target * 0.9;
+            const greenMax = target * 1.1;
+            const greenStartAngle = startAngle + ((greenMin - min) / (max - min)) * Math.PI;
+            const greenEndAngle = startAngle + ((greenMax - min) / (max - min)) * Math.PI;
+            
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, greenStartAngle, greenEndAngle);
+            ctx.lineWidth = 20;
+            ctx.strokeStyle = 'rgba(74, 222, 128, 0.5)';
+            ctx.stroke();
+            
+            // Línea del valor objetivo
+            const targetAngle = startAngle + ((target - min) / (max - min)) * Math.PI;
+            const targetX = centerX + radius * Math.cos(targetAngle);
+            const targetY = centerY + radius * Math.sin(targetAngle);
+            
+            ctx.strokeStyle = '#fbbf24';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(targetX, targetY);
+            ctx.stroke();
+            
+            // Aguja del valor actual
+            const clampedValue = Math.max(min, Math.min(max, value));
+            const valueAngle = startAngle + ((clampedValue - min) / (max - min)) * Math.PI;
+            const needleLength = radius - 10;
+            const needleX = centerX + needleLength * Math.cos(valueAngle);
+            const needleY = centerY + needleLength * Math.sin(valueAngle);
+            
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(needleX, needleY);
+            ctx.stroke();
+            
+            // Círculo central
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 8, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Etiquetas de escala
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '10px Arial';
+            ctx.textAlign = 'center';
+            
+            // Min
+            ctx.fillText(min.toFixed(2), centerX - radius - 10, centerY + 5);
+            // Max
+            ctx.fillText(max.toFixed(2), centerX + radius + 10, centerY + 5);
+            // Target
+            ctx.fillStyle = '#fbbf24';
+            ctx.fillText(target.toFixed(4), centerX, centerY + 25);
+        }
+        </script>
 
         <!-- Slide 13: Implementación en Excel -->
         <div class="slide">
-            <h2><i class="fas fa-file-excel"></i> Implementación en Excel</h2>
-            <div class="content-grid">
-                <div>
-                    <h3>Función Incorporada</h3>
-                    <div class="code-block">=ALEATORIO()
+            <h2 style="margin-bottom: 1rem;"><i class="fas fa-file-excel"></i> Implementación en Excel</h2>
+            
+            <div style="display: grid; grid-template-columns: 30% 70%; gap: 20px; height: calc(100vh - 220px); max-height: 620px;">
+                <!-- Columna Izquierda: Teoría -->
+                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Función Incorporada</h3>
+                        <div class="code-block" style="font-size: 0.8rem; padding: 8px;">=ALEATORIO()
 o
 =RAND()</div>
-                    <ul style="margin-top: 1rem;">
-                        <li><strong>Características</strong>: Función "volátil" - se actualiza con F9</li>
-                        <li><strong>Rango</strong>: Entre 0 y 1</li>
-                    </ul>
-                    <h3 style="margin-top: 1.5rem;">Variable Uniforme en [a,b]</h3>
-                    <div class="code-block">X = a + (b-a) · R<sub>i</sub>
+                        <ul style="font-size: 0.8rem; line-height: 1.4; margin: 8px 0 0 0; padding-left: 18px;">
+                            <li>Función "volátil" (F9)</li>
+                            <li>Rango: [0, 1]</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="flex-shrink: 0;">
+                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Fórmula GCL</h3>
+                        <div class="code-block" style="font-size: 0.7rem; padding: 8px; word-break: break-all;">=(D$3*C10+D$4)/D$5-ENTERO((D$3*C10+D$4)/D$5))*D$5</div>
+                    </div>
 
-Ejemplo Excel:
-=245+10*(B17)
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 8px; border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
+                        <p style="font-size: 0.75rem; margin: 0; line-height: 1.3;">
+                            <strong>Referencias:</strong><br>
+                            D$3=a, D$4=c, D$5=m<br>
+                            C10=X<sub>i</sub>
+                        </p>
+                    </div>
 
-para [245, 255]</div>
+                    <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
+                        <button id="generateExcelBtn" style="padding: 8px 12px; background: #217346; color: white; border: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; width: 100%;">
+                            <i class="fas fa-play"></i> Simular Excel
+                        </button>
+                        <div style="margin-top: 6px; font-size: 0.75rem;">
+                            <label style="color: #e2e8f0;">Filas: </label>
+                            <input type="number" id="excelRows" value="10" min="5" max="20"
+                                   style="width: 60px; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid #217346; color: white; border-radius: 4px; font-size: 0.75rem;">
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h3>Implementación GCL en Excel</h3>
-                    <p><strong>Fórmula del Residuo:</strong></p>
-                    <div class="code-block" style="font-size: 0.85rem;">=(D$3*C10+D$4)/D$5-ENTERO((D$3*C10+D$4)/D$5))*D$5</div>
-                    <h3 style="margin-top: 1rem;">Parámetros de Referencia</h3>
-                    <ul style="font-size: 1rem;">
-                        <li><strong>D$3</strong>: Multiplicador a</li>
-                        <li><strong>D$4</strong>: Incremento c</li>
-                        <li><strong>D$5</strong>: Módulo m</li>
-                        <li><strong>C10</strong>: Valor anterior X<sub>i</sub></li>
-                    </ul>
-                    <h3 style="margin-top: 1rem;">Número Final</h3>
-                    <div class="code-block">R<sub>i</sub> = X<sub>i</sub> / m</div>
+
+                <!-- Columna Derecha: Simulación de Hoja de Cálculo -->
+                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid #217346; padding: 12px; display: flex; flex-direction: column; height: 100%; min-height: 0;">
+                    <h3 style="text-align: center; color: #217346; margin: 0 0 10px 0; font-size: 0.95rem; flex-shrink: 0;">
+                        <i class="fas fa-table"></i> Simulación de Hoja de Cálculo Excel
+                    </h3>
+                    
+                    <!-- Tabla simulada de Excel -->
+                    <div style="flex: 1; background: #ffffff; border-radius: 8px; padding: 0; overflow: auto; min-height: 0; border: 1px solid #d0d0d0;">
+                        <table id="excelTable" style="width: 100%; border-collapse: collapse; font-family: 'Calibri', 'Arial', sans-serif; font-size: 0.75rem;">
+                            <thead style="position: sticky; top: 0; background: #f0f0f0; z-index: 1;">
+                                <tr>
+                                    <th style="border: 1px solid #d0d0d0; padding: 4px 8px; color: #000; text-align: center; background: #f0f0f0; font-weight: 600; min-width: 40px;"></th>
+                                    <th style="border: 1px solid #d0d0d0; padding: 4px 8px; color: #000; text-align: center; background: #f0f0f0; font-weight: 600; min-width: 50px;">A</th>
+                                    <th style="border: 1px solid #d0d0d0; padding: 4px 8px; color: #000; text-align: center; background: #f0f0f0; font-weight: 600; min-width: 60px;">B</th>
+                                    <th style="border: 1px solid #d0d0d0; padding: 4px 8px; color: #000; text-align: center; background: #f0f0f0; font-weight: 600; min-width: 180px;">C</th>
+                                    <th style="border: 1px solid #d0d0d0; padding: 4px 8px; color: #000; text-align: center; background: #f0f0f0; font-weight: 600; min-width: 80px;">D</th>
+                                </tr>
+                            </thead>
+                            <tbody id="excelTableBody">
+                                <tr>
+                                    <td colspan="5" style="text-align: center; padding: 20px; color: #666; font-style: italic; background: #fff;">
+                                        Presiona "Simular Excel" para generar la tabla...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Mini histograma -->
+                    <div style="margin-top: 10px; flex-shrink: 0;">
+                        <div style="background: rgba(0,0,0,0.3); border-radius: 6px; padding: 8px; height: 80px;">
+                            <canvas id="excelMiniHistogram"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <script>
+        // Simulación de Excel
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateExcelBtn = document.getElementById('generateExcelBtn');
+            
+            if (generateExcelBtn) {
+                generateExcelBtn.addEventListener('click', function() {
+                    const rows = parseInt(document.getElementById('excelRows').value) || 10;
+                    simulateExcel(rows);
+                });
+            }
+        });
+
+        function simulateExcel(rows) {
+            const a = 5;
+            const c = 3;
+            const m = 16;
+            let x = 7; // Semilla
+            
+            const tbody = document.getElementById('excelTableBody');
+            tbody.innerHTML = '';
+            
+            const numbers = [];
+            
+            // Fila 1: Encabezados
+            let tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: center; background: #f0f0f0; color: #000; font-weight: 600;">1</td>
+                <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: center; background: #fff; color: #000; font-weight: 600;">i</td>
+                <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: center; background: #fff; color: #000; font-weight: 600;">X<sub>i</sub></td>
+                <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: center; background: #fff; color: #000; font-weight: 600;">Fórmula GCL</td>
+                <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: center; background: #fff; color: #000; font-weight: 600;">R<sub>i</sub></td>
+            `;
+            tbody.appendChild(tr);
+            
+            // Fila 2: Parámetros
+            tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: center; background: #f0f0f0; color: #000; font-weight: 600;">2</td>
+                <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: center; background: #fff9e6; color: #000;">Params</td>
+                <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: center; background: #fff9e6; color: #000;">a=${a}, c=${c}, m=${m}</td>
+                <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: center; background: #fff9e6; color: #000;">Semilla</td>
+                <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: center; background: #fff9e6; color: #000; font-weight: 600;">${x}</td>
+            `;
+            tbody.appendChild(tr);
+            
+            // Generar filas con animación
+            let currentRow = 0;
+            const startRow = 3;
+            
+            const interval = setInterval(() => {
+                if (currentRow >= rows) {
+                    clearInterval(interval);
+                    drawMiniHistogram(numbers);
+                    return;
+                }
+                
+                const xNext = (a * x + c) % m;
+                const r = (xNext / m).toFixed(4);
+                numbers.push(parseFloat(r));
+                
+                const excelRow = startRow + currentRow;
+                const prevRow = excelRow - 1;
+                const formula = `=(${a}*B${prevRow}+${c}) MOD ${m}`;
+                
+                tr = document.createElement('tr');
+                tr.style.opacity = '0';
+                tr.style.transition = 'opacity 0.3s';
+                
+                tr.innerHTML = `
+                    <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: center; background: #f0f0f0; color: #000; font-weight: 600;">${excelRow}</td>
+                    <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: center; background: #fff; color: #000;">${currentRow}</td>
+                    <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: center; background: #fff; color: #217346; font-weight: 600;">${xNext}</td>
+                    <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: left; background: #fff; color: #000; font-size: 0.7rem;">${formula}</td>
+                    <td style="border: 1px solid #d0d0d0; padding: 4px 8px; text-align: center; background: #fff; color: #0066cc; font-weight: 600;">${r}</td>
+                `;
+                
+                tbody.appendChild(tr);
+                setTimeout(() => tr.style.opacity = '1', 10);
+                
+                x = xNext;
+                currentRow++;
+            }, 200);
+        }
+
+        function drawMiniHistogram(numbers) {
+            const canvas = document.getElementById('excelMiniHistogram');
+            if (!canvas) return;
+            
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width - 10;
+            canvas.height = rect.height - 10;
+            
+            const ctx = canvas.getContext('2d');
+            const bins = 10;
+            const binCounts = new Array(bins).fill(0);
+            
+            numbers.forEach(num => {
+                const binIndex = Math.min(Math.floor(num * bins), bins - 1);
+                binCounts[binIndex]++;
+            });
+            
+            const maxCount = Math.max(...binCounts);
+            const barWidth = canvas.width / bins;
+            const heightScale = (canvas.height - 10) / maxCount;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            binCounts.forEach((count, i) => {
+                const barHeight = count * heightScale;
+                const x = i * barWidth;
+                const y = canvas.height - barHeight;
+                
+                ctx.fillStyle = 'rgba(33, 115, 70, 0.7)';
+                ctx.fillRect(x + 1, y, barWidth - 2, barHeight);
+                
+                ctx.strokeStyle = '#217346';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(x + 1, y, barWidth - 2, barHeight);
+            });
+        }
+        </script>
 
 
         <!-- Slide 14: Implementación en R -->
@@ -446,65 +2069,38 @@ para [245, 255]</div>
             <h2><i class="fab fa-r-project"></i> Implementación en R</h2>
             <div style="display: grid; grid-template-columns: 35% 65%; gap: 20px; height: calc(100% - 80px); align-items: stretch;">
                 <!-- Columna Izquierda: Explicación -->
-                <div style="display: flex; flex-direction: column; gap: 15px; overflow: hidden;">
-                    <h3 style="margin: 0 0 10px 0; font-size: 1.3rem;">Generación Básica</h3>
-                    <ul style="font-size: 0.95rem; line-height: 1.6; margin: 0; padding-left: 20px;">
+                <div style="display: flex; flex-direction: column; gap: 12px; overflow: hidden;">
+                    <h3 style="margin: 0 0 8px 0; font-size: 1.1rem;">Generación Básica</h3>
+                    <ul style="font-size: 0.85rem; line-height: 1.5; margin: 0; padding-left: 20px;">
                         <li><strong>runif(n)</strong>: Genera n números U(0,1)</li>
-                        <li><strong>set.seed()</strong>: Fija semilla para reproducibilidad</li>
-                        <li><strong>Mersenne-Twister</strong>: Generador predeterminado en R</li>
+                        <li><strong>set.seed()</strong>: Fija semilla</li>
+                        <li><strong>Mersenne-Twister</strong>: Generador por defecto</li>
                     </ul>
-                    <div style="background: rgba(233, 171, 33, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid var(--uide-accent);">
-                        <p style="font-size: 0.85rem; margin: 0; line-height: 1.4;">
-                            <i class="fas fa-info-circle"></i> <strong>Ventaja:</strong> R proporciona generadores de alta calidad con periodo extremadamente largo.
+                    
+                    <h3 style="margin: 10px 0 8px 0; font-size: 1.1rem;">Implementación GCL</h3>
+                    <ul style="font-size: 0.85rem; line-height: 1.5; margin: 0; padding-left: 20px;">
+                        <li>Función recursiva manual</li>
+                        <li>Paquete <strong>simres</strong></li>
+                    </ul>
+                    
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid var(--uide-accent); margin-top: auto;">
+                        <p style="font-size: 0.8rem; margin: 0; line-height: 1.3;">
+                            <i class="fas fa-info-circle"></i> R proporciona generadores de alta calidad
                         </p>
                     </div>
                 </div>
                 
                 <!-- Columna Derecha: Código -->
-                <div style="background: #1e1e1e; padding: 18px 20px; border-radius: 10px; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.85rem; line-height: 1.5; display: flex; flex-direction: column; justify-content: center; overflow: hidden;">
+                <div style="background: #1e1e1e; padding: 15px; border-radius: 10px; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.7rem; line-height: 1.4; display: flex; flex-direction: column; justify-content: center; overflow-y: auto; max-height: 100%;">
 <pre style="margin: 0; color: #d4d4d4;"><span style="color: #6a9955;"># Números uniformes U(0,1)</span>
 <span style="color: #dcdcaa;">runif</span>(<span style="color: #9cdcfe;">n</span>)
-
-<span style="color: #6a9955;"># Fijar semilla para reproducibilidad</span>
-<span style="color: #dcdcaa;">set.seed</span>(<span style="color: #b5cea8;">123</span>)
+<span style="color: #dcdcaa;">set.seed</span>(<span style="color: #b5cea8;">123</span>)  <span style="color: #6a9955;"># Reproducibilidad</span>
 
 <span style="color: #6a9955;"># Variable Uniforme en [a,b]</span>
-<span style="color: #6a9955;"># Transformación manual</span>
 <span style="color: #9cdcfe;">u</span> <span style="color: #d4d4d4;">&lt;-</span> <span style="color: #dcdcaa;">runif</span>(<span style="color: #9cdcfe;">n</span>)
 <span style="color: #9cdcfe;">x</span> <span style="color: #d4d4d4;">&lt;-</span> <span style="color: #9cdcfe;">a</span> <span style="color: #d4d4d4;">+</span> <span style="color: #9cdcfe;">u</span> <span style="color: #d4d4d4;">*</span> (<span style="color: #9cdcfe;">b</span> <span style="color: #d4d4d4;">-</span> <span style="color: #9cdcfe;">a</span>)
 
-<span style="color: #6a9955;"># Función directa</span>
-<span style="color: #dcdcaa;">runif</span>(<span style="color: #9cdcfe;">n</span>, <span style="color: #9cdcfe;">min</span> <span style="color: #d4d4d4;">=</span> <span style="color: #9cdcfe;">a</span>, <span style="color: #9cdcfe;">max</span> <span style="color: #d4d4d4;">=</span> <span style="color: #9cdcfe;">b</span>)</pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 15: GCL en R -->
-        <div class="slide">
-            <h2><i class="fab fa-r-project"></i> GCL en R: Implementación Avanzada</h2>
-            <div style="display: grid; grid-template-columns: 35% 65%; gap: 20px; height: calc(100% - 80px); align-items: stretch;">
-                <!-- Columna Izquierda: Explicación -->
-                <div style="display: flex; flex-direction: column; gap: 15px; overflow: hidden;">
-                    <h3 style="margin: 0 0 10px 0; font-size: 1.3rem;">Generador por Defecto</h3>
-                    <ul style="font-size: 0.95rem; line-height: 1.6; margin: 0; padding-left: 20px;">
-                        <li><strong>Mersenne-Twister</strong>: Generador predeterminado en R</li>
-                        <li><strong>Alta calidad</strong>: Periodo extremadamente largo</li>
-                        <li><strong>Paquete simres</strong>: Implementación de GCL</li>
-                    </ul>
-                    <div style="background: rgba(145, 0, 72, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid var(--uide-primary);">
-                        <p style="font-size: 0.85rem; margin: 0; line-height: 1.4;">
-                            <i class="fas fa-code"></i> <strong>Implementación:</strong> Lógica recursiva X<sub>i</sub> = (a · X<sub>i-1</sub> + c) mod m
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Columna Derecha: Código -->
-                <div style="background: #1e1e1e; padding: 18px 20px; border-radius: 10px; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.75rem; line-height: 1.4; display: flex; flex-direction: column; justify-content: center; overflow: hidden;">
-<pre style="margin: 0; color: #d4d4d4;"><span style="color: #6a9955;"># Usando paquete simres</span>
-<span style="color: #dcdcaa;">library</span>(<span style="color: #9cdcfe;">simres</span>)
-<span style="color: #dcdcaa;">rlcg</span>(<span style="color: #9cdcfe;">n</span>, <span style="color: #9cdcfe;">a</span>, <span style="color: #9cdcfe;">c</span>, <span style="color: #9cdcfe;">m</span>, <span style="color: #9cdcfe;">seed</span>)
-
-<span style="color: #6a9955;"># Implementación manual</span>
+<span style="color: #6a9955;"># Implementación GCL manual</span>
 <span style="color: #9cdcfe;">gcl_mixto</span> <span style="color: #d4d4d4;">&lt;-</span> <span style="color: #c586c0;">function</span>(<span style="color: #9cdcfe;">n</span>, <span style="color: #9cdcfe;">a</span>, <span style="color: #9cdcfe;">c</span>, <span style="color: #9cdcfe;">m</span>, <span style="color: #9cdcfe;">seed</span>) {
   <span style="color: #9cdcfe;">x</span> <span style="color: #d4d4d4;">&lt;-</span> <span style="color: #dcdcaa;">numeric</span>(<span style="color: #9cdcfe;">n</span>)
   <span style="color: #9cdcfe;">x</span>[<span style="color: #b5cea8;">1</span>] <span style="color: #d4d4d4;">&lt;-</span> <span style="color: #9cdcfe;">seed</span>
@@ -514,40 +2110,311 @@ para [245, 255]</div>
   <span style="color: #c586c0;">return</span>(<span style="color: #9cdcfe;">x</span><span style="color: #d4d4d4;">/</span><span style="color: #9cdcfe;">m</span>)
 }
 
-<span style="color: #6a9955;"># Ejemplo de uso</span>
-<span style="color: #9cdcfe;">numeros</span> <span style="color: #d4d4d4;">&lt;-</span> <span style="color: #dcdcaa;">gcl_mixto</span>(<span style="color: #b5cea8;">100</span>, <span style="color: #b5cea8;">1103515245</span>, <span style="color: #b5cea8;">12345</span>, <span style="color: #b5cea8;">2</span><span style="color: #d4d4d4;">^</span><span style="color: #b5cea8;">31</span>, <span style="color: #b5cea8;">42</span>)</pre>
+<span style="color: #6a9955;"># Ejemplo</span>
+<span style="color: #9cdcfe;">nums</span> <span style="color: #d4d4d4;">&lt;-</span> <span style="color: #dcdcaa;">gcl_mixto</span>(<span style="color: #b5cea8;">100</span>, <span style="color: #b5cea8;">1103515245</span>, <span style="color: #b5cea8;">12345</span>, <span style="color: #b5cea8;">2</span><span style="color: #d4d4d4;">^</span><span style="color: #b5cea8;">31</span>, <span style="color: #b5cea8;">42</span>)</pre>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 16: Validación Práctica -->
+        <!-- Slide 15: Validación Práctica -->
         <div class="slide">
-            <h2><i class="fas fa-check-circle"></i> Validación Práctica</h2>
-            <div class="content-grid">
-                <div>
-                    <h3>Proceso de Verificación</h3>
-                    <ol style="font-size: 1.1rem; line-height: 1.8;">
-                        <li><strong>Generar</strong> secuencia de números pseudoaleatorios</li>
-                        <li><strong>Aplicar</strong> pruebas estadísticas (K-S, χ², medias/varianzas)</li>
-                        <li><strong>Analizar</strong> resultados vs valores críticos</li>
-                        <li><strong>Validar</strong> o <strong>rechazar</strong> calidad del generador</li>
-                    </ol>
+            <h2 style="margin-bottom: 0.8rem;"><i class="fas fa-check-circle"></i> Validación Práctica - Dashboard Completo</h2>
+            
+            <div style="height: calc(100vh - 200px); max-height: 640px; display: flex; flex-direction: column; gap: 12px;">
+                <!-- Controles superiores -->
+                <div style="display: flex; gap: 10px; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <button id="runAllTestsBtn" style="padding: 10px 24px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s;">
+                        <i class="fas fa-play-circle"></i> Ejecutar Todas las Pruebas
+                    </button>
+                    <div style="font-size: 0.8rem;">
+                        <label style="color: #e2e8f0;">n = </label>
+                        <input type="number" id="dashboardN" value="100" min="50" max="500" step="50"
+                               style="width: 70px; padding: 5px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
+                    </div>
                 </div>
-                <div>
-                    <h3>Criterios de Aceptación</h3>
-                    <ul>
-                        <li><span class="emphasis">Uniformidad</span>: Distribución aproximadamente U(0,1)</li>
-                        <li><span class="emphasis">Independencia</span>: Sin correlaciones aparentes</li>
-                        <li><span class="emphasis">Periodo</span>: Suficientemente largo para aplicación</li>
-                    </ul>
-                    <div style="background: rgba(233, 171, 33, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid var(--uide-accent); margin-top: 1rem;">
-                        <p style="font-size: 0.95rem; margin: 0;">
-                            <i class="fas fa-info-circle"></i> <strong>Importante:</strong> Un generador debe pasar múltiples pruebas para ser considerado confiable.
-                        </p>
+
+                <!-- Grid de 4 paneles -->
+                <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; min-height: 0;">
+                    <!-- Panel 1: Histograma de Uniformidad -->
+                    <div style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; border: 2px solid var(--uide-accent); padding: 10px; display: flex; flex-direction: column; min-height: 0;">
+                        <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 8px 0; font-size: 0.85rem; flex-shrink: 0;">
+                            <i class="fas fa-chart-bar"></i> Uniformidad (Histograma)
+                        </h3>
+                        <div style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 6px; min-height: 0; display: flex; align-items: center; justify-content: center;">
+                            <canvas id="dashHistogram"></canvas>
+                        </div>
+                        <div id="dashHistResult" style="text-align: center; margin-top: 6px; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">-</div>
+                    </div>
+
+                    <!-- Panel 2: Scatter Plot de Independencia -->
+                    <div style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; border: 2px solid var(--uide-primary); padding: 10px; display: flex; flex-direction: column; min-height: 0;">
+                        <h3 style="text-align: center; color: var(--uide-primary); margin: 0 0 8px 0; font-size: 0.85rem; flex-shrink: 0;">
+                            <i class="fas fa-chart-scatter"></i> Independencia (Scatter)
+                        </h3>
+                        <div style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 6px; min-height: 0; display: flex; align-items: center; justify-content: center;">
+                            <canvas id="dashScatter"></canvas>
+                        </div>
+                        <div id="dashScatterResult" style="text-align: center; margin-top: 6px; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">-</div>
+                    </div>
+
+                    <!-- Panel 3: Prueba K-S -->
+                    <div style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; border: 2px solid #60a5fa; padding: 10px; display: flex; flex-direction: column; min-height: 0;">
+                        <h3 style="text-align: center; color: #60a5fa; margin: 0 0 8px 0; font-size: 0.85rem; flex-shrink: 0;">
+                            <i class="fas fa-chart-line"></i> Kolmogorov-Smirnov
+                        </h3>
+                        <div style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 6px; min-height: 0; display: flex; align-items: center; justify-content: center;">
+                            <canvas id="dashKS"></canvas>
+                        </div>
+                        <div id="dashKSResult" style="text-align: center; margin-top: 6px; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;">-</div>
+                    </div>
+
+                    <!-- Panel 4: Resultado Final -->
+                    <div style="background: rgba(15, 20, 25, 0.6); border-radius: 8px; border: 2px solid #fbbf24; padding: 10px; display: flex; flex-direction: column; min-height: 0;">
+                        <h3 style="text-align: center; color: #fbbf24; margin: 0 0 8px 0; font-size: 0.85rem; flex-shrink: 0;">
+                            <i class="fas fa-clipboard-check"></i> Resultado Final
+                        </h3>
+                        <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px;">
+                            <div id="dashFinalResult" style="font-size: 2rem; font-weight: 700; text-align: center;">
+                                <i class="fas fa-hourglass-half" style="color: #94a3b8;"></i>
+                            </div>
+                            <div id="dashFinalText" style="font-size: 0.9rem; text-align: center; color: #cbd5e1;">
+                                Esperando pruebas...
+                            </div>
+                            <div id="dashTestsSummary" style="font-size: 0.75rem; text-align: center; color: #94a3b8; margin-top: 10px;">
+                                <!-- Resumen de pruebas -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <script>
+        // Dashboard de Validación Completo
+        document.addEventListener('DOMContentLoaded', function() {
+            const runAllTestsBtn = document.getElementById('runAllTestsBtn');
+            
+            if (runAllTestsBtn) {
+                runAllTestsBtn.addEventListener('click', function() {
+                    const n = parseInt(document.getElementById('dashboardN').value) || 100;
+                    runAllValidationTests(n);
+                });
+            }
+        });
+
+        function runAllValidationTests(n) {
+            // Generar números
+            const a = 1103515245;
+            const c = 12345;
+            const m = Math.pow(2, 31);
+            let x = Date.now() % m;
+            
+            const numbers = [];
+            for (let i = 0; i < n; i++) {
+                x = (a * x + c) % m;
+                numbers.push(x / m);
+            }
+            
+            // Ejecutar todas las pruebas
+            const results = {
+                histogram: testHistogram(numbers),
+                scatter: testScatter(numbers),
+                ks: testKS(numbers)
+            };
+            
+            // Mostrar resultado final
+            showFinalResult(results);
+        }
+
+        function testHistogram(numbers) {
+            const canvas = document.getElementById('dashHistogram');
+            if (!canvas) return { passed: false };
+            
+            const ctx = canvas.getContext('2d');
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = Math.max(rect.width - 10, 150);
+            canvas.height = Math.max(rect.height - 10, 150);
+            
+            const bins = 10;
+            const binCounts = new Array(bins).fill(0);
+            numbers.forEach(num => {
+                const binIndex = Math.min(Math.floor(num * bins), bins - 1);
+                binCounts[binIndex]++;
+            });
+            
+            const expected = numbers.length / bins;
+            let chiSquare = 0;
+            binCounts.forEach(fo => {
+                chiSquare += Math.pow(fo - expected, 2) / expected;
+            });
+            
+            const critical = 16.919; // α=0.05, df=9
+            const passed = chiSquare <= critical;
+            
+            // Dibujar histograma mini
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const maxCount = Math.max(...binCounts);
+            const barWidth = canvas.width / bins;
+            const heightScale = (canvas.height - 20) / maxCount;
+            
+            binCounts.forEach((count, i) => {
+                const barHeight = count * heightScale;
+                const x = i * barWidth;
+                const y = canvas.height - barHeight - 10;
+                
+                ctx.fillStyle = passed ? 'rgba(74, 222, 128, 0.7)' : 'rgba(248, 113, 113, 0.7)';
+                ctx.fillRect(x + 1, y, barWidth - 2, barHeight);
+            });
+            
+            document.getElementById('dashHistResult').innerHTML = passed 
+                ? '<span style="color: #4ade80;"><i class="fas fa-check-circle"></i> Pasa χ²</span>' 
+                : '<span style="color: #f87171;"><i class="fas fa-times-circle"></i> Falla χ²</span>';
+            
+            return { passed, value: chiSquare, critical };
+        }
+
+        function testScatter(numbers) {
+            const canvas = document.getElementById('dashScatter');
+            if (!canvas) return { passed: false };
+            
+            const ctx = canvas.getContext('2d');
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = Math.max(rect.width - 10, 150);
+            canvas.height = Math.max(rect.height - 10, 150);
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Calcular correlación
+            const pairs = [];
+            for (let i = 0; i < numbers.length - 1; i++) {
+                pairs.push({ x: numbers[i], y: numbers[i + 1] });
+            }
+            
+            const meanX = pairs.reduce((sum, p) => sum + p.x, 0) / pairs.length;
+            const meanY = pairs.reduce((sum, p) => sum + p.y, 0) / pairs.length;
+            
+            let numerator = 0, denomX = 0, denomY = 0;
+            pairs.forEach(p => {
+                const dx = p.x - meanX;
+                const dy = p.y - meanY;
+                numerator += dx * dy;
+                denomX += dx * dx;
+                denomY += dy * dy;
+            });
+            
+            const correlation = numerator / Math.sqrt(denomX * denomY);
+            const passed = Math.abs(correlation) < 0.3;
+            
+            // Dibujar scatter plot mini
+            const padding = 15;
+            const plotWidth = canvas.width - 2 * padding;
+            const plotHeight = canvas.height - 2 * padding;
+            
+            pairs.forEach(pair => {
+                const px = padding + pair.x * plotWidth;
+                const py = canvas.height - padding - pair.y * plotHeight;
+                
+                ctx.fillStyle = passed ? 'rgba(145, 0, 72, 0.6)' : 'rgba(248, 113, 113, 0.6)';
+                ctx.beginPath();
+                ctx.arc(px, py, 1.5, 0, 2 * Math.PI);
+                ctx.fill();
+            });
+            
+            document.getElementById('dashScatterResult').innerHTML = passed 
+                ? '<span style="color: #4ade80;"><i class="fas fa-check-circle"></i> Independiente</span>' 
+                : '<span style="color: #f87171;"><i class="fas fa-times-circle"></i> Correlación</span>';
+            
+            return { passed, value: correlation };
+        }
+
+        function testKS(numbers) {
+            const canvas = document.getElementById('dashKS');
+            if (!canvas) return { passed: false };
+            
+            const ctx = canvas.getContext('2d');
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = Math.max(rect.width - 10, 150);
+            canvas.height = Math.max(rect.height - 10, 150);
+            
+            const sorted = [...numbers].sort((a, b) => a - b);
+            const empirical = sorted.map((val, i) => ({ x: val, y: (i + 1) / numbers.length }));
+            
+            let maxD = 0;
+            empirical.forEach((point, i) => {
+                const theoretical = point.x;
+                const d1 = Math.abs(point.y - theoretical);
+                const d2 = Math.abs((i / numbers.length) - theoretical);
+                maxD = Math.max(maxD, d1, d2);
+            });
+            
+            const critical = 1.36 / Math.sqrt(numbers.length);
+            const passed = maxD <= critical;
+            
+            // Dibujar K-S mini
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const padding = 15;
+            const plotWidth = canvas.width - 2 * padding;
+            const plotHeight = canvas.height - 2 * padding;
+            
+            // Línea teórica
+            ctx.strokeStyle = '#60a5fa';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding, canvas.height - padding);
+            ctx.lineTo(canvas.width - padding, padding);
+            ctx.stroke();
+            
+            // Línea empírica
+            ctx.strokeStyle = passed ? '#4ade80' : '#f87171';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            let prevX = padding, prevY = canvas.height - padding;
+            empirical.forEach(point => {
+                const x = padding + point.x * plotWidth;
+                const y = canvas.height - padding - point.y * plotHeight;
+                ctx.lineTo(x, prevY);
+                ctx.lineTo(x, y);
+                prevX = x;
+                prevY = y;
+            });
+            ctx.stroke();
+            
+            document.getElementById('dashKSResult').innerHTML = passed 
+                ? '<span style="color: #4ade80;"><i class="fas fa-check-circle"></i> Pasa K-S</span>' 
+                : '<span style="color: #f87171;"><i class="fas fa-times-circle"></i> Falla K-S</span>';
+            
+            return { passed, value: maxD, critical };
+        }
+
+        function showFinalResult(results) {
+            const allPassed = results.histogram.passed && results.scatter.passed && results.ks.passed;
+            const passedCount = [results.histogram.passed, results.scatter.passed, results.ks.passed].filter(Boolean).length;
+            
+            const finalResultDiv = document.getElementById('dashFinalResult');
+            const finalTextDiv = document.getElementById('dashFinalText');
+            const summaryDiv = document.getElementById('dashTestsSummary');
+            
+            if (allPassed) {
+                finalResultDiv.innerHTML = '<i class="fas fa-check-circle" style="color: #4ade80;"></i>';
+                finalTextDiv.innerHTML = '<span style="color: #4ade80; font-weight: 600;">GENERADOR APROBADO</span>';
+            } else if (passedCount >= 2) {
+                finalResultDiv.innerHTML = '<i class="fas fa-exclamation-triangle" style="color: #fbbf24;"></i>';
+                finalTextDiv.innerHTML = '<span style="color: #fbbf24; font-weight: 600;">APROBADO CON RESERVAS</span>';
+            } else {
+                finalResultDiv.innerHTML = '<i class="fas fa-times-circle" style="color: #f87171;"></i>';
+                finalTextDiv.innerHTML = '<span style="color: #f87171; font-weight: 600;">GENERADOR RECHAZADO</span>';
+            }
+            
+            summaryDiv.innerHTML = `
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <div>${results.histogram.passed ? '✓' : '✗'} Uniformidad (χ²)</div>
+                    <div>${results.scatter.passed ? '✓' : '✗'} Independencia</div>
+                    <div>${results.ks.passed ? '✓' : '✗'} Kolmogorov-Smirnov</div>
+                    <div style="margin-top: 8px; font-weight: 600;">${passedCount}/3 pruebas pasadas</div>
+                </div>
+            `;
+        }
+        </script>
 
         <!-- Slide 17: Ventajas y Limitaciones -->
         <div class="slide">
@@ -577,63 +2444,7 @@ para [245, 255]</div>
             </div>
         </div>
 
-        <!-- Slide 18: Síntesis -->
-        <div class="slide">
-            <h2><i class="fas fa-check-circle"></i> Síntesis: Elementos Clave</h2>
-            <div class="content-grid">
-                <div>
-                    <h3>Fundamentos Teóricos</h3>
-                    <ul>
-                        <li><strong>Números pseudoaleatorios</strong> como base de simulación estocástica</li>
-                        <li><strong>Propiedades esenciales</strong>: Uniformidad e independencia</li>
-                        <li><strong>Validación estadística</strong> obligatoria</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Implementación Práctica</h3>
-                    <ul>
-                        <li><strong>GCL Mixto</strong>: Algoritmo recursivo determinista</li>
-                        <li><strong>Herramientas</strong>: Excel para casos básicos, R para aplicaciones avanzadas</li>
-                        <li><strong>Calidad</strong>: Depende de elección correcta de parámetros</li>
-                    </ul>
-                </div>
-            </div>
-            <div style="margin-top: 2rem; text-align: center; font-style: italic; color: var(--uide-accent);">
-                La calidad de una simulación nunca puede ser mejor que la calidad de los números pseudoaleatorios que la alimentan
-            </div>
-        </div>
-
-        <!-- Slide 19: Aplicaciones en Simulación -->
-        <div class="slide">
-            <h2><i class="fas fa-rocket"></i> Aplicaciones en Simulación</h2>
-            <div class="content-grid">
-                <div>
-                    <h3>Usos Principales</h3>
-                    <ul>
-                        <li><span class="emphasis">Simulación de Monte Carlo</span>: Base fundamental</li>
-                        <li><span class="emphasis">Modelado estocástico</span>: Variables aleatorias diversas</li>
-                        <li><span class="emphasis">Análisis de riesgo</span>: Evaluación de incertidumbre</li>
-                        <li><span class="emphasis">Optimización</span>: Algoritmos metaheurísticos</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Transformaciones</h3>
-                    <ul>
-                        <li><strong>Método de transformada inversa</strong></li>
-                        <li><strong>Método de aceptación-rechazo</strong></li>
-                        <li><strong>Generación de distribuciones específicas</strong></li>
-                        <li><strong>Box-Muller para normales</strong></li>
-                    </ul>
-                    <div style="background: rgba(233, 171, 33, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid var(--uide-accent); margin-top: 1rem;">
-                        <p style="font-size: 0.95rem; margin: 0;">
-                            <i class="fas fa-info-circle"></i> Los números U(0,1) son la base para generar cualquier distribución
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 20: Referencias -->
+        <!-- Slide 18: Referencias -->
         <div class="slide">
             <h2><i class="fas fa-book"></i> Referencias Bibliográficas</h2>
             <div style="max-width: 1000px; margin: 0 auto;">
@@ -657,30 +2468,7 @@ para [245, 255]</div>
             </div>
         </div>
 
-        <!-- Slide 21: Para Profundizar -->
-        <div class="slide">
-            <h2><i class="fas fa-graduation-cap"></i> Para Profundizar</h2>
-            <div class="content-grid">
-                <div>
-                    <h3>Lecturas Recomendadas</h3>
-                    <ul>
-                        <li><strong>Shannon (1988)</strong>: <em>Simulación de Sistemas: Diseño, Desarrollo e Implantación</em></li>
-                        <li><strong>Van Der Post (2024)</strong>: <em>Monte Carlo With Python</em></li>
-                        <li><strong>Varios Autores</strong>: <em>Apuntes de Simulación - TecNM</em></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Herramientas Avanzadas</h3>
-                    <ul>
-                        <li><strong>Generadores modernos</strong>: Mersenne-Twister, Well, PCG</li>
-                        <li><strong>Librerías especializadas</strong>: GSL, Boost Random, NumPy</li>
-                        <li><strong>Validación exhaustiva</strong>: TestU01, NIST Statistical Test Suite</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 22: Actividades Calificadas -->
+        <!-- Slide 19: Actividades Calificadas -->
         <div class="slide">
             <h2><i class="fas fa-clipboard-check"></i> Actividades Calificadas - Semana 3</h2>
             <div class="content-grid">
@@ -747,7 +2535,7 @@ para [245, 255]</div>
 
     <!-- Slide Counter -->
     <div class="slide-counter">
-        <span id="currentSlide">1</span> / <span id="totalSlides">23</span>
+        <span id="currentSlide">1</span> / <span id="totalSlides">20</span>
     </div>
 
     <!-- Progress Bar -->
