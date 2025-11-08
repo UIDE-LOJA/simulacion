@@ -1,4 +1,8 @@
-<p>Esta semana damos el primer paso en el mundo de la simulación estocástica con la <strong>Unidad 2: Generación de Variables Aleatorias</strong>. Nos enfocaremos en cómo las computadoras, sistemas determinísticos por naturaleza, pueden generar números que aparentan ser aleatorios. Aprenderemos sobre los <strong>Generadores Congruenciales Lineales (LCG)</strong>, cómo producir números con distribución uniforme y las pruebas estadísticas básicas para validar su calidad.</p>
+<p>Esta semana introducimos la <strong>Generación de Variables Aleatorias</strong> con foco en
+    <em>generadores congruenciales</em>, <em>números uniformes</em>, <em>pruebas de uniformidad</em> y
+    <em>implementación práctica</em>. Veremos el Generador Congruencial Lineal (GCL) Mixto, sus parámetros y
+    propiedades, las pruebas estadísticas para validar uniformidad e independencia, y la implementación en
+    <strong>Excel</strong> y <strong>R</strong>.</p>
 
 <p><strong>¿Qué veremos?</strong></p>
 
@@ -7,31 +11,50 @@
         <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
             <thead>
                 <tr>
-                    <th style="width: 25%;">Tema</th>
-                    <th style="width: 45%;">Contenido clave</th>
-                    <th style="width: 30%;">Ejemplos</th>
+                    <th style="width: 22%;">Tema</th>
+                    <th style="width: 50%;">Contenido clave</th>
+                    <th style="width: 28%;">Ejemplos</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Generadores Congruenciales</td>
-                    <td>Método <strong>Congruencial Lineal (LCG)</strong>: la fórmula recursiva 𝑋ᵢ₊₁ = (𝑎𝑋ᵢ + 𝑐) mod 𝑚. Se analizará la importancia de la semilla (𝑋₀), el multiplicador (𝑎), la constante aditiva (𝑐) y el módulo (𝑚).</td>
-                    <td>Generador congruencial mixto (c > 0), generador congruencial multiplicativo (c = 0).</td>
+                    <td>Números Pseudoaleatorios</td>
+                    <td>Definición y naturaleza de números pseudoaleatorios. Variable aleatoria <strong>U(0,1)</strong>.
+                        Propiedades de <strong>uniformidad</strong> e <strong>independencia</strong>. Importancia en
+                        simulación estocástica.</td>
+                    <td>Media μ = 0.5; Varianza σ² = 1/12; Reproducibilidad con semillas; Aplicaciones en Monte Carlo.
+                    </td>
                 </tr>
                 <tr>
-                    <td>Números Pseudoaleatorios</td>
-                    <td>Concepto de números pseudoaleatorios y su diferencia con los aleatorios puros. Propiedades deseadas: <strong>uniformidad</strong> (distribución U[0,1]) e <strong>independencia</strong>.</td>
-                    <td>Secuencia de números 𝑟ᵢ = 𝑋ᵢ / 𝑚 para obtener valores entre 0 y 1.</td>
+                    <td>Generador Congruencial Lineal (GCL) Mixto</td>
+                    <td>Fórmula recursiva: <strong>X<sub>i+1</sub> = (a·X<sub>i</sub> + c) mod m</strong>. Parámetros:
+                        semilla (X<sub>0</sub>), multiplicador (a), incremento (c), módulo (m). Transformación a
+                        uniforme: U<sub>i</sub> = X<sub>i</sub>/m.</td>
+                    <td>GCL Mixto (c≠0) vs Multiplicativo (c=0); Periodo máximo p=m; Teorema de Hull-Dobell.</td>
                 </tr>
                 <tr>
                     <td>Pruebas de Uniformidad</td>
-                    <td>Métodos estadísticos para verificar si una secuencia de números sigue una distribución uniforme. Se introducirán las pruebas de <strong>Chi-Cuadrado</strong> para frecuencias y la <strong>Prueba de Rachas</strong> para independencia.</td>
-                    <td>Aplicación de la prueba Chi-Cuadrado a un conjunto de datos generados. Conteo de rachas arriba y abajo de la media.</td>
+                    <td><strong>Kolmogorov-Smirnov (K-S)</strong>: test no paramétrico de bondad de ajuste.
+                        <strong>Chi-Cuadrado (χ²)</strong>: prueba de frecuencias. <strong>Pruebas de medias y
+                            varianzas</strong>: validación de parámetros teóricos.</td>
+                    <td>K-S: comparar distribución empírica vs teórica; χ²: agrupar en K clases; Medias: H₀: μ=1/2;
+                        Varianzas: H₀: σ²=1/12.</td>
                 </tr>
                 <tr>
-                    <td>Implementación Básica</td>
-                    <td>Implementación de un generador congruencial lineal simple para generar una secuencia de números pseudoaleatorios.</td>
-                    <td>Uso de fórmulas en <strong>Excel</strong> para generar la secuencia. Código básico en <strong>R</strong>.</td>
+                    <td>Implementación en Excel</td>
+                    <td>Función <strong>=ALEATORIO()</strong> o <strong>=RAND()</strong>. Implementación del GCL con
+                        fórmula de residuo. Generación de variables uniformes en intervalo [a,b]: X = a + (b-a)·R<sub>i</sub>.
+                    </td>
+                    <td>Fórmula GCL: =(D$3*C10+D$4)/D$5-ENTERO((D$3*C10+D$4)/D$5))*D$5; Histogramas; Análisis de
+                        rachas.</td>
+                </tr>
+                <tr>
+                    <td>Implementación en R</td>
+                    <td>Función <strong>runif(n)</strong> para generar números U(0,1). <strong>set.seed()</strong> para
+                        reproducibilidad. Generador <strong>Mersenne-Twister</strong> por defecto. Implementación
+                        personalizada del GCL.</td>
+                    <td>runif(n, min=a, max=b); Paquete simres: rlcg(); Implementación manual con bucle for; QQ-plots y
+                        visualizaciones.</td>
                 </tr>
             </tbody>
         </table>
@@ -44,16 +67,24 @@
 
 <ul>
     <li>
-        <p>Explicar el funcionamiento de los <strong>generadores congruenciales lineales</strong> y el rol de sus parámetros.</p>
+        <p>Explicar la <strong>naturaleza y definición</strong> de los números pseudoaleatorios y su importancia en
+            simulación estocástica.</p>
     </li>
     <li>
-        <p>Generar una secuencia de números pseudoaleatorios con distribución uniforme U(0,1) usando el método LCG.</p>
+        <p>Comprender las <strong>propiedades de uniformidad e independencia</strong> y su validación mediante pruebas
+            estadísticas.</p>
     </li>
     <li>
-        <p>Aplicar <strong>pruebas estadísticas básicas de uniformidad e independencia</strong> (Chi-Cuadrado y rachas) para evaluar la calidad de un generador.</p>
+        <p>Implementar el <strong>Generador Congruencial Lineal (GCL) Mixto</strong> y aplicar el Teorema de
+            Hull-Dobell para periodo completo.</p>
     </li>
     <li>
-        <p>Implementar un generador simple en herramientas como Excel o R.</p>
+        <p>Aplicar <strong>pruebas de validación</strong> (Kolmogorov-Smirnov, Chi-Cuadrado, medias y varianzas) para
+            verificar la calidad del generador.</p>
+    </li>
+    <li>
+        <p>Desarrollar implementaciones prácticas en <strong>Excel y R</strong> para generar y validar números
+            pseudoaleatorios.</p>
     </li>
 </ul>
 
@@ -61,16 +92,25 @@
 
 <ul>
     <li>
-        <p><strong>Presentación:</strong> <a href="./presentacion-clase-semana3.html">Semana 3 - Generación de Variables Aleatorias</a>.</p>
+        <p><strong>Presentación:</strong> Semana 3 — Generación de Variables Aleatorias.</p>
     </li>
     <li>
-        <p><strong>Compendio:</strong> Semana 3 — Generadores Congruenciales y Pruebas de Uniformidad.</p>
-    </li>
-    <li>
-        <p><strong>Bibliografía base (APA):</strong></p>
+        <p><strong>Bibliografía:</strong></p>
         <ul>
-            <li>Main Yaque, P. Navarro Veguillas, H. & Morales Fernández, A. (2019). <em>Simulación con ejercicios en R</em>. UNED.</li>
-            <li>Jiménez Avello, A. Castro Gil, M. & Costa García, J. M. (2015). <em>Simulación de procesos y aplicaciones</em>. Dextra Editorial.</li>
+            <li>Main Yaque, P., Navarro Veguillas, H. & Morales Fernández, A. (2019). <em>Simulación con ejercicios en
+                    R</em>. UNED - Universidad Nacional de Educación a Distancia.</li>
+            <li>Jiménez Avello, A., Castro Gil, M. & Costa García, J. M. (2015). <em>Simulación de procesos y
+                    aplicaciones</em>. Dextra Editorial.</li>
+            <li>Banks, J., Carson, J.S., Nelson, B.L., & Nicol, D.M. (2005). <em>Discrete-Event System Simulation</em>
+                (4ta ed.). Prentice Hall.</li>
+            <li>Law, A.M., & Kelton, W.D. (2000). <em>Simulation Modeling and Analysis</em> (3a ed.). McGraw Hill.</li>
+            <li>Knuth, D. E. (2014). <em>Art of Computer Programming, Volume 2: Seminumerical Algorithms</em>.
+                Addison-Wesley Professional.</li>
+            <li>L'Ecuyer, P. (1992). <em>Testing random number generators</em>. Proceedings of the 1992 Winter
+                Simulation Conference.</li>
+            <li>Shannon, R. E. (1988). <em>Simulación de Sistemas: Diseño, Desarrollo e Implantación</em> (1ra. ed.).
+                Trillas.</li>
+            <li>Van Der Post, H. (2024). <em>Monte Carlo With Python</em>. Reactive Publishing.</li>
         </ul>
     </li>
 </ul>
@@ -79,11 +119,46 @@
 
 <ul>
     <li>
-        <p><strong>PE-1.3: Laboratorio: Implementar LCG simple y generar 10k u’s; histograma y rachas</strong> — Práctica guiada en clase — <strong>2.25 pts</strong>.</p>
+        <p><strong>Lectura guiada</strong> del compendio y referencias bibliográficas.</p>
     </li>
     <li>
-        <p><strong>TA-1.3: Bitácora de pruebas de uniformidad (runs/frecuencias)</strong> — Tarea autónoma con reporte de resultados — <strong>2.25 pts</strong>.</p>
+        <p><strong>PE-1.3: Implementar LCG simple y generar 10k u's; histograma y rachas</strong> — implementación del
+            Generador Congruencial Lineal Mixto, generación de 10,000 números uniformes, creación de histograma y
+            aplicación de prueba de rachas — <strong>2.25 pts</strong>.</p>
+    </li>
+    <li>
+        <p><strong>TA-1.3: Bitácora de pruebas de uniformidad (runs/frecuencias)</strong> — aplicación de pruebas
+            Kolmogorov-Smirnov, Chi-Cuadrado, medias y varianzas; documentación de resultados y evaluación de calidad
+            del generador — <strong>2.25 pts</strong>.</p>
+    </li>
+    <li>
+        <p><strong>GA-1.1: Preguntas dirigidas sobre LCG</strong> — evaluación conceptual sobre generadores
+            congruenciales lineales — <strong>1 pt</strong>.</p>
+    </li>
+    <li>
+        <p><strong>Total de la semana:</strong> <strong>5.5/30</strong> (Evaluación diagnóstica).</p>
     </li>
 </ul>
 
-<p>Si tienes dudas, utiliza el <strong>horario de tutorías (lunes 10:00-12:00 | viernes 08:00-09:00)</strong> o envía consulta por <strong>correo institucional</strong>.</p>
+<p><strong>Recursos adicionales</strong></p>
+
+<ul>
+    <li>
+        <p><strong>NotebookLM:</strong> Asistente de IA para análisis de contenido y generación de resúmenes.</p>
+    </li>
+    <li>
+        <p><strong>Podcasts:</strong> Contenido de audio sobre simulación y generación de números aleatorios.</p>
+    </li>
+    <li>
+        <p><strong>Casos de estudio:</strong> Ejemplos prácticos de aplicación de GCL en diferentes contextos.</p>
+    </li>
+    <li>
+        <p><strong>Ejercicios prácticos:</strong> Problemas resueltos y propuestos para reforzar conceptos.</p>
+    </li>
+    <li>
+        <p><strong>Tarjetas didácticas:</strong> Material de repaso rápido de conceptos clave.</p>
+    </li>
+</ul>
+
+<p>Si tienes dudas, deja tu pregunta en el canal de <strong>DISCORD</strong> o envíame un mensaje por
+    <strong>Canvas</strong>.</p>
