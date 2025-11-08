@@ -14,17 +14,17 @@
             <tbody>
                 <tr>
                     <td data-col-size="md">Preparación de datos</td>
-                    <td data-col-size="xl">Utiliza los 10,000 números uniformes generados en PE-1.3. Verifica que estén en el rango [0,1].</td>
+                    <td data-col-size="xl">Utiliza los 1,000 números uniformes generados en PE-1.3. Verifica que estén en el rango [0,1].</td>
                     <td data-col-size="md">Datos correctamente preparados y validados.</td>
                 </tr>
                 <tr>
                     <td data-col-size="md">Prueba de Kolmogorov-Smirnov</td>
-                    <td data-col-size="xl">Ordena los números. Calcula desviación máxima D entre distribución empírica y teórica U(0,1). Compara con valor crítico d<sub>α,n</sub> para α=0.05 y n=10,000.</td>
+                    <td data-col-size="xl">Ordena los números. Calcula desviación máxima D entre distribución empírica y teórica U(0,1). Compara con valor crítico d<sub>α,n</sub> para α=0.05 y n=1,000.</td>
                     <td data-col-size="md">Cálculo correcto del estadístico D y conclusión fundamentada.</td>
                 </tr>
                 <tr>
                     <td data-col-size="md">Prueba Chi-Cuadrado</td>
-                    <td data-col-size="xl">Agrupa números en K=10 clases de igual amplitud. Calcula frecuencias observadas (F<sub>o</sub>) y esperadas (F<sub>e</sub>=1000). Calcula χ² = Σ[(F<sub>o</sub>-F<sub>e</sub>)²/F<sub>e</sub>]. Compara con χ²<sub>0.05,9</sub>=16.919.</td>
+                    <td data-col-size="xl">Agrupa números en K=10 clases de igual amplitud. Calcula frecuencias observadas (F<sub>o</sub>) y esperadas (F<sub>e</sub>=100). Calcula χ² = Σ[(F<sub>o</sub>-F<sub>e</sub>)²/F<sub>e</sub>]. Compara con χ²<sub>0.05,9</sub>=16.919.</td>
                     <td data-col-size="md">Tabla de frecuencias completa y estadístico χ² calculado correctamente.</td>
                 </tr>
                 <tr>
@@ -34,7 +34,7 @@
                 </tr>
                 <tr>
                     <td data-col-size="md">Prueba de Varianzas</td>
-                    <td data-col-size="xl">Calcula varianza muestral s². Verifica hipótesis H<sub>0</sub>: σ²=1/12. Calcula estadístico χ² = (n-1)s²/(1/12). Compara con valores críticos χ²<sub>0.025,9999</sub> y χ²<sub>0.975,9999</sub>.</td>
+                    <td data-col-size="xl">Calcula varianza muestral s². Verifica hipótesis H<sub>0</sub>: σ²=1/12. Calcula estadístico χ² = (n-1)s²/(1/12). Compara con valores críticos χ²<sub>0.025,999</sub> y χ²<sub>0.975,999</sub>.</td>
                     <td data-col-size="md">Cálculo de varianza y estadístico χ² con conclusión apropiada.</td>
                 </tr>
                 <tr>
@@ -64,7 +64,7 @@
                 <tr>
                     <td data-col-size="sm">Kolmogorov-Smirnov</td>
                     <td data-col-size="md">D = ?</td>
-                    <td data-col-size="md">d<sub>0.05,10000</sub> = 0.0136</td>
+                    <td data-col-size="md">d<sub>0.05,1000</sub> = 0.043</td>
                     <td data-col-size="md">Aceptar/Rechazar H<sub>0</sub></td>
                     <td data-col-size="md">¿Uniforme?</td>
                 </tr>
@@ -85,7 +85,7 @@
                 <tr>
                     <td data-col-size="sm">Prueba de Varianzas</td>
                     <td data-col-size="md">χ² = ?</td>
-                    <td data-col-size="md">χ²<sub>0.025,9999</sub> y χ²<sub>0.975,9999</sub></td>
+                    <td data-col-size="md">χ²<sub>0.025,999</sub> y χ²<sub>0.975,999</sub></td>
                     <td data-col-size="md">Aceptar/Rechazar H<sub>0</sub></td>
                     <td data-col-size="md">¿σ²=1/12?</td>
                 </tr>
@@ -129,7 +129,7 @@
 <p><strong>Implementación en R (ejemplo)</strong></p>
 <pre style="background: #f5f5f5; padding: 10px; border-radius: 5px; font-family: monospace;">
 # Cargar datos de PE-1.3
-numeros <- # tus 10,000 números uniformes
+numeros <- # tus 1,000 números uniformes
 
 # Prueba de Kolmogorov-Smirnov
 ks_test <- ks.test(numeros, "punif", 0, 1)
@@ -138,19 +138,19 @@ print(paste("D =", ks_test$statistic, "p-value =", ks_test$p.value))
 # Prueba Chi-Cuadrado
 clases <- cut(numeros, breaks=seq(0, 1, 0.1), include.lowest=TRUE)
 freq_obs <- table(clases)
-freq_esp <- rep(1000, 10)
+freq_esp <- rep(100, 10)
 chi2 <- sum((freq_obs - freq_esp)^2 / freq_esp)
 print(paste("χ² =", chi2))
 
 # Prueba de Medias
 media <- mean(numeros)
 sigma <- sqrt(1/12)
-z <- (media - 0.5) / (sigma/sqrt(10000))
+z <- (media - 0.5) / (sigma/sqrt(1000))
 print(paste("Media =", media, "z =", z))
 
 # Prueba de Varianzas
 varianza <- var(numeros)
-chi2_var <- (10000-1) * varianza / (1/12)
+chi2_var <- (1000-1) * varianza / (1/12)
 print(paste("Varianza =", varianza, "χ² =", chi2_var))
 </pre>
 
@@ -172,12 +172,12 @@ print(paste("Varianza =", varianza, "χ² =", chi2_var))
                     <td data-col-size="xl">PDF únicamente. Nomenclatura: TA-1.3_ApellidoNombre_Bitacora.pdf</td>
                 </tr>
                 <tr>
-                    <td data-col-size="md"><strong>Contenido mínimo</strong></td>
-                    <td data-col-size="xl">Tabla de resultados completa, cálculos detallados de cada prueba, interpretación de resultados, conclusión general sobre calidad del generador (2-3 páginas).</td>
+                    <td data-col-size="md"><strong>Contenido requerido</strong></td>
+                    <td data-col-size="xl">Tabla de resultados completa, cálculos detallados de cada prueba, interpretación de resultados, conclusión general sobre calidad del generador.</td>
                 </tr>
                 <tr>
                     <td data-col-size="md"><strong>Originalidad</strong></td>
-                    <td data-col-size="xl">Trabajo original basado en tus propios datos de PE-1.3. Máximo 30% contenido IA para explicaciones teóricas.</td>
+                    <td data-col-size="xl">Trabajo original basado en tus propios datos de PE-1.3.</td>
                 </tr>
             </tbody>
         </table>
