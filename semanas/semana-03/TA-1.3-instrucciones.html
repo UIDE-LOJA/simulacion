@@ -1,0 +1,195 @@
+<p>Esta actividad de trabajo autónomo te permitirá <strong>validar la calidad de números pseudoaleatorios</strong> mediante la aplicación de pruebas estadísticas de uniformidad. Te enfocarás en <em>aplicar pruebas de Kolmogorov-Smirnov y Chi-Cuadrado</em>, <em>validar medias y varianzas</em>, y <em>documentar resultados en una bitácora técnica</em>.</p>
+
+<p><strong>¿Qué realizarás?</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 25%;" data-col-size="md">Componente</th>
+                    <th style="width: 50%;" data-col-size="xl">Instrucciones específicas</th>
+                    <th style="width: 25%;" data-col-size="md">Criterios de calidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-col-size="md">Preparación de datos</td>
+                    <td data-col-size="xl">Utiliza los 10,000 números uniformes generados en PE-1.3. Verifica que estén en el rango [0,1].</td>
+                    <td data-col-size="md">Datos correctamente preparados y validados.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Prueba de Kolmogorov-Smirnov</td>
+                    <td data-col-size="xl">Ordena los números. Calcula desviación máxima D entre distribución empírica y teórica U(0,1). Compara con valor crítico d<sub>α,n</sub> para α=0.05 y n=10,000.</td>
+                    <td data-col-size="md">Cálculo correcto del estadístico D y conclusión fundamentada.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Prueba Chi-Cuadrado</td>
+                    <td data-col-size="xl">Agrupa números en K=10 clases de igual amplitud. Calcula frecuencias observadas (F<sub>o</sub>) y esperadas (F<sub>e</sub>=1000). Calcula χ² = Σ[(F<sub>o</sub>-F<sub>e</sub>)²/F<sub>e</sub>]. Compara con χ²<sub>0.05,9</sub>=16.919.</td>
+                    <td data-col-size="md">Tabla de frecuencias completa y estadístico χ² calculado correctamente.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Prueba de Medias</td>
+                    <td data-col-size="xl">Calcula media muestral x̄. Verifica hipótesis H<sub>0</sub>: μ=0.5. Calcula estadístico z = (x̄-0.5)/(σ/√n) donde σ=√(1/12). Compara con z<sub>α/2</sub>=1.96.</td>
+                    <td data-col-size="md">Cálculo de media y estadístico z con interpretación correcta.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Prueba de Varianzas</td>
+                    <td data-col-size="xl">Calcula varianza muestral s². Verifica hipótesis H<sub>0</sub>: σ²=1/12. Calcula estadístico χ² = (n-1)s²/(1/12). Compara con valores críticos χ²<sub>0.025,9999</sub> y χ²<sub>0.975,9999</sub>.</td>
+                    <td data-col-size="md">Cálculo de varianza y estadístico χ² con conclusión apropiada.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Bitácora técnica</td>
+                    <td data-col-size="xl">Documenta cada prueba: objetivo, procedimiento, cálculos, resultados, decisión (aceptar/rechazar H<sub>0</sub>), y conclusión sobre calidad del generador.</td>
+                    <td data-col-size="md">Documentación completa, clara y profesional.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Tabla de resultados a completar</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 20%;" data-col-size="sm">Prueba</th>
+                    <th style="width: 20%;" data-col-size="md">Estadístico Calculado</th>
+                    <th style="width: 20%;" data-col-size="md">Valor Crítico</th>
+                    <th style="width: 20%;" data-col-size="md">Decisión</th>
+                    <th style="width: 20%;" data-col-size="md">Conclusión</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-col-size="sm">Kolmogorov-Smirnov</td>
+                    <td data-col-size="md">D = ?</td>
+                    <td data-col-size="md">d<sub>0.05,10000</sub> = 0.0136</td>
+                    <td data-col-size="md">Aceptar/Rechazar H<sub>0</sub></td>
+                    <td data-col-size="md">¿Uniforme?</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Chi-Cuadrado</td>
+                    <td data-col-size="md">χ² = ?</td>
+                    <td data-col-size="md">χ²<sub>0.05,9</sub> = 16.919</td>
+                    <td data-col-size="md">Aceptar/Rechazar H<sub>0</sub></td>
+                    <td data-col-size="md">¿Uniforme?</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Prueba de Medias</td>
+                    <td data-col-size="md">z = ?</td>
+                    <td data-col-size="md">z<sub>0.025</sub> = ±1.96</td>
+                    <td data-col-size="md">Aceptar/Rechazar H<sub>0</sub></td>
+                    <td data-col-size="md">¿μ=0.5?</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Prueba de Varianzas</td>
+                    <td data-col-size="md">χ² = ?</td>
+                    <td data-col-size="md">χ²<sub>0.025,9999</sub> y χ²<sub>0.975,9999</sub></td>
+                    <td data-col-size="md">Aceptar/Rechazar H<sub>0</sub></td>
+                    <td data-col-size="md">¿σ²=1/12?</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Fórmulas clave</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 30%;" data-col-size="md">Prueba</th>
+                    <th style="width: 70%;" data-col-size="xl">Fórmula</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-col-size="md">Kolmogorov-Smirnov</td>
+                    <td data-col-size="xl">D = max|F<sub>n</sub>(x) - F(x)| donde F<sub>n</sub>(x) es distribución empírica y F(x)=x para U(0,1)</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Chi-Cuadrado</td>
+                    <td data-col-size="xl">χ² = Σ[(F<sub>o</sub> - F<sub>e</sub>)² / F<sub>e</sub>] con K-1 grados de libertad</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Prueba de Medias</td>
+                    <td data-col-size="xl">z = (x̄ - μ<sub>0</sub>) / (σ/√n) donde μ<sub>0</sub>=0.5, σ=√(1/12)≈0.2887</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Prueba de Varianzas</td>
+                    <td data-col-size="xl">χ² = (n-1)s² / σ<sub>0</sub>² donde σ<sub>0</sub>²=1/12≈0.0833</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Implementación en R (ejemplo)</strong></p>
+<pre style="background: #f5f5f5; padding: 10px; border-radius: 5px; font-family: monospace;">
+# Cargar datos de PE-1.3
+numeros <- # tus 10,000 números uniformes
+
+# Prueba de Kolmogorov-Smirnov
+ks_test <- ks.test(numeros, "punif", 0, 1)
+print(paste("D =", ks_test$statistic, "p-value =", ks_test$p.value))
+
+# Prueba Chi-Cuadrado
+clases <- cut(numeros, breaks=seq(0, 1, 0.1), include.lowest=TRUE)
+freq_obs <- table(clases)
+freq_esp <- rep(1000, 10)
+chi2 <- sum((freq_obs - freq_esp)^2 / freq_esp)
+print(paste("χ² =", chi2))
+
+# Prueba de Medias
+media <- mean(numeros)
+sigma <- sqrt(1/12)
+z <- (media - 0.5) / (sigma/sqrt(10000))
+print(paste("Media =", media, "z =", z))
+
+# Prueba de Varianzas
+varianza <- var(numeros)
+chi2_var <- (10000-1) * varianza / (1/12)
+print(paste("Varianza =", varianza, "χ² =", chi2_var))
+</pre>
+
+<p><strong>Materiales:</strong> Compendio Semana 3, datos de PE-1.3, Excel o R, tablas estadísticas (valores críticos).</p>
+
+<p><strong>Especificaciones técnicas de entrega</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 25%;" data-col-size="md">Aspecto</th>
+                    <th style="width: 75%;" data-col-size="xl">Especificación requerida</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-col-size="md"><strong>Formato de archivo</strong></td>
+                    <td data-col-size="xl">PDF únicamente. Nomenclatura: TA-1.3_ApellidoNombre_Bitacora.pdf</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md"><strong>Contenido mínimo</strong></td>
+                    <td data-col-size="xl">Tabla de resultados completa, cálculos detallados de cada prueba, interpretación de resultados, conclusión general sobre calidad del generador (2-3 páginas).</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md"><strong>Originalidad</strong></td>
+                    <td data-col-size="xl">Trabajo original basado en tus propios datos de PE-1.3. Máximo 30% contenido IA para explicaciones teóricas.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Información importante</strong></p>
+<ul>
+    <li><p><strong>Modalidad:</strong> Trabajo autónomo individual — <strong>2.25 pts</strong>.</p></li>
+    <li><p><strong>Tiempo estimado:</strong> 3 horas de trabajo independiente.</p></li>
+    <li><p><strong>Fecha de entrega:</strong> Según calendario académico (revisar Canvas).</p></li>
+    <li><p><strong>Penalización por retraso:</strong> -0.25 puntos por cada día de retraso.</p></li>
+</ul>
+
+<p>Si tienes dudas, utiliza el <strong>horario de tutorías (lunes 10:00-12:00 | viernes 08:00-09:00)</strong> o envía consulta por <strong>correo institucional</strong> con tiempo de respuesta máximo 48 horas laborables.</p>

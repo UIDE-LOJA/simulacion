@@ -1,0 +1,149 @@
+<p>Esta actividad práctica te permitirá aplicar los <strong>conceptos de generación de números pseudoaleatorios</strong> mediante la implementación del Generador Congruencial Lineal (GCL) Mixto. Te enfocarás en <em>implementar el algoritmo recursivo</em>, <em>generar secuencias de números uniformes</em>, y <em>validar la calidad mediante pruebas estadísticas básicas</em>.</p>
+
+<p><strong>¿Qué realizarás?</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 23.5306%;" data-col-size="sm">Actividad</th>
+                    <th style="width: 47.0612%;" data-col-size="xl">Instrucciones específicas</th>
+                    <th style="width: 29.3864%;" data-col-size="md">Entregable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-col-size="sm">Preparación individual</td>
+                    <td data-col-size="xl">Revisa Compendio Semana 3: Generador Congruencial Lineal Mixto, fórmula recursiva X<sub>i+1</sub> = (a·X<sub>i</sub> + c) mod m, y Teorema de Hull-Dobell.</td>
+                    <td data-col-size="md">Comprensión de parámetros y algoritmo.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Implementación del GCL</td>
+                    <td data-col-size="xl">Implementa el GCL Mixto en Excel o R. Usa parámetros: a=1103515245, c=12345, m=2<sup>31</sup>, semilla=tu número de cédula (últimos 4 dígitos). Genera 10,000 números uniformes U<sub>i</sub> = X<sub>i</sub>/m.</td>
+                    <td data-col-size="md">Archivo Excel o script R con implementación funcional.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Visualización: Histograma</td>
+                    <td data-col-size="xl">Crea histograma de frecuencias con 10 clases de igual amplitud. Verifica distribución aproximadamente uniforme.</td>
+                    <td data-col-size="md">Histograma con título, ejes etiquetados y análisis visual.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Prueba de Rachas (Runs Test)</td>
+                    <td data-col-size="xl">Aplica prueba de rachas para validar independencia. Cuenta rachas ascendentes y descendentes. Compara con valor crítico para n=10,000 y α=0.05.</td>
+                    <td data-col-size="md">Cálculo de estadístico de rachas y conclusión sobre independencia.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Documentación</td>
+                    <td data-col-size="xl">Documenta: parámetros utilizados (a, c, m, semilla), primeros 20 números generados, análisis del histograma, resultado de prueba de rachas, y conclusión sobre calidad del generador.</td>
+                    <td data-col-size="md">Reporte técnico de 1-2 páginas con evidencias.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Fórmulas clave</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 30%;" data-col-size="md">Concepto</th>
+                    <th style="width: 70%;" data-col-size="xl">Fórmula / Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-col-size="md">GCL Mixto</td>
+                    <td data-col-size="xl">X<sub>i+1</sub> = (a · X<sub>i</sub> + c) mod m</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Transformación a Uniforme</td>
+                    <td data-col-size="xl">U<sub>i</sub> = X<sub>i</sub> / m (valores entre 0 y 1)</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Prueba de Rachas</td>
+                    <td data-col-size="xl">Cuenta secuencias ascendentes/descendentes. Compara con distribución esperada para validar independencia.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md">Histograma</td>
+                    <td data-col-size="xl">Divide [0,1] en K=10 clases. Frecuencia esperada: F<sub>e</sub> = n/K = 1000 por clase.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Implementación en Excel</strong></p>
+<ul>
+    <li><strong>Columna A:</strong> Índice i (0 a 10000)</li>
+    <li><strong>Columna B:</strong> X<sub>i</sub> (residuo) - Fórmula: <code>=(1103515245*B2+12345)/2147483648-ENTERO((1103515245*B2+12345)/2147483648))*2147483648</code></li>
+    <li><strong>Columna C:</strong> U<sub>i</sub> (uniforme) - Fórmula: <code>=B3/2147483648</code></li>
+    <li><strong>Histograma:</strong> Insertar → Gráfico → Histograma (seleccionar columna C)</li>
+</ul>
+
+<p><strong>Implementación en R</strong></p>
+<pre style="background: #f5f5f5; padding: 10px; border-radius: 5px; font-family: monospace;">
+# Parámetros del GCL
+a <- 1103515245
+c <- 12345
+m <- 2^31
+semilla <- 1234  # Últimos 4 dígitos de tu cédula
+
+# Implementación
+gcl_mixto <- function(n, a, c, m, seed) {
+  x <- numeric(n)
+  x[1] <- seed
+  for(i in 2:n) {
+    x[i] <- (a * x[i-1] + c) %% m
+  }
+  return(x/m)
+}
+
+# Generar 10,000 números
+numeros <- gcl_mixto(10000, a, c, m, semilla)
+
+# Histograma
+hist(numeros, breaks=10, main="Distribución de Números Pseudoaleatorios", 
+     xlab="Valor", ylab="Frecuencia", col="lightblue")
+</pre>
+
+<p><strong>Materiales:</strong> Compendio Semana 3, presentación de clase, Excel o R instalado.</p>
+
+<p><strong>Especificaciones técnicas de entrega</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 25%;" data-col-size="md">Aspecto</th>
+                    <th style="width: 75%;" data-col-size="xl">Especificación requerida</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-col-size="md"><strong>Formato de archivo</strong></td>
+                    <td data-col-size="xl">PDF con reporte + archivo Excel (.xlsx) o script R (.R). Nomenclatura: PE-1.3_ApellidoNombre_GCL.pdf y PE-1.3_ApellidoNombre_GCL.xlsx (o .R)</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md"><strong>Contenido del reporte</strong></td>
+                    <td data-col-size="xl">Parámetros utilizados, tabla con primeros 20 números, histograma, resultado de prueba de rachas, conclusión sobre calidad del generador.</td>
+                </tr>
+                <tr>
+                    <td data-col-size="md"><strong>Originalidad</strong></td>
+                    <td data-col-size="xl">Implementación propia. Cada estudiante debe usar su propia semilla (últimos 4 dígitos de cédula).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Información importante</strong></p>
+<ul>
+    <li><p><strong>Modalidad:</strong> Laboratorio práctico individual — <strong>2.25 pts</strong>.</p></li>
+    <li><p><strong>Tiempo estimado:</strong> 2-3 horas de trabajo.</p></li>
+    <li><p><strong>Fecha de entrega:</strong> Según calendario académico (revisar Canvas).</p></li>
+    <li><p><strong>Penalización por retraso:</strong> -0.25 puntos por cada día de retraso.</p></li>
+</ul>
+
+<p>Si tienes dudas durante la implementación, utiliza el <strong>horario de tutorías (lunes 10:00-12:00 | viernes 08:00-09:00)</strong> o envía consulta por <strong>correo institucional</strong> con tiempo de respuesta máximo 48 horas laborables.</p>
