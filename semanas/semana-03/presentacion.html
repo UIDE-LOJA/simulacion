@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generación de Números Pseudoaleatorios - Semana 3</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎲</text></svg>">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="presentacion.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'dark',
+            securityLevel: 'loose',
+            themeVariables: {
+                darkMode: true,
+                primaryColor: '#E9AB21',
+                primaryTextColor: '#ffffff',
+                primaryBorderColor: '#ffffff',
+                lineColor: '#ffffff',
+                secondaryColor: '#23356E',
+                tertiaryColor: '#910048',
+                background: '#0f1419',
+                mainBkg: '#0f1419',
+                secondBkg: '#1a1f2e'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: false,
+                curve: 'basis'
+            }
+        });
+        console.log('✅ Mermaid configured successfully');
+    </script>
+</head>
+
+<body>
+    <!-- Logo UIDE -->
+    <div class="uide-logo">
+        <img src="../../assets/Logo%20UIDE.png" alt="UIDE Logo">
+    </div>
+
+    <div class="presentation-container">
+
+        <!-- Slide 1: Title -->
+        <div class="slide active title-slide">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h3 style="color: #e2e8f0; font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem;">
+                    Presentación Semana 3
+                </h3>
+                <h2 style="color: var(--uide-accent); font-size: 2.2rem; font-weight: 600; margin-bottom: 0.5rem;">
+                    Generación de Variables Aleatorias
+                </h2>
+                <p style="color: #ffffff; font-size: 1.4rem; font-weight: 500;">
+                    FT-06-SIM Simulación • Sexto Nivel
+                </p>
+                <p style="color: #e2e8f0; font-size: 1.2rem; margin-top: 0.5rem;">
+                    Ingeniería en Tecnologías de la Información
+                </p>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <p style="color: #ffffff; font-size: 1.3rem; font-weight: 600;">
+                    Mgs. Charlie Alexander Cárdenas Toledo
+                </p>
+                <p style="color: var(--uide-primary); font-size: 1.2rem; font-weight: 500; margin-top: 0.5rem;">
+                    Universidad Internacional del Ecuador • Octubre 2025 – Febrero 2026
+                </p>
+            </div>
+
+            <div style="text-align: center; margin-top: 2.5rem; padding: 25px; background: rgba(15, 20, 25, 0.6); border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                <h3 style="color: var(--uide-accent); font-size: 1.4rem; margin-bottom: 1rem;">
+                    <i class="fas fa-dice"></i> Unidad 2: Generación de Variables Aleatorias
+                </h3>
+                <p style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.4; margin: 0.5rem 0;">
+                    <strong>Semana 3</strong> • Generadores Congruenciales (Mixto) • Números Uniformes • Pruebas Básicas de Uniformidad • Implementación en Excel y R
+                </p>
+                <p style="color: #cbd5e1; font-size: 1rem; margin-top: 1rem; font-style: italic;">
+                    Explicar generadores congruenciales y pruebas de uniformidad
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Objetivos -->
+        <div class="slide">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de la Presentación</h2>
+            <ul>
+                <li>Comprender la <span class="highlight">naturaleza y definición</span> de los números pseudoaleatorios</li>
+                <li>Analizar las <span class="highlight">propiedades de uniformidad e independencia</span></li>
+                <li>Dominar el <span class="highlight">Generador Congruencial Lineal (GCL) Mixto</span></li>
+                <li>Aplicar <span class="highlight">pruebas de validación</span> para verificar calidad</li>
+                <li>Implementar generadores en <span class="highlight">Excel y R</span></li>
+            </ul>
+        </div>
+
+        <!-- Slide 3: Agenda -->
+        <div class="slide">
+            <h2><i class="fas fa-chart-line"></i> Agenda</h2>
+            <div class="content-grid">
+                <div class="feature-card">
+                    <h3>1. Fundamentos</h3>
+                    <p>Números Pseudoaleatorios</p>
+                </div>
+                <div class="feature-card">
+                    <h3>2. Propiedades</h3>
+                    <p>Uniformidad e Independencia</p>
+                </div>
+                <div class="feature-card">
+                    <h3>3. GCL Mixto</h3>
+                    <p>Generador Congruencial Lineal</p>
+                </div>
+                <div class="feature-card">
+                    <h3>4. Validación</h3>
+                    <p>Pruebas Estadísticas</p>
+                </div>
+                <div class="feature-card">
+                    <h3>5. Implementación</h3>
+                    <p>Excel y R</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: ¿Qué son los Números Pseudoaleatorios? -->
+        <div class="slide">
+            <h2><i class="fas fa-dice"></i> ¿Qué son los Números Pseudoaleatorios?</h2>
+            <div class="quote">
+                "Los números pseudoaleatorios son esenciales en la simulación estocástica, ya que permiten reproducir el comportamiento de variables aleatorias con cualquier función de probabilidad"
+            </div>
+            <div class="content-grid">
+                <div>
+                    <h3>Definición Central</h3>
+                    <ul>
+                        <li><span class="emphasis">Pseudoaleatorios</span>: "Falso aleatorios" - generados por algoritmo determinista</li>
+                        <li><span class="emphasis">Apariencia aleatoria</span>: Parecen aleatorios pero siguen un patrón matemático</li>
+                        <li><span class="emphasis">Reproducibilidad</span>: Misma semilla → misma secuencia</li>
+                        <li><span class="emphasis">Distribución objetivo</span>: Principalmente U(0,1) uniforme</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Notación Matemática</h3>
+                    <p>Un número pseudoaleatorio (R<sub>i</sub> o U<sub>i</sub>) es el valor de una variable aleatoria x con distribución uniforme:</p>
+                    <div class="code-block">x ~ U(0,1)</div>
+                    <p><strong>Rango Estándar:</strong> Intervalo (0,1)</p>
+                    <p><strong>Ventaja:</strong> Simplifica transformaciones a otras distribuciones</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Slide 5: Propiedad 1 - Uniformidad -->
+        <div class="slide">
+            <h2><i class="fas fa-chart-bar"></i> Propiedad 1: Uniformidad</h2>
+            <h3 style="text-align: center; margin-bottom: 1.5rem;">Distribución Uniforme U(0,1)</h3>
+            <div class="content-grid">
+                <div>
+                    <h3>Función de Densidad</h3>
+                    <div class="code-block">f(x) = 1  si x ∈ (0,1)
+f(x) = 0  si x ∉ (0,1)</div>
+                    <h3 style="margin-top: 1.5rem;">Parámetros Teóricos</h3>
+                    <ul>
+                        <li><strong>Media</strong>: μ = 0.5 (un medio)</li>
+                        <li><strong>Varianza</strong>: σ² = 1/12</li>
+                        <li><strong>Desviación estándar</strong>: σ ≈ 0.2887</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Importancia en Simulación</h3>
+                    <ul>
+                        <li>La secuencia debe ajustarse a una distribución U(0,1)</li>
+                        <li>Todos los valores en (0,1) tienen igual probabilidad</li>
+                        <li>Base para generar otras distribuciones</li>
+                        <li>Validación mediante pruebas estadísticas</li>
+                    </ul>
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid var(--uide-accent); margin-top: 1rem;">
+                        <p style="font-size: 0.95rem; margin: 0;">
+                            <i class="fas fa-info-circle"></i> <strong>Clave:</strong> La uniformidad garantiza que no hay sesgo en la generación de números.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Propiedad 2 - Independencia -->
+        <div class="slide">
+            <h2><i class="fas fa-link"></i> Propiedad 2: Independencia</h2>
+            <div class="content-grid">
+                <div>
+                    <h3>Independencia Estadística</h3>
+                    <ul>
+                        <li><span class="emphasis">Sin correlación</span>: No debe existir relación aparente entre números consecutivos</li>
+                        <li><span class="emphasis">Dispersión uniforme</span>: Valores uniformemente distribuidos</li>
+                        <li><span class="emphasis">Clave en simulación</span>: Independencia entre ejecuciones/réplicas</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Requisitos del Generador</h3>
+                    <ul>
+                        <li><strong>Periodo suficientemente grande</strong>: Ciclo de vida extenso</li>
+                        <li><strong>Reproducibilidad</strong>: Mismas condiciones iniciales → misma secuencia</li>
+                        <li><strong>Validación</strong>: Pruebas de correlación y rachas</li>
+                    </ul>
+                    <div style="background: rgba(145, 0, 72, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid var(--uide-primary); margin-top: 1rem;">
+                        <p style="font-size: 0.95rem; margin: 0;">
+                            <i class="fas fa-exclamation-triangle"></i> <strong>Importante:</strong> La independencia es crucial para evitar patrones predecibles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: GCL Mixto - Definición -->
+        <div class="slide">
+            <h2><i class="fas fa-cogs"></i> Generador Congruencial Lineal (GCL) Mixto</h2>
+            <div class="quote">
+                "Uno de los algoritmos más antiguos, conocidos y utilizados para generar números pseudoaleatorios"
+            </div>
+            <div class="content-grid">
+                <div>
+                    <h3>Fórmula Recursiva</h3>
+                    <div class="code-block">X<sub>i+1</sub> = (a · X<sub>i</sub> + c) mod m
+
+para i = 0, 1, 2, 3, ...</div>
+                    <h3 style="margin-top: 1.5rem;">Parámetros del GCL</h3>
+                    <ul>
+                        <li><strong>X<sub>0</sub></strong>: Semilla (valor inicial)</li>
+                        <li><strong>a</strong>: Constante multiplicativa (multiplicador)</li>
+                        <li><strong>c</strong>: Incremento o constante aditiva</li>
+                        <li><strong>m</strong>: Módulo (determina rango de valores)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Tipos de Generadores</h3>
+                    <ul>
+                        <li><strong>GCL Mixto</strong>: c ≠ 0 (con incremento)</li>
+                        <li><strong>GCL Multiplicativo</strong>: c = 0 (sin incremento)</li>
+                    </ul>
+                    <h3 style="margin-top: 1.5rem;">Rango de Valores</h3>
+                    <div class="code-block">X<sub>i+1</sub> ∈ {0, 1, 2, ..., m-1}</div>
+                    <h3 style="margin-top: 1rem;">Transformación a Uniforme</h3>
+                    <div class="code-block">U<sub>i</sub> = X<sub>i</sub> / m
+
+Alternativa: R<sub>i</sub> = X<sub>i</sub> / (m-1)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Periodo Máximo -->
+        <div class="slide">
+            <h2><i class="fas fa-sync-alt"></i> Periodo Máximo: Teorema de Hull-Dobell</h2>
+            <div class="content-grid">
+                <div>
+                    <h3>Definición de Periodo</h3>
+                    <ul>
+                        <li><strong>Periodo</strong>: Longitud de secuencia antes de repetirse</li>
+                        <li><strong>Máximo posible</strong>: p = m (periodo completo)</li>
+                        <li><strong>Importancia</strong>: Mayor periodo = mayor calidad</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Condiciones para Periodo Completo (p = m)</h3>
+                    <ol style="font-size: 1.1rem; line-height: 1.8;">
+                        <li><strong>c y m son primos relativos</strong>: gcd(c, m) = 1</li>
+                        <li><strong>a - 1 es múltiplo</strong> de todos los factores primos de m</li>
+                        <li><strong>Si m es múltiplo de 4</strong>, entonces a - 1 también lo es</li>
+                    </ol>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center; font-size: 1.1rem; color: var(--uide-accent);">
+                <i class="fas fa-info-circle"></i> El Teorema de Hull-Dobell garantiza la máxima longitud de secuencia sin repetición
+            </div>
+        </div>
+
+        <!-- Slide 9: Pruebas de Validación -->
+        <div class="slide">
+            <h2><i class="fas fa-flask"></i> Pruebas de Validación: Uniformidad</h2>
+            <div class="quote">
+                "Garantizar que la secuencia de números generados se ajusta a una distribución U(0,1)"
+            </div>
+            <div class="content-grid">
+                <div class="feature-card">
+                    <h3><i class="fas fa-chart-line"></i> Kolmogorov-Smirnov (K-S)</h3>
+                    <ul>
+                        <li><strong>Tipo</strong>: Test no paramétrico de bondad de ajuste</li>
+                        <li><strong>Aplicación</strong>: Distribuciones teóricas continuas</li>
+                        <li><strong>Comparación</strong>: Función de distribución empírica vs teórica</li>
+                        <li><strong>Decisión</strong>: Si D > d<sub>α,n</sub> → rechazar H<sub>0</sub></li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-chart-pie"></i> Chi-Cuadrado (χ²)</h3>
+                    <ul>
+                        <li><strong>También conocida como</strong>: Prueba de Pearson o de frecuencias</li>
+                        <li><strong>Mide</strong>: Discrepancia entre F<sub>o</sub> y F<sub>e</sub></li>
+                        <li><strong>Principio</strong>: Frecuencias deben ser aproximadamente iguales</li>
+                        <li><strong>Decisión</strong>: Si χ² > χ²<sub>α,K-1</sub> → rechazar H<sub>0</sub></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Prueba K-S -->
+        <div class="slide">
+            <h2><i class="fas fa-chart-line"></i> Prueba de Kolmogorov-Smirnov (K-S)</h2>
+            <div class="content-grid">
+                <div>
+                    <h3>Características</h3>
+                    <ul>
+                        <li><strong>Tipo</strong>: Test no paramétrico de bondad de ajuste</li>
+                        <li><strong>Aplicación</strong>: Distribuciones teóricas continuas</li>
+                        <li><strong>Comparación</strong>: Función de distribución empírica vs teórica</li>
+                    </ul>
+                    <h3 style="margin-top: 1.5rem;">Ventajas</h3>
+                    <ul>
+                        <li>No requiere agrupación de datos</li>
+                        <li>Sensible a diferencias en toda la distribución</li>
+                        <li>Fácil de interpretar</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Procedimiento</h3>
+                    <ol style="font-size: 1.05rem; line-height: 1.7;">
+                        <li><strong>Ordenar</strong> números pseudoaleatorios</li>
+                        <li><strong>Calcular</strong> desviación máxima D</li>
+                        <li><strong>Comparar</strong> con valor crítico d<sub>α,n</sub></li>
+                        <li><strong>Decisión</strong>: Si D > d<sub>α,n</sub> → rechazar H<sub>0</sub> (uniformidad)</li>
+                    </ol>
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid var(--uide-accent); margin-top: 1rem;">
+                        <p style="font-size: 0.9rem; margin: 0;">
+                            <i class="fas fa-info-circle"></i> <strong>H<sub>0</sub>:</strong> Los datos siguen una distribución U(0,1)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Prueba Chi-Cuadrado -->
+        <div class="slide">
+            <h2><i class="fas fa-chart-pie"></i> Prueba Chi-Cuadrado (χ²)</h2>
+            <div class="content-grid">
+                <div>
+                    <h3>También Conocida Como</h3>
+                    <ul>
+                        <li>Prueba de Pearson</li>
+                        <li>Prueba de frecuencias</li>
+                    </ul>
+                    <h3 style="margin-top: 1.5rem;">Metodología</h3>
+                    <ul>
+                        <li><strong>Mide</strong>: Discrepancia entre frecuencia observada (F<sub>o</sub>) y esperada (F<sub>e</sub>)</li>
+                        <li><strong>Principio</strong>: En distribución uniforme, frecuencias deben ser aproximadamente iguales</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Pasos del Procedimiento</h3>
+                    <ol style="font-size: 1.05rem; line-height: 1.7;">
+                        <li><strong>Agrupar</strong> n números en K clases de igual amplitud</li>
+                        <li><strong>Calcular</strong> F<sub>o</sub> y F<sub>e</sub> = n · A<sub>i</sub></li>
+                        <li><strong>Computar</strong> estadístico χ²</li>
+                        <li><strong>Comparar</strong> con χ²<sub>α,K-1</sub></li>
+                    </ol>
+                    <div style="background: rgba(145, 0, 72, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid var(--uide-primary); margin-top: 1rem;">
+                        <p style="font-size: 0.9rem; margin: 0;">
+                            <i class="fas fa-exclamation-triangle"></i> <strong>Nota:</strong> Requiere al menos 5 observaciones por clase
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Pruebas de Medias y Varianzas -->
+        <div class="slide">
+            <h2><i class="fas fa-calculator"></i> Pruebas de Medias y Varianzas</h2>
+            <div class="content-grid">
+                <div class="feature-card">
+                    <h3>Prueba de Medias</h3>
+                    <ul>
+                        <li><strong>Hipótesis nula</strong>: H<sub>0</sub>: μ = 1/2</li>
+                        <li><strong>Fundamento</strong>: Gran cantidad de datos uniformes → promedio = 0.5</li>
+                        <li><strong>Validación</strong>: Compara media muestral con teórica</li>
+                        <li><strong>Importancia</strong>: Detecta sesgo en la generación</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>Prueba de Varianzas</h3>
+                    <ul>
+                        <li><strong>Hipótesis nula</strong>: H<sub>0</sub>: σ² = 1/12</li>
+                        <li><strong>Fundamento</strong>: Teoría estadística de distribución uniforme</li>
+                        <li><strong>Validación</strong>: Compara varianza muestral con teórica</li>
+                        <li><strong>Importancia</strong>: Detecta dispersión anormal</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center; font-size: 1.1rem; color: var(--uide-accent);">
+                <i class="fas fa-info-circle"></i> Validan si propiedades muestrales coinciden con parámetros teóricos U(0,1)
+            </div>
+        </div>
+
+        <!-- Slide 13: Implementación en Excel -->
+        <div class="slide">
+            <h2><i class="fas fa-file-excel"></i> Implementación en Excel</h2>
+            <div class="content-grid">
+                <div>
+                    <h3>Función Incorporada</h3>
+                    <div class="code-block">=ALEATORIO()
+o
+=RAND()</div>
+                    <ul style="margin-top: 1rem;">
+                        <li><strong>Características</strong>: Función "volátil" - se actualiza con F9</li>
+                        <li><strong>Rango</strong>: Entre 0 y 1</li>
+                    </ul>
+                    <h3 style="margin-top: 1.5rem;">Variable Uniforme en [a,b]</h3>
+                    <div class="code-block">X = a + (b-a) · R<sub>i</sub>
+
+Ejemplo Excel:
+=245+10*(B17)
+
+para [245, 255]</div>
+                </div>
+                <div>
+                    <h3>Implementación GCL en Excel</h3>
+                    <p><strong>Fórmula del Residuo:</strong></p>
+                    <div class="code-block" style="font-size: 0.85rem;">=(D$3*C10+D$4)/D$5-ENTERO((D$3*C10+D$4)/D$5))*D$5</div>
+                    <h3 style="margin-top: 1rem;">Parámetros de Referencia</h3>
+                    <ul style="font-size: 1rem;">
+                        <li><strong>D$3</strong>: Multiplicador a</li>
+                        <li><strong>D$4</strong>: Incremento c</li>
+                        <li><strong>D$5</strong>: Módulo m</li>
+                        <li><strong>C10</strong>: Valor anterior X<sub>i</sub></li>
+                    </ul>
+                    <h3 style="margin-top: 1rem;">Número Final</h3>
+                    <div class="code-block">R<sub>i</sub> = X<sub>i</sub> / m</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Slide 14: Implementación en R -->
+        <div class="slide">
+            <h2><i class="fab fa-r-project"></i> Implementación en R</h2>
+            <div style="display: grid; grid-template-columns: 35% 65%; gap: 20px; height: calc(100% - 80px); align-items: stretch;">
+                <!-- Columna Izquierda: Explicación -->
+                <div style="display: flex; flex-direction: column; gap: 15px; overflow: hidden;">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1.3rem;">Generación Básica</h3>
+                    <ul style="font-size: 0.95rem; line-height: 1.6; margin: 0; padding-left: 20px;">
+                        <li><strong>runif(n)</strong>: Genera n números U(0,1)</li>
+                        <li><strong>set.seed()</strong>: Fija semilla para reproducibilidad</li>
+                        <li><strong>Mersenne-Twister</strong>: Generador predeterminado en R</li>
+                    </ul>
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid var(--uide-accent);">
+                        <p style="font-size: 0.85rem; margin: 0; line-height: 1.4;">
+                            <i class="fas fa-info-circle"></i> <strong>Ventaja:</strong> R proporciona generadores de alta calidad con periodo extremadamente largo.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Columna Derecha: Código -->
+                <div style="background: #1e1e1e; padding: 18px 20px; border-radius: 10px; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.85rem; line-height: 1.5; display: flex; flex-direction: column; justify-content: center; overflow: hidden;">
+<pre style="margin: 0; color: #d4d4d4;"><span style="color: #6a9955;"># Números uniformes U(0,1)</span>
+<span style="color: #dcdcaa;">runif</span>(<span style="color: #9cdcfe;">n</span>)
+
+<span style="color: #6a9955;"># Fijar semilla para reproducibilidad</span>
+<span style="color: #dcdcaa;">set.seed</span>(<span style="color: #b5cea8;">123</span>)
+
+<span style="color: #6a9955;"># Variable Uniforme en [a,b]</span>
+<span style="color: #6a9955;"># Transformación manual</span>
+<span style="color: #9cdcfe;">u</span> <span style="color: #d4d4d4;">&lt;-</span> <span style="color: #dcdcaa;">runif</span>(<span style="color: #9cdcfe;">n</span>)
+<span style="color: #9cdcfe;">x</span> <span style="color: #d4d4d4;">&lt;-</span> <span style="color: #9cdcfe;">a</span> <span style="color: #d4d4d4;">+</span> <span style="color: #9cdcfe;">u</span> <span style="color: #d4d4d4;">*</span> (<span style="color: #9cdcfe;">b</span> <span style="color: #d4d4d4;">-</span> <span style="color: #9cdcfe;">a</span>)
+
+<span style="color: #6a9955;"># Función directa</span>
+<span style="color: #dcdcaa;">runif</span>(<span style="color: #9cdcfe;">n</span>, <span style="color: #9cdcfe;">min</span> <span style="color: #d4d4d4;">=</span> <span style="color: #9cdcfe;">a</span>, <span style="color: #9cdcfe;">max</span> <span style="color: #d4d4d4;">=</span> <span style="color: #9cdcfe;">b</span>)</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: GCL en R -->
+        <div class="slide">
+            <h2><i class="fab fa-r-project"></i> GCL en R: Implementación Avanzada</h2>
+            <div style="display: grid; grid-template-columns: 35% 65%; gap: 20px; height: calc(100% - 80px); align-items: stretch;">
+                <!-- Columna Izquierda: Explicación -->
+                <div style="display: flex; flex-direction: column; gap: 15px; overflow: hidden;">
+                    <h3 style="margin: 0 0 10px 0; font-size: 1.3rem;">Generador por Defecto</h3>
+                    <ul style="font-size: 0.95rem; line-height: 1.6; margin: 0; padding-left: 20px;">
+                        <li><strong>Mersenne-Twister</strong>: Generador predeterminado en R</li>
+                        <li><strong>Alta calidad</strong>: Periodo extremadamente largo</li>
+                        <li><strong>Paquete simres</strong>: Implementación de GCL</li>
+                    </ul>
+                    <div style="background: rgba(145, 0, 72, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid var(--uide-primary);">
+                        <p style="font-size: 0.85rem; margin: 0; line-height: 1.4;">
+                            <i class="fas fa-code"></i> <strong>Implementación:</strong> Lógica recursiva X<sub>i</sub> = (a · X<sub>i-1</sub> + c) mod m
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Columna Derecha: Código -->
+                <div style="background: #1e1e1e; padding: 18px 20px; border-radius: 10px; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.75rem; line-height: 1.4; display: flex; flex-direction: column; justify-content: center; overflow: hidden;">
+<pre style="margin: 0; color: #d4d4d4;"><span style="color: #6a9955;"># Usando paquete simres</span>
+<span style="color: #dcdcaa;">library</span>(<span style="color: #9cdcfe;">simres</span>)
+<span style="color: #dcdcaa;">rlcg</span>(<span style="color: #9cdcfe;">n</span>, <span style="color: #9cdcfe;">a</span>, <span style="color: #9cdcfe;">c</span>, <span style="color: #9cdcfe;">m</span>, <span style="color: #9cdcfe;">seed</span>)
+
+<span style="color: #6a9955;"># Implementación manual</span>
+<span style="color: #9cdcfe;">gcl_mixto</span> <span style="color: #d4d4d4;">&lt;-</span> <span style="color: #c586c0;">function</span>(<span style="color: #9cdcfe;">n</span>, <span style="color: #9cdcfe;">a</span>, <span style="color: #9cdcfe;">c</span>, <span style="color: #9cdcfe;">m</span>, <span style="color: #9cdcfe;">seed</span>) {
+  <span style="color: #9cdcfe;">x</span> <span style="color: #d4d4d4;">&lt;-</span> <span style="color: #dcdcaa;">numeric</span>(<span style="color: #9cdcfe;">n</span>)
+  <span style="color: #9cdcfe;">x</span>[<span style="color: #b5cea8;">1</span>] <span style="color: #d4d4d4;">&lt;-</span> <span style="color: #9cdcfe;">seed</span>
+  <span style="color: #c586c0;">for</span>(<span style="color: #9cdcfe;">i</span> <span style="color: #c586c0;">in</span> <span style="color: #b5cea8;">2</span><span style="color: #d4d4d4;">:</span><span style="color: #9cdcfe;">n</span>) {
+    <span style="color: #9cdcfe;">x</span>[<span style="color: #9cdcfe;">i</span>] <span style="color: #d4d4d4;">&lt;-</span> (<span style="color: #9cdcfe;">a</span> <span style="color: #d4d4d4;">*</span> <span style="color: #9cdcfe;">x</span>[<span style="color: #9cdcfe;">i</span><span style="color: #d4d4d4;">-</span><span style="color: #b5cea8;">1</span>] <span style="color: #d4d4d4;">+</span> <span style="color: #9cdcfe;">c</span>) <span style="color: #d4d4d4;">%%</span> <span style="color: #9cdcfe;">m</span>
+  }
+  <span style="color: #c586c0;">return</span>(<span style="color: #9cdcfe;">x</span><span style="color: #d4d4d4;">/</span><span style="color: #9cdcfe;">m</span>)
+}
+
+<span style="color: #6a9955;"># Ejemplo de uso</span>
+<span style="color: #9cdcfe;">numeros</span> <span style="color: #d4d4d4;">&lt;-</span> <span style="color: #dcdcaa;">gcl_mixto</span>(<span style="color: #b5cea8;">100</span>, <span style="color: #b5cea8;">1103515245</span>, <span style="color: #b5cea8;">12345</span>, <span style="color: #b5cea8;">2</span><span style="color: #d4d4d4;">^</span><span style="color: #b5cea8;">31</span>, <span style="color: #b5cea8;">42</span>)</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Validación Práctica -->
+        <div class="slide">
+            <h2><i class="fas fa-check-circle"></i> Validación Práctica</h2>
+            <div class="content-grid">
+                <div>
+                    <h3>Proceso de Verificación</h3>
+                    <ol style="font-size: 1.1rem; line-height: 1.8;">
+                        <li><strong>Generar</strong> secuencia de números pseudoaleatorios</li>
+                        <li><strong>Aplicar</strong> pruebas estadísticas (K-S, χ², medias/varianzas)</li>
+                        <li><strong>Analizar</strong> resultados vs valores críticos</li>
+                        <li><strong>Validar</strong> o <strong>rechazar</strong> calidad del generador</li>
+                    </ol>
+                </div>
+                <div>
+                    <h3>Criterios de Aceptación</h3>
+                    <ul>
+                        <li><span class="emphasis">Uniformidad</span>: Distribución aproximadamente U(0,1)</li>
+                        <li><span class="emphasis">Independencia</span>: Sin correlaciones aparentes</li>
+                        <li><span class="emphasis">Periodo</span>: Suficientemente largo para aplicación</li>
+                    </ul>
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid var(--uide-accent); margin-top: 1rem;">
+                        <p style="font-size: 0.95rem; margin: 0;">
+                            <i class="fas fa-info-circle"></i> <strong>Importante:</strong> Un generador debe pasar múltiples pruebas para ser considerado confiable.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 17: Ventajas y Limitaciones -->
+        <div class="slide">
+            <h2><i class="fas fa-balance-scale"></i> Ventajas y Limitaciones</h2>
+            <div class="content-grid">
+                <div class="feature-card">
+                    <h3><i class="fas fa-thumbs-up"></i> Ventajas del GCL</h3>
+                    <ul>
+                        <li><strong>Simplicidad</strong>: Fácil implementación</li>
+                        <li><strong>Eficiencia</strong>: Computacionalmente rápido</li>
+                        <li><strong>Reproducibilidad</strong>: Control total de la secuencia</li>
+                        <li><strong>Teoría sólida</strong>: Base matemática bien establecida</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Limitaciones</h3>
+                    <ul>
+                        <li><strong>Correlaciones</strong>: Pueden existir en secuencias largas</li>
+                        <li><strong>Periodo limitado</strong>: Determinado por el módulo m</li>
+                        <li><strong>Sensibilidad</strong>: A la elección de parámetros</li>
+                        <li><strong>Pruebas</strong>: Requiere validación estadística rigurosa</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; text-align: center; font-size: 1.1rem; color: var(--uide-accent);">
+                <i class="fas fa-lightbulb"></i> La elección correcta de parámetros es crucial para la calidad del generador
+            </div>
+        </div>
+
+        <!-- Slide 18: Síntesis -->
+        <div class="slide">
+            <h2><i class="fas fa-check-circle"></i> Síntesis: Elementos Clave</h2>
+            <div class="content-grid">
+                <div>
+                    <h3>Fundamentos Teóricos</h3>
+                    <ul>
+                        <li><strong>Números pseudoaleatorios</strong> como base de simulación estocástica</li>
+                        <li><strong>Propiedades esenciales</strong>: Uniformidad e independencia</li>
+                        <li><strong>Validación estadística</strong> obligatoria</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Implementación Práctica</h3>
+                    <ul>
+                        <li><strong>GCL Mixto</strong>: Algoritmo recursivo determinista</li>
+                        <li><strong>Herramientas</strong>: Excel para casos básicos, R para aplicaciones avanzadas</li>
+                        <li><strong>Calidad</strong>: Depende de elección correcta de parámetros</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center; font-style: italic; color: var(--uide-accent);">
+                La calidad de una simulación nunca puede ser mejor que la calidad de los números pseudoaleatorios que la alimentan
+            </div>
+        </div>
+
+        <!-- Slide 19: Aplicaciones en Simulación -->
+        <div class="slide">
+            <h2><i class="fas fa-rocket"></i> Aplicaciones en Simulación</h2>
+            <div class="content-grid">
+                <div>
+                    <h3>Usos Principales</h3>
+                    <ul>
+                        <li><span class="emphasis">Simulación de Monte Carlo</span>: Base fundamental</li>
+                        <li><span class="emphasis">Modelado estocástico</span>: Variables aleatorias diversas</li>
+                        <li><span class="emphasis">Análisis de riesgo</span>: Evaluación de incertidumbre</li>
+                        <li><span class="emphasis">Optimización</span>: Algoritmos metaheurísticos</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Transformaciones</h3>
+                    <ul>
+                        <li><strong>Método de transformada inversa</strong></li>
+                        <li><strong>Método de aceptación-rechazo</strong></li>
+                        <li><strong>Generación de distribuciones específicas</strong></li>
+                        <li><strong>Box-Muller para normales</strong></li>
+                    </ul>
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 15px; border-radius: 8px; border-left: 4px solid var(--uide-accent); margin-top: 1rem;">
+                        <p style="font-size: 0.95rem; margin: 0;">
+                            <i class="fas fa-info-circle"></i> Los números U(0,1) son la base para generar cualquier distribución
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Referencias Clave -->
+        <div class="slide">
+            <h2><i class="fas fa-book"></i> Referencias Clave</h2>
+            <div class="content-grid">
+                <div>
+                    <h3>Fundamentos Clásicos</h3>
+                    <ul style="font-size: 1rem; line-height: 1.7;">
+                        <li><strong>Banks et al. (2005)</strong>: <em>Discrete-Event System Simulation</em></li>
+                        <li><strong>Law & Kelton (2000)</strong>: <em>Simulation Modeling and Analysis</em></li>
+                        <li><strong>Knuth (2014)</strong>: <em>Art of Computer Programming, Vol. 2</em></li>
+                        <li><strong>Shannon (1988)</strong>: <em>Simulación de Sistemas</em></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Implementación y Pruebas</h3>
+                    <ul style="font-size: 1rem; line-height: 1.7;">
+                        <li><strong>L'Ecuyer (1992)</strong>: <em>Testing Random Number Generators</em></li>
+                        <li><strong>García et al. (2013)</strong>: <em>Simulación y análisis de sistemas con ProModel</em></li>
+                        <li><strong>Van Der Post (2024)</strong>: <em>Monte Carlo With Python</em></li>
+                        <li><strong>Varios Autores</strong>: <em>Apuntes de Simulación - TecNM</em></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 21: Para Profundizar -->
+        <div class="slide">
+            <h2><i class="fas fa-graduation-cap"></i> Para Profundizar</h2>
+            <div class="content-grid">
+                <div>
+                    <h3>Lecturas Recomendadas</h3>
+                    <ul>
+                        <li><strong>Shannon (1988)</strong>: <em>Simulación de Sistemas: Diseño, Desarrollo e Implantación</em></li>
+                        <li><strong>Van Der Post (2024)</strong>: <em>Monte Carlo With Python</em></li>
+                        <li><strong>Varios Autores</strong>: <em>Apuntes de Simulación - TecNM</em></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Herramientas Avanzadas</h3>
+                    <ul>
+                        <li><strong>Generadores modernos</strong>: Mersenne-Twister, Well, PCG</li>
+                        <li><strong>Librerías especializadas</strong>: GSL, Boost Random, NumPy</li>
+                        <li><strong>Validación exhaustiva</strong>: TestU01, NIST Statistical Test Suite</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 22: Reflexiones Finales -->
+        <div class="slide title-slide">
+            <h1><i class="fas fa-lightbulb"></i> Reflexiones Finales</h1>
+            <div class="quote">
+                "La calidad de una simulación nunca puede ser mejor que la calidad de los números pseudoaleatorios que la alimentan"
+            </div>
+            <h3 style="margin-top: 2rem;">Preguntas para Considerar</h3>
+            <ul>
+                <li>¿Cómo <span class="highlight">equilibrar</span> simplicidad y calidad estadística?</li>
+                <li>¿Qué <span class="highlight">impacto</span> tiene la elección de parámetros en resultados?</li>
+                <li>¿Cuándo es <span class="highlight">necesario</span> usar generadores más sofisticados?</li>
+            </ul>
+            <div style="margin-top: 2rem; text-align: center; font-size: 1.2rem; color: var(--uide-accent);">
+                <i class="fas fa-quote-left"></i> <em>Desafío Profesional</em> <i class="fas fa-quote-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Slide Counter -->
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">22</span>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- External JavaScript -->
+    <script src="presentacion.js"></script>
+</body>
+
+</html>
