@@ -211,8 +211,13 @@
         <!-- Slide 4: ¿Qué son los Números Pseudoaleatorios? -->
         <div class="slide">
             <h2><i class="fas fa-dice"></i> ¿Qué son los Números Pseudoaleatorios?</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 8px 15px; border-radius: 6px; margin-bottom: 12px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.85rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Caso de Uso:</strong> Simulación de llegadas de clientes a un banco - Generamos tiempos aleatorios entre llegadas
+                </p>
+            </div>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: calc(100% - 80px);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: calc(100% - 110px);">
                 <!-- Columna Izquierda: Conceptos -->
                 <div style="display: flex; flex-direction: column; gap: 15px;">
                     <div class="quote" style="font-size: 0.9rem; padding: 12px; margin: 0;">
@@ -237,17 +242,20 @@
 
                     <div style="background: rgba(35, 53, 110, 0.2); padding: 10px; border-radius: 8px; border: 1px solid rgba(233, 171, 33, 0.3);">
                         <h4 style="font-size: 0.95rem; margin: 0 0 6px 0; color: var(--uide-accent);">
-                            <i class="fas fa-lightbulb"></i> ¿Cómo funciona U(0,1)?
+                            <i class="fas fa-university"></i> Ejemplo: Tiempos entre llegadas
                         </h4>
                         <div style="font-size: 0.82rem; line-height: 1.5;">
-                            <p style="margin: 0 0 6px 0;"><strong>Ejemplo de secuencia:</strong></p>
+                            <p style="margin: 0 0 6px 0;"><strong>1. Secuencia U(0,1) generada:</strong></p>
                             <div style="background: rgba(0,0,0,0.3); padding: 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.78rem; color: #4ade80; margin-bottom: 6px;">
                                 0.3721, 0.8456, 0.1234, 0.9087, 0.5612
                             </div>
-                            <div style="display: grid; grid-template-columns: auto 1fr; gap: 4px 8px; font-size: 0.78rem;">
-                                <span style="color: #4ade80;">✓</span><span style="color: #cbd5e1;">Rango fijo: todos en [0,1]</span>
-                                <span style="color: #4ade80;">✓</span><span style="color: #cbd5e1;">Igual probabilidad en todo el rango</span>
-                                <span style="color: #4ade80;">✓</span><span style="color: #cbd5e1;">Transformables: ×100 → [0,100]</span>
+                            <p style="margin: 0 0 4px 0; font-size: 0.75rem;"><strong>2. Transformación: U × λ (donde λ=10 min máx):</strong></p>
+                            <div style="background: rgba(0,0,0,0.3); padding: 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.78rem; color: #60a5fa; margin-bottom: 6px;">
+                                3.7, 8.5, 1.2, 9.1, 5.6 minutos
+                            </div>
+                            <div style="font-size: 0.7rem; color: #94a3b8; background: rgba(233, 171, 33, 0.1); padding: 4px; border-radius: 4px;">
+                                <strong>λ = 10:</strong> Tiempo máximo entre llegadas<br>
+                                <span style="font-size: 0.65rem;">Basado en observaciones del banco (0-10 min)</span>
                             </div>
                         </div>
                     </div>
@@ -263,10 +271,11 @@
                                     📊 Excel
                                 </div>
                                 <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #e2e8f0; font-family: 'Courier New', monospace; margin-bottom: 4px;">
-                                    =RAND()
+                                    =RAND()*$A$1
                                 </code>
                                 <div style="font-size: 0.65rem; color: #94a3b8; line-height: 1.3;">
-                                    Genera un número aleatorio entre 0 y 1
+                                    A1 = λ (ej: 10 min máx)<br>
+                                    Genera tiempos [0, λ]
                                 </div>
                             </div>
                             <!-- R -->
@@ -275,10 +284,11 @@
                                     📈 R
                                 </div>
                                 <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #e2e8f0; font-family: 'Courier New', monospace; margin-bottom: 4px;">
-                                    runif(10)
+                                    lambda &lt;- 10<br>
+                                    runif(100) * lambda
                                 </code>
                                 <div style="font-size: 0.65rem; color: #94a3b8; line-height: 1.3;">
-                                    Genera 10 números U(0,1)
+                                    100 tiempos [0, 10 min]
                                 </div>
                             </div>
                         </div>
@@ -287,9 +297,12 @@
 
                 <!-- Columna Derecha: Simulación -->
                 <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 15px; display: flex; flex-direction: column;">
-                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 12px 0; font-size: 1.1rem;">
+                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 6px 0; font-size: 1.1rem;">
                         <i class="fas fa-play-circle"></i> Demostración: Reproducibilidad
                     </h3>
+                    <p style="text-align: center; font-size: 0.75rem; color: #94a3b8; margin: 0 0 10px 0; font-style: italic;">
+                        <i class="fas fa-university"></i> Dos simulaciones del banco con la misma semilla generan los mismos tiempos
+                    </p>
                     
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1;">
                         <!-- Generador A -->
@@ -410,9 +423,14 @@
 
         <!-- Slide 5: Propiedad 1 - Uniformidad -->
         <div class="slide">
-            <h2 style="margin-bottom: 1rem;"><i class="fas fa-chart-bar"></i> Propiedad 1: Uniformidad - Distribución U(0,1)</h2>
+            <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-chart-bar"></i> Propiedad 1: Uniformidad - Distribución U(0,1)</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.8rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Caso:</strong> Cada cliente tiene igual probabilidad de llegar en cualquier momento del día
+                </p>
+            </div>
             
-            <div style="display: grid; grid-template-columns: 35% 65%; gap: 20px; height: calc(100vh - 240px); max-height: 600px;">
+            <div style="display: grid; grid-template-columns: 35% 65%; gap: 20px; height: calc(100vh - 270px); max-height: 570px;">
                 <!-- Columna Izquierda: Teoría -->
                 <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
                     <div style="flex-shrink: 0;">
@@ -484,9 +502,12 @@ f(x) = 0  si x ∉ (0,1)</div>
 
                 <!-- Columna Derecha: Visualización -->
                 <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 12px; display: flex; flex-direction: column; height: 100%;">
-                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 10px 0; font-size: 1rem; flex-shrink: 0;">
+                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 4px 0; font-size: 1rem; flex-shrink: 0;">
                         <i class="fas fa-chart-bar"></i> Histograma de Distribución
                     </h3>
+                    <p style="text-align: center; font-size: 0.7rem; color: #94a3b8; margin: 0 0 8px 0; font-style: italic;">
+                        <i class="fas fa-university"></i> Tiempos entre llegadas distribuidos uniformemente
+                    </p>
                     
                     <!-- Canvas para el histograma con altura fija -->
                     <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; height: 350px; overflow: hidden;">
@@ -496,19 +517,19 @@ f(x) = 0  si x ∉ (0,1)</div>
                     <!-- Estadísticas en tiempo real -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; flex-shrink: 0;">
                         <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Media (μ)</div>
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Promedio</div>
                             <div id="uniformMean" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
-                            <div style="font-size: 0.65rem; color: #64748b;">Teórico: 0.5000</div>
+                            <div style="font-size: 0.65rem; color: #64748b;">Esperado: 0.5000</div>
                         </div>
                         <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Varianza (σ²)</div>
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Dispersión</div>
                             <div id="uniformVariance" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
-                            <div style="font-size: 0.65rem; color: #64748b;">Teórico: 0.0833</div>
+                            <div style="font-size: 0.65rem; color: #64748b;">Esperada: 0.0833</div>
                         </div>
                         <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Números</div>
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Clientes</div>
                             <div id="uniformCount2" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">0</div>
-                            <div style="font-size: 0.65rem; color: #64748b;">Generados</div>
+                            <div style="font-size: 0.65rem; color: #64748b;">Simulados</div>
                         </div>
                     </div>
                 </div>
@@ -638,9 +659,14 @@ f(x) = 0  si x ∉ (0,1)</div>
 
         <!-- Slide 6: Propiedad 2 - Independencia -->
         <div class="slide">
-            <h2 style="margin-bottom: 1rem;"><i class="fas fa-link"></i> Propiedad 2: Independencia</h2>
+            <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-link"></i> Propiedad 2: Independencia</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.8rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Caso:</strong> La llegada de un cliente no afecta cuándo llegará el siguiente
+                </p>
+            </div>
             
-            <div style="display: grid; grid-template-columns: 35% 65%; gap: 20px; height: calc(100vh - 240px); max-height: 600px;">
+            <div style="display: grid; grid-template-columns: 35% 65%; gap: 20px; height: calc(100vh - 270px); max-height: 570px;">
                 <!-- Columna Izquierda: Teoría -->
                 <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
                     <div style="flex-shrink: 0;">
@@ -698,9 +724,12 @@ f(x) = 0  si x ∉ (0,1)</div>
 
                 <!-- Columna Derecha: Visualización -->
                 <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-primary); padding: 12px; display: flex; flex-direction: column; height: 100%;">
-                    <h3 style="text-align: center; color: var(--uide-primary); margin: 0 0 10px 0; font-size: 1rem; flex-shrink: 0;">
+                    <h3 style="text-align: center; color: var(--uide-primary); margin: 0 0 4px 0; font-size: 1rem; flex-shrink: 0;">
                         <i class="fas fa-chart-scatter"></i> Gráfico de Dispersión: X<sub>i</sub> vs X<sub>i+1</sub>
                     </h3>
+                    <p style="text-align: center; font-size: 0.7rem; color: #94a3b8; margin: 0 0 8px 0; font-style: italic;">
+                        <i class="fas fa-university"></i> Tiempo de llegada actual vs siguiente - Sin patrón = independencia
+                    </p>
                     
                     <!-- Canvas para el scatter plot -->
                     <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; height: 350px; overflow: hidden;">
@@ -710,12 +739,12 @@ f(x) = 0  si x ∉ (0,1)</div>
                     <!-- Información de correlación -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; flex-shrink: 0;">
                         <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Coeficiente de Correlación</div>
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Relación entre llegadas</div>
                             <div id="correlationCoef" style="font-size: 1.1rem; font-weight: 600; color: var(--uide-primary);">-</div>
-                            <div style="font-size: 0.65rem; color: #64748b;">Ideal: ≈ 0 (sin correlación)</div>
+                            <div style="font-size: 0.65rem; color: #64748b;">Ideal: ≈ 0 (independientes)</div>
                         </div>
                         <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Interpretación</div>
+                            <div style="font-size: 0.7rem; color: #94a3b8;">Evaluación</div>
                             <div id="correlationStatus" style="font-size: 0.9rem; font-weight: 600; color: var(--uide-accent); margin-top: 5px;">-</div>
                         </div>
                     </div>
@@ -875,7 +904,12 @@ f(x) = 0  si x ∉ (0,1)</div>
 
         <!-- Slide 7: GCL Mixto - Definición -->
         <div class="slide">
-            <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-cogs"></i> Generador Congruencial Lineal (GCL) Mixto</h2>
+            <h2 style="margin-bottom: 0.3rem;"><i class="fas fa-cogs"></i> Generador Congruencial Lineal (GCL) Mixto</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 8px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.8rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Caso:</strong> Algoritmo que genera los tiempos aleatorios de llegada al banco
+                </p>
+            </div>
             
             <!-- Fila superior: Fórmula y Tipos -->
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 12px;">
@@ -906,11 +940,13 @@ f(x) = 0  si x ∉ (0,1)</div>
                     </div>
                     <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid var(--uide-accent);">
                         <p style="font-size: 0.8rem; margin: 0 0 6px 0; font-weight: 600;">
-                            <strong>Transformación a U(0,1):</strong>
+                            <i class="fas fa-university"></i> <strong>Aplicación al Banco:</strong>
                         </p>
                         <div class="code-block" style="font-size: 0.85rem; padding: 6px; margin-bottom: 6px; text-align: center;">U<sub>i</sub> = X<sub>i</sub> / m</div>
-                        <div style="font-size: 0.7rem; color: #cbd5e1; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 4px; text-align: center;">
-                            <strong>Ejemplo:</strong> Si X<sub>1</sub>=8 y m=16 → U<sub>1</sub>=8/16=0.5
+                        <div style="font-size: 0.7rem; color: #cbd5e1; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 4px;">
+                            <strong>Ejemplo:</strong> X<sub>1</sub>=8, m=16 → U<sub>1</sub>=0.5<br>
+                            <span style="color: #4ade80;">Tiempo: U<sub>1</sub> × λ = 0.5 × 10 = 5 min</span><br>
+                            <span style="font-size: 0.65rem; color: #94a3b8;">(λ = tiempo máximo entre llegadas)</span>
                         </div>
                     </div>
                 </div>
@@ -1014,43 +1050,44 @@ f(x) = 0  si x ∉ (0,1)</div>
                     <!-- Excel -->
                     <div style="background: rgba(35, 53, 110, 0.3); padding: 10px; border-radius: 8px; border: 2px solid rgba(74, 222, 128, 0.3); flex-shrink: 0;">
                         <h4 style="font-size: 0.85rem; margin: 0 0 6px 0; color: #4ade80;">
-                            📊 Excel
+                            📊 Excel - Tiempos de llegada
                         </h4>
                         <div style="font-size: 0.7rem; color: #cbd5e1; margin-bottom: 4px;">
-                            <strong>Fórmula X<sub>i</sub>:</strong>
+                            <strong>Generar X<sub>i</sub>:</strong>
                         </div>
                         <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #4ade80; font-family: 'Courier New', monospace; margin-bottom: 6px;">
                             =MOD(a*X_anterior+c, m)
                         </code>
                         <div style="font-size: 0.7rem; color: #cbd5e1; margin-bottom: 4px;">
-                            <strong>Fórmula U<sub>i</sub>:</strong>
+                            <strong>Tiempo (min): U × λ</strong>
                         </div>
                         <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #4ade80; font-family: 'Courier New', monospace;">
-                            =X_i/m
+                            =(X_i/m)*$A$1
                         </code>
+                        <div style="font-size: 0.65rem; color: #94a3b8; margin-top: 4px;">
+                            A1 = λ (ej: 10 min máx)
+                        </div>
                     </div>
 
                     <!-- R -->
                     <div style="background: rgba(35, 53, 110, 0.3); padding: 10px; border-radius: 8px; border: 2px solid rgba(96, 165, 250, 0.3); flex: 1; min-height: 0; overflow-y: auto;">
                         <h4 style="font-size: 0.85rem; margin: 0 0 6px 0; color: #60a5fa;">
-                            📈 R
+                            📈 R - Simulación banco
                         </h4>
                         <div style="font-size: 0.7rem; color: #cbd5e1; margin-bottom: 4px;">
                             <strong>Función:</strong>
                         </div>
-                        <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.65rem; color: #60a5fa; font-family: 'Courier New', monospace; line-height: 1.4; margin-bottom: 6px; white-space: pre;">lcg &lt;- function(n, a, c, m, x0) {
-  x &lt;- numeric(n)
-  x[1] &lt;- x0
-  for(i in 2:n) {
-    x[i] &lt;- (a*x[i-1] + c) %% m
-  }
-  return(x / m)
+                        <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.65rem; color: #60a5fa; font-family: 'Courier New', monospace; line-height: 1.4; margin-bottom: 6px; white-space: pre;">simular_llegadas &lt;- function(n, lambda) {
+  u &lt;- lcg(n, 5, 3, 16, 7)
+  tiempos &lt;- u * lambda
+  return(tiempos)
 }</code>
                         <div style="font-size: 0.7rem; color: #cbd5e1; margin-bottom: 4px;">
                             <strong>Uso:</strong>
                         </div>
                         <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.65rem; color: #60a5fa; font-family: 'Courier New', monospace; line-height: 1.4;">
-                            u &lt;- lcg(10, 5, 3, 16, 7)
+                            # 100 llegadas, máx 10 min<br>
+                            t &lt;- simular_llegadas(100, 10)
                         </code>
                     </div>
                 </div>
@@ -1166,9 +1203,14 @@ f(x) = 0  si x ∉ (0,1)</div>
 
         <!-- Slide 8: Periodo Máximo -->
         <div class="slide">
-            <h2 style="margin-bottom: 1rem;"><i class="fas fa-sync-alt"></i> Periodo Máximo: Teorema de Hull-Dobell</h2>
+            <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-sync-alt"></i> Periodo Máximo: Teorema de Hull-Dobell</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.8rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Caso:</strong> Garantiza que podemos simular muchos días sin repetir patrones de llegada
+                </p>
+            </div>
             
-            <div style="display: grid; grid-template-columns: 40% 60%; gap: 20px; height: calc(100vh - 220px); max-height: 620px;">
+            <div style="display: grid; grid-template-columns: 40% 60%; gap: 20px; height: calc(100vh - 250px); max-height: 590px;">
                 <!-- Columna Izquierda: Teoría -->
                 <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
                     <div style="flex-shrink: 0;">
@@ -1229,9 +1271,12 @@ f(x) = 0  si x ∉ (0,1)</div>
 
                 <!-- Columna Derecha: Visualización Circular -->
                 <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 12px; display: flex; flex-direction: column; height: 100%;">
-                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 10px 0; font-size: 1rem; flex-shrink: 0;">
+                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 4px 0; font-size: 1rem; flex-shrink: 0;">
                         <i class="fas fa-circle-notch"></i> Visualización Circular del Periodo
                     </h3>
+                    <p style="text-align: center; font-size: 0.7rem; color: #94a3b8; margin: 0 0 8px 0; font-style: italic;">
+                        <i class="fas fa-university"></i> Secuencia de llegadas antes de repetirse
+                    </p>
                     
                     <!-- Canvas para visualización circular -->
                     <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; height: 400px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
@@ -1433,9 +1478,14 @@ f(x) = 0  si x ∉ (0,1)</div>
 
         <!-- Slide 10: Prueba K-S -->
         <div class="slide">
-            <h2 style="margin-bottom: 1rem;"><i class="fas fa-chart-line"></i> Prueba de Kolmogorov-Smirnov (K-S)</h2>
+            <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-chart-line"></i> Prueba de Kolmogorov-Smirnov (K-S)</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.8rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Caso:</strong> Verifica que los tiempos de llegada simulados sean realistas
+                </p>
+            </div>
             
-            <div style="display: grid; grid-template-columns: 20% 55% 25%; gap: 15px; height: calc(100vh - 220px); max-height: 620px;">
+            <div style="display: grid; grid-template-columns: 20% 55% 25%; gap: 15px; height: calc(100vh - 250px); max-height: 590px;">
                 <!-- Columna 1: Características -->
                 <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
                     <div style="flex-shrink: 0;">
@@ -1480,9 +1530,12 @@ f(x) = 0  si x ∉ (0,1)</div>
 
                 <!-- Columna 2: Visualización (Centro) -->
                 <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 12px; display: flex; flex-direction: column; height: 100%; min-height: 0;">
-                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 10px 0; font-size: 0.95rem; flex-shrink: 0;">
+                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 4px 0; font-size: 0.95rem; flex-shrink: 0;">
                         <i class="fas fa-chart-area"></i> Función Empírica vs Teórica
                     </h3>
+                    <p style="text-align: center; font-size: 0.65rem; color: #94a3b8; margin: 0 0 8px 0; font-style: italic;">
+                        <i class="fas fa-university"></i> Comparación: tiempos simulados vs distribución esperada
+                    </p>
                     
                     <!-- Canvas para el gráfico K-S -->
                     <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; flex: 1; min-height: 0; overflow: hidden; display: flex; align-items: center; justify-content: center;">
@@ -1708,9 +1761,14 @@ f(x) = 0  si x ∉ (0,1)</div>
 
         <!-- Slide 11: Prueba Chi-Cuadrado -->
         <div class="slide">
-            <h2 style="margin-bottom: 1rem;"><i class="fas fa-chart-pie"></i> Prueba Chi-Cuadrado (χ²)</h2>
+            <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-chart-pie"></i> Prueba Chi-Cuadrado (χ²)</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.8rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Caso:</strong> Confirma que las llegadas se distribuyen uniformemente en intervalos de tiempo
+                </p>
+            </div>
             
-            <div style="display: grid; grid-template-columns: 20% 55% 25%; gap: 15px; height: calc(100vh - 220px); max-height: 620px;">
+            <div style="display: grid; grid-template-columns: 20% 55% 25%; gap: 15px; height: calc(100vh - 250px); max-height: 590px;">
                 <!-- Columna 1: Información -->
                 <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
                     <div style="flex-shrink: 0;">
@@ -1767,9 +1825,12 @@ f(x) = 0  si x ∉ (0,1)</div>
 
                 <!-- Columna 2: Visualización (Centro) -->
                 <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-primary); padding: 12px; display: flex; flex-direction: column; height: 100%; min-height: 0;">
-                    <h3 style="text-align: center; color: var(--uide-primary); margin: 0 0 10px 0; font-size: 0.95rem; flex-shrink: 0;">
+                    <h3 style="text-align: center; color: var(--uide-primary); margin: 0 0 4px 0; font-size: 0.95rem; flex-shrink: 0;">
                         <i class="fas fa-chart-bar"></i> Frecuencias Observadas vs Esperadas
                     </h3>
+                    <p style="text-align: center; font-size: 0.65rem; color: #94a3b8; margin: 0 0 8px 0; font-style: italic;">
+                        <i class="fas fa-university"></i> Llegadas por intervalo: simuladas vs esperadas
+                    </p>
                     
                     <!-- Canvas para el histograma Chi-Cuadrado -->
                     <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; flex: 1; min-height: 0; overflow: hidden; display: flex; align-items: center; justify-content: center;">
@@ -1977,9 +2038,14 @@ f(x) = 0  si x ∉ (0,1)</div>
 
         <!-- Slide 12: Pruebas de Medias y Varianzas -->
         <div class="slide">
-            <h2 style="margin-bottom: 1rem;"><i class="fas fa-calculator"></i> Pruebas de Medias y Varianzas</h2>
+            <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-calculator"></i> Pruebas de Medias y Varianzas</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.8rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Caso:</strong> Valida que el tiempo promedio entre llegadas sea consistente con datos reales
+                </p>
+            </div>
             
-            <div style="display: grid; grid-template-columns: 25% 50% 25%; gap: 15px; height: calc(100vh - 220px); max-height: 620px;">
+            <div style="display: grid; grid-template-columns: 25% 50% 25%; gap: 15px; height: calc(100vh - 250px); max-height: 590px;">
                 <!-- Columna 1: Prueba de Medias -->
                 <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
                     <div class="feature-card" style="flex: 1; display: flex; flex-direction: column;">
