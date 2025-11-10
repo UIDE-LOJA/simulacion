@@ -208,136 +208,149 @@
             </div>
         </div>
 
-        <!-- Slide 4: ¿Qué son los Números Pseudoaleatorios? -->
+        <!-- Slide 4.1: ¿Qué son los Números Pseudoaleatorios? - Conceptos -->
         <div class="slide">
             <h2><i class="fas fa-dice"></i> ¿Qué son los Números Pseudoaleatorios?</h2>
-            <div style="background: rgba(233, 171, 33, 0.15); padding: 8px 15px; border-radius: 6px; margin-bottom: 12px; border-left: 4px solid var(--uide-accent);">
-                <p style="margin: 0; font-size: 0.85rem; color: #e2e8f0;">
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 10px 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 1rem; color: #e2e8f0;">
                     <i class="fas fa-university"></i> <strong>Caso de Uso:</strong> Simulación de llegadas de clientes a un banco - Generamos tiempos aleatorios entre llegadas
                 </p>
             </div>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: calc(100% - 110px);">
-                <!-- Columna Izquierda: Conceptos -->
-                <div style="display: flex; flex-direction: column; gap: 15px;">
-                    <div class="quote" style="font-size: 0.9rem; padding: 12px; margin: 0;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 0 20px;">
+                <!-- Columna Izquierda: Definición -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="quote" style="font-size: 1.1rem; padding: 20px; margin: 0;">
                         "Esenciales en simulación estocástica para reproducir variables aleatorias"
                     </div>
                     
-                    <div>
-                        <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Características Clave</h3>
-                        <ul style="font-size: 0.95rem; line-height: 1.6;">
-                            <li><span class="emphasis">Deterministas</span>: Algoritmo matemático fijo</li>
-                            <li><span class="emphasis">Reproducibles</span>: Misma semilla → misma secuencia</li>
-                            <li><span class="emphasis">Distribución U(0,1)</span>: Rango estándar [0,1]</li>
-                        </ul>
-                    </div>
-
-                    <div style="background: rgba(233, 171, 33, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid var(--uide-accent);">
-                        <p style="margin: 0; font-size: 0.9rem;"><strong>Notación:</strong> x ~ U(0,1)</p>
-                        <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: #cbd5e1;">
-                            Valores siempre entre 0 y 1 • Nunca negativos ni mayores a 1 • Base para cualquier distribución
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 20px; border-radius: 12px; border: 2px solid var(--uide-accent);">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 15px; color: var(--uide-accent);">
+                            <i class="fas fa-info-circle"></i> Definición
+                        </h3>
+                        <p style="font-size: 1rem; line-height: 1.7; color: #e2e8f0;">
+                            Son números generados por un <strong>algoritmo matemático determinista</strong> que simulan el comportamiento de números verdaderamente aleatorios.
                         </p>
                     </div>
 
-                    <div style="background: rgba(35, 53, 110, 0.2); padding: 10px; border-radius: 8px; border: 1px solid rgba(233, 171, 33, 0.3);">
-                        <h4 style="font-size: 0.95rem; margin: 0 0 6px 0; color: var(--uide-accent);">
-                            <i class="fas fa-university"></i> Ejemplo: Tiempos entre llegadas
-                        </h4>
-                        <div style="font-size: 0.82rem; line-height: 1.5;">
-                            <p style="margin: 0 0 6px 0;"><strong>1. Secuencia U(0,1) generada:</strong></p>
-                            <div style="background: rgba(0,0,0,0.3); padding: 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.78rem; color: #4ade80; margin-bottom: 6px;">
-                                0.3721, 0.8456, 0.1234, 0.9087, 0.5612
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 18px; border-radius: 10px; border-left: 4px solid var(--uide-accent);">
+                        <p style="margin: 0 0 8px 0; font-size: 1.1rem;"><strong>Notación:</strong> x ~ U(0,1)</p>
+                        <p style="margin: 0; font-size: 0.95rem; color: #cbd5e1; line-height: 1.5;">
+                            • Valores siempre entre 0 y 1<br>
+                            • Nunca negativos ni mayores a 1<br>
+                            • Base para cualquier distribución
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Características -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 20px; border-radius: 12px; border: 2px solid rgba(74, 222, 128, 0.3);">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 15px; color: #4ade80;">
+                            <i class="fas fa-check-circle"></i> Características Clave
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
+                                <h4 style="font-size: 1.1rem; margin: 0 0 8px 0; color: var(--uide-accent);">
+                                    <i class="fas fa-cog"></i> Deterministas
+                                </h4>
+                                <p style="margin: 0; font-size: 0.95rem; line-height: 1.5; color: #cbd5e1;">
+                                    Generados por un algoritmo matemático fijo y predecible
+                                </p>
                             </div>
-                            <p style="margin: 0 0 4px 0; font-size: 0.75rem;"><strong>2. Transformación: U × λ (donde λ=10 min máx):</strong></p>
-                            <div style="background: rgba(0,0,0,0.3); padding: 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.78rem; color: #60a5fa; margin-bottom: 6px;">
-                                3.7, 8.5, 1.2, 9.1, 5.6 minutos
+
+                            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
+                                <h4 style="font-size: 1.1rem; margin: 0 0 8px 0; color: var(--uide-accent);">
+                                    <i class="fas fa-redo"></i> Reproducibles
+                                </h4>
+                                <p style="margin: 0; font-size: 0.95rem; line-height: 1.5; color: #cbd5e1;">
+                                    Misma semilla → misma secuencia de números
+                                </p>
                             </div>
-                            <div style="font-size: 0.7rem; color: #94a3b8; background: rgba(233, 171, 33, 0.1); padding: 4px; border-radius: 4px;">
-                                <strong>λ = 10:</strong> Tiempo máximo entre llegadas<br>
-                                <span style="font-size: 0.65rem;">Basado en observaciones del banco (0-10 min)</span>
+
+                            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
+                                <h4 style="font-size: 1.1rem; margin: 0 0 8px 0; color: var(--uide-accent);">
+                                    <i class="fas fa-chart-line"></i> Distribución U(0,1)
+                                </h4>
+                                <p style="margin: 0; font-size: 0.95rem; line-height: 1.5; color: #cbd5e1;">
+                                    Rango estándar entre 0 y 1, uniformemente distribuidos
+                                </p>
                             </div>
                         </div>
                     </div>
 
-                    <div style="background: rgba(15, 20, 25, 0.4); padding: 10px; border-radius: 8px; border: 1px solid rgba(74, 222, 128, 0.3);">
-                        <h4 style="font-size: 0.9rem; margin: 0 0 8px 0; color: #4ade80; text-align: center;">
-                            <i class="fas fa-code"></i> Implementación Práctica
+                    <div style="background: rgba(145, 0, 72, 0.1); padding: 15px; border-radius: 10px; border: 2px solid var(--uide-primary);">
+                        <h4 style="font-size: 1rem; margin: 0 0 10px 0; color: var(--uide-primary); text-align: center;">
+                            <i class="fas fa-lightbulb"></i> ¿Por qué son importantes?
                         </h4>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                            <!-- Excel -->
-                            <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px;">
-                                <div style="font-size: 0.75rem; color: #4ade80; margin-bottom: 4px; font-weight: 600;">
-                                    📊 Excel
-                                </div>
-                                <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #e2e8f0; font-family: 'Courier New', monospace; margin-bottom: 4px;">
-                                    =RAND()*$A$1
-                                </code>
-                                <div style="font-size: 0.65rem; color: #94a3b8; line-height: 1.3;">
-                                    A1 = λ (ej: 10 min máx)<br>
-                                    Genera tiempos [0, λ]
-                                </div>
-                            </div>
-                            <!-- R -->
-                            <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px;">
-                                <div style="font-size: 0.75rem; color: #60a5fa; margin-bottom: 4px; font-weight: 600;">
-                                    📈 R
-                                </div>
-                                <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #e2e8f0; font-family: 'Courier New', monospace; margin-bottom: 4px;">
-                                    lambda &lt;- 10<br>
-                                    runif(100) * lambda
-                                </code>
-                                <div style="font-size: 0.65rem; color: #94a3b8; line-height: 1.3;">
-                                    100 tiempos [0, 10 min]
-                                </div>
-                            </div>
+                        <p style="margin: 0; font-size: 0.95rem; line-height: 1.6; color: #e2e8f0; text-align: center;">
+                            Permiten <strong>replicar experimentos</strong> y <strong>validar resultados</strong> en simulaciones
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4.2: Demostración Interactiva - Reproducibilidad -->
+        <div class="slide">
+            <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-play-circle"></i> Demostración: Reproducibilidad de Números Pseudoaleatorios</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 8px 15px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.85rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Experimento:</strong> Dos simulaciones del banco con la misma semilla generan los mismos tiempos entre llegadas
+                </p>
+            </div>
+
+            <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 15px; margin: 0 15px; height: calc(100vh - 220px); max-height: 580px; display: flex; flex-direction: column;">
+                <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 6px 0; font-size: 1.1rem;">
+                    🎲 Generadores Independientes
+                </h3>
+                <p style="text-align: center; font-size: 0.75rem; color: #94a3b8; margin: 0 0 12px 0; font-style: italic;">
+                    Cambia las semillas y observa cómo se comportan las secuencias
+                </p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; flex: 1; min-height: 0;">
+                    <!-- Generador A -->
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 15px; border-radius: 8px; border: 2px solid rgba(233, 171, 33, 0.5); display: flex; flex-direction: column; height: 100%;">
+                        <h4 style="color: var(--uide-accent); margin: 0 0 10px 0; text-align: center; font-size: 1rem;">
+                            🎲 Generador A
+                        </h4>
+                        <div style="text-align: center; margin-bottom: 10px;">
+                            <label style="color: #e2e8f0; font-size: 0.85rem; font-weight: 600;">Semilla:</label>
+                            <input type="number" id="seed1" value="42" 
+                                   style="width: 70px; margin-left: 8px; padding: 6px; background: rgba(255,255,255,0.1); border: 2px solid var(--uide-accent); color: white; border-radius: 6px; font-size: 0.9rem; font-weight: 600; text-align: center;">
+                        </div>
+                        <div id="sequence1" style="flex: 1; background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.8rem; color: #4ade80; overflow-y: auto; line-height: 1.6; min-height: 0;">
+                            <div style="color: #94a3b8; font-style: italic; font-size: 0.75rem; text-align: center;">Presiona "Generar"...</div>
+                        </div>
+                    </div>
+
+                    <!-- Generador B -->
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 15px; border-radius: 8px; border: 2px solid rgba(145, 0, 72, 0.5); display: flex; flex-direction: column; height: 100%;">
+                        <h4 style="color: var(--uide-primary); margin: 0 0 10px 0; text-align: center; font-size: 1rem;">
+                            🎲 Generador B
+                        </h4>
+                        <div style="text-align: center; margin-bottom: 10px;">
+                            <label style="color: #e2e8f0; font-size: 0.85rem; font-weight: 600;">Semilla:</label>
+                            <input type="number" id="seed2" value="42" 
+                                   style="width: 70px; margin-left: 8px; padding: 6px; background: rgba(255,255,255,0.1); border: 2px solid var(--uide-primary); color: white; border-radius: 6px; font-size: 0.9rem; font-weight: 600; text-align: center;">
+                        </div>
+                        <div id="sequence2" style="flex: 1; background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.8rem; color: #f472b6; overflow-y: auto; line-height: 1.6; min-height: 0;">
+                            <div style="color: #94a3b8; font-style: italic; font-size: 0.75rem; text-align: center;">Presiona "Generar"...</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Columna Derecha: Simulación -->
-                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 15px; display: flex; flex-direction: column;">
-                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 6px 0; font-size: 1.1rem;">
-                        <i class="fas fa-play-circle"></i> Demostración: Reproducibilidad
-                    </h3>
-                    <p style="text-align: center; font-size: 0.75rem; color: #94a3b8; margin: 0 0 10px 0; font-style: italic;">
-                        <i class="fas fa-university"></i> Dos simulaciones del banco con la misma semilla generan los mismos tiempos
+                <div style="text-align: center; margin-top: 12px;">
+                    <button id="generateBtn" style="padding: 10px 24px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                        <i class="fas fa-sync-alt"></i> Generar Secuencias
+                    </button>
+                    <div id="comparisonResult" style="margin-top: 10px; font-size: 0.9rem; font-weight: 600; min-height: 25px;"></div>
+                </div>
+
+                <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 6px; margin-top: 10px; border-left: 4px solid var(--uide-accent);">
+                    <p style="margin: 0; font-size: 0.75rem; line-height: 1.4; color: #e2e8f0;">
+                        <i class="fas fa-info-circle"></i> <strong>Prueba:</strong> Usa la misma semilla en ambos y observa secuencias idénticas. Cambia una semilla para ver secuencias diferentes.
                     </p>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1;">
-                        <!-- Generador A -->
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 1px solid rgba(233, 171, 33, 0.3); display: flex; flex-direction: column;">
-                            <h4 style="color: var(--uide-accent); margin: 0 0 8px 0; text-align: center; font-size: 1rem;">🎲 Generador A</h4>
-                            <div style="text-align: center; margin-bottom: 8px;">
-                                <label style="color: #e2e8f0; font-size: 0.85rem;">Semilla:</label>
-                                <input type="number" id="seed1" value="42" 
-                                       style="width: 60px; margin-left: 8px; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.85rem;">
-                            </div>
-                            <div id="sequence1" style="flex: 1; background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.75rem; color: #4ade80; overflow-y: auto;">
-                                <div style="color: #94a3b8; font-style: italic; font-size: 0.7rem;">Presiona "Generar"...</div>
-                            </div>
-                        </div>
-
-                        <!-- Generador B -->
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 1px solid rgba(145, 0, 72, 0.3); display: flex; flex-direction: column;">
-                            <h4 style="color: var(--uide-primary); margin: 0 0 8px 0; text-align: center; font-size: 1rem;">🎲 Generador B</h4>
-                            <div style="text-align: center; margin-bottom: 8px;">
-                                <label style="color: #e2e8f0; font-size: 0.85rem;">Semilla:</label>
-                                <input type="number" id="seed2" value="42" 
-                                       style="width: 60px; margin-left: 8px; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-primary); color: white; border-radius: 4px; font-size: 0.85rem;">
-                            </div>
-                            <div id="sequence2" style="flex: 1; background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.75rem; color: #f472b6; overflow-y: auto;">
-                                <div style="color: #94a3b8; font-style: italic; font-size: 0.7rem;">Presiona "Generar"...</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="text-align: center; margin-top: 12px;">
-                        <button id="generateBtn" style="padding: 8px 20px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s;">
-                            <i class="fas fa-sync-alt"></i> Generar
-                        </button>
-                        <div id="comparisonResult" style="margin-top: 10px; font-size: 0.9rem; font-weight: 600; min-height: 25px;"></div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -371,10 +384,10 @@
                     const numSpan = document.createElement('span');
                     numSpan.textContent = num;
                     numSpan.style.display = 'inline-block';
-                    numSpan.style.margin = '3px';
-                    numSpan.style.padding = '4px 8px';
+                    numSpan.style.margin = '4px';
+                    numSpan.style.padding = '6px 10px';
                     numSpan.style.background = 'rgba(255,255,255,0.1)';
-                    numSpan.style.borderRadius = '4px';
+                    numSpan.style.borderRadius = '5px';
                     numSpan.style.opacity = '0';
                     numSpan.style.transform = 'translateY(-10px)';
                     numSpan.style.transition = 'all 0.3s ease';
@@ -421,115 +434,182 @@
         </script>
 
 
-        <!-- Slide 5: Propiedad 1 - Uniformidad -->
+        <!-- Slide 5.1: Propiedad 1 - Uniformidad - Conceptos Teóricos -->
         <div class="slide">
             <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-chart-bar"></i> Propiedad 1: Uniformidad - Distribución U(0,1)</h2>
-            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid var(--uide-accent);">
-                <p style="margin: 0; font-size: 0.8rem; color: #e2e8f0;">
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 8px 15px; border-radius: 6px; margin-bottom: 12px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.85rem; color: #e2e8f0;">
                     <i class="fas fa-university"></i> <strong>Caso:</strong> Cada cliente tiene igual probabilidad de llegar en cualquier momento del día
                 </p>
             </div>
             
-            <div style="display: grid; grid-template-columns: 35% 65%; gap: 20px; height: calc(100vh - 270px); max-height: 570px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 15px; height: calc(100vh - 200px); max-height: 600px;">
                 <!-- Columna Izquierda: Teoría -->
-                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
-                    <div style="flex-shrink: 0;">
-                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Función de Densidad</h3>
-                        <div class="code-block" style="font-size: 0.8rem; padding: 8px;">f(x) = 1  si x ∈ (0,1)
+                <div style="display: flex; flex-direction: column; gap: 12px; overflow-y: auto;">
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 15px; border-radius: 10px; border: 2px solid var(--uide-accent);">
+                        <h3 style="font-size: 1.1rem; margin: 0 0 10px 0; color: var(--uide-accent);">
+                            <i class="fas fa-function"></i> Función de Densidad
+                        </h3>
+                        <div class="code-block" style="font-size: 0.9rem; padding: 12px; line-height: 1.6;">f(x) = 1  si x ∈ (0,1)
 f(x) = 0  si x ∉ (0,1)</div>
-                        <p style="font-size: 0.75rem; color: #94a3b8; margin: 4px 0 0 0; font-style: italic;">
-                            Probabilidad constante dentro del rango
+                        <p style="font-size: 0.8rem; color: #cbd5e1; margin: 8px 0 0 0; font-style: italic;">
+                            Probabilidad constante dentro del rango [0,1]
                         </p>
                     </div>
                     
-                    <div style="flex-shrink: 0;">
-                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Parámetros Teóricos</h3>
-                        <div style="font-size: 0.82rem; line-height: 1.6;">
-                            <div style="margin-bottom: 4px;">
-                                <strong>Media (μ) = 0.5</strong>
-                                <span style="font-size: 0.75rem; color: #94a3b8; display: block; margin-left: 8px;">
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 15px; border-radius: 10px; border: 2px solid rgba(74, 222, 128, 0.3);">
+                        <h3 style="font-size: 1.1rem; margin: 0 0 10px 0; color: #4ade80;">
+                            <i class="fas fa-calculator"></i> Parámetros Teóricos
+                        </h3>
+                        <div style="font-size: 0.85rem; line-height: 1.5;">
+                            <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px; margin-bottom: 8px;">
+                                <strong style="color: var(--uide-accent);">Media (μ) = 0.5</strong>
+                                <p style="font-size: 0.75rem; color: #cbd5e1; margin: 3px 0 0 10px;">
                                     Punto central: promedio de 0 y 1
-                                </span>
+                                </p>
                             </div>
-                            <div style="margin-bottom: 4px;">
-                                <strong>Varianza (σ²) = 1/12 ≈ 0.0833</strong>
-                                <span style="font-size: 0.75rem; color: #94a3b8; display: block; margin-left: 8px;">
-                                    Dispersión: qué tan alejados están los valores de 0.5
-                                </span>
+                            <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px; margin-bottom: 8px;">
+                                <strong style="color: var(--uide-accent);">Varianza (σ²) = 1/12 ≈ 0.0833</strong>
+                                <p style="font-size: 0.75rem; color: #cbd5e1; margin: 3px 0 0 10px;">
+                                    Dispersión de valores respecto a 0.5
+                                </p>
                             </div>
-                            <div>
-                                <strong>Desv. estándar (σ) ≈ 0.2887</strong>
-                                <span style="font-size: 0.75rem; color: #94a3b8; display: block; margin-left: 8px;">
+                            <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px;">
+                                <strong style="color: var(--uide-accent);">Desv. estándar (σ) ≈ 0.2887</strong>
+                                <p style="font-size: 0.75rem; color: #cbd5e1; margin: 3px 0 0 10px;">
                                     Raíz de la varianza: √(1/12)
-                                </span>
+                                </p>
                             </div>
                         </div>
                     </div>
 
-                    <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
-                        <p style="font-size: 0.8rem; margin: 0;">
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid var(--uide-accent);">
+                        <p style="font-size: 0.85rem; margin: 0 0 5px 0;">
                             <i class="fas fa-balance-scale"></i> <strong>Uniformidad:</strong> Todos los valores tienen igual probabilidad
                         </p>
-                        <p style="font-size: 0.75rem; color: #cbd5e1; margin: 4px 0 0 0;">
+                        <p style="font-size: 0.8rem; color: #cbd5e1; margin: 0;">
                             P(0.1) = P(0.5) = P(0.9) = constante
                         </p>
                     </div>
-
-                    <div style="background: rgba(35, 53, 110, 0.2); padding: 8px; border-radius: 6px; border: 1px solid rgba(233, 171, 33, 0.2); flex-shrink: 0;">
-                        <div style="font-size: 0.75rem; line-height: 1.4;">
-                            <div style="margin-bottom: 4px;">
-                                <span style="color: #4ade80;">📊 Excel:</span>
-                                <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; color: #e2e8f0; margin-left: 4px;">=RAND()</code>
-                            </div>
-                            <div>
-                                <span style="color: #60a5fa;">📈 R:</span>
-                                <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; color: #e2e8f0; margin-left: 4px;">runif(n)</code>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
-                        <button id="generateUniformBtn" style="padding: 8px 16px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; width: 100%;">
-                            <i class="fas fa-play"></i> Generar Números
-                        </button>
-                        <div style="margin-top: 6px; font-size: 0.8rem;">
-                            <label style="color: #e2e8f0;">Cantidad: </label>
-                            <input type="number" id="uniformCount" value="100" min="50" max="1000" step="50"
-                                   style="width: 65px; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Columna Derecha: Visualización -->
-                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 12px; display: flex; flex-direction: column; height: 100%;">
-                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 4px 0; font-size: 1rem; flex-shrink: 0;">
-                        <i class="fas fa-chart-bar"></i> Histograma de Distribución
-                    </h3>
-                    <p style="text-align: center; font-size: 0.7rem; color: #94a3b8; margin: 0 0 8px 0; font-style: italic;">
-                        <i class="fas fa-university"></i> Tiempos entre llegadas distribuidos uniformemente
-                    </p>
-                    
-                    <!-- Canvas para el histograma con altura fija -->
-                    <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; height: 350px; overflow: hidden;">
-                        <canvas id="uniformHistogram"></canvas>
+                <!-- Columna Derecha: Implementación -->
+                <div style="display: flex; flex-direction: column; gap: 12px; overflow-y: auto;">
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 15px; border-radius: 10px; border: 2px solid rgba(74, 222, 128, 0.3);">
+                        <h3 style="font-size: 1.1rem; margin: 0 0 10px 0; color: #4ade80; text-align: center;">
+                            📊 Implementación en Excel
+                        </h3>
+                        <div style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 8px;">
+                            <p style="font-size: 0.8rem; margin: 0 0 8px 0; color: #e2e8f0;">Función para generar números U(0,1):</p>
+                            <code style="display: block; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 6px; font-size: 0.95rem; color: #4ade80; font-family: 'Courier New', monospace; margin-bottom: 6px;">=RAND()</code>
+                            <code style="display: block; background: rgba(0,0,0,0.4); padding: 8px; border-radius: 6px; font-size: 0.85rem; color: #cbd5e1; font-family: 'Courier New', monospace; font-style: italic;">=ALEATORIO()</code>
+                            <p style="font-size: 0.75rem; color: #94a3b8; margin: 8px 0 0 0; font-style: italic;">
+                                Genera un número aleatorio entre 0 y 1
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- Estadísticas en tiempo real -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; flex-shrink: 0;">
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Promedio</div>
-                            <div id="uniformMean" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
-                            <div style="font-size: 0.65rem; color: #64748b;">Esperado: 0.5000</div>
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 15px; border-radius: 10px; border: 2px solid rgba(96, 165, 250, 0.3);">
+                        <h3 style="font-size: 1.1rem; margin: 0 0 10px 0; color: #60a5fa; text-align: center;">
+                            📈 Implementación en R
+                        </h3>
+                        <div style="background: rgba(0,0,0,0.4); padding: 12px; border-radius: 8px;">
+                            <p style="font-size: 0.8rem; margin: 0 0 8px 0; color: #e2e8f0;">Función para generar n números U(0,1):</p>
+                            <code style="display: block; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 6px; font-size: 0.85rem; color: #60a5fa; font-family: 'Courier New', monospace; line-height: 1.5; white-space: pre;"># Generar 100 números uniformes
+numeros <- runif(100)
+
+# Ver los primeros 5
+head(numeros, 5)</code>
+                            <p style="font-size: 0.75rem; color: #94a3b8; margin: 8px 0 0 0; font-style: italic;">
+                                runif(n) genera n números aleatorios U(0,1)
+                            </p>
                         </div>
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Dispersión</div>
-                            <div id="uniformVariance" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
-                            <div style="font-size: 0.65rem; color: #64748b;">Esperada: 0.0833</div>
+                    </div>
+
+                    <div style="background: rgba(145, 0, 72, 0.1); padding: 12px; border-radius: 8px; border: 2px solid var(--uide-primary);">
+                        <h4 style="font-size: 0.95rem; margin: 0 0 8px 0; color: var(--uide-primary); text-align: center;">
+                            <i class="fas fa-lightbulb"></i> Concepto Clave
+                        </h4>
+                        <p style="margin: 0; font-size: 0.8rem; line-height: 1.5; color: #e2e8f0; text-align: center;">
+                            La uniformidad garantiza que <strong>no hay sesgo</strong> en la generación de números aleatorios
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5.2: Demostración Visual - Histograma de Uniformidad -->
+        <div class="slide">
+            <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-chart-bar"></i> Demostración: Visualización de la Uniformidad</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 8px 15px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.85rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Experimento:</strong> Generamos múltiples tiempos entre llegadas y verificamos que se distribuyen uniformemente
+                </p>
+            </div>
+
+            <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 15px; margin: 0 15px; height: calc(100vh - 220px); max-height: 580px;">
+                <div style="display: grid; grid-template-columns: 28% 72%; gap: 15px; height: 100%;">
+                    <!-- Panel de Control -->
+                    <div style="display: flex; flex-direction: column; gap: 10px; overflow-y: auto;">
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 2px solid var(--uide-accent);">
+                            <h3 style="font-size: 0.95rem; margin: 0 0 10px 0; color: var(--uide-accent); text-align: center;">
+                                <i class="fas fa-sliders-h"></i> Controles
+                            </h3>
+                            <div style="text-align: center; margin-bottom: 10px;">
+                                <label style="color: #e2e8f0; font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 6px;">Cantidad:</label>
+                                <input type="number" id="uniformCount" value="100" min="50" max="1000" step="50"
+                                       style="width: 100%; padding: 8px; background: rgba(255,255,255,0.1); border: 2px solid var(--uide-accent); color: white; border-radius: 6px; font-size: 0.9rem; font-weight: 600; text-align: center;">
+                            </div>
+                            <button id="generateUniformBtn" style="padding: 10px 15px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                                <i class="fas fa-play"></i> Generar
+                            </button>
                         </div>
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Clientes</div>
-                            <div id="uniformCount2" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">0</div>
-                            <div style="font-size: 0.65rem; color: #64748b;">Simulados</div>
+
+                        <!-- Estadísticas -->
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 2px solid rgba(74, 222, 128, 0.3);">
+                            <h3 style="font-size: 0.95rem; margin: 0 0 10px 0; color: #4ade80; text-align: center;">
+                                <i class="fas fa-chart-line"></i> Estadísticas
+                            </h3>
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; text-align: center;">
+                                    <div style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 3px;">Promedio</div>
+                                    <div id="uniformMean" style="font-size: 1.1rem; font-weight: 700; color: var(--uide-accent);">-</div>
+                                    <div style="font-size: 0.7rem; color: #64748b; margin-top: 2px;">Esp: 0.5000</div>
+                                </div>
+                                <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; text-align: center;">
+                                    <div style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 3px;">Varianza</div>
+                                    <div id="uniformVariance" style="font-size: 1.1rem; font-weight: 700; color: var(--uide-accent);">-</div>
+                                    <div style="font-size: 0.7rem; color: #64748b; margin-top: 2px;">Esp: 0.0833</div>
+                                </div>
+                                <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; text-align: center;">
+                                    <div style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 3px;">Clientes</div>
+                                    <div id="uniformCount2" style="font-size: 1.1rem; font-weight: 700; color: var(--uide-accent);">0</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 6px; border-left: 4px solid var(--uide-accent);">
+                            <p style="margin: 0; font-size: 0.75rem; line-height: 1.4; color: #e2e8f0;">
+                                <i class="fas fa-info-circle"></i> <strong>Observa:</strong> Las barras deben tener alturas similares.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Histograma -->
+                    <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 15px; border: 2px solid rgba(233, 171, 33, 0.3); display: flex; flex-direction: column; height: 100%;">
+                        <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 8px 0; font-size: 1.1rem;">
+                            <i class="fas fa-chart-bar"></i> Histograma de Distribución
+                        </h3>
+                        <p style="text-align: center; font-size: 0.75rem; color: #94a3b8; margin: 0 0 10px 0; font-style: italic;">
+                            Tiempos entre llegadas distribuidos uniformemente
+                        </p>
+                        
+                        <div style="position: relative; background: rgba(0,0,0,0.4); border-radius: 6px; padding: 10px; flex: 1; min-height: 0;">
+                            <canvas id="uniformHistogram"></canvas>
+                        </div>
+
+                        <div style="margin-top: 10px; text-align: center; font-size: 0.75rem; color: #cbd5e1;">
+                            <span style="color: #f472b6;">━━━</span> Frecuencia esperada
                         </div>
                     </div>
                 </div>
@@ -657,95 +737,162 @@ f(x) = 0  si x ∉ (0,1)</div>
         }
         </script>
 
-        <!-- Slide 6: Propiedad 2 - Independencia -->
+        <!-- Slide 6.1: Propiedad 2 - Independencia - Conceptos -->
         <div class="slide">
-            <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-link"></i> Propiedad 2: Independencia</h2>
-            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid var(--uide-accent);">
+            <h2 style="margin-bottom: 0.4rem;"><i class="fas fa-link"></i> Propiedad 2: Independencia</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 8px; border-left: 4px solid var(--uide-accent);">
                 <p style="margin: 0; font-size: 0.8rem; color: #e2e8f0;">
                     <i class="fas fa-university"></i> <strong>Caso:</strong> La llegada de un cliente no afecta cuándo llegará el siguiente
                 </p>
             </div>
             
-            <div style="display: grid; grid-template-columns: 35% 65%; gap: 20px; height: calc(100vh - 270px); max-height: 570px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 0 12px; height: calc(100vh - 190px); max-height: 610px;">
                 <!-- Columna Izquierda: Teoría -->
-                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
-                    <div style="flex-shrink: 0;">
-                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Independencia Estadística</h3>
-                        <ul style="font-size: 0.85rem; line-height: 1.5; margin: 0; padding-left: 20px;">
+                <div style="display: flex; flex-direction: column; gap: 12px; overflow-y: auto;">
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 2px solid var(--uide-primary);">
+                        <h3 style="font-size: 1rem; margin: 0 0 10px 0; color: var(--uide-primary);">
+                            <i class="fas fa-info-circle"></i> Independencia Estadística
+                        </h3>
+                        <ul style="font-size: 0.85rem; line-height: 1.5; margin: 0; padding-left: 18px;">
                             <li><span class="emphasis">Sin correlación</span>: No debe existir relación entre números consecutivos</li>
-                            <li><span class="emphasis">Dispersión uniforme</span>: Valores distribuidos uniformemente</li>
+                            <li style="margin-top: 6px;"><span class="emphasis">Dispersión uniforme</span>: Valores distribuidos uniformemente</li>
                         </ul>
                     </div>
                     
-                    <div style="flex-shrink: 0;">
-                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Requisitos</h3>
-                        <ul style="font-size: 0.85rem; line-height: 1.5; margin: 0; padding-left: 20px;">
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 2px solid rgba(74, 222, 128, 0.3);">
+                        <h3 style="font-size: 1rem; margin: 0 0 10px 0; color: #4ade80;">
+                            <i class="fas fa-check-circle"></i> Requisitos
+                        </h3>
+                        <ul style="font-size: 0.8rem; line-height: 1.5; margin: 0; padding-left: 18px;">
                             <li>
                                 <strong>Periodo grande</strong>: Ciclo extenso
-                                <div style="font-size: 0.75rem; color: #94a3b8; margin-left: 8px; margin-top: 2px; line-height: 1.3;">
-                                    Cantidad de números antes de repetirse. Ej: periodo = 1000 → genera 1000 números únicos antes de volver al inicio
+                                <div style="font-size: 0.7rem; color: #cbd5e1; margin-left: 8px; margin-top: 3px; line-height: 1.3;">
+                                    Ej: periodo = 1000 → 1000 números únicos antes de repetir
                                 </div>
                             </li>
-                            <li><strong>Reproducibilidad</strong>: Mismas condiciones → misma secuencia</li>
-                            <li><strong>Validación</strong>: Pruebas de correlación</li>
+                            <li style="margin-top: 6px;"><strong>Reproducibilidad</strong>: Mismas condiciones → misma secuencia</li>
+                            <li style="margin-top: 6px;"><strong>Validación</strong>: Pruebas de correlación</li>
                         </ul>
                     </div>
 
-                    <div style="background: rgba(145, 0, 72, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid var(--uide-primary); flex-shrink: 0;">
+                    <div style="background: rgba(145, 0, 72, 0.1); padding: 10px; border-radius: 6px; border-left: 4px solid var(--uide-primary);">
                         <p style="font-size: 0.8rem; margin: 0;">
                             <i class="fas fa-exclamation-triangle"></i> <strong>Importante:</strong> Evita patrones predecibles
                         </p>
                     </div>
-
-                    <div style="background: rgba(35, 53, 110, 0.2); padding: 8px; border-radius: 6px; border: 1px solid rgba(145, 0, 72, 0.2); flex-shrink: 0;">
-                        <div style="font-size: 0.75rem; line-height: 1.4;">
-                            <div style="margin-bottom: 4px;">
-                                <span style="color: #4ade80;">📊 Excel:</span>
-                                <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; color: #e2e8f0; margin-left: 4px;">=CORREL(A:A, B:B)</code>
-                            </div>
-                            <div>
-                                <span style="color: #60a5fa;">📈 R:</span>
-                                <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; color: #e2e8f0; margin-left: 4px;">cor(x, y)</code>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
-                        <button id="generateIndependenceBtn" style="padding: 8px 16px; background: var(--uide-primary); color: white; border: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; width: 100%;">
-                            <i class="fas fa-play"></i> Generar Scatter Plot
-                        </button>
-                        <div style="margin-top: 6px; font-size: 0.8rem;">
-                            <label style="color: #e2e8f0;">Puntos: </label>
-                            <input type="number" id="independenceCount" value="200" min="50" max="500" step="50"
-                                   style="width: 65px; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-primary); color: white; border-radius: 4px; font-size: 0.8rem;">
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Columna Derecha: Visualización -->
-                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-primary); padding: 12px; display: flex; flex-direction: column; height: 100%;">
-                    <h3 style="text-align: center; color: var(--uide-primary); margin: 0 0 4px 0; font-size: 1rem; flex-shrink: 0;">
-                        <i class="fas fa-chart-scatter"></i> Gráfico de Dispersión: X<sub>i</sub> vs X<sub>i+1</sub>
-                    </h3>
-                    <p style="text-align: center; font-size: 0.7rem; color: #94a3b8; margin: 0 0 8px 0; font-style: italic;">
-                        <i class="fas fa-university"></i> Tiempo de llegada actual vs siguiente - Sin patrón = independencia
-                    </p>
-                    
-                    <!-- Canvas para el scatter plot -->
-                    <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; height: 350px; overflow: hidden;">
-                        <canvas id="independenceScatter"></canvas>
+                <!-- Columna Derecha: Implementación -->
+                <div style="display: flex; flex-direction: column; gap: 12px; overflow-y: auto;">
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 2px solid rgba(74, 222, 128, 0.3);">
+                        <h3 style="font-size: 1rem; margin: 0 0 10px 0; color: #4ade80; text-align: center;">
+                            📊 Implementación en Excel
+                        </h3>
+                        <div style="background: rgba(0,0,0,0.4); padding: 10px; border-radius: 6px;">
+                            <p style="font-size: 0.75rem; margin: 0 0 6px 0; color: #e2e8f0;">Función de correlación:</p>
+                            <code style="display: block; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 4px; font-size: 0.8rem; color: #4ade80; font-family: 'Courier New', monospace; margin-bottom: 4px;">=CORREL(A:A, B:B)</code>
+                            <code style="display: block; background: rgba(0,0,0,0.4); padding: 6px; border-radius: 4px; font-size: 0.75rem; color: #cbd5e1; font-family: 'Courier New', monospace; font-style: italic;">=COEF.DE.CORREL(A:A, B:B)</code>
+                            <p style="font-size: 0.7rem; color: #94a3b8; margin: 6px 0 0 0; font-style: italic;">
+                                Calcula correlación entre dos columnas
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- Información de correlación -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; flex-shrink: 0;">
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Relación entre llegadas</div>
-                            <div id="correlationCoef" style="font-size: 1.1rem; font-weight: 600; color: var(--uide-primary);">-</div>
-                            <div style="font-size: 0.65rem; color: #64748b;">Ideal: ≈ 0 (independientes)</div>
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 2px solid rgba(96, 165, 250, 0.3);">
+                        <h3 style="font-size: 1rem; margin: 0 0 10px 0; color: #60a5fa; text-align: center;">
+                            📈 Implementación en R
+                        </h3>
+                        <div style="background: rgba(0,0,0,0.4); padding: 10px; border-radius: 6px;">
+                            <p style="font-size: 0.75rem; margin: 0 0 6px 0; color: #e2e8f0;">Función de correlación:</p>
+                            <code style="display: block; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 4px; font-size: 0.75rem; color: #60a5fa; font-family: 'Courier New', monospace; line-height: 1.4; white-space: pre;"># Correlación Xi y Xi+1
+x <- numeros[1:(length(numeros)-1)]
+y <- numeros[2:length(numeros)]
+cor(x, y)</code>
+                            <p style="font-size: 0.7rem; color: #94a3b8; margin: 6px 0 0 0; font-style: italic;">
+                                Correlación entre pares consecutivos
+                            </p>
                         </div>
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Evaluación</div>
-                            <div id="correlationStatus" style="font-size: 0.9rem; font-weight: 600; color: var(--uide-accent); margin-top: 5px;">-</div>
+                    </div>
+
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 6px; border-left: 4px solid var(--uide-accent);">
+                        <h4 style="font-size: 0.9rem; margin: 0 0 6px 0; color: var(--uide-accent);">
+                            <i class="fas fa-lightbulb"></i> Interpretación
+                        </h4>
+                        <ul style="font-size: 0.75rem; line-height: 1.4; margin: 0; padding-left: 18px; color: #e2e8f0;">
+                            <li>Correlación ≈ 0: <strong style="color: #4ade80;">Independientes</strong></li>
+                            <li>Correlación ≈ 1: <strong style="color: #f87171;">Dependencia positiva</strong></li>
+                            <li>Correlación ≈ -1: <strong style="color: #f87171;">Dependencia negativa</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6.2: Demostración Visual - Scatter Plot de Independencia -->
+        <div class="slide">
+            <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-chart-scatter"></i> Demostración: Visualización de Independencia</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 8px 15px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.85rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Experimento:</strong> Graficamos tiempo de llegada actual vs siguiente para verificar independencia
+                </p>
+            </div>
+
+            <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-primary); padding: 15px; margin: 0 15px; height: calc(100vh - 220px); max-height: 580px;">
+                <div style="display: grid; grid-template-columns: 28% 72%; gap: 15px; height: 100%;">
+                    <!-- Panel de Control -->
+                    <div style="display: flex; flex-direction: column; gap: 10px; overflow-y: auto;">
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 2px solid var(--uide-primary);">
+                            <h3 style="font-size: 0.95rem; margin: 0 0 10px 0; color: var(--uide-primary); text-align: center;">
+                                <i class="fas fa-sliders-h"></i> Controles
+                            </h3>
+                            <div style="text-align: center; margin-bottom: 10px;">
+                                <label style="color: #e2e8f0; font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 6px;">Puntos:</label>
+                                <input type="number" id="independenceCount" value="200" min="50" max="500" step="50"
+                                       style="width: 100%; padding: 8px; background: rgba(255,255,255,0.1); border: 2px solid var(--uide-primary); color: white; border-radius: 6px; font-size: 0.9rem; font-weight: 600; text-align: center;">
+                            </div>
+                            <button id="generateIndependenceBtn" style="padding: 10px 15px; background: var(--uide-primary); color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                                <i class="fas fa-play"></i> Generar
+                            </button>
+                        </div>
+
+                        <!-- Estadísticas -->
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 2px solid rgba(74, 222, 128, 0.3);">
+                            <h3 style="font-size: 0.95rem; margin: 0 0 10px 0; color: #4ade80; text-align: center;">
+                                <i class="fas fa-chart-line"></i> Correlación
+                            </h3>
+                            <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px; text-align: center; margin-bottom: 10px;">
+                                <div style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 5px;">Coeficiente</div>
+                                <div id="correlationCoef" style="font-size: 1.3rem; font-weight: 700; color: var(--uide-primary);">-</div>
+                                <div style="font-size: 0.7rem; color: #64748b; margin-top: 3px;">Ideal: ≈ 0</div>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px; text-align: center;">
+                                <div style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 5px;">Evaluación</div>
+                                <div id="correlationStatus" style="font-size: 0.85rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 6px; border-left: 4px solid var(--uide-accent);">
+                            <p style="margin: 0; font-size: 0.75rem; line-height: 1.4; color: #e2e8f0;">
+                                <i class="fas fa-info-circle"></i> <strong>Observa:</strong> Sin patrón visible = independencia
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Scatter Plot -->
+                    <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 15px; border: 2px solid rgba(145, 0, 72, 0.3); display: flex; flex-direction: column; height: 100%; overflow: hidden;">
+                        <h3 style="text-align: center; color: var(--uide-primary); margin: 0 0 8px 0; font-size: 1.1rem; flex-shrink: 0;">
+                            <i class="fas fa-chart-scatter"></i> Gráfico de Dispersión: X<sub>i</sub> vs X<sub>i+1</sub>
+                        </h3>
+                        <p style="text-align: center; font-size: 0.75rem; color: #94a3b8; margin: 0 0 10px 0; font-style: italic; flex-shrink: 0;">
+                            Tiempo de llegada actual vs siguiente
+                        </p>
+                        
+                        <div style="position: relative; background: rgba(0,0,0,0.4); border-radius: 6px; padding: 10px; flex: 1; min-height: 0; overflow: hidden;">
+                            <canvas id="independenceScatter" style="max-width: 100%; max-height: 100%;"></canvas>
+                        </div>
+
+                        <div style="margin-top: 10px; text-align: center; font-size: 0.75rem; color: #cbd5e1; flex-shrink: 0;">
+                            Sin patrón visible = números independientes
                         </div>
                     </div>
                 </div>
@@ -832,17 +979,21 @@ f(x) = 0  si x ∉ (0,1)</div>
             if (!canvas) return;
             
             const ctx = canvas.getContext('2d');
-            const rect = canvas.parentElement.getBoundingClientRect();
+            const container = canvas.parentElement;
+            const rect = container.getBoundingClientRect();
             
             // Soporte para alta resolución (4K)
             const dpr = window.devicePixelRatio || 1;
-            const width = rect.width - 20;
-            const height = rect.height - 20;
+            // Usar el tamaño del contenedor directamente
+            const width = Math.min(rect.width - 20, container.clientWidth - 20);
+            const height = Math.min(rect.height - 20, container.clientHeight - 20);
             
+            // Resetear el canvas antes de redimensionar
             canvas.width = width * dpr;
             canvas.height = height * dpr;
             canvas.style.width = width + 'px';
             canvas.style.height = height + 'px';
+            canvas.style.display = 'block';
             ctx.scale(dpr, dpr);
 
             // Limpiar canvas
@@ -902,121 +1053,155 @@ f(x) = 0  si x ∉ (0,1)</div>
         }
         </script>
 
-        <!-- Slide 7: GCL Mixto - Definición -->
+        <!-- Slide 7.1: GCL Mixto - Definición y Fórmula -->
         <div class="slide">
-            <h2 style="margin-bottom: 0.3rem;"><i class="fas fa-cogs"></i> Generador Congruencial Lineal (GCL) Mixto</h2>
-            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 8px; border-left: 4px solid var(--uide-accent);">
-                <p style="margin: 0; font-size: 0.8rem; color: #e2e8f0;">
+            <h2><i class="fas fa-cogs"></i> Generador Congruencial Lineal (GCL) Mixto</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 10px 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 1rem; color: #e2e8f0;">
                     <i class="fas fa-university"></i> <strong>Caso:</strong> Algoritmo que genera los tiempos aleatorios de llegada al banco
                 </p>
             </div>
             
-            <!-- Fila superior: Fórmula y Tipos -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 12px;">
-                <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 2px solid var(--uide-accent);">
-                    <h3 style="font-size: 1rem; margin: 0 0 8px 0; color: var(--uide-accent);">Fórmula Recursiva</h3>
-                    <div class="code-block" style="font-size: 0.95rem; padding: 10px; margin-bottom: 8px; text-align: center;">X<sub>i+1</sub> = (a · X<sub>i</sub> + c) mod m</div>
-                    <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; font-size: 0.75rem; color: #cbd5e1; line-height: 1.4;">
-                        <p style="margin: 0 0 4px 0;"><strong style="color: #4ade80;">¿Cómo funciona?</strong></p>
-                        <p style="margin: 0 0 3px 0;">1. Multiplica el número anterior por <strong>a</strong></p>
-                        <p style="margin: 0 0 3px 0;">2. Suma el incremento <strong>c</strong></p>
-                        <p style="margin: 0;">3. Aplica módulo <strong>m</strong> (resto de división)</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; padding: 0 20px;">
+                <!-- Columna Izquierda: Fórmula -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 20px; border-radius: 12px; border: 2px solid var(--uide-accent);">
+                        <h3 style="font-size: 1.3rem; margin: 0 0 15px 0; color: var(--uide-accent);">
+                            <i class="fas fa-function"></i> Fórmula Recursiva
+                        </h3>
+                        <div class="code-block" style="font-size: 1.3rem; padding: 20px; margin-bottom: 15px; text-align: center;">X<sub>i+1</sub> = (a · X<sub>i</sub> + c) mod m</div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; font-size: 0.95rem; color: #cbd5e1; line-height: 1.7;">
+                            <p style="margin: 0 0 10px 0;"><strong style="color: #4ade80;">¿Cómo funciona?</strong></p>
+                            <p style="margin: 0 0 8px 0;">1. Multiplica el número anterior por <strong>a</strong></p>
+                            <p style="margin: 0 0 8px 0;">2. Suma el incremento <strong>c</strong></p>
+                            <p style="margin: 0;">3. Aplica módulo <strong>m</strong> (resto de división)</p>
+                        </div>
                     </div>
-                </div>
 
-                <div style="display: grid; grid-template-rows: auto 1fr; gap: 10px;">
-                    <div style="background: rgba(35, 53, 110, 0.3); padding: 10px; border-radius: 8px; border: 2px solid var(--uide-primary);">
-                        <h3 style="font-size: 0.95rem; margin: 0 0 6px 0; color: var(--uide-primary); text-align: center;">Tipos de GCL</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                            <div style="background: rgba(233, 171, 33, 0.2); padding: 8px; border-radius: 6px; text-align: center;">
-                                <div style="font-size: 0.85rem; font-weight: 600; color: var(--uide-accent); margin-bottom: 4px;">Mixto</div>
-                                <div style="font-size: 0.75rem; color: #cbd5e1;">c ≠ 0</div>
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 20px; border-radius: 12px; border: 2px solid var(--uide-primary);">
+                        <h3 style="font-size: 1.2rem; margin: 0 0 15px 0; color: var(--uide-primary); text-align: center;">Tipos de GCL</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div style="background: rgba(233, 171, 33, 0.2); padding: 15px; border-radius: 8px; text-align: center;">
+                                <div style="font-size: 1.1rem; font-weight: 600; color: var(--uide-accent); margin-bottom: 8px;">Mixto</div>
+                                <div style="font-size: 0.95rem; color: #cbd5e1;">c ≠ 0</div>
                             </div>
-                            <div style="background: rgba(145, 0, 72, 0.2); padding: 8px; border-radius: 6px; text-align: center;">
-                                <div style="font-size: 0.85rem; font-weight: 600; color: var(--uide-primary); margin-bottom: 4px;">Multiplicativo</div>
-                                <div style="font-size: 0.75rem; color: #cbd5e1;">c = 0</div>
+                            <div style="background: rgba(145, 0, 72, 0.2); padding: 15px; border-radius: 8px; text-align: center;">
+                                <div style="font-size: 1.1rem; font-weight: 600; color: var(--uide-primary); margin-bottom: 8px;">Multiplicativo</div>
+                                <div style="font-size: 0.95rem; color: #cbd5e1;">c = 0</div>
                             </div>
                         </div>
                     </div>
-                    <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid var(--uide-accent);">
-                        <p style="font-size: 0.8rem; margin: 0 0 6px 0; font-weight: 600;">
+                </div>
+
+                <!-- Columna Derecha: Aplicación -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 20px; border-radius: 12px; border-left: 4px solid var(--uide-accent);">
+                        <p style="font-size: 1.1rem; margin: 0 0 15px 0; font-weight: 600;">
                             <i class="fas fa-university"></i> <strong>Aplicación al Banco:</strong>
                         </p>
-                        <div class="code-block" style="font-size: 0.85rem; padding: 6px; margin-bottom: 6px; text-align: center;">U<sub>i</sub> = X<sub>i</sub> / m</div>
-                        <div style="font-size: 0.7rem; color: #cbd5e1; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 4px;">
+                        <div class="code-block" style="font-size: 1.2rem; padding: 15px; margin-bottom: 15px; text-align: center;">U<sub>i</sub> = X<sub>i</sub> / m</div>
+                        <div style="font-size: 0.95rem; color: #cbd5e1; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; line-height: 1.7;">
                             <strong>Ejemplo:</strong> X<sub>1</sub>=8, m=16 → U<sub>1</sub>=0.5<br>
                             <span style="color: #4ade80;">Tiempo: U<sub>1</sub> × λ = 0.5 × 10 = 5 min</span><br>
-                            <span style="font-size: 0.65rem; color: #94a3b8;">(λ = tiempo máximo entre llegadas)</span>
+                            <span style="font-size: 0.85rem; color: #94a3b8;">(λ = tiempo máximo entre llegadas)</span>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 20px; border-radius: 12px; border: 2px solid rgba(74, 222, 128, 0.3);">
+                        <h3 style="font-size: 1.2rem; margin: 0 0 15px 0; color: #4ade80;">
+                            <i class="fas fa-list-ol"></i> Parámetros
+                        </h3>
+                        <div style="font-size: 0.95rem; line-height: 1.8;">
+                            <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+                                <strong style="color: var(--uide-accent);">X₀ (semilla):</strong> valor inicial
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+                                <strong style="color: var(--uide-accent);">a (multiplicador):</strong> dispersión
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+                                <strong style="color: var(--uide-accent);">c (incremento):</strong> desplazamiento
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px;">
+                                <strong style="color: var(--uide-accent);">m (módulo):</strong> rango [0, m-1]
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Fila inferior: 2 columnas -->
-            <div style="display: grid; grid-template-columns: 55% 45%; gap: 15px; height: calc(100vh - 360px); max-height: 450px;">
-                <!-- Columna 1: Calculadora Interactiva -->
-                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 12px; display: flex; flex-direction: column; height: 100%;">
+        <!-- Slide 7.2: GCL Mixto - Calculadora Interactiva -->
+        <div class="slide">
+            <h2 style="margin-bottom: 0.4rem;"><i class="fas fa-calculator"></i> GCL Mixto: Calculadora Paso a Paso</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 8px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.8rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Experimento:</strong> Genera la secuencia de tiempos entre llegadas al banco paso a paso
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 58% 42%; gap: 15px; padding: 0 12px; height: calc(100vh - 190px); max-height: 610px;">
+                <!-- Calculadora Interactiva -->
+                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 15px; display: flex; flex-direction: column; height: 100%; overflow: hidden;">
                     <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 10px 0; font-size: 1rem; flex-shrink: 0;">
-                        <i class="fas fa-calculator"></i> Calculadora GCL - Paso a Paso
+                        <i class="fas fa-cogs"></i> Generador Interactivo
                     </h3>
                     
                     <!-- Controles de parámetros -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; flex-shrink: 0;">
                         <div>
-                            <label style="font-size: 0.75rem; color: #94a3b8;">
-                                Semilla (X₀): <span style="font-size: 0.65rem; color: #64748b;">valor inicial</span>
+                            <label style="font-size: 0.75rem; color: #e2e8f0; display: block; margin-bottom: 4px; font-weight: 600;">
+                                Semilla (X₀):
                             </label>
                             <input type="number" id="gclSeed" value="7" min="0" max="100"
-                                   style="width: 100%; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
+                                   style="width: 100%; padding: 6px; background: rgba(255,255,255,0.1); border: 2px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.85rem; text-align: center; font-weight: 600;">
                         </div>
                         <div>
-                            <label style="font-size: 0.75rem; color: #94a3b8;">
-                                Multiplicador (a): <span style="font-size: 0.65rem; color: #64748b;">dispersión</span>
+                            <label style="font-size: 0.75rem; color: #e2e8f0; display: block; margin-bottom: 4px; font-weight: 600;">
+                                Multiplicador (a):
                             </label>
                             <input type="number" id="gclA" value="5" min="1" max="100"
-                                   style="width: 100%; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
+                                   style="width: 100%; padding: 6px; background: rgba(255,255,255,0.1); border: 2px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.85rem; text-align: center; font-weight: 600;">
                         </div>
                         <div>
-                            <label style="font-size: 0.75rem; color: #94a3b8;">
-                                Incremento (c): <span style="font-size: 0.65rem; color: #64748b;">desplazamiento</span>
+                            <label style="font-size: 0.75rem; color: #e2e8f0; display: block; margin-bottom: 4px; font-weight: 600;">
+                                Incremento (c):
                             </label>
                             <input type="number" id="gclC" value="3" min="0" max="100"
-                                   style="width: 100%; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
+                                   style="width: 100%; padding: 6px; background: rgba(255,255,255,0.1); border: 2px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.85rem; text-align: center; font-weight: 600;">
                         </div>
                         <div>
-                            <label style="font-size: 0.75rem; color: #94a3b8;">
-                                Módulo (m): <span style="font-size: 0.65rem; color: #64748b;">rango [0, m-1]</span>
+                            <label style="font-size: 0.75rem; color: #e2e8f0; display: block; margin-bottom: 4px; font-weight: 600;">
+                                Módulo (m):
                             </label>
                             <input type="number" id="gclM" value="16" min="2" max="1000"
-                                   style="width: 100%; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
+                                   style="width: 100%; padding: 6px; background: rgba(255,255,255,0.1); border: 2px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.85rem; text-align: center; font-weight: 600;">
                         </div>
                     </div>
 
-                    <button id="generateGCLBtn" style="padding: 6px 16px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; margin-bottom: 10px; flex-shrink: 0;">
+                    <button id="generateGCLBtn" style="padding: 8px 16px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; margin-bottom: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); flex-shrink: 0;">
                         <i class="fas fa-play"></i> Generar Secuencia
                     </button>
 
                     <!-- Área de visualización de pasos -->
-                    <div id="gclStepsContainer" style="height: 220px; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px; overflow-y: auto; overflow-x: hidden; flex-shrink: 0; scrollbar-width: thin; scrollbar-color: rgba(233, 171, 33, 0.5) rgba(0, 0, 0, 0.3);">
-                        <div id="gclSteps" style="font-family: 'Courier New', monospace; font-size: 0.75rem; color: #4ade80; line-height: 1.6;">
-                            <div style="color: #94a3b8; font-style: italic;">Configura los parámetros y presiona "Generar Secuencia"...</div>
+                    <div id="gclStepsContainer" style="flex: 1; background: rgba(0,0,0,0.4); border-radius: 6px; padding: 10px; overflow-y: auto; overflow-x: hidden; scrollbar-width: thin; scrollbar-color: rgba(233, 171, 33, 0.5) rgba(0, 0, 0, 0.3); min-height: 0;">
+                        <div id="gclSteps" style="font-family: 'Courier New', monospace; font-size: 0.75rem; color: #4ade80; line-height: 1.5;">
+                            <div style="color: #94a3b8; font-style: italic; text-align: center; font-size: 0.7rem;">Configura los parámetros y presiona "Generar Secuencia"...</div>
                         </div>
                     </div>
                     
                     <style>
-                        /* Estilo personalizado para el scrollbar en navegadores Webkit (Chrome, Safari, Edge) */
                         #gclStepsContainer::-webkit-scrollbar {
-                            width: 8px;
+                            width: 6px;
                         }
                         
                         #gclStepsContainer::-webkit-scrollbar-track {
                             background: rgba(0, 0, 0, 0.3);
-                            border-radius: 4px;
+                            border-radius: 3px;
                         }
                         
                         #gclStepsContainer::-webkit-scrollbar-thumb {
                             background: rgba(233, 171, 33, 0.5);
-                            border-radius: 4px;
+                            border-radius: 3px;
                         }
                         
                         #gclStepsContainer::-webkit-scrollbar-thumb:hover {
@@ -1025,40 +1210,43 @@ f(x) = 0  si x ∉ (0,1)</div>
                     </style>
 
                     <!-- Resumen de la secuencia -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 10px; flex-shrink: 0;">
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Números</div>
-                            <div id="gclCount" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">0</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; flex-shrink: 0;">
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8; margin-bottom: 3px;">Números</div>
+                            <div id="gclCount" style="font-size: 1.1rem; font-weight: 700; color: var(--uide-accent);">0</div>
                         </div>
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Periodo</div>
-                            <div id="gclPeriod" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8; margin-bottom: 3px;">Periodo</div>
+                            <div id="gclPeriod" style="font-size: 1.1rem; font-weight: 700; color: var(--uide-accent);">-</div>
                         </div>
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Último U<sub>i</sub></div>
-                            <div id="gclLastU" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8; margin-bottom: 3px;">Último U<sub>i</sub></div>
+                            <div id="gclLastU" style="font-size: 1.1rem; font-weight: 700; color: var(--uide-accent);">-</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Columna 2: Implementación en Excel y R -->
-                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
-                    <h3 style="font-size: 0.95rem; margin: 0 0 8px 0; text-align: center; color: var(--uide-accent);">
+                <!-- Implementación -->
+                <div style="display: flex; flex-direction: column; gap: 12px; overflow-y: auto; height: 100%;">
+                    <h3 style="font-size: 1rem; margin: 0; text-align: center; color: var(--uide-accent); flex-shrink: 0;">
                         <i class="fas fa-code"></i> Implementación
                     </h3>
 
                     <!-- Excel -->
-                    <div style="background: rgba(35, 53, 110, 0.3); padding: 10px; border-radius: 8px; border: 2px solid rgba(74, 222, 128, 0.3); flex-shrink: 0;">
-                        <h4 style="font-size: 0.85rem; margin: 0 0 6px 0; color: #4ade80;">
-                            📊 Excel - Tiempos de llegada
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 2px solid rgba(74, 222, 128, 0.3);">
+                        <h4 style="font-size: 0.9rem; margin: 0 0 8px 0; color: #4ade80; text-align: center;">
+                            📊 Excel
                         </h4>
-                        <div style="font-size: 0.7rem; color: #cbd5e1; margin-bottom: 4px;">
+                        <div style="font-size: 0.75rem; color: #cbd5e1; margin-bottom: 6px;">
                             <strong>Generar X<sub>i</sub>:</strong>
                         </div>
-                        <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #4ade80; font-family: 'Courier New', monospace; margin-bottom: 6px;">
+                        <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #4ade80; font-family: 'Courier New', monospace; margin-bottom: 3px;">
                             =MOD(a*X_anterior+c, m)
                         </code>
-                        <div style="font-size: 0.7rem; color: #cbd5e1; margin-bottom: 4px;">
+                        <code style="display: block; background: rgba(0,0,0,0.4); padding: 5px; border-radius: 4px; font-size: 0.65rem; color: #cbd5e1; font-family: 'Courier New', monospace; margin-bottom: 8px; font-style: italic;">
+                            =RESIDUO(a*X_anterior+c, m)
+                        </code>
+                        <div style="font-size: 0.75rem; color: #cbd5e1; margin-bottom: 6px;">
                             <strong>Tiempo (min): U × λ</strong>
                         </div>
                         <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #4ade80; font-family: 'Courier New', monospace;">
@@ -1070,22 +1258,22 @@ f(x) = 0  si x ∉ (0,1)</div>
                     </div>
 
                     <!-- R -->
-                    <div style="background: rgba(35, 53, 110, 0.3); padding: 10px; border-radius: 8px; border: 2px solid rgba(96, 165, 250, 0.3); flex: 1; min-height: 0; overflow-y: auto;">
-                        <h4 style="font-size: 0.85rem; margin: 0 0 6px 0; color: #60a5fa;">
-                            📈 R - Simulación banco
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 2px solid rgba(96, 165, 250, 0.3);">
+                        <h4 style="font-size: 0.9rem; margin: 0 0 8px 0; color: #60a5fa; text-align: center;">
+                            📈 R
                         </h4>
-                        <div style="font-size: 0.7rem; color: #cbd5e1; margin-bottom: 4px;">
+                        <div style="font-size: 0.75rem; color: #cbd5e1; margin-bottom: 6px;">
                             <strong>Función:</strong>
                         </div>
-                        <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.65rem; color: #60a5fa; font-family: 'Courier New', monospace; line-height: 1.4; margin-bottom: 6px; white-space: pre;">simular_llegadas &lt;- function(n, lambda) {
+                        <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #60a5fa; font-family: 'Courier New', monospace; line-height: 1.4; margin-bottom: 8px; white-space: pre;">simular_llegadas &lt;- function(n, lambda) {
   u &lt;- lcg(n, 5, 3, 16, 7)
   tiempos &lt;- u * lambda
   return(tiempos)
 }</code>
-                        <div style="font-size: 0.7rem; color: #cbd5e1; margin-bottom: 4px;">
+                        <div style="font-size: 0.75rem; color: #cbd5e1; margin-bottom: 6px;">
                             <strong>Uso:</strong>
                         </div>
-                        <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.65rem; color: #60a5fa; font-family: 'Courier New', monospace; line-height: 1.4;">
+                        <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #60a5fa; font-family: 'Courier New', monospace; line-height: 1.4;">
                             # 100 llegadas, máx 10 min<br>
                             t &lt;- simular_llegadas(100, 10)
                         </code>
@@ -1201,6 +1389,179 @@ f(x) = 0  si x ∉ (0,1)</div>
         }
         </script>
 
+        <!-- Slide 7.5: Validación de Parámetros GCL -->
+        <div class="slide">
+            <h2 style="margin-bottom: 0.3rem;"><i class="fas fa-check-circle"></i> Validación de Parámetros: c y m Coprimos</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 5px 10px; border-radius: 6px; margin-bottom: 6px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.7rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Caso:</strong> Validar parámetros del generador para simular el banco
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 40% 60%; gap: 12px; padding: 0 10px; height: calc(100vh - 180px); max-height: 620px;">
+                <!-- Columna Izquierda: Teoría -->
+                <div style="display: flex; flex-direction: column; gap: 8px; height: 100%;">
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 10px; border-radius: 8px; border: 2px solid var(--uide-accent);">
+                        <h3 style="font-size: 0.85rem; margin: 0 0 6px 0; color: var(--uide-accent);">
+                            <i class="fas fa-info-circle"></i> ¿Qué son coprimos?
+                        </h3>
+                        <p style="font-size: 0.75rem; line-height: 1.3; margin: 0 0 6px 0; color: #e2e8f0;">
+                            Dos números son <strong>coprimos</strong> cuando su <strong>MCD es 1</strong>.
+                        </p>
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 6px; border-radius: 4px;">
+                            <p style="font-size: 0.7rem; margin: 0 0 4px 0; color: #e2e8f0;">
+                                <strong>Ejemplos:</strong>
+                            </p>
+                            <ul style="font-size: 0.65rem; margin: 0; padding-left: 16px; line-height: 1.3; color: #cbd5e1;">
+                                <li><strong style="color: #4ade80;">✓</strong> c=3, m=16 → MCD=1</li>
+                                <li><strong style="color: #4ade80;">✓</strong> c=7, m=10 → MCD=1</li>
+                                <li><strong style="color: #f87171;">✗</strong> c=6, m=9 → MCD=3</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(145, 0, 72, 0.2); padding: 10px; border-radius: 8px; border: 2px solid var(--uide-primary);">
+                        <h3 style="font-size: 0.85rem; margin: 0 0 6px 0; color: var(--uide-primary);">
+                            <i class="fas fa-exclamation-triangle"></i> Importancia
+                        </h3>
+                        <ul style="font-size: 0.7rem; line-height: 1.4; margin: 0; padding-left: 16px; color: #e2e8f0;">
+                            <li><strong>Periodo completo:</strong> MCD=1 → periodo máximo</li>
+                            <li style="margin-top: 3px;"><strong>Calidad:</strong> Mejor distribución</li>
+                            <li style="margin-top: 3px;"><strong>Evita ciclos cortos:</strong> No se repite rápido</li>
+                        </ul>
+                        <div style="background: rgba(0,0,0,0.3); padding: 5px; border-radius: 4px; margin-top: 6px;">
+                            <p style="font-size: 0.65rem; margin: 0; color: #cbd5e1; font-style: italic;">
+                                <i class="fas fa-university"></i> Banco: necesitamos muchos tiempos diferentes
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Validador Interactivo -->
+                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 12px; display: flex; flex-direction: column; height: 100%;">
+                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 8px 0; font-size: 0.9rem; flex-shrink: 0;">
+                        <i class="fas fa-calculator"></i> Validador de Coprimos
+                    </h3>
+
+                    <!-- Inputs -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; flex-shrink: 0;">
+                        <div>
+                            <label style="display: block; font-size: 0.7rem; color: #94a3b8; margin-bottom: 3px; font-weight: 600;">
+                                Incremento (c):
+                            </label>
+                            <input type="number" id="coprimoC" value="3" min="1" max="100"
+                                   style="width: 100%; padding: 6px; background: rgba(255,255,255,0.1); border: 2px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.9rem; text-align: center; font-weight: 600;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 0.7rem; color: #94a3b8; margin-bottom: 3px; font-weight: 600;">
+                                Módulo (m):
+                            </label>
+                            <input type="number" id="coprimoM" value="16" min="2" max="1000"
+                                   style="width: 100%; padding: 6px; background: rgba(255,255,255,0.1); border: 2px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.9rem; text-align: center; font-weight: 600;">
+                        </div>
+                    </div>
+
+                    <button id="validateCoprimosBtn" style="padding: 8px 16px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; margin-bottom: 10px; flex-shrink: 0; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+                        <i class="fas fa-check"></i> Validar
+                    </button>
+
+                    <!-- Resultado -->
+                    <div id="coprimoResult" style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0;">
+                        <i class="fas fa-arrow-up" style="font-size: 2rem; color: #94a3b8; margin-bottom: 8px;"></i>
+                        <p style="font-size: 0.75rem; color: #94a3b8; text-align: center; margin: 0;">
+                            Ingresa valores y presiona "Validar"
+                        </p>
+                    </div>
+
+                    <!-- Proceso de cálculo -->
+                    <div id="coprimoProcess" style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; margin-top: 8px; display: none; flex-shrink: 0;">
+                        <h4 style="font-size: 0.75rem; margin: 0 0 5px 0; color: var(--uide-accent);">
+                            <i class="fas fa-cogs"></i> Proceso:
+                        </h4>
+                        <div id="coprimoSteps" style="font-family: 'Courier New', monospace; font-size: 0.65rem; color: #cbd5e1; line-height: 1.4;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        // Algoritmo de Euclides para calcular MCD
+        function calcularMCD(a, b) {
+            const pasos = [];
+            let original_a = a;
+            let original_b = b;
+            
+            while (b !== 0) {
+                const resto = a % b;
+                pasos.push(`${a} = ${Math.floor(a/b)} × ${b} + ${resto}`);
+                a = b;
+                b = resto;
+            }
+            
+            return { mcd: a, pasos: pasos };
+        }
+
+        // Validador de coprimos
+        document.addEventListener('DOMContentLoaded', function() {
+            const validateBtn = document.getElementById('validateCoprimosBtn');
+            
+            if (validateBtn) {
+                validateBtn.addEventListener('click', function() {
+                    const c = parseInt(document.getElementById('coprimoC').value) || 3;
+                    const m = parseInt(document.getElementById('coprimoM').value) || 16;
+                    
+                    const resultado = calcularMCD(c, m);
+                    const sonCoprimos = resultado.mcd === 1;
+                    
+                    // Mostrar resultado
+                    const resultDiv = document.getElementById('coprimoResult');
+                    const processDiv = document.getElementById('coprimoProcess');
+                    const stepsDiv = document.getElementById('coprimoSteps');
+                    
+                    if (sonCoprimos) {
+                        resultDiv.innerHTML = `
+                            <i class="fas fa-check-circle" style="font-size: 4rem; color: #4ade80; margin-bottom: 15px;"></i>
+                            <h3 style="font-size: 1.3rem; color: #4ade80; margin: 0 0 10px 0;">¡Son Coprimos!</h3>
+                            <p style="font-size: 1rem; color: #e2e8f0; margin: 0 0 8px 0;">MCD(${c}, ${m}) = ${resultado.mcd}</p>
+                            <div style="background: rgba(74, 222, 128, 0.1); padding: 12px; border-radius: 6px; border-left: 4px solid #4ade80; margin-top: 15px;">
+                                <p style="font-size: 0.85rem; margin: 0; color: #cbd5e1; line-height: 1.5;">
+                                    <strong>✓ Válido para GCL</strong><br>
+                                    Estos parámetros pueden generar un periodo completo
+                                </p>
+                            </div>
+                        `;
+                    } else {
+                        resultDiv.innerHTML = `
+                            <i class="fas fa-times-circle" style="font-size: 4rem; color: #f87171; margin-bottom: 15px;"></i>
+                            <h3 style="font-size: 1.3rem; color: #f87171; margin: 0 0 10px 0;">No son Coprimos</h3>
+                            <p style="font-size: 1rem; color: #e2e8f0; margin: 0 0 8px 0;">MCD(${c}, ${m}) = ${resultado.mcd}</p>
+                            <div style="background: rgba(248, 113, 113, 0.1); padding: 12px; border-radius: 6px; border-left: 4px solid #f87171; margin-top: 15px;">
+                                <p style="font-size: 0.85rem; margin: 0; color: #cbd5e1; line-height: 1.5;">
+                                    <strong>✗ No recomendado</strong><br>
+                                    Tienen factor común: ${resultado.mcd}<br>
+                                    El periodo será menor que m
+                                </p>
+                            </div>
+                        `;
+                    }
+                    
+                    // Mostrar proceso
+                    processDiv.style.display = 'block';
+                    stepsDiv.innerHTML = `
+                        <div style="margin-bottom: 8px; color: #e2e8f0;">
+                            <strong>Algoritmo de Euclides:</strong>
+                        </div>
+                        ${resultado.pasos.map(paso => `<div style="margin-left: 10px;">→ ${paso}</div>`).join('')}
+                        <div style="margin-top: 8px; padding: 8px; background: rgba(233, 171, 33, 0.1); border-radius: 4px;">
+                            <strong style="color: var(--uide-accent);">Resultado: MCD(${c}, ${m}) = ${resultado.mcd}</strong>
+                        </div>
+                    `;
+                });
+            }
+        });
+        </script>
+
         <!-- Slide 8: Periodo Máximo -->
         <div class="slide">
             <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-sync-alt"></i> Periodo Máximo: Teorema de Hull-Dobell</h2>
@@ -1242,6 +1603,7 @@ f(x) = 0  si x ∉ (0,1)</div>
                             <div style="margin-bottom: 4px;">
                                 <span style="color: #4ade80;">📊 Excel:</span>
                                 <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; color: #e2e8f0; margin-left: 4px;">=MOD(a*x+c, m)</code>
+                                <code style="background: rgba(0,0,0,0.25); padding: 2px 6px; border-radius: 3px; font-size: 0.65rem; color: #cbd5e1; margin-left: 4px; font-style: italic;">=RESIDUO(a*x+c, m)</code>
                             </div>
                             <div>
                                 <span style="color: #60a5fa;">📈 R:</span>
@@ -1454,6 +1816,11 @@ f(x) = 0  si x ∉ (0,1)</div>
             <div class="quote">
                 "Garantizar que la secuencia de números generados se ajusta a una distribución U(0,1)"
             </div>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 10px 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--uide-accent); text-align: center;">
+                <p style="margin: 0; font-size: 0.9rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Caso del Banco:</strong> Verificamos que los tiempos de llegada simulados sean realistas y confiables antes de usarlos para tomar decisiones operativas
+                </p>
+            </div>
             <div class="content-grid">
                 <div class="feature-card">
                     <h3><i class="fas fa-chart-line"></i> Kolmogorov-Smirnov (K-S)</h3>
@@ -1463,6 +1830,9 @@ f(x) = 0  si x ∉ (0,1)</div>
                         <li><strong>Comparación</strong>: Función de distribución empírica vs teórica</li>
                         <li><strong>Decisión</strong>: Si D > d<sub>α,n</sub> → rechazar H<sub>0</sub></li>
                     </ul>
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 8px; border-radius: 6px; margin-top: 10px; font-size: 0.85rem;">
+                        <i class="fas fa-university"></i> <strong>En el banco:</strong> Compara la distribución de tiempos simulados con la esperada
+                    </div>
                 </div>
                 <div class="feature-card">
                     <h3><i class="fas fa-chart-pie"></i> Chi-Cuadrado (χ²)</h3>
@@ -1472,6 +1842,9 @@ f(x) = 0  si x ∉ (0,1)</div>
                         <li><strong>Principio</strong>: Frecuencias deben ser aproximadamente iguales</li>
                         <li><strong>Decisión</strong>: Si χ² > χ²<sub>α,K-1</sub> → rechazar H<sub>0</sub></li>
                     </ul>
+                    <div style="background: rgba(145, 0, 72, 0.1); padding: 8px; border-radius: 6px; margin-top: 10px; font-size: 0.85rem;">
+                        <i class="fas fa-university"></i> <strong>En el banco:</strong> Verifica que las llegadas se distribuyan uniformemente en intervalos
+                    </div>
                 </div>
             </div>
         </div>
@@ -1508,6 +1881,7 @@ f(x) = 0  si x ∉ (0,1)</div>
                             <div style="margin-bottom: 3px;">
                                 <span style="color: #4ade80;">📊 Excel:</span>
                                 <code style="background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; display: block; margin-top: 2px;">=MAX(ABS(rango))</code>
+                                <code style="background: rgba(0,0,0,0.25); padding: 1px 4px; border-radius: 3px; font-size: 0.6rem; color: #cbd5e1; display: block; margin-top: 2px; font-style: italic;">=MAX(ABS(rango))</code>
                             </div>
                             <div>
                                 <span style="color: #60a5fa;">📈 R:</span>
@@ -1798,6 +2172,7 @@ f(x) = 0  si x ∉ (0,1)</div>
                             <div style="margin-bottom: 3px;">
                                 <span style="color: #4ade80;">📊 Excel:</span>
                                 <code style="background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; display: block; margin-top: 2px;">=CHISQ.TEST(Fo, Fe)</code>
+                                <code style="background: rgba(0,0,0,0.25); padding: 1px 4px; border-radius: 3px; font-size: 0.6rem; color: #cbd5e1; display: block; margin-top: 2px; font-style: italic;">=PRUEBA.CHI(Fo, Fe)</code>
                             </div>
                             <div>
                                 <span style="color: #60a5fa;">📈 R:</span>
@@ -2055,11 +2430,15 @@ f(x) = 0  si x ∉ (0,1)</div>
                             <li><strong>Fundamento</strong>: Datos uniformes → promedio = 0.5</li>
                             <li><strong>Detecta</strong>: Sesgo en generación</li>
                         </ul>
+                        <div style="background: rgba(233, 171, 33, 0.1); padding: 6px; border-radius: 6px; margin-top: 8px; font-size: 0.75rem; border-left: 3px solid var(--uide-accent);">
+                            <i class="fas fa-university"></i> <strong>Banco:</strong> Verifica que el tiempo promedio simulado sea correcto
+                        </div>
                         <div style="background: rgba(35, 53, 110, 0.2); padding: 6px; border-radius: 6px; border: 1px solid rgba(233, 171, 33, 0.2); margin-top: 8px;">
                             <div style="font-size: 0.7rem; line-height: 1.3;">
                                 <div style="margin-bottom: 3px;">
                                     <span style="color: #4ade80;">📊 Excel:</span>
                                     <code style="background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; display: block; margin-top: 2px;">=AVERAGE(rango)</code>
+                                    <code style="background: rgba(0,0,0,0.25); padding: 1px 4px; border-radius: 3px; font-size: 0.6rem; color: #cbd5e1; display: block; margin-top: 2px; font-style: italic;">=PROMEDIO(rango)</code>
                                 </div>
                                 <div>
                                     <span style="color: #60a5fa;">📈 R:</span>
@@ -2127,11 +2506,15 @@ f(x) = 0  si x ∉ (0,1)</div>
                             <li><strong>Fundamento</strong>: Teoría de U(0,1)</li>
                             <li><strong>Detecta</strong>: Dispersión anormal</li>
                         </ul>
+                        <div style="background: rgba(96, 165, 250, 0.1); padding: 6px; border-radius: 6px; margin-top: 8px; font-size: 0.75rem; border-left: 3px solid var(--uide-primary);">
+                            <i class="fas fa-university"></i> <strong>Banco:</strong> Confirma que la variabilidad de llegadas sea realista
+                        </div>
                         <div style="background: rgba(35, 53, 110, 0.2); padding: 6px; border-radius: 6px; border: 1px solid rgba(96, 165, 250, 0.2); margin-top: 8px;">
                             <div style="font-size: 0.7rem; line-height: 1.3;">
                                 <div style="margin-bottom: 3px;">
                                     <span style="color: #4ade80;">📊 Excel:</span>
                                     <code style="background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; display: block; margin-top: 2px;">=VAR.P(rango)</code>
+                                    <code style="background: rgba(0,0,0,0.25); padding: 1px 4px; border-radius: 3px; font-size: 0.6rem; color: #cbd5e1; display: block; margin-top: 2px; font-style: italic;">=VAR.P(rango)</code>
                                 </div>
                                 <div>
                                     <span style="color: #60a5fa;">📈 R:</span>
