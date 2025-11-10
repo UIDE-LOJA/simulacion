@@ -875,46 +875,50 @@ f(x) = 0  si x ∉ (0,1)</div>
 
         <!-- Slide 7: GCL Mixto - Definición -->
         <div class="slide">
-            <h2 style="margin-bottom: 0.8rem;"><i class="fas fa-cogs"></i> Generador Congruencial Lineal (GCL) Mixto</h2>
+            <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-cogs"></i> Generador Congruencial Lineal (GCL) Mixto</h2>
             
-            <div style="display: grid; grid-template-columns: 40% 60%; gap: 20px; height: calc(100vh - 220px); max-height: 620px;">
-                <!-- Columna Izquierda: Teoría -->
-                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
-                    <div class="quote" style="font-size: 0.85rem; padding: 10px; margin: 0;">
-                        "Algoritmo clásico para generar números pseudoaleatorios"
-                    </div>
-                    
-                    <div style="flex-shrink: 0;">
-                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Fórmula Recursiva</h3>
-                        <div class="code-block" style="font-size: 0.9rem; padding: 10px;">X<sub>i+1</sub> = (a · X<sub>i</sub> + c) mod m</div>
-                    </div>
-                    
-                    <div style="flex-shrink: 0;">
-                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Parámetros</h3>
-                        <ul style="font-size: 0.85rem; line-height: 1.5; margin: 0; padding-left: 20px;">
-                            <li><strong>X<sub>0</sub></strong>: Semilla (valor inicial)</li>
-                            <li><strong>a</strong>: Multiplicador</li>
-                            <li><strong>c</strong>: Incremento</li>
-                            <li><strong>m</strong>: Módulo</li>
-                        </ul>
-                    </div>
-
-                    <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
-                        <p style="font-size: 0.8rem; margin: 0;">
-                            <strong>Transformación:</strong> U<sub>i</sub> = X<sub>i</sub> / m
-                        </p>
-                    </div>
-
-                    <div style="background: rgba(35, 53, 110, 0.2); padding: 10px; border-radius: 8px; flex-shrink: 0;">
-                        <h4 style="font-size: 0.9rem; margin: 0 0 6px 0; color: var(--uide-accent);">Tipos de GCL</h4>
-                        <ul style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 20px;">
-                            <li><strong>Mixto</strong>: c ≠ 0</li>
-                            <li><strong>Multiplicativo</strong>: c = 0</li>
-                        </ul>
+            <!-- Fila superior: Fórmula y Tipos -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 12px;">
+                <div style="background: rgba(35, 53, 110, 0.3); padding: 12px; border-radius: 8px; border: 2px solid var(--uide-accent);">
+                    <h3 style="font-size: 1rem; margin: 0 0 8px 0; color: var(--uide-accent);">Fórmula Recursiva</h3>
+                    <div class="code-block" style="font-size: 0.95rem; padding: 10px; margin-bottom: 8px; text-align: center;">X<sub>i+1</sub> = (a · X<sub>i</sub> + c) mod m</div>
+                    <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px; font-size: 0.75rem; color: #cbd5e1; line-height: 1.4;">
+                        <p style="margin: 0 0 4px 0;"><strong style="color: #4ade80;">¿Cómo funciona?</strong></p>
+                        <p style="margin: 0 0 3px 0;">1. Multiplica el número anterior por <strong>a</strong></p>
+                        <p style="margin: 0 0 3px 0;">2. Suma el incremento <strong>c</strong></p>
+                        <p style="margin: 0;">3. Aplica módulo <strong>m</strong> (resto de división)</p>
                     </div>
                 </div>
 
-                <!-- Columna Derecha: Calculadora Interactiva -->
+                <div style="display: grid; grid-template-rows: auto 1fr; gap: 10px;">
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 10px; border-radius: 8px; border: 2px solid var(--uide-primary);">
+                        <h3 style="font-size: 0.95rem; margin: 0 0 6px 0; color: var(--uide-primary); text-align: center;">Tipos de GCL</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                            <div style="background: rgba(233, 171, 33, 0.2); padding: 8px; border-radius: 6px; text-align: center;">
+                                <div style="font-size: 0.85rem; font-weight: 600; color: var(--uide-accent); margin-bottom: 4px;">Mixto</div>
+                                <div style="font-size: 0.75rem; color: #cbd5e1;">c ≠ 0</div>
+                            </div>
+                            <div style="background: rgba(145, 0, 72, 0.2); padding: 8px; border-radius: 6px; text-align: center;">
+                                <div style="font-size: 0.85rem; font-weight: 600; color: var(--uide-primary); margin-bottom: 4px;">Multiplicativo</div>
+                                <div style="font-size: 0.75rem; color: #cbd5e1;">c = 0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid var(--uide-accent);">
+                        <p style="font-size: 0.8rem; margin: 0 0 6px 0; font-weight: 600;">
+                            <strong>Transformación a U(0,1):</strong>
+                        </p>
+                        <div class="code-block" style="font-size: 0.85rem; padding: 6px; margin-bottom: 6px; text-align: center;">U<sub>i</sub> = X<sub>i</sub> / m</div>
+                        <div style="font-size: 0.7rem; color: #cbd5e1; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 4px; text-align: center;">
+                            <strong>Ejemplo:</strong> Si X<sub>1</sub>=8 y m=16 → U<sub>1</sub>=8/16=0.5
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fila inferior: 2 columnas -->
+            <div style="display: grid; grid-template-columns: 55% 45%; gap: 15px; height: calc(100vh - 360px); max-height: 450px;">
+                <!-- Columna 1: Calculadora Interactiva -->
                 <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 12px; display: flex; flex-direction: column; height: 100%;">
                     <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 10px 0; font-size: 1rem; flex-shrink: 0;">
                         <i class="fas fa-calculator"></i> Calculadora GCL - Paso a Paso
@@ -923,22 +927,30 @@ f(x) = 0  si x ∉ (0,1)</div>
                     <!-- Controles de parámetros -->
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; flex-shrink: 0;">
                         <div>
-                            <label style="font-size: 0.75rem; color: #94a3b8;">Semilla (X₀):</label>
+                            <label style="font-size: 0.75rem; color: #94a3b8;">
+                                Semilla (X₀): <span style="font-size: 0.65rem; color: #64748b;">valor inicial</span>
+                            </label>
                             <input type="number" id="gclSeed" value="7" min="0" max="100"
                                    style="width: 100%; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
                         </div>
                         <div>
-                            <label style="font-size: 0.75rem; color: #94a3b8;">Multiplicador (a):</label>
+                            <label style="font-size: 0.75rem; color: #94a3b8;">
+                                Multiplicador (a): <span style="font-size: 0.65rem; color: #64748b;">dispersión</span>
+                            </label>
                             <input type="number" id="gclA" value="5" min="1" max="100"
                                    style="width: 100%; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
                         </div>
                         <div>
-                            <label style="font-size: 0.75rem; color: #94a3b8;">Incremento (c):</label>
+                            <label style="font-size: 0.75rem; color: #94a3b8;">
+                                Incremento (c): <span style="font-size: 0.65rem; color: #64748b;">desplazamiento</span>
+                            </label>
                             <input type="number" id="gclC" value="3" min="0" max="100"
                                    style="width: 100%; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
                         </div>
                         <div>
-                            <label style="font-size: 0.75rem; color: #94a3b8;">Módulo (m):</label>
+                            <label style="font-size: 0.75rem; color: #94a3b8;">
+                                Módulo (m): <span style="font-size: 0.65rem; color: #64748b;">rango [0, m-1]</span>
+                            </label>
                             <input type="number" id="gclM" value="16" min="2" max="1000"
                                    style="width: 100%; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.8rem;">
                         </div>
@@ -949,7 +961,7 @@ f(x) = 0  si x ∉ (0,1)</div>
                     </button>
 
                     <!-- Área de visualización de pasos -->
-                    <div id="gclStepsContainer" style="flex: 1; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px; overflow-y: auto; min-height: 0; max-height: 350px; scrollbar-width: thin; scrollbar-color: rgba(233, 171, 33, 0.5) rgba(0, 0, 0, 0.3);">
+                    <div id="gclStepsContainer" style="height: 220px; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px; overflow-y: auto; overflow-x: hidden; flex-shrink: 0; scrollbar-width: thin; scrollbar-color: rgba(233, 171, 33, 0.5) rgba(0, 0, 0, 0.3);">
                         <div id="gclSteps" style="font-family: 'Courier New', monospace; font-size: 0.75rem; color: #4ade80; line-height: 1.6;">
                             <div style="color: #94a3b8; font-style: italic;">Configura los parámetros y presiona "Generar Secuencia"...</div>
                         </div>
@@ -990,6 +1002,56 @@ f(x) = 0  si x ∉ (0,1)</div>
                             <div style="font-size: 0.7rem; color: #94a3b8;">Último U<sub>i</sub></div>
                             <div id="gclLastU" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Implementación en Excel y R -->
+                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
+                    <h3 style="font-size: 0.95rem; margin: 0 0 8px 0; text-align: center; color: var(--uide-accent);">
+                        <i class="fas fa-code"></i> Implementación
+                    </h3>
+
+                    <!-- Excel -->
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 10px; border-radius: 8px; border: 2px solid rgba(74, 222, 128, 0.3); flex-shrink: 0;">
+                        <h4 style="font-size: 0.85rem; margin: 0 0 6px 0; color: #4ade80;">
+                            📊 Excel
+                        </h4>
+                        <div style="font-size: 0.7rem; color: #cbd5e1; margin-bottom: 4px;">
+                            <strong>Fórmula X<sub>i</sub>:</strong>
+                        </div>
+                        <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #4ade80; font-family: 'Courier New', monospace; margin-bottom: 6px;">
+                            =MOD(a*X_anterior+c, m)
+                        </code>
+                        <div style="font-size: 0.7rem; color: #cbd5e1; margin-bottom: 4px;">
+                            <strong>Fórmula U<sub>i</sub>:</strong>
+                        </div>
+                        <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #4ade80; font-family: 'Courier New', monospace;">
+                            =X_i/m
+                        </code>
+                    </div>
+
+                    <!-- R -->
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 10px; border-radius: 8px; border: 2px solid rgba(96, 165, 250, 0.3); flex: 1; min-height: 0; overflow-y: auto;">
+                        <h4 style="font-size: 0.85rem; margin: 0 0 6px 0; color: #60a5fa;">
+                            📈 R
+                        </h4>
+                        <div style="font-size: 0.7rem; color: #cbd5e1; margin-bottom: 4px;">
+                            <strong>Función:</strong>
+                        </div>
+                        <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.65rem; color: #60a5fa; font-family: 'Courier New', monospace; line-height: 1.4; margin-bottom: 6px; white-space: pre;">lcg &lt;- function(n, a, c, m, x0) {
+  x &lt;- numeric(n)
+  x[1] &lt;- x0
+  for(i in 2:n) {
+    x[i] &lt;- (a*x[i-1] + c) %% m
+  }
+  return(x / m)
+}</code>
+                        <div style="font-size: 0.7rem; color: #cbd5e1; margin-bottom: 4px;">
+                            <strong>Uso:</strong>
+                        </div>
+                        <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.65rem; color: #60a5fa; font-family: 'Courier New', monospace; line-height: 1.4;">
+                            u &lt;- lcg(10, 5, 3, 16, 7)
+                        </code>
                     </div>
                 </div>
             </div>
