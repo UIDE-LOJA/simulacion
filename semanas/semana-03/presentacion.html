@@ -128,6 +128,86 @@
             </div>
         </div>
 
+        <!-- Slide 3.5: Instalación de R y RStudio -->
+        <div class="slide">
+            <h2><i class="fas fa-download"></i> Instalación de R y RStudio</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; padding: 20px;">
+                <!-- Paso 1: Instalar R -->
+                <div style="background: rgba(35, 53, 110, 0.3); padding: 20px; border-radius: 12px; border: 2px solid var(--uide-accent);">
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <div style="background: var(--uide-accent); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">
+                            <span style="font-size: 2rem; font-weight: 700; color: #0f1419;">1</span>
+                        </div>
+                        <h3 style="color: var(--uide-accent); font-size: 1.3rem; margin: 0;">Instalar R</h3>
+                    </div>
+                    
+                    <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <p style="font-size: 0.9rem; line-height: 1.5; margin: 0 0 10px 0;">
+                            <strong>Requisito:</strong> R 3.6.0+
+                        </p>
+                        <p style="font-size: 0.85rem; line-height: 1.4; color: #cbd5e1; margin: 0;">
+                            Elige la versión de R que coincida con tu sistema operativo.
+                        </p>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <a href="https://cran.r-project.org/bin/windows/base/" target="_blank" 
+                           style="display: inline-block; padding: 12px 24px; background: #4ade80; color: #0f1419; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1rem; transition: all 0.3s;">
+                            <i class="fas fa-download"></i> Descargar R para Windows
+                        </a>
+                    </div>
+
+                    <div style="margin-top: 15px; padding: 10px; background: rgba(145, 0, 72, 0.1); border-radius: 6px; border-left: 4px solid var(--uide-primary);">
+                        <p style="font-size: 0.75rem; margin: 0; color: #cbd5e1;">
+                            <i class="fas fa-info-circle"></i> <strong>Nota:</strong> R no es un producto de Posit. Al hacer clic en el enlace, sales del sitio web de Posit.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Paso 2: Instalar RStudio -->
+                <div style="background: rgba(35, 53, 110, 0.3); padding: 20px; border-radius: 12px; border: 2px solid var(--uide-primary);">
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <div style="background: var(--uide-primary); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">
+                            <span style="font-size: 2rem; font-weight: 700; color: white;">2</span>
+                        </div>
+                        <h3 style="color: var(--uide-primary); font-size: 1.3rem; margin: 0;">Instalar RStudio</h3>
+                    </div>
+                    
+                    <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="font-size: 0.85rem; line-height: 1.5;">
+                            <p style="margin: 0 0 8px 0;"><strong>Versión:</strong> 2025.09.2+418</p>
+                            <p style="margin: 0 0 8px 0;"><strong>Tamaño:</strong> 296.74 MB</p>
+                            <p style="margin: 0 0 8px 0;"><strong>Lanzamiento:</strong> 2025-10-29</p>
+                            <p style="margin: 0; font-size: 0.75rem; color: #94a3b8;">
+                                SHA-256: 439d3200
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <a href="https://posit.co/download/rstudio-desktop/" target="_blank" 
+                           style="display: inline-block; padding: 12px 24px; background: var(--uide-primary); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1rem; transition: all 0.3s;">
+                            <i class="fas fa-download"></i> Descargar RStudio Desktop
+                        </a>
+                    </div>
+
+                    <div style="margin-top: 15px; padding: 10px; background: rgba(233, 171, 33, 0.1); border-radius: 6px; border-left: 4px solid var(--uide-accent);">
+                        <p style="font-size: 0.75rem; margin: 0; color: #cbd5e1;">
+                            <i class="fas fa-check-circle"></i> <strong>Recomendado:</strong> Instala primero R, luego RStudio
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instrucciones adicionales -->
+            <div style="text-align: center; margin-top: 20px; padding: 15px; background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid rgba(233, 171, 33, 0.3);">
+                <p style="font-size: 0.95rem; margin: 0; color: #e2e8f0;">
+                    <i class="fas fa-lightbulb"></i> <strong>Después de instalar:</strong> Abre RStudio y verifica que R esté correctamente configurado
+                </p>
+            </div>
+        </div>
+
         <!-- Slide 4: ¿Qué son los Números Pseudoaleatorios? -->
         <div class="slide">
             <h2><i class="fas fa-dice"></i> ¿Qué son los Números Pseudoaleatorios?</h2>
@@ -150,7 +230,58 @@
 
                     <div style="background: rgba(233, 171, 33, 0.1); padding: 12px; border-radius: 8px; border-left: 4px solid var(--uide-accent);">
                         <p style="margin: 0; font-size: 0.9rem;"><strong>Notación:</strong> x ~ U(0,1)</p>
-                        <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: #cbd5e1;">Base para generar cualquier distribución</p>
+                        <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: #cbd5e1;">
+                            Valores siempre entre 0 y 1 • Nunca negativos ni mayores a 1 • Base para cualquier distribución
+                        </p>
+                    </div>
+
+                    <div style="background: rgba(35, 53, 110, 0.2); padding: 10px; border-radius: 8px; border: 1px solid rgba(233, 171, 33, 0.3);">
+                        <h4 style="font-size: 0.95rem; margin: 0 0 6px 0; color: var(--uide-accent);">
+                            <i class="fas fa-lightbulb"></i> ¿Cómo funciona U(0,1)?
+                        </h4>
+                        <div style="font-size: 0.82rem; line-height: 1.5;">
+                            <p style="margin: 0 0 6px 0;"><strong>Ejemplo de secuencia:</strong></p>
+                            <div style="background: rgba(0,0,0,0.3); padding: 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.78rem; color: #4ade80; margin-bottom: 6px;">
+                                0.3721, 0.8456, 0.1234, 0.9087, 0.5612
+                            </div>
+                            <div style="display: grid; grid-template-columns: auto 1fr; gap: 4px 8px; font-size: 0.78rem;">
+                                <span style="color: #4ade80;">✓</span><span style="color: #cbd5e1;">Rango fijo: todos en [0,1]</span>
+                                <span style="color: #4ade80;">✓</span><span style="color: #cbd5e1;">Igual probabilidad en todo el rango</span>
+                                <span style="color: #4ade80;">✓</span><span style="color: #cbd5e1;">Transformables: ×100 → [0,100]</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(15, 20, 25, 0.4); padding: 10px; border-radius: 8px; border: 1px solid rgba(74, 222, 128, 0.3);">
+                        <h4 style="font-size: 0.9rem; margin: 0 0 8px 0; color: #4ade80; text-align: center;">
+                            <i class="fas fa-code"></i> Implementación Práctica
+                        </h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                            <!-- Excel -->
+                            <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px;">
+                                <div style="font-size: 0.75rem; color: #4ade80; margin-bottom: 4px; font-weight: 600;">
+                                    📊 Excel
+                                </div>
+                                <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #e2e8f0; font-family: 'Courier New', monospace; margin-bottom: 4px;">
+                                    =RAND()
+                                </code>
+                                <div style="font-size: 0.65rem; color: #94a3b8; line-height: 1.3;">
+                                    Genera un número aleatorio entre 0 y 1
+                                </div>
+                            </div>
+                            <!-- R -->
+                            <div style="background: rgba(0,0,0,0.3); padding: 8px; border-radius: 6px;">
+                                <div style="font-size: 0.75rem; color: #60a5fa; margin-bottom: 4px; font-weight: 600;">
+                                    📈 R
+                                </div>
+                                <code style="display: block; background: rgba(0,0,0,0.5); padding: 6px; border-radius: 4px; font-size: 0.7rem; color: #e2e8f0; font-family: 'Courier New', monospace; margin-bottom: 4px;">
+                                    runif(10)
+                                </code>
+                                <div style="font-size: 0.65rem; color: #94a3b8; line-height: 1.3;">
+                                    Genera 10 números U(0,1)
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -288,21 +419,55 @@
                         <h3 style="font-size: 1rem; margin-bottom: 6px;">Función de Densidad</h3>
                         <div class="code-block" style="font-size: 0.8rem; padding: 8px;">f(x) = 1  si x ∈ (0,1)
 f(x) = 0  si x ∉ (0,1)</div>
+                        <p style="font-size: 0.75rem; color: #94a3b8; margin: 4px 0 0 0; font-style: italic;">
+                            Probabilidad constante dentro del rango
+                        </p>
                     </div>
                     
                     <div style="flex-shrink: 0;">
                         <h3 style="font-size: 1rem; margin-bottom: 6px;">Parámetros Teóricos</h3>
-                        <ul style="font-size: 0.85rem; line-height: 1.5; margin: 0; padding-left: 20px;">
-                            <li><strong>Media</strong>: μ = 0.5</li>
-                            <li><strong>Varianza</strong>: σ² = 1/12 ≈ 0.0833</li>
-                            <li><strong>Desv. estándar</strong>: σ ≈ 0.2887</li>
-                        </ul>
+                        <div style="font-size: 0.82rem; line-height: 1.6;">
+                            <div style="margin-bottom: 4px;">
+                                <strong>Media (μ) = 0.5</strong>
+                                <span style="font-size: 0.75rem; color: #94a3b8; display: block; margin-left: 8px;">
+                                    Punto central: promedio de 0 y 1
+                                </span>
+                            </div>
+                            <div style="margin-bottom: 4px;">
+                                <strong>Varianza (σ²) = 1/12 ≈ 0.0833</strong>
+                                <span style="font-size: 0.75rem; color: #94a3b8; display: block; margin-left: 8px;">
+                                    Dispersión: qué tan alejados están los valores de 0.5
+                                </span>
+                            </div>
+                            <div>
+                                <strong>Desv. estándar (σ) ≈ 0.2887</strong>
+                                <span style="font-size: 0.75rem; color: #94a3b8; display: block; margin-left: 8px;">
+                                    Raíz de la varianza: √(1/12)
+                                </span>
+                            </div>
+                        </div>
                     </div>
 
                     <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
                         <p style="font-size: 0.8rem; margin: 0;">
-                            <i class="fas fa-info-circle"></i> <strong>Clave:</strong> Todos los valores tienen igual probabilidad
+                            <i class="fas fa-balance-scale"></i> <strong>Uniformidad:</strong> Todos los valores tienen igual probabilidad
                         </p>
+                        <p style="font-size: 0.75rem; color: #cbd5e1; margin: 4px 0 0 0;">
+                            P(0.1) = P(0.5) = P(0.9) = constante
+                        </p>
+                    </div>
+
+                    <div style="background: rgba(35, 53, 110, 0.2); padding: 8px; border-radius: 6px; border: 1px solid rgba(233, 171, 33, 0.2); flex-shrink: 0;">
+                        <div style="font-size: 0.75rem; line-height: 1.4;">
+                            <div style="margin-bottom: 4px;">
+                                <span style="color: #4ade80;">📊 Excel:</span>
+                                <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; color: #e2e8f0; margin-left: 4px;">=RAND()</code>
+                            </div>
+                            <div>
+                                <span style="color: #60a5fa;">📈 R:</span>
+                                <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; color: #e2e8f0; margin-left: 4px;">runif(n)</code>
+                            </div>
+                        </div>
                     </div>
 
                     <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
@@ -395,8 +560,17 @@ f(x) = 0  si x ∉ (0,1)</div>
             
             const ctx = canvas.getContext('2d');
             const rect = canvas.parentElement.getBoundingClientRect();
-            canvas.width = rect.width - 20;
-            canvas.height = rect.height - 20;
+            
+            // Soporte para alta resolución (4K)
+            const dpr = window.devicePixelRatio || 1;
+            const width = rect.width - 20;
+            const height = rect.height - 20;
+            
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+            ctx.scale(dpr, dpr);
 
             const bins = 10;
             const binCounts = new Array(bins).fill(0);
@@ -408,17 +582,17 @@ f(x) = 0  si x ∉ (0,1)</div>
             });
 
             const maxCount = Math.max(...binCounts);
-            const barWidth = canvas.width / bins;
-            const heightScale = (canvas.height - 40) / maxCount;
+            const barWidth = width / bins;
+            const heightScale = (height - 40) / maxCount;
 
             // Limpiar canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, width, height);
 
             // Dibujar barras con animación
             binCounts.forEach((count, i) => {
                 const barHeight = count * heightScale;
                 const x = i * barWidth;
-                const y = canvas.height - barHeight - 20;
+                const y = height - barHeight - 20;
 
                 // Barra
                 ctx.fillStyle = 'rgba(233, 171, 33, 0.7)';
@@ -439,18 +613,18 @@ f(x) = 0  si x ∉ (0,1)</div>
                 ctx.fillStyle = '#94a3b8';
                 ctx.font = '9px Arial';
                 const binLabel = ((i / bins).toFixed(1));
-                ctx.fillText(binLabel, x + barWidth / 2, canvas.height - 5);
+                ctx.fillText(binLabel, x + barWidth / 2, height - 5);
             });
 
             // Línea de referencia (frecuencia esperada)
             const expectedFreq = numbers.length / bins;
-            const expectedY = canvas.height - (expectedFreq * heightScale) - 20;
+            const expectedY = height - (expectedFreq * heightScale) - 20;
             ctx.strokeStyle = '#f472b6';
             ctx.lineWidth = 2;
             ctx.setLineDash([5, 5]);
             ctx.beginPath();
             ctx.moveTo(0, expectedY);
-            ctx.lineTo(canvas.width, expectedY);
+            ctx.lineTo(width, expectedY);
             ctx.stroke();
             ctx.setLineDash([]);
 
@@ -480,7 +654,12 @@ f(x) = 0  si x ∉ (0,1)</div>
                     <div style="flex-shrink: 0;">
                         <h3 style="font-size: 1rem; margin-bottom: 6px;">Requisitos</h3>
                         <ul style="font-size: 0.85rem; line-height: 1.5; margin: 0; padding-left: 20px;">
-                            <li><strong>Periodo grande</strong>: Ciclo extenso</li>
+                            <li>
+                                <strong>Periodo grande</strong>: Ciclo extenso
+                                <div style="font-size: 0.75rem; color: #94a3b8; margin-left: 8px; margin-top: 2px; line-height: 1.3;">
+                                    Cantidad de números antes de repetirse. Ej: periodo = 1000 → genera 1000 números únicos antes de volver al inicio
+                                </div>
+                            </li>
                             <li><strong>Reproducibilidad</strong>: Mismas condiciones → misma secuencia</li>
                             <li><strong>Validación</strong>: Pruebas de correlación</li>
                         </ul>
@@ -490,6 +669,19 @@ f(x) = 0  si x ∉ (0,1)</div>
                         <p style="font-size: 0.8rem; margin: 0;">
                             <i class="fas fa-exclamation-triangle"></i> <strong>Importante:</strong> Evita patrones predecibles
                         </p>
+                    </div>
+
+                    <div style="background: rgba(35, 53, 110, 0.2); padding: 8px; border-radius: 6px; border: 1px solid rgba(145, 0, 72, 0.2); flex-shrink: 0;">
+                        <div style="font-size: 0.75rem; line-height: 1.4;">
+                            <div style="margin-bottom: 4px;">
+                                <span style="color: #4ade80;">📊 Excel:</span>
+                                <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; color: #e2e8f0; margin-left: 4px;">=CORREL(A:A, B:B)</code>
+                            </div>
+                            <div>
+                                <span style="color: #60a5fa;">📈 R:</span>
+                                <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; color: #e2e8f0; margin-left: 4px;">cor(x, y)</code>
+                            </div>
+                        </div>
                     </div>
 
                     <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
@@ -612,33 +804,42 @@ f(x) = 0  si x ∉ (0,1)</div>
             
             const ctx = canvas.getContext('2d');
             const rect = canvas.parentElement.getBoundingClientRect();
-            canvas.width = rect.width - 20;
-            canvas.height = rect.height - 20;
+            
+            // Soporte para alta resolución (4K)
+            const dpr = window.devicePixelRatio || 1;
+            const width = rect.width - 20;
+            const height = rect.height - 20;
+            
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+            ctx.scale(dpr, dpr);
 
             // Limpiar canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, width, height);
 
             const padding = 40;
-            const plotWidth = canvas.width - 2 * padding;
-            const plotHeight = canvas.height - 2 * padding;
+            const plotWidth = width - 2 * padding;
+            const plotHeight = height - 2 * padding;
 
             // Dibujar ejes
             ctx.strokeStyle = '#64748b';
             ctx.lineWidth = 2;
             ctx.beginPath();
             ctx.moveTo(padding, padding);
-            ctx.lineTo(padding, canvas.height - padding);
-            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.lineTo(padding, height - padding);
+            ctx.lineTo(width - padding, height - padding);
             ctx.stroke();
 
             // Etiquetas de ejes
             ctx.fillStyle = '#94a3b8';
             ctx.font = '12px Arial';
             ctx.textAlign = 'center';
-            ctx.fillText('X_i', canvas.width / 2, canvas.height - 10);
+            ctx.fillText('X_i', width / 2, height - 10);
             
             ctx.save();
-            ctx.translate(15, canvas.height / 2);
+            ctx.translate(15, height / 2);
             ctx.rotate(-Math.PI / 2);
             ctx.fillText('X_{i+1}', 0, 0);
             ctx.restore();
@@ -646,7 +847,7 @@ f(x) = 0  si x ∉ (0,1)</div>
             // Dibujar puntos
             pairs.forEach((pair, index) => {
                 const px = padding + pair.x * plotWidth;
-                const py = canvas.height - padding - pair.y * plotHeight;
+                const py = height - padding - pair.y * plotHeight;
                 
                 ctx.fillStyle = 'rgba(145, 0, 72, 0.6)';
                 ctx.beginPath();
@@ -661,12 +862,12 @@ f(x) = 0  si x ∉ (0,1)</div>
                 const pos = padding + (i / 4) * plotWidth;
                 ctx.beginPath();
                 ctx.moveTo(pos, padding);
-                ctx.lineTo(pos, canvas.height - padding);
+                ctx.lineTo(pos, height - padding);
                 ctx.stroke();
                 
                 ctx.beginPath();
                 ctx.moveTo(padding, padding + (i / 4) * plotHeight);
-                ctx.lineTo(canvas.width - padding, padding + (i / 4) * plotHeight);
+                ctx.lineTo(width - padding, padding + (i / 4) * plotHeight);
                 ctx.stroke();
             }
         }
@@ -932,6 +1133,19 @@ f(x) = 0  si x ∉ (0,1)</div>
                         </p>
                     </div>
 
+                    <div style="background: rgba(35, 53, 110, 0.2); padding: 8px; border-radius: 6px; border: 1px solid rgba(233, 171, 33, 0.2); flex-shrink: 0;">
+                        <div style="font-size: 0.75rem; line-height: 1.4;">
+                            <div style="margin-bottom: 4px;">
+                                <span style="color: #4ade80;">📊 Excel:</span>
+                                <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; color: #e2e8f0; margin-left: 4px;">=MOD(a*x+c, m)</code>
+                            </div>
+                            <div>
+                                <span style="color: #60a5fa;">📈 R:</span>
+                                <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; color: #e2e8f0; margin-left: 4px;">(a*x + c) %% m</code>
+                            </div>
+                        </div>
+                    </div>
+
                     <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
                         <button id="generatePeriodBtn" style="padding: 8px 16px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; width: 100%;">
                             <i class="fas fa-play"></i> Visualizar Periodo
@@ -1030,10 +1244,17 @@ f(x) = 0  si x ∉ (0,1)</div>
             
             const container = canvas.parentElement;
             const size = Math.min(container.clientWidth, container.clientHeight) - 40;
-            canvas.width = size;
-            canvas.height = size;
+            
+            // Soporte para alta resolución (4K)
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = size * dpr;
+            canvas.height = size * dpr;
+            canvas.style.width = size + 'px';
+            canvas.style.height = size + 'px';
             
             const ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+            
             const centerX = size / 2;
             const centerY = size / 2;
             const radius = size * 0.35;
@@ -1168,6 +1389,19 @@ f(x) = 0  si x ∉ (0,1)</div>
                         <p style="font-size: 0.75rem; margin: 0;">
                             <i class="fas fa-info-circle"></i> <strong>H<sub>0</sub>:</strong> Datos ~ U(0,1)
                         </p>
+                    </div>
+
+                    <div style="background: rgba(35, 53, 110, 0.2); padding: 6px; border-radius: 6px; border: 1px solid rgba(233, 171, 33, 0.2); flex-shrink: 0;">
+                        <div style="font-size: 0.7rem; line-height: 1.3;">
+                            <div style="margin-bottom: 3px;">
+                                <span style="color: #4ade80;">📊 Excel:</span>
+                                <code style="background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; display: block; margin-top: 2px;">=MAX(ABS(rango))</code>
+                            </div>
+                            <div>
+                                <span style="color: #60a5fa;">📈 R:</span>
+                                <code style="background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; display: block; margin-top: 2px;">ks.test(x, "punif")</code>
+                            </div>
+                        </div>
                     </div>
 
                     <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
@@ -1305,35 +1539,44 @@ f(x) = 0  si x ∉ (0,1)</div>
             
             const container = canvas.parentElement;
             const rect = container.getBoundingClientRect();
-            // Ajustar al tamaño del contenedor
-            canvas.width = Math.max(rect.width - 20, 300);
-            canvas.height = Math.max(rect.height - 20, 300);
+            
+            // Soporte para alta resolución (4K)
+            const dpr = window.devicePixelRatio || 1;
+            const width = Math.max(rect.width - 20, 300);
+            const height = Math.max(rect.height - 20, 300);
+            
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
             
             const ctx = canvas.getContext('2d');
+            ctx.scale(dpr, dpr);
+            
             const padding = 40;
-            const plotWidth = canvas.width - 2 * padding;
-            const plotHeight = canvas.height - 2 * padding;
+            const plotWidth = width - 2 * padding;
+            const plotHeight = height - 2 * padding;
             
             // Limpiar canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, width, height);
             
             // Dibujar ejes
             ctx.strokeStyle = '#64748b';
             ctx.lineWidth = 2;
             ctx.beginPath();
             ctx.moveTo(padding, padding);
-            ctx.lineTo(padding, canvas.height - padding);
-            ctx.lineTo(canvas.width - padding, canvas.height - padding);
+            ctx.lineTo(padding, height - padding);
+            ctx.lineTo(width - padding, height - padding);
             ctx.stroke();
             
             // Etiquetas de ejes
             ctx.fillStyle = '#94a3b8';
             ctx.font = '12px Arial';
             ctx.textAlign = 'center';
-            ctx.fillText('x', canvas.width / 2, canvas.height - 10);
+            ctx.fillText('x', width / 2, height - 10);
             
             ctx.save();
-            ctx.translate(15, canvas.height / 2);
+            ctx.translate(15, height / 2);
             ctx.rotate(-Math.PI / 2);
             ctx.fillText('F(x)', 0, 0);
             ctx.restore();
@@ -1342,14 +1585,14 @@ f(x) = 0  si x ∉ (0,1)</div>
             ctx.strokeStyle = '#60a5fa';
             ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.moveTo(padding, canvas.height - padding);
-            ctx.lineTo(canvas.width - padding, padding);
+            ctx.moveTo(padding, height - padding);
+            ctx.lineTo(width - padding, padding);
             ctx.stroke();
             
             // Etiqueta línea teórica
             ctx.fillStyle = '#60a5fa';
             ctx.font = '10px Arial';
-            ctx.fillText('Teórica F(x)=x', canvas.width - padding - 60, padding + 20);
+            ctx.fillText('Teórica F(x)=x', width - padding - 60, padding + 20);
             
             // Dibujar función empírica (escalonada)
             ctx.strokeStyle = '#4ade80';
@@ -1357,11 +1600,11 @@ f(x) = 0  si x ∉ (0,1)</div>
             ctx.beginPath();
             
             let prevX = padding;
-            let prevY = canvas.height - padding;
+            let prevY = height - padding;
             
             empirical.forEach((point, i) => {
                 const x = padding + point.x * plotWidth;
-                const y = canvas.height - padding - point.y * plotHeight;
+                const y = height - padding - point.y * plotHeight;
                 
                 // Línea horizontal
                 ctx.lineTo(x, prevY);
@@ -1381,8 +1624,8 @@ f(x) = 0  si x ∉ (0,1)</div>
             // Dibujar línea de máxima desviación
             if (maxPoint) {
                 const x = padding + maxPoint.x * plotWidth;
-                const yEmp = canvas.height - padding - maxPoint.y * plotHeight;
-                const yTheo = canvas.height - padding - maxPoint.theoretical * plotHeight;
+                const yEmp = height - padding - maxPoint.y * plotHeight;
+                const yTheo = height - padding - maxPoint.theoretical * plotHeight;
                 
                 ctx.strokeStyle = passed ? '#fbbf24' : '#f87171';
                 ctx.lineWidth = 3;
@@ -1428,6 +1671,19 @@ f(x) = 0  si x ∉ (0,1)</div>
                         <p style="font-size: 0.75rem; margin: 0; line-height: 1.3;">
                             <i class="fas fa-exclamation-triangle"></i> <strong>Nota:</strong> Min. 5 obs. por clase
                         </p>
+                    </div>
+
+                    <div style="background: rgba(35, 53, 110, 0.2); padding: 6px; border-radius: 6px; border: 1px solid rgba(145, 0, 72, 0.2); flex-shrink: 0;">
+                        <div style="font-size: 0.7rem; line-height: 1.3;">
+                            <div style="margin-bottom: 3px;">
+                                <span style="color: #4ade80;">📊 Excel:</span>
+                                <code style="background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; display: block; margin-top: 2px;">=CHISQ.TEST(Fo, Fe)</code>
+                            </div>
+                            <div>
+                                <span style="color: #60a5fa;">📈 R:</span>
+                                <code style="background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; display: block; margin-top: 2px;">chisq.test(obs, p)</code>
+                            </div>
+                        </div>
                     </div>
 
                     <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
@@ -1671,6 +1927,18 @@ f(x) = 0  si x ∉ (0,1)</div>
                             <li><strong>Fundamento</strong>: Datos uniformes → promedio = 0.5</li>
                             <li><strong>Detecta</strong>: Sesgo en generación</li>
                         </ul>
+                        <div style="background: rgba(35, 53, 110, 0.2); padding: 6px; border-radius: 6px; border: 1px solid rgba(233, 171, 33, 0.2); margin-top: 8px;">
+                            <div style="font-size: 0.7rem; line-height: 1.3;">
+                                <div style="margin-bottom: 3px;">
+                                    <span style="color: #4ade80;">📊 Excel:</span>
+                                    <code style="background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; display: block; margin-top: 2px;">=AVERAGE(rango)</code>
+                                </div>
+                                <div>
+                                    <span style="color: #60a5fa;">📈 R:</span>
+                                    <code style="background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; display: block; margin-top: 2px;">mean(x)</code>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1731,6 +1999,18 @@ f(x) = 0  si x ∉ (0,1)</div>
                             <li><strong>Fundamento</strong>: Teoría de U(0,1)</li>
                             <li><strong>Detecta</strong>: Dispersión anormal</li>
                         </ul>
+                        <div style="background: rgba(35, 53, 110, 0.2); padding: 6px; border-radius: 6px; border: 1px solid rgba(96, 165, 250, 0.2); margin-top: 8px;">
+                            <div style="font-size: 0.7rem; line-height: 1.3;">
+                                <div style="margin-bottom: 3px;">
+                                    <span style="color: #4ade80;">📊 Excel:</span>
+                                    <code style="background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; display: block; margin-top: 2px;">=VAR.P(rango)</code>
+                                </div>
+                                <div>
+                                    <span style="color: #60a5fa;">📈 R:</span>
+                                    <code style="background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; display: block; margin-top: 2px;">var(x)</code>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
