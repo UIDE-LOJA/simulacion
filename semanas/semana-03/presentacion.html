@@ -1564,101 +1564,100 @@ cor(x, y)</code>
 
         <!-- Slide 8: Periodo Máximo -->
         <div class="slide">
-            <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-sync-alt"></i> Periodo Máximo: Teorema de Hull-Dobell</h2>
-            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid var(--uide-accent);">
-                <p style="margin: 0; font-size: 0.8rem; color: #e2e8f0;">
+            <h2 style="margin-bottom: 0.4rem;"><i class="fas fa-sync-alt"></i> Periodo Máximo: Teorema de Hull-Dobell</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 8px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.75rem; color: #e2e8f0;">
                     <i class="fas fa-university"></i> <strong>Caso:</strong> Garantiza que podemos simular muchos días sin repetir patrones de llegada
                 </p>
             </div>
             
-            <div style="display: grid; grid-template-columns: 40% 60%; gap: 20px; height: calc(100vh - 250px); max-height: 590px;">
+            <div style="display: grid; grid-template-columns: 38% 62%; gap: 15px; padding: 0 12px; height: calc(100vh - 190px); max-height: 610px;">
                 <!-- Columna Izquierda: Teoría -->
-                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
-                    <div style="flex-shrink: 0;">
-                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Definición de Periodo</h3>
-                        <ul style="font-size: 0.85rem; line-height: 1.5; margin: 0; padding-left: 20px;">
+                <div style="display: flex; flex-direction: column; gap: 8px; overflow-y: auto; height: 100%;">
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 10px; border-radius: 8px; border: 2px solid var(--uide-accent);">
+                        <h3 style="font-size: 0.9rem; margin: 0 0 6px 0; color: var(--uide-accent);">Definición de Periodo</h3>
+                        <ul style="font-size: 0.75rem; line-height: 1.4; margin: 0; padding-left: 18px;">
                             <li><strong>Periodo (p)</strong>: Longitud antes de repetirse</li>
-                            <li><strong>Máximo</strong>: p = m (periodo completo)</li>
-                            <li><strong>Importancia</strong>: Mayor periodo = mayor calidad</li>
+                            <li style="margin-top: 3px;"><strong>Máximo</strong>: p = m (periodo completo)</li>
+                            <li style="margin-top: 3px;"><strong>Importancia</strong>: Mayor periodo = mayor calidad</li>
                         </ul>
                     </div>
                     
-                    <div style="flex-shrink: 0;">
-                        <h3 style="font-size: 1rem; margin-bottom: 6px;">Condiciones Hull-Dobell (p = m)</h3>
-                        <ol style="font-size: 0.8rem; line-height: 1.5; margin: 0; padding-left: 20px;">
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 10px; border-radius: 8px; border: 2px solid rgba(74, 222, 128, 0.3);">
+                        <h3 style="font-size: 0.9rem; margin: 0 0 6px 0; color: #4ade80;">Condiciones Hull-Dobell (p = m)</h3>
+                        <ol style="font-size: 0.7rem; line-height: 1.4; margin: 0; padding-left: 18px;">
                             <li>gcd(c, m) = 1</li>
-                            <li>(a - 1) es múltiplo de factores primos de m</li>
-                            <li>Si 4|m entonces 4|(a - 1)</li>
+                            <li style="margin-top: 3px;">(a - 1) es múltiplo de factores primos de m</li>
+                            <li style="margin-top: 3px;">Si 4|m entonces 4|(a - 1)</li>
                         </ol>
                     </div>
 
-                    <div style="background: rgba(233, 171, 33, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
-                        <p style="font-size: 0.8rem; margin: 0;">
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 8px; border-radius: 6px; border-left: 4px solid var(--uide-accent);">
+                        <p style="font-size: 0.7rem; margin: 0;">
                             <i class="fas fa-info-circle"></i> Garantiza máxima longitud sin repetición
                         </p>
                     </div>
 
-                    <div style="background: rgba(35, 53, 110, 0.2); padding: 8px; border-radius: 6px; border: 1px solid rgba(233, 171, 33, 0.2); flex-shrink: 0;">
-                        <div style="font-size: 0.75rem; line-height: 1.4;">
-                            <div style="margin-bottom: 4px;">
+                    <div style="background: rgba(35, 53, 110, 0.2); padding: 8px; border-radius: 6px; border: 1px solid rgba(233, 171, 33, 0.2);">
+                        <div style="font-size: 0.7rem; line-height: 1.3;">
+                            <div style="margin-bottom: 3px;">
                                 <span style="color: #4ade80;">📊 Excel:</span>
-                                <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; color: #e2e8f0; margin-left: 4px;">=MOD(a*x+c, m)</code>
-                                <code style="background: rgba(0,0,0,0.25); padding: 2px 6px; border-radius: 3px; font-size: 0.65rem; color: #cbd5e1; margin-left: 4px; font-style: italic;">=RESIDUO(a*x+c, m)</code>
+                                <code style="background: rgba(0,0,0,0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; margin-left: 4px;">=MOD(a*x+c, m)</code>
                             </div>
                             <div>
                                 <span style="color: #60a5fa;">📈 R:</span>
-                                <code style="background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; font-size: 0.7rem; color: #e2e8f0; margin-left: 4px;">(a*x + c) %% m</code>
+                                <code style="background: rgba(0,0,0,0.3); padding: 2px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; margin-left: 4px;">(a*x + c) %% m</code>
                             </div>
                         </div>
                     </div>
 
-                    <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
-                        <button id="generatePeriodBtn" style="padding: 8px 16px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; width: 100%;">
+                    <div style="text-align: center; margin-top: auto;">
+                        <button id="generatePeriodBtn" style="padding: 8px 12px; background: var(--uide-accent); color: #0f1419; border: none; border-radius: 6px; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
                             <i class="fas fa-play"></i> Visualizar Periodo
                         </button>
-                        <div style="margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 0.75rem;">
+                        <div style="margin-top: 6px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 0.7rem;">
                             <div>
-                                <label style="color: #e2e8f0;">m:</label>
+                                <label style="color: #e2e8f0; font-weight: 600;">m:</label>
                                 <input type="number" id="periodM" value="16" min="4" max="32" step="4"
-                                       style="width: 100%; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                       style="width: 100%; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.7rem; text-align: center; font-weight: 600;">
                             </div>
                             <div>
-                                <label style="color: #e2e8f0;">a:</label>
+                                <label style="color: #e2e8f0; font-weight: 600;">a:</label>
                                 <input type="number" id="periodA" value="5" min="1" max="20"
-                                       style="width: 100%; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                       style="width: 100%; padding: 4px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-accent); color: white; border-radius: 4px; font-size: 0.7rem; text-align: center; font-weight: 600;">
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Columna Derecha: Visualización Circular -->
-                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 12px; display: flex; flex-direction: column; height: 100%;">
-                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 4px 0; font-size: 1rem; flex-shrink: 0;">
+                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-accent); padding: 12px; display: flex; flex-direction: column; height: 100%; overflow: hidden;">
+                    <h3 style="text-align: center; color: var(--uide-accent); margin: 0 0 6px 0; font-size: 0.95rem; flex-shrink: 0;">
                         <i class="fas fa-circle-notch"></i> Visualización Circular del Periodo
                     </h3>
-                    <p style="text-align: center; font-size: 0.7rem; color: #94a3b8; margin: 0 0 8px 0; font-style: italic;">
+                    <p style="text-align: center; font-size: 0.7rem; color: #94a3b8; margin: 0 0 8px 0; font-style: italic; flex-shrink: 0;">
                         <i class="fas fa-university"></i> Secuencia de llegadas antes de repetirse
                     </p>
                     
                     <!-- Canvas para visualización circular -->
-                    <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; height: 400px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                        <canvas id="periodCircle"></canvas>
-                        <div id="periodAnimation" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: var(--uide-accent); font-size: 0.9rem; pointer-events: none;"></div>
+                    <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; flex: 1; min-height: 0; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <canvas id="periodCircle" style="max-width: 100%; max-height: 100%;"></canvas>
+                        <div id="periodAnimation" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: var(--uide-accent); font-size: 0.85rem; pointer-events: none;"></div>
                     </div>
 
                     <!-- Estadísticas del periodo -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 10px; flex-shrink: 0;">
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Periodo (p)</div>
-                            <div id="periodValue" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; flex-shrink: 0;">
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8; margin-bottom: 3px;">Periodo (p)</div>
+                            <div id="periodValue" style="font-size: 1.1rem; font-weight: 700; color: var(--uide-accent);">-</div>
                         </div>
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Módulo (m)</div>
-                            <div id="periodModulo" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8; margin-bottom: 3px;">Módulo (m)</div>
+                            <div id="periodModulo" style="font-size: 1.1rem; font-weight: 700; color: var(--uide-accent);">-</div>
                         </div>
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.7rem; color: #94a3b8;">Eficiencia</div>
-                            <div id="periodEfficiency" style="font-size: 1rem; font-weight: 600; color: var(--uide-accent);">-</div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.7rem; color: #94a3b8; margin-bottom: 3px;">Eficiencia</div>
+                            <div id="periodEfficiency" style="font-size: 1.1rem; font-weight: 700; color: var(--uide-accent);">-</div>
                         </div>
                     </div>
                 </div>
@@ -2135,114 +2134,113 @@ cor(x, y)</code>
 
         <!-- Slide 11: Prueba Chi-Cuadrado -->
         <div class="slide">
-            <h2 style="margin-bottom: 0.5rem;"><i class="fas fa-chart-pie"></i> Prueba Chi-Cuadrado (χ²)</h2>
-            <div style="background: rgba(233, 171, 33, 0.15); padding: 6px 12px; border-radius: 6px; margin-bottom: 10px; border-left: 4px solid var(--uide-accent);">
-                <p style="margin: 0; font-size: 0.8rem; color: #e2e8f0;">
-                    <i class="fas fa-university"></i> <strong>Caso:</strong> Confirma que las llegadas se distribuyen uniformemente en intervalos de tiempo
+            <h2 style="margin-bottom: 0.4rem;"><i class="fas fa-chart-pie"></i> Prueba Chi-Cuadrado (χ²)</h2>
+            <div style="background: rgba(233, 171, 33, 0.15); padding: 5px 10px; border-radius: 6px; margin-bottom: 6px; border-left: 4px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 0.7rem; color: #e2e8f0;">
+                    <i class="fas fa-university"></i> <strong>Caso:</strong> Confirma que las llegadas se distribuyen uniformemente en intervalos
                 </p>
             </div>
             
-            <div style="display: grid; grid-template-columns: 20% 55% 25%; gap: 15px; height: calc(100vh - 250px); max-height: 590px;">
+            <div style="display: grid; grid-template-columns: 22% 56% 22%; gap: 12px; padding: 0 10px; height: calc(100vh - 180px); max-height: 620px;">
                 <!-- Columna 1: Información -->
-                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
-                    <div style="flex-shrink: 0;">
-                        <h3 style="font-size: 0.95rem; margin-bottom: 6px;">También Conocida</h3>
-                        <ul style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 18px;">
+                <div style="display: flex; flex-direction: column; gap: 8px; height: 100%;">
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; border: 2px solid var(--uide-accent);">
+                        <h3 style="font-size: 0.8rem; margin: 0 0 5px 0; color: var(--uide-accent);">También Conocida</h3>
+                        <ul style="font-size: 0.7rem; line-height: 1.3; margin: 0; padding-left: 16px;">
                             <li>Prueba de Pearson</li>
                             <li>Prueba de frecuencias</li>
                         </ul>
                     </div>
                     
-                    <div style="flex-shrink: 0;">
-                        <h3 style="font-size: 0.95rem; margin-bottom: 6px;">Metodología</h3>
-                        <ul style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 18px;">
-                            <li><strong>Mide</strong>: Discrepancia F<sub>o</sub> vs F<sub>e</sub></li>
-                            <li><strong>Principio</strong>: Frecuencias ≈ iguales</li>
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; border: 2px solid rgba(74, 222, 128, 0.3);">
+                        <h3 style="font-size: 0.8rem; margin: 0 0 5px 0; color: #4ade80;">Metodología</h3>
+                        <ul style="font-size: 0.7rem; line-height: 1.3; margin: 0; padding-left: 16px;">
+                            <li><strong>Mide:</strong> F<sub>o</sub> vs F<sub>e</sub></li>
+                            <li><strong>Principio:</strong> Frec. ≈ iguales</li>
                         </ul>
                     </div>
 
-                    <div style="background: rgba(145, 0, 72, 0.1); padding: 8px; border-radius: 8px; border-left: 4px solid var(--uide-primary); flex-shrink: 0;">
-                        <p style="font-size: 0.75rem; margin: 0; line-height: 1.3;">
-                            <i class="fas fa-exclamation-triangle"></i> <strong>Nota:</strong> Min. 5 obs. por clase
+                    <div style="background: rgba(145, 0, 72, 0.1); padding: 6px; border-radius: 6px; border-left: 4px solid var(--uide-primary);">
+                        <p style="font-size: 0.65rem; margin: 0; line-height: 1.2;">
+                            <i class="fas fa-exclamation-triangle"></i> <strong>Nota:</strong> Min. 5 obs/clase
                         </p>
                     </div>
 
-                    <div style="background: rgba(35, 53, 110, 0.2); padding: 6px; border-radius: 6px; border: 1px solid rgba(145, 0, 72, 0.2); flex-shrink: 0;">
-                        <div style="font-size: 0.7rem; line-height: 1.3;">
+                    <div style="background: rgba(35, 53, 110, 0.2); padding: 6px; border-radius: 6px; border: 1px solid rgba(145, 0, 72, 0.2);">
+                        <div style="font-size: 0.65rem; line-height: 1.2;">
                             <div style="margin-bottom: 3px;">
                                 <span style="color: #4ade80;">📊 Excel:</span>
-                                <code style="background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; display: block; margin-top: 2px;">=CHISQ.TEST(Fo, Fe)</code>
-                                <code style="background: rgba(0,0,0,0.25); padding: 1px 4px; border-radius: 3px; font-size: 0.6rem; color: #cbd5e1; display: block; margin-top: 2px; font-style: italic;">=PRUEBA.CHI(Fo, Fe)</code>
+                                <code style="background: rgba(0,0,0,0.3); padding: 1px 3px; border-radius: 2px; font-size: 0.6rem; color: #e2e8f0; display: block; margin-top: 2px;">=CHISQ.TEST(Fo, Fe)</code>
                             </div>
                             <div>
                                 <span style="color: #60a5fa;">📈 R:</span>
-                                <code style="background: rgba(0,0,0,0.3); padding: 1px 4px; border-radius: 3px; font-size: 0.65rem; color: #e2e8f0; display: block; margin-top: 2px;">chisq.test(obs, p)</code>
+                                <code style="background: rgba(0,0,0,0.3); padding: 1px 3px; border-radius: 2px; font-size: 0.6rem; color: #e2e8f0; display: block; margin-top: 2px;">chisq.test(obs, p)</code>
                             </div>
                         </div>
                     </div>
 
-                    <div style="text-align: center; margin-top: auto; flex-shrink: 0;">
-                        <button id="generateChiBtn" style="padding: 8px 12px; background: var(--uide-primary); color: white; border: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; width: 100%;">
+                    <div style="text-align: center; margin-top: auto;">
+                        <button id="generateChiBtn" style="padding: 8px 10px; background: var(--uide-primary); color: white; border: none; border-radius: 6px; font-weight: 700; font-size: 0.8rem; cursor: pointer; transition: all 0.3s; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
                             <i class="fas fa-play"></i> Ejecutar
                         </button>
-                        <div style="margin-top: 6px; font-size: 0.75rem;">
-                            <label style="color: #e2e8f0;">n = </label>
+                        <div style="margin-top: 5px; font-size: 0.7rem;">
+                            <label style="color: #e2e8f0; font-weight: 600;">n = </label>
                             <input type="number" id="chiCount" value="100" min="50" max="500" step="50"
-                                   style="width: 60px; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-primary); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                   style="width: 55px; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-primary); color: white; border-radius: 4px; font-size: 0.7rem; text-align: center; font-weight: 600;">
                         </div>
-                        <div style="margin-top: 4px; font-size: 0.75rem;">
-                            <label style="color: #e2e8f0;">K = </label>
+                        <div style="margin-top: 3px; font-size: 0.7rem;">
+                            <label style="color: #e2e8f0; font-weight: 600;">K = </label>
                             <input type="number" id="chiClasses" value="10" min="5" max="20"
-                                   style="width: 60px; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-primary); color: white; border-radius: 4px; font-size: 0.75rem;">
+                                   style="width: 55px; padding: 3px; background: rgba(255,255,255,0.1); border: 1px solid var(--uide-primary); color: white; border-radius: 4px; font-size: 0.7rem; text-align: center; font-weight: 600;">
                         </div>
                     </div>
                 </div>
 
                 <!-- Columna 2: Visualización (Centro) -->
-                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-primary); padding: 12px; display: flex; flex-direction: column; height: 100%; min-height: 0;">
-                    <h3 style="text-align: center; color: var(--uide-primary); margin: 0 0 4px 0; font-size: 0.95rem; flex-shrink: 0;">
+                <div style="background: rgba(15, 20, 25, 0.6); border-radius: 10px; border: 2px solid var(--uide-primary); padding: 12px; display: flex; flex-direction: column; height: 100%; overflow: hidden;">
+                    <h3 style="text-align: center; color: var(--uide-primary); margin: 0 0 4px 0; font-size: 0.9rem; flex-shrink: 0;">
                         <i class="fas fa-chart-bar"></i> Frecuencias Observadas vs Esperadas
                     </h3>
-                    <p style="text-align: center; font-size: 0.65rem; color: #94a3b8; margin: 0 0 8px 0; font-style: italic;">
-                        <i class="fas fa-university"></i> Llegadas por intervalo: simuladas vs esperadas
+                    <p style="text-align: center; font-size: 0.65rem; color: #94a3b8; margin: 0 0 8px 0; font-style: italic; flex-shrink: 0;">
+                        <i class="fas fa-university"></i> Llegadas por intervalo
                     </p>
                     
                     <!-- Canvas para el histograma Chi-Cuadrado -->
                     <div style="position: relative; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 8px; flex: 1; min-height: 0; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                        <canvas id="chiCanvas"></canvas>
+                        <canvas id="chiCanvas" style="max-width: 100%; max-height: 100%;"></canvas>
                     </div>
 
                     <!-- Resultados de la prueba -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 10px; flex-shrink: 0;">
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.65rem; color: #94a3b8;">χ² Calculado</div>
-                            <div id="chiSquare" style="font-size: 0.95rem; font-weight: 600; color: var(--uide-primary);">-</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; flex-shrink: 0;">
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.65rem; color: #94a3b8; margin-bottom: 3px;">χ² Calculado</div>
+                            <div id="chiSquare" style="font-size: 1rem; font-weight: 700; color: var(--uide-primary);">-</div>
                         </div>
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.65rem; color: #94a3b8;">χ² Crítico</div>
-                            <div id="chiCritical" style="font-size: 0.95rem; font-weight: 600; color: var(--uide-primary);">-</div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.65rem; color: #94a3b8; margin-bottom: 3px;">χ² Crítico</div>
+                            <div id="chiCritical" style="font-size: 1rem; font-weight: 700; color: var(--uide-primary);">-</div>
                         </div>
-                        <div style="background: rgba(35, 53, 110, 0.3); padding: 6px; border-radius: 6px; text-align: center;">
-                            <div style="font-size: 0.65rem; color: #94a3b8;">Resultado</div>
-                            <div id="chiResult" style="font-size: 0.8rem; font-weight: 600; color: var(--uide-primary);">-</div>
+                        <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; text-align: center;">
+                            <div style="font-size: 0.65rem; color: #94a3b8; margin-bottom: 3px;">Resultado</div>
+                            <div id="chiResult" style="font-size: 0.75rem; font-weight: 700; color: var(--uide-primary);">-</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Columna 3: Procedimiento -->
-                <div style="display: flex; flex-direction: column; gap: 10px; height: 100%;">
-                    <div style="flex-shrink: 0;">
-                        <h3 style="font-size: 0.95rem; margin-bottom: 6px;">Procedimiento</h3>
-                        <ol style="font-size: 0.8rem; line-height: 1.4; margin: 0; padding-left: 18px;">
+                <div style="display: flex; flex-direction: column; gap: 8px; height: 100%;">
+                    <div style="background: rgba(35, 53, 110, 0.3); padding: 8px; border-radius: 6px; border: 2px solid rgba(96, 165, 250, 0.3);">
+                        <h3 style="font-size: 0.8rem; margin: 0 0 5px 0; color: #60a5fa;">Procedimiento</h3>
+                        <ol style="font-size: 0.7rem; line-height: 1.3; margin: 0; padding-left: 16px;">
                             <li>Agrupar en K clases</li>
-                            <li>Calcular F<sub>o</sub> y F<sub>e</sub></li>
-                            <li>Computar χ² = Σ(F<sub>o</sub>-F<sub>e</sub>)²/F<sub>e</sub></li>
-                            <li>Comparar con χ²<sub>α,K-1</sub></li>
+                            <li style="margin-top: 2px;">Calcular F<sub>o</sub> y F<sub>e</sub></li>
+                            <li style="margin-top: 2px;">Computar χ²</li>
+                            <li style="margin-top: 2px;">Comparar con χ²<sub>α,K-1</sub></li>
                         </ol>
                     </div>
                     
-                    <div style="background: rgba(233, 171, 33, 0.1); padding: 8px; border-radius: 8px; border-left: 4px solid var(--uide-accent); flex-shrink: 0;">
-                        <p style="font-size: 0.75rem; margin: 0; line-height: 1.3;">
+                    <div style="background: rgba(233, 171, 33, 0.1); padding: 8px; border-radius: 6px; border-left: 4px solid var(--uide-accent);">
+                        <p style="font-size: 0.7rem; margin: 0; line-height: 1.3;">
                             <i class="fas fa-info-circle"></i> <strong>Fórmula:</strong><br>
                             χ² = Σ(F<sub>o</sub>-F<sub>e</sub>)²/F<sub>e</sub>
                         </p>
