@@ -1,3 +1,0 @@
-Rubric Name,Criteria Name,Criteria Description,Criteria Enable Range,Rating Name,Rating Description,Rating Points,Rating Name,Rating Description,Rating Points,Rating Name,Rating Description,Rating Points
-TA-1.4 Mini-Reporte Error y Convergencia,Análisis de Error,Analiza correctamente el error en estimación Monte Carlo,false,Excelente,Análisis de error completo y correcto,1.25,Bueno,Análisis de error parcialmente correcto,0.8,Insuficiente,Análisis de error incorrecto,0
-TA-1.4 Mini-Reporte Error y Convergencia,Estudio de Convergencia,Estudia y documenta la convergencia del método,false,Excelente,Estudio de convergencia completo,1,Bueno,Estudio de convergencia parcial,0.6,Insuficiente,Estudio de convergencia ausente o incorrecto,0

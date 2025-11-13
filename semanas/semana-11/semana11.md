@@ -55,7 +55,7 @@ IV. Modelado Simple con Herramientas
 Para realizar simulaciones, existen diversas alternativas. La simulación en computadoras se realiza al codificar un programa que imita el comportamiento de un sistema real.
 1. Hoja de Cálculo (Excel)
 La alternativa más rápida y accesible para la mayoría de los usuarios es la utilización de Excel. Excel puede realizar simulaciones básicas y es muy útil para modelos muy simples que no tendrán mayores modificaciones.
-• Uso Práctico: Las hojas de cálculo, como Excel, permiten llevar a cabo simulaciones complejas y son accesibles en cualquier ordenador, permitiendo evaluar el comportamiento del sistema "a coste prácticamente cero".
+• Uso Práctico: Las hojas de cálculo, como Excel, permiten llevar a cabo simulaciones complejas y son accesibles en cualquier Computador, permitiendo evaluar el comportamiento del sistema "a coste prácticamente cero".
 • Simulación Manual: El proceso de simulación puede realizarse desde técnicas manuales, como la simulación de llegadas y servicios en una tabla, hasta sofisticadas técnicas computacionales. La hoja de cálculo es ideal para modelar líneas de espera de manera didáctica.
 2. Software Especializado (Simuladores Gráficos)
 Cuando los modelos son más complejos, Excel deja de ser viable, y se recurre a software especializado. La tendencia actual es usar simuladores que combinan la facilidad de uso gráfico con la flexibilidad de un lenguaje.

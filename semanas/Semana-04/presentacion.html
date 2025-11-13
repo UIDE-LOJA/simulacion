@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación - Semana 4</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎲</text></svg>">
+    <link rel="stylesheet" href="presentacion.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- MathJax for mathematical notation -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div class="uide-logo">
+        <img src="../../assets/images/Logo%20UIDE.png" alt="UIDE Logo">
+    </div>
+    <div class="presentation-container">
+
+        <!-- Slide 1: Title -->
+        <div class="slide active title-slide">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h3 style="color: #e2e8f0; font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem;">
+                    Presentación Semana 4
+                </h3>
+                <h2 style="color: var(--uide-accent); font-size: 2.2rem; font-weight: 600; margin-bottom: 0.5rem;">
+                    Fundamentos del Método de Monte Carlo
+                </h2>
+                <p style="color: #ffffff; font-size: 1.4rem; font-weight: 500;">
+                    FT-06-SIM Simulación • Sexto Nivel
+                </p>
+                <p style="color: #e2e8f0; font-size: 1.2rem; margin-top: 0.5rem;">
+                    Ingeniería en Tecnologías de la Información
+                </p>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <p style="color: #ffffff; font-size: 1.3rem; font-weight: 600;">
+                    Mgs. Charlie Alexander Cárdenas Toledo
+                </p>
+                <p style="color: var(--uide-primary); font-size: 1.2rem; font-weight: 500; margin-top: 0.5rem;">
+                    Universidad Internacional del Ecuador • Octubre 2025 – Febrero 2026
+                </p>
+            </div>
+
+            <div
+                style="text-align: center; margin-top: 2.5rem; padding: 25px; background: rgba(15, 20, 25, 0.6); border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                <h3 style="color: var(--uide-accent); font-size: 1.4rem; margin-bottom: 1rem;">
+                    <i class="fas fa-dice"></i> Unidad 2 · Generación de Variables Aleatorias
+                </h3>
+                <p style="color: #e2e8f0; font-size: 1.05rem; line-height: 1.5; margin: 0.5rem 0;">
+                    <strong>Semana 4:</strong> Historia del método • Ley Fuerte de los Grandes Números • Estimación de áreas/volúmenes • Integración numérica • Muestreo por importancia • Casos aplicados
+                </p>
+                <p style="color: #cbd5e1; font-size: 1rem; margin-top: 1rem; font-style: italic;">
+                    Meta: explicar y aplicar Monte Carlo para problemas de integración, estimación y riesgo.
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Objetivos -->
+        <div class="slide">
+            <h2><i class="fas fa-bullseye"></i> Objetivos de la Presentación</h2>
+            <ul>
+                <li>Reconstruir el origen del Método de Monte Carlo dentro del Proyecto Manhattan.</li>
+                <li>Conectar la Ley Fuerte de los Grandes Números con la convergencia estadística.</li>
+                <li>Aplicar Monte Carlo para estimar áreas, volúmenes e integrales definidas.</li>
+                <li>Introducir el muestreo por importancia para dominios no acotados.</li>
+                <li>Relacionar aplicaciones reales en ingeniería, finanzas y salud.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 3: Agenda -->
+        <div class="slide">
+            <h2><i class="fas fa-chart-line"></i> Agenda</h2>
+            <div class="content-grid">
+                <div class="feature-card">
+                    <h3>1. Fundamentos</h3>
+                    <p>Historia y motivación</p>
+                </div>
+                <div class="feature-card">
+                    <h3>2. Ley Fuerte</h3>
+                    <p>Convergencia estadística</p>
+                </div>
+                <div class="feature-card">
+                    <h3>3. Estimación</h3>
+                    <p>Áreas, volúmenes, integrales</p>
+                </div>
+                <div class="feature-card">
+                    <h3>4. Importancia</h3>
+                    <p>Muestreo y reducción de varianza</p>
+                </div>
+                <div class="feature-card">
+                    <h3>5. Aplicaciones</h3>
+                    <p>Industria, finanzas, salud</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Fundamentos -->
+        <div class="slide">
+            <h2><i class="fas fa-landmark"></i> Fundamentos e Historia</h2>
+            <div class="quote">
+                “Von Neumann y Ulam acuñaron el término ‘análisis de Monte Carlo’ para resolver problemas nucleares demasiado costosos o complejos para abordarlos experimentalmente.”
+            </div>
+            <div class="content-grid">
+                <div>
+                    <h3>Contexto</h3>
+                    <ul>
+                        <li>Década de 1940 • Proyecto Manhattan • Laboratorio de Los Álamos.</li>
+                        <li>Publicación formal por Metropolis y Ulam (1949) y trabajos previos de Enrico Fermi.</li>
+                        <li>Nombre inspirado en el Casino de Monte Carlo → vínculo con el azar.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Motivación</h3>
+                    <p>Unir muestreo aleatorio con el poder de cómputo para abordar problemas donde los métodos deterministas fallan o resultan demasiado caros.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Ley Fuerte -->
+        <div class="slide">
+            <h2><i class="fas fa-sigma"></i> Ley Fuerte de los Grandes Números</h2>
+            <div class="content-grid">
+                <div>
+                    <p>Garantiza que la media muestral converge al valor esperado:</p>
+                    <div style="background: rgba(15,20,25,0.8); padding: 25px; border-radius: 10px; color: #e2e8f0; overflow-x: auto; text-align: center; font-size: 1.3rem;">
+                        $$\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^{n} X_i = \mu$$
+                    </div>
+                </div>
+                <div>
+                    <h3>Implicaciones</h3>
+                    <ul>
+                        <li>Convergencia independiente de la dimensión → útil en espacios altos.</li>
+                        <li>Convergencia lenta: error $\approx \frac{1}{\sqrt{n}}$ → método intensivo en cómputo.</li>
+                        <li>Necesidad de generadores pseudoaleatorios robustos.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Estimación -->
+        <div class="slide">
+            <h2><i class="fas fa-shapes"></i> Estimación de Áreas, Volúmenes e Integrales</h2>
+            <div class="content-grid">
+                <div>
+                    <h3>Área del círculo unitario</h3>
+                    <p>Se circunscribe el círculo dentro de un cuadrado y se generan puntos uniformes. La fracción de puntos dentro del círculo aproxima el área:</p>
+                    <div style="background: rgba(15,20,25,0.8); padding: 20px; border-radius: 10px; color: #e2e8f0; overflow-x: auto; text-align: center; font-size: 1.2rem;">
+                        $$\text{Área} \approx \frac{N_{\text{dentro}}}{N_{\text{total}}} \times 4r^2$$
+                    </div>
+                </div>
+                <div>
+                    <h3>Integrales en [a, b]</h3>
+                    <p>Para una función $h(x)$:</p>
+                    <div style="background: rgba(15,20,25,0.8); padding: 20px; border-radius: 10px; color: #e2e8f0; overflow-x: auto; text-align: center; font-size: 1.2rem;">
+                        $$I = \int_{a}^{b} h(x) \, dx \approx (b-a) \times \frac{1}{n} \sum_{i=1}^{n} h(x_i)$$
+                    </div>
+                    <p>Con muestras $x_i \sim U(a,b)$ y aproximación mediante media muestral.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Muestreo por Importancia -->
+        <div class="slide">
+            <h2><i class="fas fa-exchange-alt"></i> Muestreo por Importancia</h2>
+            <div class="content-grid">
+                <div>
+                    <h3>¿Cuándo usarlo?</h3>
+                    <ul>
+                        <li>Dominios no acotados o mal cubiertos por la distribución uniforme.</li>
+                        <li>Integrales donde $h(x) \cdot f(x)$ concentra probabilidad en zonas pequeñas.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Idea clave</h3>
+                    <p>Generar muestras $Y_i \sim g(y)$ similares a $h \cdot f$ y ponderar:</p>
+                    <div style="background: rgba(15,20,25,0.8); padding: 20px; border-radius: 10px; color: #e2e8f0; overflow-x: auto; text-align: center; font-size: 1.2rem;">
+                        $$\theta \approx \frac{1}{n} \sum_{i=1}^{n} w(Y_i) \, h(Y_i), \quad w(y) = \frac{f(y)}{g(y)}$$
+                    </div>
+                    <p>Reduce la varianza y acelera la convergencia respecto a Monte Carlo clásico.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Aplicaciones -->
+        <div class="slide">
+            <h2><i class="fas fa-industry"></i> Aplicaciones Representativas</h2>
+            <div class="content-grid">
+                <div class="feature-card">
+                    <h3>Juegos de Azar</h3>
+                    <p>Moneda, Buffon, generación de escenarios en hojas de cálculo.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Ingeniería</h3>
+                    <p>Inventarios, pronóstico de demanda, confiabilidad de equipos.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Finanzas</h3>
+                    <p>Proyección de portafolios, valoración de opciones, análisis de riesgo.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Salud</h3>
+                    <p>Microsimulaciones para evaluación económica y APS.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Consideraciones -->
+        <div class="slide">
+            <h2><i class="fas fa-server"></i> Consideraciones Computacionales</h2>
+            <ul>
+                <li>Necesidad de generadores pseudoaleatorios confiables y reproducibles.</li>
+                <li>El método escala bien con paralelismo (GPU/cluster) por independencia de muestras.</li>
+                <li>Balancear precisión y costo elegiendo n apropiado y estrategias de reducción de varianza.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 10: Referencias -->
+        <div class="slide">
+            <h2><i class="fas fa-book"></i> Referencias Bibliográficas</h2>
+            <div style="text-align: left; max-width: 1000px;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 1rem;">Bibliografía Básica</h3>
+                <ul style="margin-bottom: 2rem;">
+                    <li>Main Yaque, P., Navarro Veguillas, H., & Morales Fernández, A. (2019). <em>Simulación con ejercicios en R.</em> UNED - Universidad Nacional de Educación a Distancia. <a href="https://www.mdconsult.internacional.edu.ec:2057/es/lc/uide/titulos/111720" target="_blank" style="color: var(--uide-primary);">🔗 Enlace</a></li>
+                    <li>Jiménez Avello, A., Castro Gil, M., & Costa García, J. M. (2015). <em>Simulación de procesos y aplicaciones.</em> Dextra Editorial. <a href="https://www.mdconsult.internacional.edu.ec:2057/es/lc/uide/titulos/133345" target="_blank" style="color: var(--uide-primary);">🔗 Enlace</a></li>
+                </ul>
+
+                <h3 style="color: var(--uide-accent); margin-bottom: 1rem;">Bibliografía Complementaria</h3>
+                <ul style="margin-bottom: 2rem;">
+                    <li>Agud, L., & Pla Ferrando, M. (2015). <em>Matlab para matemáticas en ingenierías.</em> Universitat Politècnica de València - España.</li>
+                    <li>Makinia, J., & Zaborowska, E. (2020). <em>Mathematical modelling and computer simulation of activated sludge systems.</em> IWA publishing.</li>
+                    <li>Lie, K. A. (2019). <em>An introduction to reservoir simulation using MATLAB/GNU Octave: User guide for the MATLAB Reservoir Simulation Toolbox (MRST).</em> Cambridge University Press. Reino Unido.</li>
+                </ul>
+
+                <h3 style="color: var(--uide-accent); margin-bottom: 1rem;">Fuente ASU</h3>
+                <ul>
+                    <li>Arizona State University. (2024). <em>Master Class: The Contradictions of Nuclear Power</em> - February 2024.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Slide Counter -->
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">10</span>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- External JavaScript -->
+    <script src="presentacion.js"></script>
+</body>
+
+</html>
