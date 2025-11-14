@@ -264,7 +264,7 @@ TA-3.5: Borrador de resultados y visualizaciones – 2.4
 
 **Elaborado Por:**  
 Cargo: Docente de la carrera de Ingeniería en Tecnologías de la Información  
-Nombre: Mgs. Charlie Cárdenas Toledo  
+Nombre: Prof. Charlie Cárdenas Toledo, M.Sc.  
 
 **Revisado Por:**  
 Cargo: Coordinador académico de la carrera de Ingeniería en Tecnologías de la Información  
