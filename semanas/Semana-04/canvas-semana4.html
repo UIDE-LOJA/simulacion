@@ -1,0 +1,132 @@
+<p>Esta semana introducimos los <strong>Fundamentos del Método de Monte Carlo</strong>, un método computacional
+    que utiliza el <em>muestreo aleatorio</em> para resolver problemas deterministas difíciles de abordar
+    analíticamente.
+    Exploraremos su origen histórico ligado al Proyecto Manhattan, la base estadística fundamentada en la Ley de los
+    Grandes Números, y aplicaciones prácticas como la estimación de π, el cálculo de áreas bajo curvas, y el análisis
+    de error y convergencia.</p>
+
+<p><strong>¿Qué veremos?</strong></p>
+
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 22%;">Tema</th>
+                    <th style="width: 50%;">Contenido clave</th>
+                    <th style="width: 28%;">Ejemplos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fundamentos e Historia</td>
+                    <td>Origen en la <strong>década de 1940</strong> ligado al Proyecto Manhattan. Publicado por 
+                        <strong>Metropolis y Ulam (1949)</strong>. Nombre honra al Casino de Monte Carlo. 
+                        Utiliza <strong>muestreo aleatorio</strong> para resolver problemas deterministas difíciles 
+                        de abordar analíticamente.</td>
+                    <td>Proyecto Manhattan; problemas de protección nuclear demasiado costosos o complejos.</td>
+                </tr>
+                <tr>
+                    <td>Base Estadística</td>
+                    <td><strong>Ley de los Grandes Números</strong>: lim(n→∞) (1/n)Σ Xi = μ. La media muestral converge 
+                        al valor esperado. <strong>Error ∝ 1/√n</strong>: convergencia lenta pero independiente de 
+                        dimensionalidad.</td>
+                    <td>Para reducir error a la mitad: 4× más muestras. Para error 1/10: 100× más muestras.</td>
+                </tr>
+                <tr>
+                    <td>Estimación de π</td>
+                    <td>Método del <strong>círculo unitario</strong>: circunscribir círculo (r=1) en cuadrado (lado 2). 
+                        Generar puntos aleatorios (x,y). Contar puntos dentro: x²+y²≤1. <strong>Fórmula:</strong> 
+                        π ≈ 4×(N_dentro/N_total). <strong>Excel:</strong> x = ALEATORIO()*2-1, y = ALEATORIO()*2-1, 
+                        dentro = SI(RAIZ(x²+y²)≤1, 1, 0).</td>
+                    <td>Con 1,000 puntos: π≈3.14. Con 10,000 puntos: π≈3.1416. Implementación en Excel con ALEATORIO().</td>
+                </tr>
+                <tr>
+                    <td>Integración Numérica</td>
+                    <td><strong>Área bajo la curva</strong>: I = ∫[a,b] f(x)dx ≈ (b-a)×(1/n)Σf(xi), donde xi son puntos 
+                        aleatorios uniformes en [a,b]. <strong>Excel:</strong> x = ALEATORIO(), f(x) = x², 
+                        integral ≈ (b-a)*PROMEDIO(f(x)).</td>
+                    <td>∫[0,1] x²dx: valor analítico=1/3≈0.3333. Monte Carlo con n=100: ≈0.34; n=1,000: ≈0.335; 
+                        n=10,000: ≈0.3337.</td>
+                </tr>
+                <tr>
+                    <td>Error y Convergencia</td>
+                    <td><strong>Error estándar</strong>: Error ≈ σ/√n. Para reducir error a la mitad: 4× más muestras. 
+                        Análisis mediante gráficas de convergencia, comparación con valor teórico, cálculo de error 
+                        absoluto y relativo.</td>
+                    <td>Estimación de π: n=100 (error≈0.058), n=1,000 (error≈0.014), n=10,000 (error≈0.002). 
+                        Documentar convergencia en mini-reporte.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Objetivos de aprendizaje</strong></p>
+
+<p>Al finalizar la semana podrás:</p>
+
+<ul>
+    <li>
+        <p>Comprender el <strong>origen y fundamentos</strong> del método de Monte Carlo y su base en la Ley de los
+            Grandes Números.</p>
+    </li>
+    <li>
+        <p>Aplicar Monte Carlo a la <strong>estimación de áreas y volúmenes</strong> mediante el método del círculo
+            unitario para calcular π.</p>
+    </li>
+    <li>
+        <p>Realizar <strong>integración numérica simple</strong> usando Monte Carlo para calcular áreas bajo curvas.</p>
+    </li>
+    <li>
+        <p>Analizar <strong>error y convergencia</strong> en las estimaciones, comprendiendo la relación Error ∝ 1/√n.
+        </p>
+    </li>
+</ul>
+
+<p><strong>Materiales</strong></p>
+
+<ul>
+    <li>
+        <p><strong>Presentación:</strong> Semana 4 — Fundamentos del Método de Monte Carlo.</p>
+    </li>
+    <li>
+        <p><strong>Bibliografía:</strong></p>
+        <ul>
+            <li>Main Yaque, P., Navarro Veguillas, H. & Morales Fernández, A. (2019). <em>Simulación con ejercicios en
+                    R</em>.
+                UNED - Universidad Nacional de Educación a Distancia.</li>
+            <li>Jiménez Avello, A., Castro Gil, M. & Costa García, J. M. (2015). <em>Simulación de procesos y
+                    aplicaciones</em>.
+                Dextra Editorial.</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Herramientas:</strong> Excel, R, Python (NumPy, Matplotlib) o cualquier lenguaje con capacidades de
+            generación de números aleatorios y visualización.</p>
+    </li>
+</ul>
+
+<p><strong>Actividades</strong></p>
+
+<ul>
+    <li>
+        <p><strong>Lectura guiada</strong> del compendio Semana 4 y material complementario semana4.md.</p>
+    </li>
+    <li>
+        <p><strong>PE-1.4: Laboratorio: estimar π y área bajo curva por MC</strong> — implementar método del círculo
+            para π y calcular área bajo diferentes curvas (x, x², √x) en [0,1] — <strong>2.25 pts</strong>.</p>
+    </li>
+    <li>
+        <p><strong>TA-1.4: Mini-reporte (1 pág.) con error y convergencia</strong> — documento con metodología,
+            resultados numéricos, gráficas de convergencia y análisis de cómo el error disminuye al aumentar n —
+            <strong>2.25 pts</strong>.
+        </p>
+    </li>
+    <li>
+        <p><strong>Total de la semana:</strong> <strong>4.5/30</strong> (Evaluación diagnóstica).</p>
+    </li>
+</ul>
+
+<p>Si tienes dudas, utiliza el <strong>horario de tutorías (lunes 10:00-12:00 | viernes 08:00-09:00)</strong> o envía
+    consulta por <strong>correo institucional</strong> con tiempo de respuesta máximo 48 horas laborables.</p>
