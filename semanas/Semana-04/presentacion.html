@@ -65,9 +65,6 @@
                     <strong>Semana 4</strong> • Fundamentos de Monte Carlo • Estimación de Áreas/Volúmenes • Integración
                     Numérica Simple • Ejemplos Aplicados
                 </p>
-                <p style="color: #cbd5e1; font-size: 1rem; margin-top: 1rem; font-style: italic;">
-                    Explicar fundamentos y aplicaciones del método de Monte Carlo
-                </p>
             </div>
         </div>
 
@@ -234,49 +231,181 @@
             <h2><i class="fas fa-file-excel"></i> Implementación en Excel: Estimación de π</h2>
 
             <div
-                style="background: rgba(35, 53, 110, 0.3); padding: 25px; border-radius: 12px; border: 2px solid var(--uide-accent); margin-bottom: 2rem;">
-                <h3 style="color: var(--uide-accent); margin-bottom: 1.5rem; text-align: center;">Pasos en Excel</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div>
-                        <div
-                            style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin-bottom: 1rem;">
-                            <h4 style="color: #4ade80; margin-bottom: 0.8rem; font-size: 1rem;">1. Generar coordenadas
-                                aleatorias</h4>
-                            <pre style="margin: 0;"><code class="language-excel">x = ALEATORIO()*2 - 1
-y = ALEATORIO()*2 - 1</code></pre>
-                        </div>
+                style="background: rgba(35, 53, 110, 0.3); padding: 20px; border-radius: 12px; border: 2px solid var(--uide-accent); margin-bottom: 1.5rem;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 1rem; text-align: center;">Tabla de Excel Simulada
+                </h3>
 
-                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
-                            <h4 style="color: #4ade80; margin-bottom: 0.8rem; font-size: 1rem;">2. Calcular distancia al
-                                origen</h4>
-                            <pre
-                                style="margin: 0;"><code class="language-excel">distancia = RAIZ(x^2 + y^2)</code></pre>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div
-                            style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin-bottom: 1rem;">
-                            <h4 style="color: #4ade80; margin-bottom: 0.8rem; font-size: 1rem;">3. Verificar si está
-                                dentro del círculo</h4>
-                            <pre
-                                style="margin: 0;"><code class="language-excel">dentro = SI(distancia <= 1, 1, 0)</code></pre>
-                        </div>
-
-                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
-                            <h4 style="color: #4ade80; margin-bottom: 0.8rem; font-size: 1rem;">4. Calcular π</h4>
-                            <pre
-                                style="margin: 0;"><code class="language-excel">π ≈ 4 * SUMA(dentro) / CONTAR(dentro)</code></pre>
-                        </div>
-                    </div>
+                <!-- Tabla estilo Excel -->
+                <div style="overflow-x: auto; background: white; padding: 10px; border-radius: 8px;">
+                    <table
+                        style="width: 100%; border-collapse: collapse; font-family: 'Calibri', sans-serif; font-size: 0.85rem;">
+                        <!-- Encabezados de columna -->
+                        <thead>
+                            <tr style="background: #217346; color: white;">
+                                <th
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; font-weight: bold; width: 50px;">
+                                </th>
+                                <th
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; font-weight: bold;">
+                                    A</th>
+                                <th
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; font-weight: bold;">
+                                    B</th>
+                                <th
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; font-weight: bold;">
+                                    C</th>
+                                <th
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; font-weight: bold;">
+                                    D</th>
+                                <th
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; font-weight: bold;">
+                                    E</th>
+                                <th
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; font-weight: bold;">
+                                    F</th>
+                            </tr>
+                            <tr style="background: #E7E6E6;">
+                                <th
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; background: #217346; color: white; font-weight: bold;">
+                                    1</th>
+                                <th
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; color: #217346; font-weight: bold;">
+                                    X</th>
+                                <th
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; color: #217346; font-weight: bold;">
+                                    Y</th>
+                                <th
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; color: #217346; font-weight: bold;">
+                                    Distancia</th>
+                                <th
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; color: #217346; font-weight: bold;">
+                                    ¿Dentro?</th>
+                                <th
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; color: #217346; font-weight: bold;">
+                                </th>
+                                <th
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; color: #217346; font-weight: bold;">
+                                    π estimado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Fila 2 con fórmulas -->
+                            <tr style="background: #FFF2CC;">
+                                <td
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; background: #217346; color: white; font-weight: bold;">
+                                    2</td>
+                                <td
+                                    style="padding: 8px; border: 1px solid #ccc; color: #0066cc; font-family: 'Courier New', monospace;">
+                                    =ALEATORIO()*2-1</td>
+                                <td
+                                    style="padding: 8px; border: 1px solid #ccc; color: #0066cc; font-family: 'Courier New', monospace;">
+                                    =ALEATORIO()*2-1</td>
+                                <td
+                                    style="padding: 8px; border: 1px solid #ccc; color: #0066cc; font-family: 'Courier New', monospace;">
+                                    =RAIZ(A2^2+B2^2)</td>
+                                <td
+                                    style="padding: 8px; border: 1px solid #ccc; color: #0066cc; font-family: 'Courier New', monospace;">
+                                    =SI(C2<=1,1,0)< /td>
+                                <td style="padding: 8px; border: 1px solid #ccc; background: #f9f9f9;"></td>
+                                <td
+                                    style="padding: 8px; border: 1px solid #ccc; color: #0066cc; font-family: 'Courier New', monospace; background: #D9EAD3;">
+                                    =4*SUMA(D:D)/CONTARA(D:D)</td>
+                            </tr>
+                            <!-- Fila 3 con valores ejemplo -->
+                            <tr>
+                                <td
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; background: #217346; color: white; font-weight: bold;">
+                                    3</td>
+                                <td style="padding: 8px; border: 1px solid #ccc; text-align: right; color: #333;">0.456
+                                </td>
+                                <td style="padding: 8px; border: 1px solid #ccc; text-align: right; color: #333;">-0.723
+                                </td>
+                                <td style="padding: 8px; border: 1px solid #ccc; text-align: right; color: #333;">0.857
+                                </td>
+                                <td
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; color: #217346; font-weight: bold;">
+                                    1</td>
+                                <td style="padding: 8px; border: 1px solid #ccc; background: #f9f9f9;"></td>
+                                <td
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: right; color: #333; background: #D9EAD3; font-weight: bold;">
+                                    3.1416</td>
+                            </tr>
+                            <!-- Fila 4 -->
+                            <tr>
+                                <td
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; background: #217346; color: white; font-weight: bold;">
+                                    4</td>
+                                <td style="padding: 8px; border: 1px solid #ccc; text-align: right; color: #333;">-0.234
+                                </td>
+                                <td style="padding: 8px; border: 1px solid #ccc; text-align: right; color: #333;">0.891
+                                </td>
+                                <td style="padding: 8px; border: 1px solid #ccc; text-align: right; color: #333;">0.921
+                                </td>
+                                <td
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; color: #217346; font-weight: bold;">
+                                    1</td>
+                                <td style="padding: 8px; border: 1px solid #ccc; background: #f9f9f9;"></td>
+                                <td style="padding: 8px; border: 1px solid #ccc; background: #f9f9f9;"></td>
+                            </tr>
+                            <!-- Fila 5 -->
+                            <tr>
+                                <td
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; background: #217346; color: white; font-weight: bold;">
+                                    5</td>
+                                <td style="padding: 8px; border: 1px solid #ccc; text-align: right; color: #333;">0.812
+                                </td>
+                                <td style="padding: 8px; border: 1px solid #ccc; text-align: right; color: #333;">0.678
+                                </td>
+                                <td style="padding: 8px; border: 1px solid #ccc; text-align: right; color: #333;">1.056
+                                </td>
+                                <td
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; color: #dc3545; font-weight: bold;">
+                                    0</td>
+                                <td style="padding: 8px; border: 1px solid #ccc; background: #f9f9f9;"></td>
+                                <td style="padding: 8px; border: 1px solid #ccc; background: #f9f9f9;"></td>
+                            </tr>
+                            <!-- Fila con puntos suspensivos -->
+                            <tr>
+                                <td
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; background: #217346; color: white; font-weight: bold;">
+                                    ...</td>
+                                <td colspan="6"
+                                    style="padding: 8px; border: 1px solid #ccc; text-align: center; color: #666; font-style: italic;">
+                                    Copiar fórmulas hasta la fila 1000</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+            </div>
 
+            <!-- Instrucciones paso a paso -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
                 <div
-                    style="background: rgba(233, 171, 33, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid var(--uide-accent);">
-                    <p style="margin: 0; font-size: 1rem; line-height: 1.6;">
-                        <i class="fas fa-lightbulb"></i> <strong>Actividad PE-1.4:</strong> Implementar este método en
-                        Excel con al menos 1,000 puntos y comparar con el valor real de π.
-                    </p>
+                    style="background: rgba(33, 115, 70, 0.2); padding: 15px; border-radius: 8px; border-left: 4px solid #217346;">
+                    <h4 style="color: #4ade80; margin: 0 0 8px 0; font-size: 0.9rem;"><i class="fas fa-arrow-right"></i>
+                        Paso 1</h4>
+                    <p style="margin: 0; font-size: 0.8rem; line-height: 1.4; color: #cbd5e1;">Escribe las fórmulas en
+                        la fila 2</p>
+                </div>
+                <div
+                    style="background: rgba(33, 115, 70, 0.2); padding: 15px; border-radius: 8px; border-left: 4px solid #217346;">
+                    <h4 style="color: #4ade80; margin: 0 0 8px 0; font-size: 0.9rem;"><i class="fas fa-arrow-right"></i>
+                        Paso 2</h4>
+                    <p style="margin: 0; font-size: 0.8rem; line-height: 1.4; color: #cbd5e1;">Selecciona A2:D2 y
+                        arrastra hasta la fila 1000</p>
+                </div>
+                <div
+                    style="background: rgba(33, 115, 70, 0.2); padding: 15px; border-radius: 8px; border-left: 4px solid #217346;">
+                    <h4 style="color: #4ade80; margin: 0 0 8px 0; font-size: 0.9rem;"><i class="fas fa-arrow-right"></i>
+                        Paso 3</h4>
+                    <p style="margin: 0; font-size: 0.8rem; line-height: 1.4; color: #cbd5e1;">La celda F2 calcula π
+                        automáticamente</p>
+                </div>
+                <div
+                    style="background: rgba(74, 222, 128, 0.2); padding: 15px; border-radius: 8px; border-left: 4px solid #4ade80;">
+                    <h4 style="color: #4ade80; margin: 0 0 8px 0; font-size: 0.9rem;"><i
+                            class="fas fa-check-circle"></i> Resultado</h4>
+                    <p style="margin: 0; font-size: 0.8rem; line-height: 1.4; color: #cbd5e1;">Verás π ≈ 3.14159</p>
                 </div>
             </div>
         </div>
@@ -337,54 +466,195 @@ y = ALEATORIO()*2 - 1</code></pre>
 
             <div
                 style="background: rgba(35, 53, 110, 0.3); padding: 25px; border-radius: 12px; border: 2px solid var(--uide-accent); margin-bottom: 2rem;">
-                <h3 style="color: var(--uide-accent); margin-bottom: 1.5rem; text-align: center;">Ejemplo:
-                    $\int_{0}^{1} x^2\, dx$</h3>
+                <h3 style="color: var(--uide-accent); margin-bottom: 1.5rem; text-align: center;">Ejemplo: Área bajo y =
+                    x²</h3>
+
+                <div
+                    style="background: rgba(233, 171, 33, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <p style="margin: 0; font-size: 1rem; line-height: 1.6;">
+                        <i class="fas fa-info-circle"></i> <strong>Objetivo:</strong> Calcular el área bajo la curva y =
+                        x² entre 0 y 1
+                    </p>
+                </div>
+
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div>
                         <div
                             style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin-bottom: 1rem;">
-                            <h4 style="color: #4ade80; margin-bottom: 0.8rem; font-size: 1rem;">1. Generar valores
-                                aleatorios en [0,1]</h4>
-                            <pre style="margin: 0;"><code class="language-excel">x = ALEATORIO()</code></pre>
+                            <h4 style="color: #4ade80; margin-bottom: 0.8rem; font-size: 1rem;">Columna A: Valores X
+                                aleatorios</h4>
+                            <pre style="margin: 0;"><code class="language-excel">=ALEATORIO()</code></pre>
+                            <p style="margin: 8px 0 0 0; font-size: 0.85rem; color: #cbd5e1;">Genera valores entre 0 y 1
+                            </p>
                         </div>
 
                         <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
-                            <h4 style="color: #4ade80; margin-bottom: 0.8rem; font-size: 1rem;">2. Evaluar la
+                            <h4 style="color: #4ade80; margin-bottom: 0.8rem; font-size: 1rem;">Columna B: Evaluar
                                 función</h4>
-                            <pre style="margin: 0;"><code class="language-excel">f(x) = x^2</code></pre>
+                            <pre style="margin: 0;"><code class="language-excel">=A2^2</code></pre>
+                            <p style="margin: 8px 0 0 0; font-size: 0.85rem; color: #cbd5e1;">Calcula x²</p>
                         </div>
                     </div>
 
                     <div>
                         <div
                             style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin-bottom: 1rem;">
-                            <h4 style="color: #4ade80; margin-bottom: 0.8rem; font-size: 1rem;">3. Calcular el
-                                promedio</h4>
-                            <pre style="margin: 0;"><code class="language-excel">promedio = PROMEDIO(f(x))</code></pre>
+                            <h4 style="color: #4ade80; margin-bottom: 0.8rem; font-size: 1rem;">Celda D2: Área
+                                aproximada</h4>
+                            <pre style="margin: 0;"><code class="language-excel">=PROMEDIO(B:B)</code></pre>
+                            <p style="margin: 8px 0 0 0; font-size: 0.85rem; color: #cbd5e1;">El promedio es el área</p>
                         </div>
 
-                        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
-                            <h4 style="color: #4ade80; margin-bottom: 0.8rem; font-size: 1rem;">4. Multiplicar por
-                                el ancho del intervalo</h4>
-                            <pre style="margin: 0;"><code class="language-excel">integral ≈ (b - a) * promedio
-integral ≈ 1 * promedio</code></pre>
+                        <div style="background: rgba(74, 222, 128, 0.1); padding: 15px; border-radius: 8px;">
+                            <p style="margin: 0 0 8px 0; font-size: 0.95rem; line-height: 1.6;">
+                                <i class="fas fa-check"></i> <strong>Resultado esperado:</strong> ≈ 0.333
+                            </p>
+                            <p style="margin: 0; font-size: 0.85rem; color: #cbd5e1;">
+                                Copia las fórmulas para 1,000 filas
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div
-                style="background: rgba(233, 171, 33, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid var(--uide-accent);">
-                <p style="margin: 0; font-size: 1rem; line-height: 1.6;">
-                    <i class="fas fa-lightbulb"></i> <strong>Actividad PE-1.4:</strong> Calcular el área bajo
-                    diferentes curvas (x, x², √x) en [0,1] y comparar con valores analíticos.
-                </p>
+        </div>
+
+        <!-- Slide 10: Implementación en R - Estimación de π -->
+        <div class="slide">
+            <h2><i class="fab fa-r-project"></i> Implementación en R: Estimación de π</h2>
+
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 25px;">
+                <!-- Columna izquierda: Código -->
+                <div
+                    style="background: rgba(35, 53, 110, 0.3); padding: 25px; border-radius: 12px; border: 2px solid var(--uide-accent);">
+                    <h3 style="color: var(--uide-accent); margin-bottom: 1rem; text-align: center;">Código Completo</h3>
+                    <pre style="margin: 0; border-radius: 8px; overflow-x: auto;"><code class="language-r"># Estimación de π usando Monte Carlo
+n <- 10000  # Número de puntos
+
+# Generar coordenadas aleatorias
+x <- runif(n, min = -1, max = 1)
+y <- runif(n, min = -1, max = 1)
+
+# Calcular distancia al origen
+distancia <- sqrt(x^2 + y^2)
+
+# Contar puntos dentro del círculo
+dentro <- sum(distancia <= 1)
+
+# Estimar π
+pi_estimado <- 4 * dentro / n
+
+# Mostrar resultado
+cat("Estimación de π:", pi_estimado, "\n")
+cat("Valor real de π:", pi, "\n")
+cat("Error:", abs(pi_estimado - pi), "\n")</code></pre>
+                </div>
+
+                <!-- Columna derecha: Tips -->
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div
+                        style="background: rgba(233, 171, 33, 0.15); padding: 20px; border-radius: 10px; border-left: 4px solid var(--uide-accent);">
+                        <h4 style="color: var(--uide-accent); margin: 0 0 10px 0; font-size: 1rem;">
+                            <i class="fas fa-lightbulb"></i> Tips
+                        </h4>
+                        <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; line-height: 1.7; color: #cbd5e1;">
+                            <li>Cambia <code>n</code> para ver cómo mejora la precisión</li>
+                            <li>Con n=100 → Error ~5%</li>
+                            <li>Con n=10000 → Error ~0.5%</li>
+                        </ul>
+                    </div>
+
+                    <div
+                        style="background: rgba(74, 222, 128, 0.15); padding: 20px; border-radius: 10px; border-left: 4px solid #4ade80;">
+                        <h4 style="color: #4ade80; margin: 0 0 10px 0; font-size: 1rem;">
+                            <i class="fas fa-play"></i> Ejecutar
+                        </h4>
+                        <p style="margin: 0; font-size: 0.9rem; line-height: 1.6; color: #cbd5e1;">
+                            Copia el código en RStudio y presiona <strong>Ctrl+Enter</strong>
+                        </p>
+                    </div>
+
+                    <div
+                        style="background: rgba(59, 130, 246, 0.15); padding: 20px; border-radius: 10px; border-left: 4px solid #3b82f6;">
+                        <h4 style="color: #60a5fa; margin: 0 0 10px 0; font-size: 1rem;">
+                            <i class="fas fa-chart-line"></i> Resultado
+                        </h4>
+                        <p style="margin: 0; font-size: 0.9rem; line-height: 1.6; color: #cbd5e1;">
+                            Verás π ≈ 3.14159 con un error muy pequeño
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Slide 10: Error y Convergencia -->
+        <!-- Slide 11: Implementación en R - Área Bajo la Curva -->
         <div class="slide">
-            <h2><i class="fas fa-chart-line"></i> Error y Convergencia en Monte Carlo</h2>
+            <h2><i class="fab fa-r-project"></i> Implementación en R: Área Bajo la Curva</h2>
+
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 25px;">
+                <!-- Columna izquierda: Código -->
+                <div
+                    style="background: rgba(35, 53, 110, 0.3); padding: 25px; border-radius: 12px; border: 2px solid var(--uide-accent);">
+                    <h3 style="color: var(--uide-accent); margin-bottom: 1rem; text-align: center;">Código para
+                        Integración</h3>
+                    <pre style="margin: 0; border-radius: 8px; overflow-x: auto;"><code class="language-r"># Calcular área bajo y = x² entre 0 y 1
+n <- 10000  # Número de puntos
+
+# Generar valores aleatorios en [0, 1]
+x <- runif(n, min = 0, max = 1)
+
+# Evaluar la función
+y <- x^2
+
+# Calcular el área (promedio de las alturas)
+area_estimada <- mean(y)
+
+# Valor real de la integral
+area_real <- 1/3
+
+# Mostrar resultados
+cat("Área estimada:", area_estimada, "\n")
+cat("Área real:", area_real, "\n")
+cat("Error relativo:", abs(area_estimada - area_real) / area_real * 100, "%\n")</code></pre>
+                </div>
+
+                <!-- Columna derecha: Tips -->
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div
+                        style="background: rgba(74, 222, 128, 0.15); padding: 20px; border-radius: 10px; border-left: 4px solid #4ade80;">
+                        <h4 style="color: #4ade80; margin: 0 0 10px 0; font-size: 1rem;">
+                            <i class="fas fa-code"></i> Otras funciones
+                        </h4>
+                        <pre style="margin: 0; font-size: 0.8rem;"><code class="language-r">y <- x^3      # Área = 0.25
+y <- sqrt(x)  # Área = 0.667
+y <- exp(x)   # Área = 1.718</code></pre>
+                    </div>
+
+                    <div
+                        style="background: rgba(233, 171, 33, 0.15); padding: 20px; border-radius: 10px; border-left: 4px solid var(--uide-accent);">
+                        <h4 style="color: var(--uide-accent); margin: 0 0 10px 0; font-size: 1rem;">
+                            <i class="fas fa-info-circle"></i> Nota
+                        </h4>
+                        <p style="margin: 0; font-size: 0.9rem; line-height: 1.6; color: #cbd5e1;">
+                            Solo cambia la línea <code>y <- x^2</code> por la función que quieras integrar
+                        </p>
+                    </div>
+
+                    <div
+                        style="background: rgba(59, 130, 246, 0.15); padding: 20px; border-radius: 10px; border-left: 4px solid #3b82f6;">
+                        <h4 style="color: #60a5fa; margin: 0 0 10px 0; font-size: 1rem;">
+                            <i class="fas fa-chart-line"></i> Resultado
+                        </h4>
+                        <p style="margin: 0; font-size: 0.9rem; line-height: 1.6; color: #cbd5e1;">
+                            Área ≈ 0.333 con error < 1% </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Error y Convergencia -->
+        <div class="slide">
+            <h2><i class="fas fa-chart-line"></i> ¿Qué tan preciso es el método?</h2>
 
             <div
                 style="background: rgba(35, 53, 110, 0.3); padding: 25px; border-radius: 12px; border: 2px solid var(--uide-accent); margin-bottom: 2rem;">
@@ -457,7 +727,7 @@ integral ≈ 1 * promedio</code></pre>
             </div>
         </div>
 
-        <!-- Slide 11: Ejemplos Aplicados Simples -->
+        <!-- Slide 13: Ejemplos Aplicados Simples -->
         <div class="slide">
             <h2><i class="fas fa-flask"></i> Ejemplos Aplicados</h2>
 
@@ -517,7 +787,7 @@ Si ALEATORIO() ≥ 0.5 → "Cruz"</code></pre>
             </div>
         </div>
 
-        <!-- Slide 12: Actividades de la Semana -->
+        <!-- Slide 14: Actividades de la Semana -->
         <div class="slide">
             <h2><i class="fas fa-tasks"></i> Actividades de la Semana 4</h2>
 
@@ -562,7 +832,7 @@ Si ALEATORIO() ≥ 0.5 → "Cruz"</code></pre>
             </div>
         </div>
 
-        <!-- Slide 13: Referencias -->
+        <!-- Slide 15: Referencias -->
         <div class="slide">
             <h2><i class="fas fa-book"></i> Referencias Bibliográficas</h2>
             <div style="max-width: 1000px; margin: 0 auto;">
@@ -583,9 +853,13 @@ Si ALEATORIO() ≥ 0.5 → "Cruz"</code></pre>
 
                 <h3 style="margin-bottom: 1.5rem;">Bibliografía Complementaria</h3>
                 <ul style="font-size: 0.95rem; line-height: 1.7;">
-                    <li><strong>Agud, L; Pla Ferrando, M. (2015).</strong> <em>Matlab para matemáticas en ingenierías</em>. Universitat Politècnica de València - España.</li>
-                    <li><strong>Makinia, J., Zaborowska, E. (2020).</strong> <em>Mathematical modelling and computer simulation of activated sludge systems</em>. IWA publishing.</li>
-                    <li><strong>Lie, K. A. (2019).</strong> <em>An introduction to reservoir simulation using MATLAB/GNU Octave: User guide for the MATLAB Reservoir Simulation Toolbox (MRST)</em>. Cambridge University Press.</li>
+                    <li><strong>Agud, L; Pla Ferrando, M. (2015).</strong> <em>Matlab para matemáticas en
+                            ingenierías</em>. Universitat Politècnica de València - España.</li>
+                    <li><strong>Makinia, J., Zaborowska, E. (2020).</strong> <em>Mathematical modelling and computer
+                            simulation of activated sludge systems</em>. IWA publishing.</li>
+                    <li><strong>Lie, K. A. (2019).</strong> <em>An introduction to reservoir simulation using MATLAB/GNU
+                            Octave: User guide for the MATLAB Reservoir Simulation Toolbox (MRST)</em>. Cambridge
+                        University Press.</li>
                 </ul>
             </div>
         </div>
@@ -599,7 +873,7 @@ Si ALEATORIO() ≥ 0.5 → "Cruz"</code></pre>
 
         <!-- Slide Counter -->
         <div class="slide-counter">
-            <span id="currentSlide">1</span> / <span id="totalSlides">13</span>
+            <span id="currentSlide">1</span> / <span id="totalSlides">15</span>
         </div>
 
         <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
@@ -611,6 +885,7 @@ Si ALEATORIO() ≥ 0.5 → "Cruz"</code></pre>
     <!-- External JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-excel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js"></script>
     <script src="presentacion.js"></script>
 </body>
 

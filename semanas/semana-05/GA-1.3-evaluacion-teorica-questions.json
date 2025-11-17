@@ -1,0 +1,602 @@
+[
+    {
+        "question": {
+            "question_name": "Definición de Simulación",
+            "question_text": "<p>Según Shannon, ¿cuál es la definición más completa de simulación?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "Es el proceso de diseñar un modelo de un sistema real y llevar a término experiencias con él, con la finalidad de comprender el comportamiento del sistema o evaluar nuevas estrategias",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! Esta es la definición de Shannon que enfatiza el diseño del modelo y la experimentación para comprender el comportamiento del sistema."
+                },
+                {
+                    "answer_text": "Es una técnica para resolver problemas usando únicamente ecuaciones matemáticas",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. La simulación va más allá de las ecuaciones matemáticas, incluye modelos lógicos y experimentación."
+                },
+                {
+                    "answer_text": "Es un método para predecir el futuro con exactitud absoluta",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. La simulación proporciona estimaciones estadísticas, no resultados exactos."
+                },
+                {
+                    "answer_text": "Es una herramienta exclusiva para sistemas físicos",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. La simulación se aplica a sistemas físicos, sociales, económicos, entre otros."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Origen del Método Monte Carlo",
+            "question_text": "<p>¿En qué contexto histórico surgió el método de Monte Carlo?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "Durante la Segunda Guerra Mundial en el Proyecto Manhattan para resolver problemas de protección nuclear",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! Von Neumann y Ulam acuñaron el término en el contexto del Proyecto Manhattan en Los Álamos."
+                },
+                {
+                    "answer_text": "En el siglo XIX para resolver problemas de estadística básica",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. El método Monte Carlo se formalizó en la década de 1940."
+                },
+                {
+                    "answer_text": "En la década de 1980 con el auge de las computadoras personales",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Aunque las computadoras aceleraron su uso, el método se originó en los años 40."
+                },
+                {
+                    "answer_text": "En el Casino de Monte Carlo como técnica de juego",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. El nombre hace referencia al casino por su relación con el azar, pero el método se desarrolló en un contexto científico."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Ventajas de la Simulación",
+            "question_text": "<p>¿Cuál de las siguientes NO es una ventaja de la simulación?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "Proporciona siempre resultados exactos y óptimos",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! Esta NO es una ventaja. La simulación proporciona estimaciones estadísticas, no resultados exactos u óptimos."
+                },
+                {
+                    "answer_text": "Permite experimentar sin riesgo con el sistema real",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Esta SÍ es una ventaja importante de la simulación."
+                },
+                {
+                    "answer_text": "Facilita la comprensión de sistemas complejos",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Esta SÍ es una ventaja clave de la simulación."
+                },
+                {
+                    "answer_text": "Permite simular años de operación en minutos",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Esta SÍ es una ventaja significativa de la simulación."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Sistemas Discretos vs Continuos",
+            "question_text": "<p>¿Cuál es la diferencia fundamental entre un sistema discreto y uno continuo?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "En los discretos los cambios ocurren en instantes específicos, en los continuos las variables cambian de forma fluida en el tiempo",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! Los sistemas discretos cambian en eventos puntuales, mientras los continuos evolucionan de manera gradual."
+                },
+                {
+                    "answer_text": "Los discretos son más complejos que los continuos",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. La complejidad no define la diferencia entre discretos y continuos."
+                },
+                {
+                    "answer_text": "Los continuos solo se pueden modelar con computadoras",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Ambos tipos pueden modelarse con computadoras."
+                },
+                {
+                    "answer_text": "Los discretos no pueden tener elementos aleatorios",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Los sistemas discretos pueden ser estocásticos."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Ejemplos de Sistemas Discretos",
+            "question_text": "<p>¿Cuál de los siguientes es un ejemplo típico de sistema discreto?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "Un sistema de colas en un banco",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! Las colas cambian solo cuando llega o sale un cliente (eventos discretos)."
+                },
+                {
+                    "answer_text": "El flujo de agua en una tubería",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Este es un ejemplo de sistema continuo."
+                },
+                {
+                    "answer_text": "La transferencia de calor en un molde",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Este es un ejemplo de sistema continuo."
+                },
+                {
+                    "answer_text": "El crecimiento de una población",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Generalmente se modela como sistema continuo."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Modelos Determinísticos",
+            "question_text": "<p>¿Qué caracteriza a un modelo determinístico?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "No interviene el azar y bajo las mismas condiciones iniciales siempre produce los mismos resultados",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! Los modelos determinísticos no tienen elementos aleatorios y son completamente predecibles."
+                },
+                {
+                    "answer_text": "Utiliza distribuciones de probabilidad para todas sus variables",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Esto describe un modelo estocástico."
+                },
+                {
+                    "answer_text": "Solo puede aplicarse a sistemas simples",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Los modelos determinísticos pueden ser muy complejos."
+                },
+                {
+                    "answer_text": "Requiere múltiples corridas para obtener resultados confiables",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Esto es característico de modelos estocásticos."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Modelos Estocásticos",
+            "question_text": "<p>En un modelo estocástico, ¿cómo se representa la incertidumbre?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "Mediante distribuciones de probabilidad",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! Los modelos estocásticos usan distribuciones de probabilidad para representar la variabilidad e incertidumbre."
+                },
+                {
+                    "answer_text": "Mediante valores constantes y fijos",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Los valores constantes son característicos de modelos determinísticos."
+                },
+                {
+                    "answer_text": "No se puede representar la incertidumbre",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Precisamente los modelos estocásticos están diseñados para manejar incertidumbre."
+                },
+                {
+                    "answer_text": "Solo mediante ecuaciones diferenciales",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Las ecuaciones diferenciales se usan en modelos continuos, no necesariamente estocásticos."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Sistemas Híbridos",
+            "question_text": "<p>¿Qué es un sistema híbrido en simulación?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "Un sistema que combina elementos discretos y continuos",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! Los sistemas híbridos integran componentes de eventos discretos con flujos continuos."
+                },
+                {
+                    "answer_text": "Un sistema que usa dos computadoras diferentes",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. El término híbrido se refiere a la naturaleza del modelo, no al hardware."
+                },
+                {
+                    "answer_text": "Un sistema que solo funciona en la nube",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. La ubicación de ejecución no define un sistema híbrido."
+                },
+                {
+                    "answer_text": "Un sistema que combina dos lenguajes de programación",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Híbrido se refiere a la combinación de paradigmas de simulación."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Números Pseudoaleatorios",
+            "question_text": "<p>¿Por qué se llaman 'pseudoaleatorios' y no simplemente 'aleatorios'?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "Porque son generados por un algoritmo determinista, aunque tienen apariencia aleatoria",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! Son 'falso aleatorios' porque siguen un patrón matemático predecible, aunque parecen aleatorios."
+                },
+                {
+                    "answer_text": "Porque son de menor calidad que los números aleatorios verdaderos",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. La calidad puede ser muy alta; el término se refiere a su naturaleza determinista."
+                },
+                {
+                    "answer_text": "Porque solo funcionan en computadoras antiguas",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Los números pseudoaleatorios se usan en todas las computadoras modernas."
+                },
+                {
+                    "answer_text": "Porque no se pueden usar en simulaciones serias",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Son fundamentales en simulaciones profesionales y científicas."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Propiedades de Uniformidad",
+            "question_text": "<p>Para una distribución uniforme U(0,1), ¿cuál es la media teórica?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "0.5",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! La media de una distribución uniforme en (0,1) es μ = 0.5 o 1/2."
+                },
+                {
+                    "answer_text": "1.0",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Revisa las propiedades de la distribución uniforme."
+                },
+                {
+                    "answer_text": "0.0",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. La media está en el centro del intervalo (0,1)."
+                },
+                {
+                    "answer_text": "0.2887",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Este valor corresponde a la desviación estándar, no a la media."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Varianza Uniforme",
+            "question_text": "<p>¿Cuál es la varianza teórica de una distribución uniforme U(0,1)?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "1/12",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! La varianza de U(0,1) es σ² = 1/12 ≈ 0.0833."
+                },
+                {
+                    "answer_text": "1/2",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Este es el valor de la media, no de la varianza."
+                },
+                {
+                    "answer_text": "1",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Revisa la fórmula de varianza para distribución uniforme."
+                },
+                {
+                    "answer_text": "0",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Una varianza de 0 indicaría que no hay variabilidad."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Generador Congruencial Lineal",
+            "question_text": "<p>En la fórmula del GCL Mixto: X<sub>i+1</sub> = (a·X<sub>i</sub> + c) mod m, ¿qué representa el parámetro 'c'?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "El incremento o constante aditiva",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! 'c' es el incremento. Si c=0, el generador es multiplicativo en lugar de mixto."
+                },
+                {
+                    "answer_text": "El módulo que determina el rango de valores",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. El módulo está representado por 'm'."
+                },
+                {
+                    "answer_text": "La semilla o valor inicial",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. La semilla está representada por 'X₀'."
+                },
+                {
+                    "answer_text": "La constante multiplicativa",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. La constante multiplicativa está representada por 'a'."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Teorema Hull-Dobell",
+            "question_text": "<p>Según el Teorema de Hull-Dobell, ¿cuál es una condición necesaria para que un GCL tenga periodo completo?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "c y m deben ser primos relativos (mcd(c,m) = 1)",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! Esta es una de las tres condiciones del Teorema de Hull-Dobell para periodo máximo."
+                },
+                {
+                    "answer_text": "a debe ser siempre un número primo",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. 'a' no necesita ser primo, pero debe cumplir otras condiciones específicas."
+                },
+                {
+                    "answer_text": "m debe ser siempre potencia de 2",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. m puede tener diferentes valores, no necesariamente potencia de 2."
+                },
+                {
+                    "answer_text": "c debe ser mayor que m",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. De hecho, c debe ser menor que m."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Prueba Kolmogorov-Smirnov",
+            "question_text": "<p>¿Qué mide la prueba de Kolmogorov-Smirnov?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "La desviación máxima entre la distribución empírica y la teórica",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! K-S compara la función de distribución acumulada empírica con la teórica."
+                },
+                {
+                    "answer_text": "La frecuencia observada versus la esperada en intervalos",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Esto describe la prueba Chi-cuadrado."
+                },
+                {
+                    "answer_text": "Si la media muestral es igual a 0.5",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Esto describe la prueba de medias."
+                },
+                {
+                    "answer_text": "La correlación entre números consecutivos",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Esto describe pruebas de independencia."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Prueba Chi-Cuadrado",
+            "question_text": "<p>En la prueba Chi-cuadrado para uniformidad, ¿qué se espera de las frecuencias en cada intervalo?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "Que sean aproximadamente iguales en todos los intervalos",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! En una distribución uniforme, se espera que el número de datos en cada intervalo sea similar."
+                },
+                {
+                    "answer_text": "Que aumenten progresivamente",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Esto no corresponde a una distribución uniforme."
+                },
+                {
+                    "answer_text": "Que sigan una distribución normal",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Estamos probando uniformidad, no normalidad."
+                },
+                {
+                    "answer_text": "Que sean todas iguales a cero",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Debe haber datos en los intervalos."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Ley de los Grandes Números",
+            "question_text": "<p>¿Qué justifica la Ley Fuerte de los Grandes Números en el método de Monte Carlo?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "Que la media muestral converge al valor esperado cuando n tiende a infinito",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! Esta ley fundamenta que el promedio de simulaciones converge al valor teórico."
+                },
+                {
+                    "answer_text": "Que todos los números aleatorios son iguales",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Los números son diferentes, pero su promedio converge."
+                },
+                {
+                    "answer_text": "Que la simulación siempre da resultados exactos",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Da estimaciones que mejoran con más simulaciones."
+                },
+                {
+                    "answer_text": "Que no se necesitan muchas simulaciones",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. De hecho, se requieren muchas simulaciones para buena precisión."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Convergencia Monte Carlo",
+            "question_text": "<p>¿Cuál es una limitación importante del método de Monte Carlo?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "Converge lentamente, requiriendo gran cantidad de simulaciones",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! El error decrece proporcionalmente a 1/√n, lo que hace el método computacionalmente intensivo."
+                },
+                {
+                    "answer_text": "Solo funciona para problemas unidimensionales",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Una ventaja es que funciona bien en múltiples dimensiones."
+                },
+                {
+                    "answer_text": "No se puede aplicar a problemas de ingeniería",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Tiene amplias aplicaciones en ingeniería."
+                },
+                {
+                    "answer_text": "Requiere conocer la solución analítica previamente",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Se usa precisamente cuando no hay solución analítica fácil."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Estimación de Áreas",
+            "question_text": "<p>En la estimación del área de un círculo por Monte Carlo, ¿cómo se calcula el área aproximada?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "Multiplicando la fracción de puntos dentro del círculo por el área del cuadrado envolvente",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! Área ≈ (N_dentro/N_total) × Área_cuadrado."
+                },
+                {
+                    "answer_text": "Sumando todos los puntos generados",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Se usa la proporción de puntos, no la suma."
+                },
+                {
+                    "answer_text": "Usando la fórmula πr² directamente",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Esa es la fórmula analítica, no el método Monte Carlo."
+                },
+                {
+                    "answer_text": "Contando solo los puntos fuera del círculo",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Se cuentan los puntos dentro del círculo."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Integración Numérica",
+            "question_text": "<p>Para aproximar una integral ∫<sub>a</sub><sup>b</sup> h(x)dx por Monte Carlo, ¿qué fórmula se utiliza?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "I ≈ (b-a) × (1/n) × Σh(x<sub>i</sub>)",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! Se multiplica el ancho del intervalo por el promedio de la función evaluada en puntos aleatorios."
+                },
+                {
+                    "answer_text": "I ≈ Σh(x<sub>i</sub>)",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Falta multiplicar por (b-a) y dividir por n."
+                },
+                {
+                    "answer_text": "I ≈ h(b) - h(a)",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Esta no es la aproximación de Monte Carlo."
+                },
+                {
+                    "answer_text": "I ≈ n × (b-a)",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Falta evaluar la función en los puntos aleatorios."
+                }
+            ]
+        }
+    },
+    {
+        "question": {
+            "question_name": "Aplicaciones Monte Carlo",
+            "question_text": "<p>¿Cuál de las siguientes NO es una aplicación típica del método de Monte Carlo?</p>",
+            "question_type": "multiple_choice_question",
+            "points_possible": 0.15,
+            "answers": [
+                {
+                    "answer_text": "Resolver sistemas de ecuaciones lineales simples",
+                    "answer_weight": 100,
+                    "answer_comments": "¡Correcto! Para sistemas lineales simples existen métodos directos más eficientes que Monte Carlo."
+                },
+                {
+                    "answer_text": "Valoración de opciones financieras",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Esta SÍ es una aplicación importante de Monte Carlo."
+                },
+                {
+                    "answer_text": "Estimación del valor de π",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Este es un ejemplo clásico de aplicación de Monte Carlo."
+                },
+                {
+                    "answer_text": "Análisis de riesgo en proyectos",
+                    "answer_weight": 0,
+                    "answer_comments": "Incorrecto. Esta SÍ es una aplicación común de Monte Carlo."
+                }
+            ]
+        }
+    }
+]

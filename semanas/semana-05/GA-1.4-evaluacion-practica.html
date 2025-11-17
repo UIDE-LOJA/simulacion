@@ -1,0 +1,213 @@
+<p>Esta evaluación práctica te permitirá demostrar tu dominio de los <strong>conceptos fundamentales de simulación</strong> cubiertos en las semanas 1-4. Trabajarás de forma progresiva sobre un <strong>caso único de sistema bancario</strong>, aplicando conocimientos sobre <em>clasificación de sistemas</em>, <em>generación de números pseudoaleatorios</em>, y <em>método de Monte Carlo</em> mediante ejercicios prácticos en Excel.</p>
+
+<p><strong>Caso de Estudio: Sistema de Atención en Sucursal Bancaria</strong></p>
+
+<p>Una sucursal bancaria desea analizar y mejorar su sistema de atención al cliente. Los clientes llegan de forma aleatoria durante el día y son atendidos por cajeros disponibles. El tiempo de servicio varía según el tipo de transacción (retiros, depósitos, consultas). Cuando no hay cajeros disponibles, los clientes esperan en una fila única. El banco también monitorea continuamente el flujo de efectivo en sus bóvedas, que cambia de manera constante con cada transacción.</p>
+
+<p>El banco ha recopilado datos históricos que indican:</p>
+<ul>
+    <li>Los clientes llegan con intervalos de tiempo variables</li>
+    <li>El tiempo de servicio por cliente varía entre 3 y 8 minutos</li>
+    <li>Hay 3 cajeros disponibles en horario normal</li>
+</ul>
+
+<p><strong>Desarrollo Progresivo de la Evaluación</strong></p>
+
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 99.9997%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 25%;" data-col-size="sm">Fase</th>
+                    <th style="width: 50%;" data-col-size="xl">Descripción</th>
+                    <th style="width: 25%;" data-col-size="md">Puntaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-col-size="sm">Fase 1: Análisis del Sistema</td>
+                    <td data-col-size="xl">Clasifica el sistema bancario según su naturaleza y comportamiento. Identifica las entidades, eventos y variables clave del sistema.</td>
+                    <td data-col-size="md">1.0 punto</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Fase 2: Generación de Datos</td>
+                    <td data-col-size="xl">Implementa un GCL para generar números pseudoaleatorios que representarán los tiempos de servicio. Transforma estos números al rango [3, 8] minutos.</td>
+                    <td data-col-size="md">1.0 punto</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Fase 3: Simulación del Sistema</td>
+                    <td data-col-size="xl">Usa el método de Monte Carlo para simular 20 clientes. Calcula el tiempo promedio de servicio y estima el tiempo total de operación.</td>
+                    <td data-col-size="md">1.5 puntos</td>
+                </tr>
+                <tr>
+                    <td data-col-size="sm">Fase 4: Análisis y Recomendación</td>
+                    <td data-col-size="xl">Interpreta los resultados de la simulación y proporciona una recomendación sobre si el banco necesita agregar un cajero adicional.</td>
+                    <td data-col-size="md">0.5 puntos</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>Instrucciones Específicas por Fase</strong></p>
+
+<p><strong>Fase 1: Análisis del Sistema (1.0 punto)</strong></p>
+
+<p>Analiza el sistema bancario descrito y completa las siguientes tareas:</p>
+
+<p><strong>a) Clasificación del Sistema (0.6 puntos)</strong></p>
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th style="width: 30%;">Dimensión</th>
+                    <th style="width: 30%;">Clasificación</th>
+                    <th style="width: 40%;">Justificación Técnica</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Naturaleza</td>
+                    <td>Discreto / Continuo / Híbrido</td>
+                    <td>Explica tu elección identificando qué componentes son discretos y/o continuos</td>
+                </tr>
+                <tr>
+                    <td>Comportamiento</td>
+                    <td>Determinista / Estocástico</td>
+                    <td>Explica por qué existe o no incertidumbre en el sistema</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>b) Identificación de Componentes (0.4 puntos)</strong></p>
+<p>Identifica y lista:</p>
+<ul>
+    <li><strong>Entidades:</strong> ¿Cuáles son los elementos que fluyen por el sistema?</li>
+    <li><strong>Eventos principales:</strong> ¿Qué acontecimientos cambian el estado del sistema?</li>
+    <li><strong>Variables clave:</strong> ¿Qué variables se deben medir para evaluar el desempeño?</li>
+</ul>
+
+<p><strong>Fase 2: Generación de Datos de Tiempos de Servicio (1.0 punto)</strong></p>
+
+<p>Para simular el sistema bancario, necesitas generar tiempos de servicio aleatorios entre 3 y 8 minutos.</p>
+
+<p><strong>a) Implementación del GCL (0.6 puntos)</strong></p>
+<p>Implementa en Excel un GCL Mixto con los siguientes parámetros:</p>
+<ul>
+    <li>Semilla (X₀) = 11</li>
+    <li>Multiplicador (a) = 17</li>
+    <li>Incremento (c) = 7</li>
+    <li>Módulo (m) = 32</li>
+</ul>
+
+<p>Genera 20 números pseudoaleatorios usando la fórmula: X<sub>i+1</sub> = (a · X<sub>i</sub> + c) mod m</p>
+<p>Luego calcula R<sub>i</sub> = X<sub>i</sub> / m para obtener valores entre 0 y 1.</p>
+
+<p><strong>b) Transformación a Tiempos de Servicio (0.4 puntos)</strong></p>
+<p>Transforma cada número R<sub>i</sub> generado al rango [3, 8] minutos usando la fórmula:</p>
+<p><strong>Tiempo de Servicio = 3 + (8 - 3) × R<sub>i</sub> = 3 + 5 × R<sub>i</sub></strong></p>
+<p>Estos 20 valores representarán los tiempos de servicio de 20 clientes consecutivos.</p>
+
+<p><strong>Fase 3: Simulación del Sistema Bancario (1.5 puntos)</strong></p>
+
+<p>Usando los 20 tiempos de servicio generados en la Fase 2, simula la operación del banco.</p>
+
+<p><strong>a) Tabla de Simulación (1.0 punto)</strong></p>
+<p>Crea una tabla en Excel con las siguientes columnas para los 20 clientes:</p>
+
+<div class="_tableContainer_1rjym_1">
+    <div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse">
+        <table class="w-fit min-w-(--thread-content-width)" style="border-collapse: collapse; width: 100%;" border="1">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>R<sub>i</sub></th>
+                    <th>Tiempo Servicio (min)</th>
+                    <th>Tiempo Acumulado (min)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>R₁</td>
+                    <td>3 + 5×R₁</td>
+                    <td>Tiempo Servicio Cliente 1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>R₂</td>
+                    <td>3 + 5×R₂</td>
+                    <td>Suma acumulada</td>
+                </tr>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p><strong>b) Cálculos Estadísticos (0.5 puntos)</strong></p>
+<p>Calcula:</p>
+<ul>
+    <li><strong>Tiempo promedio de servicio:</strong> Promedio de los 20 tiempos de servicio</li>
+    <li><strong>Tiempo total de atención:</strong> Suma de todos los tiempos de servicio</li>
+    <li><strong>Tiempo mínimo y máximo:</strong> Identifica el cliente con menor y mayor tiempo de servicio</li>
+</ul>
+
+<p><strong>Fase 4: Análisis y Recomendación (0.5 puntos)</strong></p>
+
+<p>Con base en los resultados de tu simulación, responde:</p>
+
+<ol>
+    <li><strong>Interpretación:</strong> Si el banco opera 8 horas al día (480 minutos) y tiene 3 cajeros, ¿cuántos clientes puede atender aproximadamente? (Usa el tiempo promedio de servicio calculado)</li>
+    <li><strong>Recomendación:</strong> Si el banco recibe en promedio 100 clientes al día, ¿es suficiente con 3 cajeros? Justifica tu respuesta con los datos de la simulación.</li>
+    <li><strong>Propuesta de mejora:</strong> ¿Qué recomendarías al banco para mejorar su sistema de atención?</li>
+</ol>
+
+<p><strong>Formato de Entrega</strong></p>
+<ul>
+    <li>Archivo Excel único con 4 hojas claramente etiquetadas:
+        <ul>
+            <li>Hoja 1: "Fase 1 - Análisis"</li>
+            <li>Hoja 2: "Fase 2 - Generación GCL"</li>
+            <li>Hoja 3: "Fase 3 - Simulación"</li>
+            <li>Hoja 4: "Fase 4 - Recomendaciones"</li>
+        </ul>
+    </li>
+    <li>Incluye todas las fórmulas y cálculos intermedios visibles</li>
+    <li>Agrega comentarios o notas explicativas donde sea necesario</li>
+    <li>Presenta los resultados de forma clara y organizada</li>
+</ul>
+
+<p><strong>Información Importante</strong></p>
+<ul>
+    <li><strong>Modalidad:</strong> Evaluación práctica individual presencial — <strong>4.0 pts</strong></li>
+    <li><strong>Duración:</strong> 60 minutos</li>
+    <li><strong>Materiales permitidos:</strong> Computadora con Excel, calculadora, compendios de las semanas 1-4</li>
+    <li><strong>Entrega:</strong> Archivo Excel al finalizar la evaluación (nombre: Apellido_Nombre_GA14.xlsx)</li>
+</ul>
+
+<p><strong>Criterios de Evaluación</strong></p>
+<ul>
+    <li><strong>Coherencia:</strong> Las fases están conectadas y construyen sobre el mismo caso</li>
+    <li><strong>Correctitud técnica:</strong> Clasificaciones, fórmulas y cálculos son correctos</li>
+    <li><strong>Implementación:</strong> El GCL está correctamente implementado y los datos se transforman adecuadamente</li>
+    <li><strong>Análisis:</strong> Las recomendaciones están fundamentadas en los resultados de la simulación</li>
+    <li><strong>Presentación:</strong> El trabajo está organizado, claro y profesional</li>
+</ul>
+
+<p><strong>Consejos para el Éxito</strong></p>
+<ul>
+    <li>Lee todo el caso antes de comenzar para entender la conexión entre las fases</li>
+    <li>Administra tu tiempo: 15 minutos por fase aproximadamente</li>
+    <li>Verifica tus fórmulas antes de copiarlas a múltiples celdas</li>
+    <li>Usa los resultados de cada fase en la siguiente</li>
+    <li>Si tienes dudas durante la evaluación, levanta la mano para consultar con el docente</li>
+</ul>
