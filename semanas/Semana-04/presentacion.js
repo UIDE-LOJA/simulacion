@@ -165,6 +165,214 @@ class PresentationController {
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     new PresentationController();
+    initMonteCarlo();
+    initCoinFlip();
 });
 
 console.log('🚀 HCI Presentation system loaded');
+
+// Monte Carlo Pi Simulation
+function initMonteCarlo() {
+    const canvas = document.getElementById('piCanvas');
+    if (!canvas) return; // Canvas no existe en esta página
+
+    const ctx = canvas.getContext('2d');
+    const width = canvas.width;
+    const height = canvas.height;
+
+    // Variables de estado
+    let isRunning = false;
+    let pointsInside = 0;
+    let pointsOutside = 0;
+    let totalPoints = 0;
+    let animationId = null;
+
+    // Radio del círculo (mitad del canvas)
+    const radius = width / 2;
+    const centerX = width / 2;
+    const centerY = height / 2;
+
+    // Elementos del DOM
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const insideCountEl = document.getElementById('insideCount');
+    const outsideCountEl = document.getElementById('outsideCount');
+    const totalCountEl = document.getElementById('totalCount');
+    const piValueEl = document.getElementById('piValue');
+
+    // Dibujar el círculo inicial
+    function drawCircle() {
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+        ctx.stroke();
+    }
+
+    // Resetear el canvas
+    function reset() {
+        isRunning = false;
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+
+        pointsInside = 0;
+        pointsOutside = 0;
+        totalPoints = 0;
+
+        // Limpiar canvas
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, width, height);
+
+        // Redibujar círculo
+        drawCircle();
+
+        // Actualizar UI
+        updateDisplay();
+    }
+
+    // Actualizar los valores mostrados
+    function updateDisplay() {
+        insideCountEl.textContent = pointsInside;
+        outsideCountEl.textContent = pointsOutside;
+        totalCountEl.textContent = totalPoints;
+
+        if (totalPoints > 0) {
+            const piEstimate = 4 * (pointsInside / totalPoints);
+            piValueEl.textContent = piEstimate.toFixed(5);
+        } else {
+            piValueEl.textContent = '0';
+        }
+    }
+
+    // Generar y dibujar puntos
+    function generatePoints() {
+        // Generar 100 puntos por frame para animación más rápida
+        for (let i = 0; i < 100; i++) {
+            // Generar coordenadas aleatorias
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+
+            // Calcular distancia al centro
+            const distance = Math.sqrt(
+                Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2)
+            );
+
+            // Verificar si está dentro del círculo
+            if (distance <= radius) {
+                pointsInside++;
+                ctx.fillStyle = 'green';
+            } else {
+                pointsOutside++;
+                ctx.fillStyle = 'red';
+            }
+
+            totalPoints++;
+
+            // Dibujar punto (más pequeño para mejor visualización)
+            ctx.fillRect(x, y, 1, 1);
+        }
+
+        // Actualizar display
+        updateDisplay();
+
+        // Continuar si está corriendo
+        if (isRunning) {
+            animationId = requestAnimationFrame(generatePoints);
+        }
+    }
+
+    // Event listeners
+    startBtn.addEventListener('click', () => {
+        if (!isRunning) {
+            isRunning = true;
+            generatePoints();
+        }
+    });
+
+    stopBtn.addEventListener('click', () => {
+        isRunning = false;
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+    });
+
+    resetBtn.addEventListener('click', () => {
+        reset();
+    });
+
+    // Inicializar
+    reset();
+
+    console.log('✅ Monte Carlo simulation initialized');
+}
+
+// Coin Flip Simulation
+function initCoinFlip() {
+    const coin = document.getElementById('coin');
+    const flipBtn = document.getElementById('coin-flip-button');
+    const resetBtn = document.getElementById('coin-reset-button');
+    const headsCountEl = document.getElementById('coin-heads-count');
+    const tailsCountEl = document.getElementById('coin-tails-count');
+    const percentageEl = document.getElementById('coin-percentage');
+
+    if (!coin || !flipBtn) return; // Elementos no existen
+
+    let heads = 0;
+    let tails = 0;
+
+    function updateStats() {
+        headsCountEl.textContent = heads;
+        tailsCountEl.textContent = tails;
+
+        const total = heads + tails;
+        if (total > 0) {
+            const percentage = ((heads / total) * 100).toFixed(2);
+            percentageEl.textContent = percentage + '%';
+        } else {
+            percentageEl.textContent = '0%';
+        }
+    }
+
+    function disableButton() {
+        flipBtn.disabled = true;
+        setTimeout(() => {
+            flipBtn.disabled = false;
+        }, 3000);
+    }
+
+    flipBtn.addEventListener('click', () => {
+        const i = Math.floor(Math.random() * 2);
+
+        // Remover animaciones previas
+        coin.classList.remove('spinning-heads', 'spinning-tails');
+
+        // Forzar reflow para reiniciar animación
+        void coin.offsetWidth;
+
+        if (i) {
+            // Caras
+            coin.classList.add('spinning-heads');
+            heads++;
+        } else {
+            // Cruces
+            coin.classList.add('spinning-tails');
+            tails++;
+        }
+
+        setTimeout(updateStats, 3000);
+        disableButton();
+    });
+
+    resetBtn.addEventListener('click', () => {
+        coin.classList.remove('spinning-heads', 'spinning-tails');
+        heads = 0;
+        tails = 0;
+        updateStats();
+    });
+
+    console.log('✅ Coin flip simulation initialized');
+}

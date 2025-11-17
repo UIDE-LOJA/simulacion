@@ -135,42 +135,307 @@
             </div>
         </div>
 
-        <!-- Slide 5: Ley de los Grandes Números -->
+        <!-- Slide 5a: Ejemplo Intuitivo - Lanzar Monedas -->
         <div class="slide">
-            <h2><i class="fas fa-chart-area"></i> Ley de los Grandes Números y Convergencia</h2>
+            <h2><i class="fas fa-chart-area"></i> ¿Por qué funciona Monte Carlo?</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 30px; padding: 0 20px;">
+                <!-- Columna izquierda: Simulador de moneda -->
+                <div
+                    style="background: rgba(35, 53, 110, 0.3); padding: 30px; border-radius: 12px; border: 2px solid var(--uide-accent);">
+                    <h3
+                        style="color: var(--uide-accent); margin-bottom: 1.5rem; text-align: center; font-size: 1.3rem;">
+                        <i class="fas fa-coins"></i> Lanza la Moneda
+                    </h3>
+
+                    <!-- Moneda 3D -->
+                    <div id="coinFlip" class="coin-container"
+                        style="height: 200px; width: 200px; position: relative; margin: 20px auto; perspective: 300px;">
+                        <div class="coin-flip" id="coin"
+                            style="height: 100%; width: 100%; position: relative; transform-style: preserve-3d;">
+                            <div class="coin-heads"
+                                style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(251, 191, 36, 0.6);">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/US_One_Cent_Obv.png/500px-US_One_Cent_Obv.png"
+                                    alt="Cara" style="width: 100%; height: 100%; object-fit: contain;">
+                            </div>
+                            <div class="coin-tails"
+                                style="position: absolute; width: 100%; height: 100%; backface-visibility: hidden; transform: rotateX(180deg); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(148, 163, 184, 0.6);">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/US_union_shield_penny_reverse.png"
+                                    alt="Sello" style="width: 100%; height: 100%; object-fit: contain;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Estadísticas -->
+                    <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                        <div style="display: flex; justify-content: space-around; margin-bottom: 15px;">
+                            <div style="text-align: center;">
+                                <p style="margin: 0; font-size: 0.9rem; color: #fbbf24; font-weight: bold;">Caras</p>
+                                <p id="coin-heads-count"
+                                    style="margin: 5px 0 0 0; font-size: 2rem; font-weight: bold; color: #fbbf24;">0</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <p style="margin: 0; font-size: 0.9rem; color: #94a3b8; font-weight: bold;">Sello</p>
+                                <p id="coin-tails-count"
+                                    style="margin: 5px 0 0 0; font-size: 2rem; font-weight: bold; color: #94a3b8;">0</p>
+                            </div>
+                        </div>
+                        <div
+                            style="text-align: center; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2);">
+                            <p style="margin: 0; font-size: 0.9rem; color: #cbd5e1;">Porcentaje de Caras</p>
+                            <p id="coin-percentage"
+                                style="margin: 5px 0 0 0; font-size: 1.8rem; font-weight: bold; color: var(--uide-accent);">
+                                0%</p>
+                        </div>
+                    </div>
+
+                    <!-- Botones -->
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+                        <button id="coin-flip-button"
+                            style="padding: 12px 24px; background-color: #4ade80; border: none; color: #000; font-size: 1rem; font-weight: bold; border-radius: 6px; cursor: pointer; transition: all 0.3s;">
+                            <i class="fas fa-play"></i> Lanzar
+                        </button>
+                        <button id="coin-reset-button"
+                            style="padding: 12px 24px; background-color: #ef4444; border: none; color: white; font-size: 1rem; font-weight: bold; border-radius: 6px; cursor: pointer; transition: all 0.3s;">
+                            <i class="fas fa-redo"></i> Reiniciar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: Explicación -->
+                <div>
+                    <div
+                        style="background: rgba(233, 171, 33, 0.15); padding: 25px; border-radius: 12px; border-left: 5px solid var(--uide-accent); margin-bottom: 20px;">
+                        <h4 style="color: var(--uide-accent); margin: 0 0 15px 0; font-size: 1.2rem;">
+                            <i class="fas fa-lightbulb"></i> Principio Clave
+                        </h4>
+                        <p style="margin: 0; font-size: 1.1rem; line-height: 1.7; color: #e2e8f0;">
+                            Entre <strong>más veces repitas</strong> el experimento, más se acerca el resultado al valor
+                            esperado (50%)
+                        </p>
+                    </div>
+
+                    <!-- Tabla de convergencia -->
+                    <div
+                        style="background: rgba(35, 53, 110, 0.3); padding: 25px; border-radius: 12px; border: 2px solid var(--uide-accent);">
+                        <h4
+                            style="color: var(--uide-accent); margin: 0 0 15px 0; font-size: 1.2rem; text-align: center;">
+                            Convergencia al 50%
+                        </h4>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr style="background: rgba(233, 171, 33, 0.3);">
+                                <th style="padding: 12px; border: 1px solid rgba(255,255,255,0.2); font-size: 1rem;">
+                                    Lanzamientos</th>
+                                <th style="padding: 12px; border: 1px solid rgba(255,255,255,0.2); font-size: 1rem;">
+                                    Resultado Típico</th>
+                                <th style="padding: 12px; border: 1px solid rgba(255,255,255,0.2); font-size: 1rem;">
+                                    Precisión</th>
+                            </tr>
+                            <tr style="background: rgba(239, 68, 68, 0.1);">
+                                <td
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: center; font-weight: bold;">
+                                    10</td>
+                                <td
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: center; color: #ef4444; font-weight: bold;">
+                                    70%</td>
+                                <td
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.9rem;">
+                                    Muy alejado</td>
+                            </tr>
+                            <tr style="background: rgba(251, 191, 36, 0.1);">
+                                <td
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: center; font-weight: bold;">
+                                    100</td>
+                                <td
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: center; color: #fbbf24; font-weight: bold;">
+                                    52%</td>
+                                <td
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.9rem;">
+                                    Se acerca</td>
+                            </tr>
+                            <tr style="background: rgba(74, 222, 128, 0.1);">
+                                <td
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: center; font-weight: bold;">
+                                    10,000</td>
+                                <td
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: center; color: #4ade80; font-weight: bold;">
+                                    50.04%</td>
+                                <td
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: center; font-size: 0.9rem;">
+                                    Casi exacto</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div
+                        style="background: rgba(59, 130, 246, 0.1); padding: 20px; border-radius: 10px; border-left: 5px solid #3b82f6; margin-top: 20px;">
+                        <p style="margin: 0; font-size: 1rem; line-height: 1.6; color: #cbd5e1;">
+                            <i class="fas fa-info-circle"></i> <strong>Experimenta:</strong> Lanza la moneda varias
+                            veces y observa cómo el porcentaje se acerca al 50%
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5b: Ley de los Grandes Números -->
+        <div class="slide">
+            <h2><i class="fas fa-brain"></i> Ley de los Grandes Números</h2>
 
             <div
-                style="background: rgba(35, 53, 110, 0.3); padding: 25px; border-radius: 12px; border: 2px solid var(--uide-accent); margin-bottom: 2rem;">
-                <h3 style="color: var(--uide-accent); margin-bottom: 1rem; text-align: center;">Fundamento Matemático
+                style="background: rgba(15, 20, 25, 0.6); padding: 40px; border-radius: 12px; border: 2px solid var(--uide-primary); margin-bottom: 3rem;">
+                <h3 style="color: var(--uide-primary); margin-bottom: 2rem; text-align: center; font-size: 1.6rem;">
+                    <i class="fas fa-balance-scale"></i> Fundamento Teórico
                 </h3>
-                <div style="text-align: center; font-size: 1.3rem; margin: 1.5rem 0;">
-                    $$\lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^{n} X_i = \mu$$
-                </div>
-                <p style="text-align: center; color: #cbd5e1; font-size: 1rem; margin-top: 1rem;">
-                    La media muestral converge al valor esperado cuando n → ∞
+                <p style="font-size: 1.4rem; line-height: 2; text-align: center; margin: 0; color: #e2e8f0;">
+                    "Al aumentar el número de experimentos aleatorios,<br>
+                    el promedio de los resultados<br>
+                    <strong style="color: var(--uide-accent); font-size: 1.5rem;">se estabiliza y converge al valor
+                        teórico esperado</strong>"
                 </p>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
                 <div
-                    style="background: rgba(74, 222, 128, 0.1); padding: 20px; border-radius: 10px; border: 2px solid #4ade80;">
-                    <h4 style="color: #4ade80; margin-bottom: 1rem;"><i class="fas fa-check-circle"></i> Ventajas</h4>
-                    <ul style="font-size: 1rem; line-height: 1.7;">
-                        <li>Convergencia <strong>independiente de dimensionalidad</strong></li>
-                        <li>Aplicable a problemas complejos</li>
-                        <li>Fácil de implementar</li>
+                    style="background: rgba(74, 222, 128, 0.1); padding: 30px; border-radius: 12px; border: 3px solid #4ade80;">
+                    <h4 style="color: #4ade80; margin-bottom: 1.5rem; font-size: 1.4rem; text-align: center;">
+                        <i class="fas fa-check-circle"></i> Ventajas
+                    </h4>
+                    <ul style="font-size: 1.2rem; line-height: 2; margin: 0; padding-left: 30px;">
+                        <li>Funciona para problemas <strong>muy complejos</strong></li>
+                        <li><strong>Fácil</strong> de implementar</li>
+                        <li>No requiere ecuaciones complicadas</li>
+                        <li>Aplicable en alta dimensionalidad</li>
                     </ul>
                 </div>
 
                 <div
-                    style="background: rgba(239, 68, 68, 0.1); padding: 20px; border-radius: 10px; border: 2px solid #ef4444;">
-                    <h4 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-exclamation-triangle"></i>
-                        Limitaciones</h4>
-                    <ul style="font-size: 1rem; line-height: 1.7;">
-                        <li><strong>Convergencia lenta</strong></li>
-                        <li>Requiere muchas simulaciones</li>
-                        <li>Error ∝ $\frac{1}{\sqrt{n}}$</li>
+                    style="background: rgba(239, 68, 68, 0.1); padding: 30px; border-radius: 12px; border: 3px solid #ef4444;">
+                    <h4 style="color: #ef4444; margin-bottom: 1.5rem; font-size: 1.4rem; text-align: center;">
+                        <i class="fas fa-exclamation-triangle"></i> Limitaciones
+                    </h4>
+                    <ul style="font-size: 1.2rem; line-height: 2; margin: 0; padding-left: 30px;">
+                        <li>Convergencia <strong>lenta</strong></li>
+                        <li>Requiere <strong>muchas</strong> simulaciones</li>
+                        <li>Consume tiempo de cómputo</li>
+                        <li>Resultados con incertidumbre</li>
                     </ul>
+                </div>
+            </div>
+
+            <div
+                style="background: rgba(233, 171, 33, 0.1); padding: 25px; border-radius: 10px; margin-top: 2.5rem; border-left: 5px solid var(--uide-accent);">
+                <p style="margin: 0; font-size: 1.1rem; line-height: 1.6; text-align: center;">
+                    <i class="fas fa-info-circle"></i> <strong>Conclusión:</strong> Monte Carlo sacrifica velocidad por
+                    simplicidad y versatilidad
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 5c: Convergencia y Precisión -->
+        <div class="slide">
+            <h2><i class="fas fa-chart-line"></i> Convergencia y Precisión</h2>
+
+            <div
+                style="background: rgba(35, 53, 110, 0.3); padding: 30px; border-radius: 12px; border: 2px solid var(--uide-accent); margin-bottom: 2.5rem;">
+                <h3 style="color: var(--uide-accent); margin-bottom: 2rem; text-align: center; font-size: 1.5rem;">
+                    <i class="fas fa-table"></i> Relación: Simulaciones vs Precisión
+                </h3>
+                <table style="width: 100%; font-size: 1.2rem; border-collapse: collapse;">
+                    <tr style="background: rgba(233, 171, 33, 0.4);">
+                        <th
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.2); text-align: center; font-size: 1.3rem;">
+                            Simulaciones (n)
+                        </th>
+                        <th
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.2); text-align: center; font-size: 1.3rem;">
+                            Precisión Típica
+                        </th>
+                        <th
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.2); text-align: center; font-size: 1.3rem;">
+                            Tiempo
+                        </th>
+                    </tr>
+                    <tr style="background: rgba(239, 68, 68, 0.1);">
+                        <td
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.1); text-align: center; font-weight: bold; font-size: 1.3rem;">
+                            100
+                        </td>
+                        <td
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.1); text-align: center; color: #ef4444; font-weight: bold; font-size: 1.3rem;">
+                            ±10%
+                        </td>
+                        <td
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.1); text-align: center; color: #4ade80; font-size: 1.2rem;">
+                            Rápido
+                        </td>
+                    </tr>
+                    <tr style="background: rgba(251, 191, 36, 0.1);">
+                        <td
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.1); text-align: center; font-weight: bold; font-size: 1.3rem;">
+                            1,000
+                        </td>
+                        <td
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.1); text-align: center; color: #fbbf24; font-weight: bold; font-size: 1.3rem;">
+                            ±3%
+                        </td>
+                        <td
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.1); text-align: center; color: #cbd5e1; font-size: 1.2rem;">
+                            Medio
+                        </td>
+                    </tr>
+                    <tr style="background: rgba(74, 222, 128, 0.1);">
+                        <td
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.1); text-align: center; font-weight: bold; font-size: 1.3rem;">
+                            10,000
+                        </td>
+                        <td
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.1); text-align: center; color: #4ade80; font-weight: bold; font-size: 1.3rem;">
+                            ±1%
+                        </td>
+                        <td
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.1); text-align: center; color: #ef4444; font-size: 1.2rem;">
+                            Lento
+                        </td>
+                    </tr>
+                    <tr style="background: rgba(59, 130, 246, 0.1);">
+                        <td
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.1); text-align: center; font-weight: bold; font-size: 1.3rem;">
+                            100,000
+                        </td>
+                        <td
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.1); text-align: center; color: #3b82f6; font-weight: bold; font-size: 1.3rem;">
+                            ±0.3%
+                        </td>
+                        <td
+                            style="padding: 20px; border: 2px solid rgba(255,255,255,0.1); text-align: center; color: #ef4444; font-size: 1.2rem;">
+                            Muy lento
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+                <div
+                    style="background: rgba(74, 222, 128, 0.1); padding: 25px; border-radius: 10px; border-left: 5px solid #4ade80;">
+                    <h4 style="color: #4ade80; margin-bottom: 1rem; font-size: 1.2rem;">
+                        <i class="fas fa-rocket"></i> Regla Práctica
+                    </h4>
+                    <p style="margin: 0; font-size: 1.1rem; line-height: 1.8; color: #cbd5e1;">
+                        Para <strong>reducir el error a la mitad</strong>, necesitas <strong style="color: #4ade80;">4
+                            veces más simulaciones</strong>
+                    </p>
+                </div>
+
+                <div
+                    style="background: rgba(233, 171, 33, 0.1); padding: 25px; border-radius: 10px; border-left: 5px solid var(--uide-accent);">
+                    <h4 style="color: var(--uide-accent); margin-bottom: 1rem; font-size: 1.2rem;">
+                        <i class="fas fa-graduation-cap"></i> Para tus Tareas
+                    </h4>
+                    <p style="margin: 0; font-size: 1.1rem; line-height: 1.8; color: #cbd5e1;">
+                        Usa al menos <strong style="color: var(--uide-accent);">1,000 simulaciones</strong> para obtener
+                        resultados aceptables
+                    </p>
                 </div>
             </div>
         </div>
@@ -226,7 +491,115 @@
             </div>
         </div>
 
-        <!-- Slide 7: Implementación en Excel -->
+        <!-- Slide 7: Demostración -->
+        <div class="slide">
+            <h2><i class="fas fa-play-circle"></i> Demostración: Calculando π</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 25px; padding: 0 20px;">
+                <!-- Columna izquierda: Canvas -->
+                <div style="text-align: center;">
+                    <canvas id="piCanvas" width="400" height="400"
+                        style="border: 3px solid var(--uide-accent); background-color: white; border-radius: 8px; max-width: 100%;">
+                        Canvas no soportado.
+                    </canvas>
+
+                    <!-- Controles -->
+                    <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 15px;">
+                        <button id="startBtn"
+                            style="padding: 12px 24px; background-color: #4ade80; border: none; color: #000; font-size: 1rem; font-weight: bold; border-radius: 6px; cursor: pointer; transition: all 0.3s;">
+                            <i class="fas fa-play"></i> Iniciar
+                        </button>
+                        <button id="stopBtn"
+                            style="padding: 12px 24px; background-color: #ef4444; border: none; color: white; font-size: 1rem; font-weight: bold; border-radius: 6px; cursor: pointer; transition: all 0.3s;">
+                            <i class="fas fa-stop"></i> Detener
+                        </button>
+                        <button id="resetBtn"
+                            style="padding: 12px 24px; background-color: var(--uide-accent); border: none; color: #000; font-size: 1rem; font-weight: bold; border-radius: 6px; cursor: pointer; transition: all 0.3s;">
+                            <i class="fas fa-redo"></i> Reiniciar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: Estadísticas y explicación -->
+                <div>
+                    <div
+                        style="background: rgba(35, 53, 110, 0.3); padding: 20px; border-radius: 12px; border: 2px solid var(--uide-accent); margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--uide-accent); margin-bottom: 1rem; text-align: center;">Resultados en
+                            Tiempo Real</h3>
+
+                        <!-- Tabla de resultados -->
+                        <table style="width: 100%; border-collapse: collapse; margin-bottom: 1rem;">
+                            <tr style="background: rgba(233, 171, 33, 0.3);">
+                                <th
+                                    style="padding: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: center; font-size: 1rem;">
+                                    Métrica</th>
+                                <th
+                                    style="padding: 12px; border: 1px solid rgba(255,255,255,0.2); text-align: center; font-size: 1rem;">
+                                    Valor</th>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); color: #4ade80; font-weight: bold;">
+                                    Puntos Dentro</td>
+                                <td id="insideCount"
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: center; font-family: monospace; font-size: 1.1rem;">
+                                    0</td>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); color: #ef4444; font-weight: bold;">
+                                    Puntos Fuera</td>
+                                <td id="outsideCount"
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: center; font-family: monospace; font-size: 1.1rem;">
+                                    0</td>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); color: #fbbf24; font-weight: bold;">
+                                    Total de Puntos</td>
+                                <td id="totalCount"
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: center; font-family: monospace; font-size: 1.1rem;">
+                                    0</td>
+                            </tr>
+                            <tr style="background: rgba(74, 222, 128, 0.1);">
+                                <td
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); color: var(--uide-accent); font-weight: bold; font-size: 1.1rem;">
+                                    Valor de π</td>
+                                <td id="piValue"
+                                    style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); text-align: center; font-family: monospace; font-size: 1.3rem; font-weight: bold; color: var(--uide-accent);">
+                                    0</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Explicación -->
+                    <div
+                        style="background: rgba(233, 171, 33, 0.1); padding: 18px; border-radius: 10px; border-left: 5px solid var(--uide-accent);">
+                        <h4 style="color: var(--uide-accent); margin: 0 0 10px 0; font-size: 1rem;">
+                            <i class="fas fa-info-circle"></i> Cómo Funciona
+                        </h4>
+                        <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; line-height: 1.7; color: #cbd5e1;">
+                            <li>Se generan puntos aleatorios en el cuadrado</li>
+                            <li>Puntos <span style="color: #4ade80; font-weight: bold;">verdes</span>: dentro del
+                                círculo (x² + y² ≤ 1)</li>
+                            <li>Puntos <span style="color: #ef4444; font-weight: bold;">rojos</span>: fuera del círculo
+                            </li>
+                            <li>Fórmula: π ≈ 4 × (Dentro / Total)</li>
+                        </ul>
+                    </div>
+
+                    <div
+                        style="background: rgba(59, 130, 246, 0.1); padding: 18px; border-radius: 10px; border-left: 5px solid #3b82f6; margin-top: 1rem;">
+                        <p style="margin: 0; font-size: 0.9rem; line-height: 1.6; color: #cbd5e1;">
+                            <i class="fas fa-lightbulb"></i> <strong>Observa:</strong> Con más puntos, el valor estimado
+                            se acerca más a π ≈ 3.14159
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Implementación en Excel -->
         <div class="slide">
             <h2><i class="fas fa-file-excel"></i> Implementación en Excel: Estimación de π</h2>
 
@@ -717,14 +1090,6 @@ y <- exp(x)   # Área = 1.718</code></pre>
                     </table>
                 </div>
             </div>
-
-            <div
-                style="background: rgba(233, 171, 33, 0.1); padding: 20px; border-radius: 10px; margin-top: 2rem; border-left: 4px solid var(--uide-accent);">
-                <p style="margin: 0; font-size: 1rem; line-height: 1.6;">
-                    <i class="fas fa-lightbulb"></i> <strong>Para TA-1.4:</strong> Analizar cómo el error disminuye
-                    al aumentar n y documentar la convergencia en un mini-reporte.
-                </p>
-            </div>
         </div>
 
         <!-- Slide 13: Ejemplos Aplicados Simples -->
@@ -873,7 +1238,7 @@ Si ALEATORIO() ≥ 0.5 → "Cruz"</code></pre>
 
         <!-- Slide Counter -->
         <div class="slide-counter">
-            <span id="currentSlide">1</span> / <span id="totalSlides">15</span>
+            <span id="currentSlide">1</span> / <span id="totalSlides">18</span>
         </div>
 
         <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
@@ -881,6 +1246,43 @@ Si ALEATORIO() ≥ 0.5 → "Cruz"</code></pre>
 
     <!-- Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Coin Flip Animations -->
+    <style>
+        @keyframes spin-heads {
+            0% {
+                transform: rotateX(0);
+            }
+
+            100% {
+                transform: rotateX(2160deg);
+            }
+        }
+
+        @keyframes spin-tails {
+            0% {
+                transform: rotateX(0);
+            }
+
+            100% {
+                transform: rotateX(1980deg);
+            }
+        }
+
+        .coin-flip.spinning-heads {
+            animation: spin-heads 3s forwards;
+        }
+
+        .coin-flip.spinning-tails {
+            animation: spin-tails 3s forwards;
+        }
+
+        #coin-flip-button:disabled {
+            background-color: #94a3b8 !important;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+    </style>
 
     <!-- External JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
