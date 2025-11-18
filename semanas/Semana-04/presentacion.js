@@ -315,6 +315,7 @@ function initCoinFlip() {
     const coin = document.getElementById('coin');
     const flipBtn = document.getElementById('coin-flip-button');
     const resetBtn = document.getElementById('coin-reset-button');
+    const flipsInput = document.getElementById('coin-flips-input');
     const headsCountEl = document.getElementById('coin-heads-count');
     const tailsCountEl = document.getElementById('coin-tails-count');
     const percentageEl = document.getElementById('coin-percentage');
@@ -323,6 +324,7 @@ function initCoinFlip() {
 
     let heads = 0;
     let tails = 0;
+    let isRunning = false;
 
     function updateStats() {
         headsCountEl.textContent = heads;
@@ -337,14 +339,7 @@ function initCoinFlip() {
         }
     }
 
-    function disableButton() {
-        flipBtn.disabled = true;
-        setTimeout(() => {
-            flipBtn.disabled = false;
-        }, 3000);
-    }
-
-    flipBtn.addEventListener('click', () => {
+    async function flipCoinOnce() {
         const i = Math.floor(Math.random() * 2);
 
         // Remover animaciones previas
@@ -358,16 +353,75 @@ function initCoinFlip() {
             coin.classList.add('spinning-heads');
             heads++;
         } else {
-            // Cruces
+            // Sello
             coin.classList.add('spinning-tails');
             tails++;
         }
 
-        setTimeout(updateStats, 3000);
-        disableButton();
+        // Esperar a que termine la animación (3 segundos)
+        await sleep(3000);
+    }
+
+    // Función para ejecutar múltiples lanzamientos
+    async function performFlips(count) {
+        if (isRunning) return;
+
+        isRunning = true;
+        flipBtn.disabled = true;
+        resetBtn.disabled = true;
+        if (flipsInput) flipsInput.disabled = true;
+
+        // Resetear contadores
+        coin.classList.remove('spinning-heads', 'spinning-tails');
+        heads = 0;
+        tails = 0;
+        updateStats();
+
+        // Esperar un momento antes de comenzar
+        await sleep(500);
+
+        // Realizar lanzamientos
+        for (let i = 0; i < count; i++) {
+            await flipCoinOnce();
+            updateStats();
+
+            // Pequeña pausa adicional para ver el resultado
+            await sleep(800);
+        }
+
+        isRunning = false;
+        flipBtn.disabled = false;
+        resetBtn.disabled = false;
+        if (flipsInput) flipsInput.disabled = false;
+
+        console.log(`✅ Completados ${count} lanzamientos: ${heads} caras (${((heads/count)*100).toFixed(2)}%)`);
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    flipBtn.addEventListener('click', () => {
+        if (isRunning) return;
+
+        const count = parseInt(flipsInput.value) || 10;
+
+        // Validar el rango
+        if (count < 1) {
+            alert('El número de lanzamientos debe ser al menos 1');
+            return;
+        }
+        if (count > 100000) {
+            alert('El número máximo de lanzamientos es 100,000');
+            return;
+        }
+
+        performFlips(count);
     });
 
     resetBtn.addEventListener('click', () => {
+        if (isRunning) return;
+
         coin.classList.remove('spinning-heads', 'spinning-tails');
         heads = 0;
         tails = 0;
