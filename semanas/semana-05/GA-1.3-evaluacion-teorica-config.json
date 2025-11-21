@@ -1,7 +1,7 @@
 {
   "quiz": {
     "title": "GA-1.3: Evaluación Teórica - Primer Parcial",
-    "description": "<p><strong>Evaluación Teórica del Primer Parcial</strong></p><p>Esta evaluación cubre los contenidos de las semanas 1 a 4:</p><ul><li><strong>Semana 1:</strong> Fundamentos de Simulación y Modelado de Sistemas</li><li><strong>Semana 2:</strong> Paradigmas de Simulación (Discretos/Continuos, Determinísticos/Estocásticos)</li><li><strong>Semana 3:</strong> Generación de Números Pseudoaleatorios y Pruebas de Validación</li><li><strong>Semana 4:</strong> Fundamentos del Método de Monte Carlo</li></ul><p><strong>Instrucciones:</strong></p><ul><li>La evaluación consta de 20 preguntas de opción múltiple</li><li>Cada pregunta vale 0.15 puntos (Total: 3 puntos)</li><li>Tiempo límite: 45 minutos</li><li>Solo se permite 1 intento</li><li>Las respuestas correctas se mostrarán después de la fecha de cierre</li><li>No se puede retroceder una vez respondida una pregunta</li></ul><p><em>Lea cuidadosamente cada pregunta antes de responder. ¡Éxito!</em></p>",
+    "description": "<p><strong>Evaluación Teórica del Primer Parcial</strong></p><p>Esta evaluación cubre los contenidos de las semanas 1 a 4:</p><ul><li><strong>Semana 1:</strong> Fundamentos de Simulación y Modelado de Sistemas</li><li><strong>Semana 2:</strong> Paradigmas de Simulación (Discretos/Continuos, Determinísticos/Estocásticos)</li><li><strong>Semana 3:</strong> Generación de Números Pseudoaleatorios y Pruebas de Validación</li><li><strong>Semana 4:</strong> Fundamentos del Método de Monte Carlo</li></ul><p><strong>Instrucciones:</strong></p><ul><li>La evaluación consta de 20 preguntas de opción múltiple</li><li>Cada pregunta vale 0.20 puntos (Total: 4 puntos)</li><li>Tiempo límite: 45 minutos</li><li>Solo se permite 1 intento</li><li>Las respuestas correctas se mostrarán después de la fecha de cierre</li><li>No se puede retroceder una vez respondida una pregunta</li></ul><p><em>Lea cuidadosamente cada pregunta antes de responder. ¡Éxito!</em></p>",
     "quiz_type": "assignment",
     "time_limit": 45,
     "allowed_attempts": 1,
@@ -19,6 +19,6 @@
     "lock_at": null,
     "unlock_at": null,
     "published": false,
-    "points_possible": 3
+    "points_possible": 4
   }
 }

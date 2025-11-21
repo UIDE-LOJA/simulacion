@@ -4,7 +4,7 @@
             "question_name": "Definición de Simulación",
             "question_text": "<p>Según Shannon, ¿cuál es la definición más completa de simulación?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "Es el proceso de diseñar un modelo de un sistema real y llevar a término experiencias con él, con la finalidad de comprender el comportamiento del sistema o evaluar nuevas estrategias",
@@ -34,7 +34,7 @@
             "question_name": "Origen del Método Monte Carlo",
             "question_text": "<p>¿En qué contexto histórico surgió el método de Monte Carlo?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "Durante la Segunda Guerra Mundial en el Proyecto Manhattan para resolver problemas de protección nuclear",
@@ -64,7 +64,7 @@
             "question_name": "Ventajas de la Simulación",
             "question_text": "<p>¿Cuál de las siguientes NO es una ventaja de la simulación?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "Proporciona siempre resultados exactos y óptimos",
@@ -94,7 +94,7 @@
             "question_name": "Sistemas Discretos vs Continuos",
             "question_text": "<p>¿Cuál es la diferencia fundamental entre un sistema discreto y uno continuo?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "En los discretos los cambios ocurren en instantes específicos, en los continuos las variables cambian de forma fluida en el tiempo",
@@ -124,7 +124,7 @@
             "question_name": "Ejemplos de Sistemas Discretos",
             "question_text": "<p>¿Cuál de los siguientes es un ejemplo típico de sistema discreto?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "Un sistema de colas en un banco",
@@ -154,7 +154,7 @@
             "question_name": "Modelos Determinísticos",
             "question_text": "<p>¿Qué caracteriza a un modelo determinístico?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "No interviene el azar y bajo las mismas condiciones iniciales siempre produce los mismos resultados",
@@ -184,7 +184,7 @@
             "question_name": "Modelos Estocásticos",
             "question_text": "<p>En un modelo estocástico, ¿cómo se representa la incertidumbre?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "Mediante distribuciones de probabilidad",
@@ -214,7 +214,7 @@
             "question_name": "Sistemas Híbridos",
             "question_text": "<p>¿Qué es un sistema híbrido en simulación?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "Un sistema que combina elementos discretos y continuos",
@@ -244,7 +244,7 @@
             "question_name": "Números Pseudoaleatorios",
             "question_text": "<p>¿Por qué se llaman 'pseudoaleatorios' y no simplemente 'aleatorios'?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "Porque son generados por un algoritmo determinista, aunque tienen apariencia aleatoria",
@@ -274,7 +274,7 @@
             "question_name": "Propiedades de Uniformidad",
             "question_text": "<p>Para una distribución uniforme U(0,1), ¿cuál es la media teórica?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "0.5",
@@ -304,7 +304,7 @@
             "question_name": "Varianza Uniforme",
             "question_text": "<p>¿Cuál es la varianza teórica de una distribución uniforme U(0,1)?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "1/12",
@@ -334,7 +334,7 @@
             "question_name": "Generador Congruencial Lineal",
             "question_text": "<p>En la fórmula del GCL Mixto: X<sub>i+1</sub> = (a·X<sub>i</sub> + c) mod m, ¿qué representa el parámetro 'c'?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "El incremento o constante aditiva",
@@ -364,7 +364,7 @@
             "question_name": "Teorema Hull-Dobell",
             "question_text": "<p>Según el Teorema de Hull-Dobell, ¿cuál es una condición necesaria para que un GCL tenga periodo completo?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "c y m deben ser primos relativos (mcd(c,m) = 1)",
@@ -394,7 +394,7 @@
             "question_name": "Prueba Kolmogorov-Smirnov",
             "question_text": "<p>¿Qué mide la prueba de Kolmogorov-Smirnov?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "La desviación máxima entre la distribución empírica y la teórica",
@@ -424,7 +424,7 @@
             "question_name": "Prueba Chi-Cuadrado",
             "question_text": "<p>En la prueba Chi-cuadrado para uniformidad, ¿qué se espera de las frecuencias en cada intervalo?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "Que sean aproximadamente iguales en todos los intervalos",
@@ -454,7 +454,7 @@
             "question_name": "Ley de los Grandes Números",
             "question_text": "<p>¿Qué justifica la Ley Fuerte de los Grandes Números en el método de Monte Carlo?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "Que la media muestral converge al valor esperado cuando n tiende a infinito",
@@ -484,7 +484,7 @@
             "question_name": "Convergencia Monte Carlo",
             "question_text": "<p>¿Cuál es una limitación importante del método de Monte Carlo?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "Converge lentamente, requiriendo gran cantidad de simulaciones",
@@ -514,7 +514,7 @@
             "question_name": "Estimación de Áreas",
             "question_text": "<p>En la estimación del área de un círculo por Monte Carlo, ¿cómo se calcula el área aproximada?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "Multiplicando la fracción de puntos dentro del círculo por el área del cuadrado envolvente",
@@ -544,7 +544,7 @@
             "question_name": "Integración Numérica",
             "question_text": "<p>Para aproximar una integral ∫<sub>a</sub><sup>b</sup> h(x)dx por Monte Carlo, ¿qué fórmula se utiliza?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "I ≈ (b-a) × (1/n) × Σh(x<sub>i</sub>)",
@@ -574,7 +574,7 @@
             "question_name": "Aplicaciones Monte Carlo",
             "question_text": "<p>¿Cuál de las siguientes NO es una aplicación típica del método de Monte Carlo?</p>",
             "question_type": "multiple_choice_question",
-            "points_possible": 0.15,
+            "points_possible": 0.20,
             "answers": [
                 {
                     "answer_text": "Resolver sistemas de ecuaciones lineales simples",
